@@ -8,6 +8,7 @@ router.get('/:memberNo', function(req, res){
     var m = util.createValueObject('Member');
     var cr = util.createValueObject('ChatRoom');
     var f = util.createValueObject('Feeling');
+    var ft = util.createValueObject('Feeling_Type');
     var p = util.createValueObject('Profil');
 
 
@@ -21,9 +22,7 @@ router.get('/:memberNo', function(req, res){
         memberSNSYn : m.Member().memberSNSYn,
         memberEmailYn : m.Member().memberEmailYn,
         chatroomRegdate : m.ChatRoom().chatroomRegdate,
-        feelingCode1 : f.Feeling().feelingCode1,
-        feelingCode2 : f.Feeling().feelingCode2,
-        feelingCode3 : f.Feeling().feelingCode3,
+        fTypeArray : ['귀여움', '장난스러움', '유머스러움'],
         feelingRate : f.Feeling().feelingRate,
         profilSaveFileName : p.Profil().profilSaveFileName
     });

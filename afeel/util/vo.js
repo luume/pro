@@ -191,7 +191,7 @@ function makeCallBackJValueObject(name){
       break;
 
       case 'Payment' :
-        obj = new Cash();
+        obj = new Payment();
 
         obj.setget('paymentNo', 1);
         obj.setget('memberNo', 1);
@@ -201,7 +201,7 @@ function makeCallBackJValueObject(name){
         break;
 
       case 'Private_Message' :
-        obj = new Cash();
+        obj = new Private_Message();
         obj.setget('messageNo','89');
         obj.setget('privateRoomNo','175');
         obj.setget('messageFrom','257');
@@ -210,23 +210,24 @@ function makeCallBackJValueObject(name){
         obj.setget('messageDate','2015-01-23 09:00:00');
         break;
       case 'Private_Room' :
-        obj = new Cash();
+        obj = new Private_Room();
         obj.setget('privateRoomNo','175');
         obj.setget('memberWNo','257');
         obj.setget('memberMNo','224');
         obj.setget('privateRoomRegDate','2015-01-23 09:00:00');
         break;
+
       case 'Profil' :
-        obj = new Cash();
+        obj = new Profil();
         obj.setget('profilNo','189');
         obj.setget('memberNo','257');
         obj.setget('profilOriginalFileName','profil.jpg');
-        obj.setget('profilSaveFileName','profil.jpg');
-        obj.setget('profilThumbnail','profil.jpg');
+        obj.setget('profilSaveFileName','Hydrangeas.jpg');
+        obj.setget('profilThumbnail','Hydrangeas-thumbnail.jpg');
         obj.setget('profilMainYn','Y');
         break;
       case 'Question' :
-        obj = new Cash();
+        obj = new Question();
         obj.setget('questionNo','246');
         obj.setget('memberNo','257');
         obj.setget('questionData','여자친구가 생기면 첫 데이트로 가고 싶은 곳은 어디세요?');
@@ -235,7 +236,7 @@ function makeCallBackJValueObject(name){
         obj.setget('questionRegDate','2015-01-23 09:00:00');
         break;
       case 'Request' :
-        obj = new Cash();
+        obj = new Request();
         obj.setget('requestNo','35');
         obj.setget('memberNo','257');
         obj.setget('requestTitle','결제가 안돼요');
@@ -243,7 +244,7 @@ function makeCallBackJValueObject(name){
         obj.setget('requestRegDate','2015-01-23 09:00:00');
         break;
       case 'Text_Answer' :
-        obj = new Cash();
+        obj = new Text_Answer();
         obj.setget('textAnswerNo','68');
         obj.setget('questionNo','246');
         obj.setget('textAnswerData','파주 헤이리 드라이브를 하고 싶네요');
@@ -251,7 +252,7 @@ function makeCallBackJValueObject(name){
         obj.setget('textAnswerRegDate','2015-01-23 09:00:00');
         break;
       case 'Voice_Answer' :
-        obj = new Cash();
+        obj = new Voice_Answer();
         obj.setget('voiceAnserNo','54');
         obj.setget('qustionNo','246');
         obj.setget('voiceAnswerOriginalFileName','20150120123257.mp4');
