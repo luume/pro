@@ -11,7 +11,7 @@ router.get('/:memberNo', function(req, res) {
   var p = util.createValueObject('Profil');
 
   res.json(util.successCode(res,
-    {   
+    {
       memberNo : m.Member().memberNo,
       memberName : m.Member().memberName,
       memberBirth : m.Member().memberBirth,
