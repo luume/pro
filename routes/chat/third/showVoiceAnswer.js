@@ -3,17 +3,13 @@ var router = express.Router();
 
 var util = require('../../../afeel/util/vo');
 
-router.get('/:chatroomNo/:memberNo', function(req, res){
+router.get('/:chatroomNo', function(req, res){
     var chatroomNo = req.params.chatroomNo;
     if(chatroomNo == "" || chatroomNo == undefined){
         res.json({success:0, message:"Error(빈값이 넘어왔습니다.[chatroomNo])", result:null});
         return;
     }
-    var memberNo = req.params.memberNo;
-    if(memberNo == "" || memberNo == undefined){
-        res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
-        return;
-    }
+
 
     var m = util.createValueObject('Member');
     var c = util.createValueObject('ChatRoom');
@@ -22,7 +18,7 @@ router.get('/:chatroomNo/:memberNo', function(req, res){
 
     util.successCode(res, {
         chatroomNo : c.ChatRoom().chatroomNo,
-        memberNo : m.Member().memberNo,
+
         voiceAnswerOriginalFileName : va.Voice_Answer().voiceAnswerOriginalFileName,
         questionData : q.Question().questionData,
         memberNick : m.Member().memberNick

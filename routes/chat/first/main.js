@@ -12,7 +12,6 @@ router.post('/', function(req, res) {
 
   res.json(util.successCode(res,
     {
-      memberNo : m.Member().memberNo,
       memberName : m.Member().memberName,
       memberBirth : m.Member().memberBirth,
       memberGender  : m.Member().memberGender ,

@@ -4,7 +4,7 @@ var router = express.Router();
 var util = require('../../afeel/util/vo');
 
 // 앱 홈 화면
-router.get('/:memberNo', function(req, res) {
+router.get('/', function(req, res) {
 
   var m = util.createValueObject('Member');
 
@@ -12,7 +12,6 @@ router.get('/:memberNo', function(req, res) {
 
   res.json(util.successCode(res,
     {
-      memberNo : m.Member().memberNo,
       memberName : m.Member().memberName,
       memberBirth : m.Member().memberBirth,
       memberHobby : m.Member().memberHobby,

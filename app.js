@@ -10,11 +10,20 @@ var users = require('./routes/users');*/
 //var util = require('./routes/util/vo');
 var routes = require('./routes/index');
 var routes2 = require('./test/index');
+var sessionjs = require('./routes/session');
 var app = express();
+
+
+var session = require('express-session');
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+
+app.use(session({secret:'test key', key:'test',cookie:{maxAge:60*1000}}));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -25,8 +34,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/test', routes2);
+app.use('/session', sessionjs);
+
 //app.use('/users', users);s
 //app.use('/util', util);
+
+
+
+// 패스 지정 전에 선언해야함!!!
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

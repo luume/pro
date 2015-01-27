@@ -3,7 +3,7 @@ var router = express.Router();
 
 var util = require('../../afeel/util/vo');
 
-router.get('/:memberNo', function(req, res){
+router.get('/', function(req, res){
 
     var m = util.createValueObject('Member');
     var cr = util.createValueObject('ChatRoom');
@@ -13,7 +13,6 @@ router.get('/:memberNo', function(req, res){
 
 
     util.successCode(res, {
-        memberNo : m.Member().memberNo,
         memberBirth : m.Member().memberBirth,
         memberHobby : m.Member().memberHobby,
         memberAdd : m.Member().memberAdd,

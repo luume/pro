@@ -4,12 +4,8 @@ var router = express.Router();
 var util = require('../../afeel/util/vo');
 
 // 이메일 인증
-router.post('/:memberNo', function(req, res) {
-  var memberNo = req.params.memberNo;
-  if(memberNo == "" || memberNo == undefined){
-    res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
-    return;
-  }
+router.post('/', function(req, res) {
+
   res.json(util.successCode(res, 'success'));
 
 });

@@ -9,7 +9,6 @@ router.get('/', function(req, res){
 
     util.successCode(res, {
         requestNo : re.Request().requestNo,
-        memberNo : re.Request().memberNo,
         requestTitle : re.Request().requestTitle,
         requestContent : re.Request().requestContent,
         requestRegDate : re.Request().requestRegDate

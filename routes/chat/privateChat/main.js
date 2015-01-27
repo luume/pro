@@ -3,12 +3,8 @@ var router = express.Router();
 
 var util = require('../../../afeel/util/vo');
 
-router.get('/:privateRoomNo/:memberNo', function(req, res){
-    var memberNo = req.params.memberNo;
-    if(memberNo == "" || memberNo == undefined){
-        res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
-        return;
-    }
+router.get('/:privateRoomNo', function(req, res){
+
     var privateRoomNo = req.params.privateRoomNo;
     if(privateRoomNo == "" || privateRoomNo == undefined){
         res.json({success:0, message:"Error(빈값이 넘어왔습니다.[privateRoomNo])", result:null});
@@ -20,7 +16,7 @@ router.get('/:privateRoomNo/:memberNo', function(req, res){
     var pm = util.createValueObject('Private_Message');
 
     util.successCode(res, {
-        memberNo : m.Member().memberNo,
+
         privateRoomNo : pr.Private_Room().privateRoomNo,
         messageTo : pm.Private_Message().messageTo,
         messageFrom : pm.Private_Message().messageFrom,

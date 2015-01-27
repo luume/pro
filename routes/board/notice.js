@@ -9,7 +9,6 @@ router.get('/', function(req, res){
 
     util.successCode(res, {
         noticeNo : not.Notice().noticeNo,
-        memberNo : not.Notice().memberNo,
         noticeTitle : not.Notice().noticeTitle,
         noticeContent : not.Notice().noticeContent,
         noticeRegDate : not.Notice().noticeRegDate
