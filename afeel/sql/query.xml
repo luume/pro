@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <query>
-    <searchdata>
+    <myquery id="afeel">
+        SELECT * FROM circle
+    </myquery>
+    <myquery id="test">
         SELECT * FROM circle where cir_name = ?
-</searchdata>
+    </myquery>
 </query>

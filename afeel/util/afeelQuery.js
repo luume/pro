@@ -4,20 +4,6 @@ var util = require('util');
 var fs = require('fs');
 var xml_digester = require("xml-digester");
 var digester = xml_digester.XmlDigester({});
-//var mysql = require('mysql');
-/*var pool = mysql.createPool({
-  connectionLimit: 150,
-  host: '127.0.0.1',
-  user: 'root',
-  password: '1234',
-  database: 'test'
-});*/
-
-/*exports.readQuery = function (filename) {
-
-
-
-};*/
 
 
 /**
@@ -26,7 +12,7 @@ var digester = xml_digester.XmlDigester({});
  * @param callback (err, row)   err : 에러 일경우를 위한 매개변수. null이면 에러가 발생하지않음.
  *                                       row : 정상처리되었을 경우 쿼리의 결과가 담김
  */
-exports.afeelQuery = function(bindQuery , callback) {
+exports.afeelQuery = function(bindQuery , queryId,  callback) {
 
   fs.readFile(global.directoryPath + global.queryName + '.xml','utf8', function(error, data) {
     if (error) {
@@ -38,13 +24,20 @@ exports.afeelQuery = function(bindQuery , callback) {
           console.log(error);
         } else {
 
-          var query = util.format(result.query.searchdata);
+          //var query = util.format(result.query.searchdata);
+          var query;
+          var queryIdLength = result.query.myquery.length;
+          for(var i = 0 ; i < result.query.myquery.length; i++){
+            if(result.query.myquery[i].id == queryId){
+              query = util.format(result.query.myquery[i]._text);
+              break;
+            }
+          } // for end
+
           global.pool.getConnection(function(err, conn) {
             if(err) console.error('err >>>>>', err);
 
-            console.log('바인드 ', bindQuery);
             conn.query(query, bindQuery,  function(err, row) {
-
 
               if(err){
                 callback(
@@ -56,7 +49,6 @@ exports.afeelQuery = function(bindQuery , callback) {
                 );
               };
             //} // if end
-              console.log('쿼리 = ' , row);
               callback(null, row);
           });
 

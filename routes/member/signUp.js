@@ -11,7 +11,8 @@ router.post('/', function(req, res) {
   var datas = [];
   datas.push(cir_name);
   global.queryName = 'query';
-  afeelQuery.afeelQuery(datas, function (err, datas) {
+  var queryidname = 'test';
+  afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
     if(err){
       res.json(err);
     }
