@@ -260,7 +260,7 @@ function variableCheck(obj){
        message: "해당 객체의 속성값이 존재 하지 않습니다.",
        attribute: variabeObject[i]
    }])*/
-    errobj.message = "해당 객체의 속성값이 존재 하지 않습니다.";
+    errobj.message = "no parameter";
      errobj.attribute = variabeObject[i];
 
      return errobj;
