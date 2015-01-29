@@ -10,6 +10,7 @@ var memberLogout = require('./member/logout');
 var memberEditPassword = require('./member/editPassword');
 var memberPush = require('./member/push');
 var memberWithDraw = require('./member/withDraw');
+var memberEmailCheck = require('./member/emailCheck');
 
 // 메인 화면
 var homeMain = require('./home/main');
@@ -74,6 +75,7 @@ router.use('/member/logout', memberLogout);
 router.use('/member/editpassword', memberEditPassword);
 router.use('/member/push', memberPush);
 router.use('/member/withdraw', memberWithDraw);
+router.use('/member/emailcheck', memberEmailCheck);
 
 
 router.use('/home', homeMain);
