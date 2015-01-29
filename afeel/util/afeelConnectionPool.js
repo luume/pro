@@ -5,8 +5,7 @@ var mysql = require('mysql');
 global.pool = mysql.createPool({
   connectionLimit: 150,
   host: '127.0.0.1',
-  user: 'root',
-  password: '1234',
+  user: 'afeel',
+  password: 'afeel!',
   database: 'test'
 });
-console.log('글로벌');
