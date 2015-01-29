@@ -226,13 +226,15 @@ function makeCallBackJValueObject(name){
  */
 function successCode(res, resultValue){
 
-  var error = variableCheck(resultValue);
-
-  if(error != undefined){
-    return {success : 0,
-            message : error,
-            result : null
-    };
+  if(resultValue != 'success') {
+    var error = variableCheck(resultValue);
+    if (error != undefined) {
+      return {
+        success: 0,
+        message: error,
+        result : null
+      };
+    }
   }
 
   return{
@@ -244,9 +246,6 @@ function successCode(res, resultValue){
 
 
 function variableCheck(obj){
-
-  if(obj == undefined)
-    return;
 
   var variabeObject = Object.keys(obj);
   var variabeObjectLength = Object.keys(obj).length;
