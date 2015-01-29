@@ -10,6 +10,7 @@ router.post('/', function(req, res) {
   var cir_name = req.body.cir_name;
   var datas = [];
   datas.push(cir_name);
+
   global.queryName = 'query';
   var queryidname = 'test';
   afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
