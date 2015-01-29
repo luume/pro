@@ -5,7 +5,7 @@ var util = require('../../afeel/util/vo');
 
 router.post('/', function(req, res){
 
-    res.json(util.successCode(res, 'success'));
+    util.successCode(res, 'success'); 
 
 });
 
