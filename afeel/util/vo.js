@@ -244,6 +244,10 @@ function successCode(res, resultValue){
 
 
 function variableCheck(obj){
+
+  if(obj == undefined)
+    return;
+
   var variabeObject = Object.keys(obj);
   var variabeObjectLength = Object.keys(obj).length;
 
