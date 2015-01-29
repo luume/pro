@@ -9,4 +9,3 @@ global.pool = mysql.createPool({
   password: '1234',
   database: 'test'
 });
-console.log('글로벌');
