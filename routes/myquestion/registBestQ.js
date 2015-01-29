@@ -9,11 +9,11 @@ var util = require('../../afeel/util/vo');
     var m = util.createValueObject('Member');
     var q = util.createValueObject('Question');
 
-    util.successCode(res, {
+        res.json(util.successCode(res, {
         questionData : q.Question().questionData,
         questionGuideData : q.Question().questionGuideData,
         questionRegDate : q.Question().questionRegDate
-    });
+    }));
 });
 
 module.exports = router;

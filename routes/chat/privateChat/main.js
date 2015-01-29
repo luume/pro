@@ -15,14 +15,14 @@ router.get('/:privateRoomNo', function(req, res){
     var pr = util.createValueObject('Private_Room');
     var pm = util.createValueObject('Private_Message');
 
-    util.successCode(res, {
+    res.json(util.successCode(res, {
 
         privateRoomNo : pr.Private_Room().privateRoomNo,
         messageTo : pm.Private_Message().messageTo,
         messageFrom : pm.Private_Message().messageFrom,
         messageData : pm.Private_Message().messageData,
         messageDate : pm.Private_Message().messageDate
-    });
+    }));
 });
 
 module.exports = router;

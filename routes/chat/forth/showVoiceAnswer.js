@@ -16,12 +16,12 @@ router.get('/:chatroomNo', function(req, res){
     var q = util.createValueObject('Question');
     var va = util.createValueObject('Voice_Answer');
 
-    util.successCode(res, {
+    res.json(util.successCode(res, {
 
         chatroomNo : cr.ChatRoom().chatroomNo,
         questionData : q.Question().questionData,
         voiceAnswerOriginalFileName : va.Voice_Answer().voiceAnswerOriginalFileName
-    });
+    }));
 });
 
 module.exports = router;

@@ -8,9 +8,9 @@ router.post('/', function(req, res){
 
     var m = util.createValueObject('Member');
 
-    util.successCode(res, {
+    res.json(util.successCode(res, {
         memberPushYn : m.Member().memberPushYn
-    });
+    }));
 
 });
 

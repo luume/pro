@@ -7,16 +7,16 @@ router.get('/', function(req, res){
 
     var m = util.createValueObject('Member');
 
-    util.successCode(res, {
+    res.json(util.successCode(res, {
         memberNo : m.Member().memberNo,
         memberPw : m.Member().memberPw
-    });
+    }));
 });
 
 router.post('/', function(req, res){
 
 
-    util.successCode(res, 'success');
+    res.json(util.successCode(res, 'success'));
 
 });
 

@@ -11,7 +11,7 @@ router.post('/', function(req, res){
     }
 
 
-    util.successCode(res, 'success');
+    res.json(util.successCode(res, 'success'));
 
 });
 

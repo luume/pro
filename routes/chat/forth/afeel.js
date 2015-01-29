@@ -15,10 +15,10 @@ router.post('/', function(req, res){
     var m = util.createValueObject('Member');
     var c = util.createValueObject('Cash');
 
-    util.successCode(res, {
+    res.json(util.successCode(res, {
         chatroomNo : cr.ChatRoom().chatroomNo,
         cashAmount : c.Cash().cashAmount
-    });
+    }));
 
 });
 

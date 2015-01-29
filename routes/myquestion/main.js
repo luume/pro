@@ -8,12 +8,12 @@ router.get('/', function(req, res){
     var m = util.createValueObject('Member');
     var q = util.createValueObject('Question');
 
-    util.successCode(res, {
+    res.json(util.successCode(res, {
         questionData : q.Question().questionData,
         questionGuideData : q.Question().questionGuideData,
         questionRegDate : q.Question().questionRegDate,
         memberBestQ : m.Member().memberBestQ
-    });
+    }));
 });
 
 module.exports = router;

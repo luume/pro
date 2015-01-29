@@ -7,12 +7,12 @@ router.get('/', function(req, res){
 
     var not = util.createValueObject('Notice');
 
-    util.successCode(res, {
+    res.json(util.successCode(res, {
         noticeNo : not.Notice().noticeNo,
         noticeTitle : not.Notice().noticeTitle,
         noticeContent : not.Notice().noticeContent,
         noticeRegDate : not.Notice().noticeRegDate
-    });
+    }));
 });
 
 module.exports = router;

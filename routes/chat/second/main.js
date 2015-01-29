@@ -14,11 +14,11 @@ router.get('/:chatroomNo', function(req, res){
     var m = util.createValueObject('Member');
     var q = util.createValueObject('Question');
 
-    util.successCode(res, {
+    res.json(util.successCode(res, {
         questionData : q.Question().questionData,
         questionGuideData : q.Question().questionGuideData,
         memberGender : m.Member().memberGender
-    });
+    }));
 });
 
 module.exports = router;
