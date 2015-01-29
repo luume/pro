@@ -1,11 +1,20 @@
 
+var ValidationError = require("error/validation")
+var OptionError = require("error/option")
+
 
 // 전역변수라 다른데서 vo라고 선언하면 안됨
 var vo = {};    // 동적 함수가 저장될 곳.
 var ejo; // EqualJoinOption 을 위한 변수
 
+
+/**
+ * 동적 함수 생성 시작 함수
+ * @param name
+ * @returns {{}}
+ */
 function createValueObject(name){
-  ejo = new EqualJoinOption();
+  //ejo = new EqualJoinOption();
   makeCallBackJValueObject(name);   // 함수를 만든다.
 //vo['Member']();
  return vo;
@@ -17,68 +26,11 @@ function getEjo(){
 }
 
 
-function joinArgument(arguments, obj){
-  var resultJson;
-  var argLength;
-
-  var Ej = function(){
-    Ej.prototype.setget = function(name, value){  // memberNo
-      this['' + name + ''] = value;
-    };
-  };
-
-  if(arguments.t1 != undefined){
-    console.log('t1' + ', ' + Object.keys(arguments).length);
-
-    argLength = arguments.c1.length;
-
-    for(var i = 0; i < argLength; i++){
-      if(i == 0)
-        resultJson = new Ej();
-
-      console.log(arguments.c1[i]);
-      console.log(arguments.c1[i] + ' : ' +  arguments.v1[0][arguments.c1[i]]);
-      resultJson.setget(arguments.c1[i], arguments.v1[0][arguments.c1[i]]);
-    }
-
-   /* for(var i in arguments.c1 ){
-
-    }*/
-
-  }
-
-  if(arguments.t2 != undefined){
-    console.log('t2 ==> ' , arguments.v2 );
-    argLength = arguments.c2.length;
-    for(var i = 0; i < argLength; i++){
-      console.log(arguments.c2[i]);
-      console.log(arguments.c2[i] + ' : ' +  arguments.v2[0][arguments.c2[i]]);
-      resultJson.setget(arguments.c2[i], arguments.v2[0][arguments.c2[i]]);
-    }
-  }
-
-  if(arguments.t3 != undefined){
-    console.log('t3');
-  }
-
-  if(arguments.t4 != undefined){
-    console.log('t4');
-  }
-
-
-  return resultJson;
-} // joinArguments end
-
-
-
-var EqualJoinOption = function(){
-  EqualJoinOption.prototype.setget = function(name, value){  // memberNo
-    this['' + name + ''] = value;
-  };
-};
-
-
-// fncMap에 key, function 으로 동적으로 함수가 저장된다.
+/**
+ * fncMap에 key, function 으로 동적으로 함수가 저장된다.
+ * @param name
+ * @returns {Function}
+ */
 function makeCallBackJValueObject(name){
 
   var obj;
@@ -104,7 +56,7 @@ function makeCallBackJValueObject(name){
         obj.setget('memberLevel', 1);
         obj.setget('memberSmoking', 'N');
         obj.setget('memberMatchCnt', 0);
-        obj.setget('memberHPYn', '0');
+        obj.setget('memberHPYn', 0);
         obj.setget('memberEmailYn', 0);
         obj.setget('memberSNSYn', 0);
         obj.setget('memberStMeeting', '2015-01-23 16:22:34');
@@ -266,15 +218,52 @@ function makeCallBackJValueObject(name){
 } // function end
 
 
-
-
+/**
+ * 성공시 코드 값
+ * @param res
+ * @param resultValue
+ * @returns {*}
+ */
 function successCode(res, resultValue){
 
-  res.json({
+  var error = variableCheck(resultValue);
+
+  if(error != undefined){
+    return {success : 0,
+            message : error,
+            result : null
+    };
+  }
+
+  return{
     success : 1,
     message : 'OK',
     result : resultValue
-  });
+  };
+}
+
+
+function variableCheck(obj){
+  var variabeObject = Object.keys(obj);
+  var variabeObjectLength = Object.keys(obj).length;
+
+  //console.log(obj.variabeObject[0]);
+
+  for(var i = 0; i < variabeObjectLength; i++){
+    //console.log(obj[variabeObject[i]]);
+    //console.log(obj.variabeObject[i]);
+   if(obj[variabeObject[i]] === undefined || obj[variabeObject[i]] === ''){
+     var error = ValidationError([{
+       message: "해당 객체의 속성값이 존재 하지 않습니다.",
+       attribute: variabeObject[i]
+     }])
+
+
+     return error;
+   }
+
+  } // for end
+  //return 'succes';
 }
 
 
@@ -408,9 +397,10 @@ var Voice_Answer = function(){
 
 
 module.exports.createValueObject = createValueObject;
-module.exports.joinArgument = joinArgument;
+//module.exports.joinArgument = joinArgument;
 module.exports.getEjo = getEjo;
 module.exports.successCode = successCode;
+module.exports.variableCheck = variableCheck;
 
 /*memberNo,
  memberEmail,

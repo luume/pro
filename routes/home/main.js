@@ -3,8 +3,9 @@ var router = express.Router();
 
 var util = require('../../afeel/util/vo');
 
+
 // 앱 홈 화면
-router.get('/', function(req, res) {
+router.get('/113', function(req, res) {
 
   var m = util.createValueObject('Member');
 
@@ -18,14 +19,13 @@ router.get('/', function(req, res) {
       memberAdd : m.Member().memberAdd,
       memberHeight : m.Member().memberHeight,
       memberJob : m.Member().memberJob,
-      memberSnsYn : m.Member().memberSnsYn,
+      memberSnsYn : m.Member().memberSNSYn,
       memberHPYn : m.Member().memberHPYn,
       memberEmailYn : m.Member().memberEmailYn,
       memberStMeeting : m.Member().memberStMeeting
     }
   ));
 
-  res.end();
 
 });
 

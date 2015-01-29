@@ -2,11 +2,24 @@ var express = require('express');
 var router = express.Router();
 
 var util = require('../../afeel/util/vo');
+var afeelQuery = require('../../afeel/util/afeelQuery');
 
 // 회원가입
 router.post('/', function(req, res) {
 
-  var m = util.createValueObject('Member');
+  var cir_name = req.body.cir_name;
+  var datas = [];
+  datas.push(cir_name);
+  global.queryName = 'query';
+  afeelQuery.afeelQuery(datas, function (err, datas) {
+    if(err){
+      res.json(err);
+    }
+    res.json(datas);
+
+  });
+
+  /*var m = util.createValueObject('Member');
 
   var p = util.createValueObject('Profil');
 
@@ -25,7 +38,7 @@ router.post('/', function(req, res) {
       memberJob    : m.Member().memberJob   ,
       profilOriginalFileName    : p.Member().profilOriginalFileName
     }
-  ));
+  ));*/
 
 });
 
