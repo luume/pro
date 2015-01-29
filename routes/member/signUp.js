@@ -20,7 +20,7 @@ router.post('/', function(req, res) {
   var memberJob = req.body.memberJob;
   var profilOriginalFileName = req.body.profilOriginalFileName;
 
-  //var datas = [];
+  var datas = [];
   datas.push(memberEmail);
   datas.push(memberName);
   datas.push(memberNick);
@@ -28,12 +28,13 @@ router.post('/', function(req, res) {
   datas.push(memberGender);
   datas.push(memberBirth);
   datas.push(memberHobby);
-  datas.push(memberHeight);
+  datas.push(parseInt(memberHeight));
   datas.push(memberAdd);
-  datas.push(profilOriginalFileName);
+  datas.push(memberJob);
+  //datas.push(profilOriginalFileName);
 
-  global.queryName = 'query';
-  var queryidname = 'test';
+  global.queryName = 'member';
+  var queryidname = 'signupMember';
   afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
     if(err){
       res.json(err);
@@ -41,8 +42,35 @@ router.post('/', function(req, res) {
     res.json(datas);
 
   });
-
-
+  /*CREATE TABLE MEMBER (
+    memberNo        INT     PRIMARY KEY  AUTO_INCREMENT,
+    memberEmail     VARCHAR(20) NOT NULL,
+    memberNick      VARCHAR(20) NOT NULL,
+    memberTel       INT         NULL,
+    memberAdd       VARCHAR(50) NOT NULL,
+    memberName      VARCHAR(30) NOT NULL,
+    memberGender    VARCHAR(1)  NOT NULL,
+    memberBirth     VARCHAR(8)  NOT NULL,
+    memberHeight    INT     NOT NULL,                                      1
+    memberPw        VARCHAR(20) NOT NULL,
+    memberHobby     VARCHAR(20) NOT NULL,
+    memberJob       VARCHAR(20) NOT NULL,
+    memberLevel     INT     NOT NULL DEFAULT 1,
+    memberSmoking   VARCHAR(1)  NOT NULL,
+    memberMatchCnt  INT     NOT NULL DEFAULT 0,
+    memberHPYn      INT     NULL,
+    memberEmailYn   INT     NOT NULL DEFAULT 0,
+    memberSNSYn     INT     NULL,
+    memberStMeeting DATETIME not NULL     DEFAULT now(),
+    memberPushYn    INT     NOT NULL DEFAULT 0,
+    memberPenalty   INT     NULL     DEFAULT 0,
+    memberCash      INT     NOT NULL DEFAULT 0,
+    memberBestQ     INT     NULL,
+    memberWithdraw  INT     NULL     DEFAULT 0,
+    memberWithdrawReason VARCHAR(5000) NULL,
+    memberToken	VARCHAR(5000) 	   NULL
+  );
+*/
 /*
   Member      memberEmail: 이메일
   Member      memberName: 실명

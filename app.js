@@ -1,22 +1,42 @@
 var express = require('express');
 var path = require('path');
+var http = require('http');
+var https = require('https');
+var fs = require('fs');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var options = {
+    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('cert.pem')
+};
+
 /*var routes = require('./routes/index');
-var users = require('./routes/users');*/
+ var users = require('./routes/users');*/
 //var util = require('./routes/util/vo');
 var routes = require('./routes/index');
 var routes2 = require('./test/index');
 var sessionjs = require('./routes/session');
+var port1 = 80;
+var port2 = 443;
 var app = express();
+//app.use(express.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
+http.createServer(app).listen(port1, function(){
+    console.log("Http server listening on port " + port1);
+});
+
+
+https.createServer(options, app).listen(port2, function(){
+    console.log("Https server listening on port " + port2);
+});
+
 
 
 //var session = require('express-session');
 var afeelPool = require('./afeel/util/afeelConnectionPool')
-
 
 
 // view engine setup
@@ -86,10 +106,10 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.set('port', process.env.PORT || 80);
+/*app.set('port', process.env.PORT || 80);
 
 var server = app.listen(app.get('port'), function(){
     console.log('Express Server listening on port'+server.address().port);
-});
+});*/
 
 module.exports = app;

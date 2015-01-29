@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<query>
+    <myquery id="signupMember">
+        INSERT INTO member(memberEmail, memberName, memberNick, memberPw, memberGender, memberBirth, memberHobby, memberHeight, memberAdd, memberJob) VALUES(?, ?, ?, ?, ?, ?, ?, ? , ?,  ? )
+    </myquery>
+
+    <myquery id="test">
+        SELECT * FROM circle where cir_name = ?
+    </myquery>
+</query>

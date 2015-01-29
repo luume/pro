@@ -26,6 +26,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
 
           //var query = util.format(result.query.searchdata);
           var query;
+        //  console.log('ddd =>', result.query.myquery);
           var queryIdLength = result.query.myquery.length;
           for(var i = 0 ; i < result.query.myquery.length; i++){
             if(result.query.myquery[i].id == queryId){
@@ -38,7 +39,8 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
             if(err) console.error('err >>>>>', err);
 
             conn.query(query, bindQuery,  function(err, row) {
-
+              console.log(query);
+              console.log(bindQuery);
               if(err){
                 callback(
                   {
