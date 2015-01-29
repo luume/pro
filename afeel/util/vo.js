@@ -227,11 +227,11 @@ function makeCallBackJValueObject(name){
 function successCode(res, resultValue){
 
   if(resultValue != 'success') {
-    var error = variableCheck(resultValue);
-    if (error != undefined) {
+    var errobj = variableCheck(resultValue);
+    if (errobj != undefined) {
       return {
         success: 0,
-        message: error,
+        message: errobj,
         result : null
       };
     }
@@ -251,18 +251,19 @@ function variableCheck(obj){
   var variabeObjectLength = Object.keys(obj).length;
 
   //console.log(obj.variabeObject[0]);
-
+  var errobj =  {};
   for(var i = 0; i < variabeObjectLength; i++){
     //console.log(obj[variabeObject[i]]);
     //console.log(obj.variabeObject[i]);
    if(obj[variabeObject[i]] === undefined || obj[variabeObject[i]] === ''){
-     var error = ValidationError([{
+     /*var error = ValidationError([{
        message: "해당 객체의 속성값이 존재 하지 않습니다.",
        attribute: variabeObject[i]
-     }])
+   }])*/
+    errobj.message = "해당 객체의 속성값이 존재 하지 않습니다.";
+     errobj.attribute = variabeObject[i];
 
-
-     return error;
+     return errobj;
    }
 
   } // for end
