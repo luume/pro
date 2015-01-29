@@ -226,7 +226,7 @@ function makeCallBackJValueObject(name){
  */
 function successCode(res, resultValue){
 
-  if(resultValue != 'success') {
+  /*if(resultValue != 'success') {
     var errobj = variableCheck(resultValue);
     if (errobj != undefined) {
       return {
@@ -235,7 +235,7 @@ function successCode(res, resultValue){
         result : null
       };
     }
-  }
+  }*/
 
   return{
     success : 1,
