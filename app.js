@@ -9,8 +9,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var options = {
-    key: fs.readFileSync('key.pem'),
-    cert: fs.readFileSync('cert.pem')
+    key: fs.readFileSync('../key.pem'),
+    cert: fs.readFileSync('../cert.pem')
 };
 
 /*var routes = require('./routes/index');
