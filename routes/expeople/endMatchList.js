@@ -29,7 +29,7 @@ router.get('/', function(req, res){
               chatroomRegdate : m.ChatRoom().chatroomRegdate,
               fTypeArray : ['포근함', '스타일리쉬', '유머러스'],
               feelingRate : f.Feeling().feelingRate,
-              profilSaveFileName : 'https://54.92.4.84/images/Hydrangeas.jpg'
+              profilSaveFileName : 'https://54.92.4.84/images/Hydrangeas-thumbnail.jpg'
           },
               {
                   memberName :  '김유신',
@@ -43,7 +43,7 @@ router.get('/', function(req, res){
                   chatroomRegdate : m.ChatRoom().chatroomRegdate,
                   fTypeArray : ['훤칠한', '진지남', '유머러스'],
                   feelingRate : f.Feeling().feelingRate,
-                  profilSaveFileName : 'https://54.92.4.84/images/Jellyfish.jpg'
+                  profilSaveFileName : 'https://54.92.4.84/images/Jellyfish-thumbnail.jpg'
               },
               {
                   memberName :  '이순신',
@@ -57,7 +57,7 @@ router.get('/', function(req, res){
                   chatroomRegdate : m.ChatRoom().chatroomRegdate,
                   fTypeArray : ['슬림슬림', '스마트한', '귀여운'],
                   feelingRate : f.Feeling().feelingRate,
-                  profilSaveFileName : 'https://54.92.4.84/images/Koala.jpg'
+                  profilSaveFileName : 'https://54.92.4.84/images/Koala-thumbnail.jpg'
               },
               {
                   memberName :  '김말자',
@@ -71,7 +71,7 @@ router.get('/', function(req, res){
                   chatroomRegdate : m.ChatRoom().chatroomRegdate,
                   fTypeArray : ['귀여운', '느낌있는', '시크도도'],
                   feelingRate : f.Feeling().feelingRate,
-                  profilSaveFileName : 'https://54.92.4.84/images/Penguins.jpg'
+                  profilSaveFileName : 'https://54.92.4.84/images/Penguins-thumbnail.jpg'
               },
               {
                   memberName :  '김순자',
@@ -85,7 +85,7 @@ router.get('/', function(req, res){
                   chatroomRegdate : m.ChatRoom().chatroomRegdate,
                   fTypeArray : ['스마트함', '청순한', '우아한'],
                   feelingRate : f.Feeling().feelingRate,
-                  profilSaveFileName : 'https://54.92.4.84/images/Lighthouse.jpg'
+                  profilSaveFileName : 'https://54.92.4.84/images/Lighthouse-thumbnail.jpg'
               },
               {
                   memberName :  '김개똥',
@@ -99,7 +99,7 @@ router.get('/', function(req, res){
                   chatroomRegdate : m.ChatRoom().chatroomRegdate,
                   fTypeArray : ['섹시한', '육감적인', '스마트한'],
                   feelingRate : f.Feeling().feelingRate,
-                  profilSaveFileName : 'https://54.92.4.84/images/Tulips.jpg'
+                  profilSaveFileName : 'https://54.92.4.84/images/Tulips-thumbnail.jpg'
               }
 
           ]
