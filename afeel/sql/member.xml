@@ -5,6 +5,7 @@
     </myquery>
 
     <myquery id="loginMember">
-        SELECT memberNo FROM member WHERE memberEmail = ? AND memberPw = ?
+        SELECT memberNo FROM MEMBER WHERE memberEmail = ? AND memberPw = ?
     </myquery>
+
 </query>
