@@ -20,7 +20,7 @@ router.post('/', function(req, res){
         if(err){
             res.json(err);
         }
-        req.session.memberNo  = datas.memberNo;
+        req.session.memberNo  = datas[0].memberNo;
         //console.log('세션 정보 = > ', req.session);
         res.json(util.successCode(res, req.sessionID));
 
