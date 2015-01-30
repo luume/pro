@@ -5,8 +5,27 @@ var util = require('../../afeel/util/vo');
 
 router.post('/', function(req, res){
 
-    res.json(util.successCode(res, 'success'));
-   // res.json({suceess : 1, message : 'ok', result : 'resultok'});
+    var memberEmail = req.body.memberEmail;
+    var memberPw = req.body.memberPw;
+
+    var datas = [];
+    datas.push(memberEmail);
+    datas.push(memberPw);
+
+    global.queryName = 'member';
+    var queryidname = 'loginMember';
+    console.log('datas',datas);
+    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+        if(err){
+            res.json(err);
+        }
+        req.session.memberNo  = datas.memberNo;
+        //console.log('세션 정보 = > ', req.session);
+        res.json(util.successCode(res, req.session));
+
+    });
+
+
 });
 
 module.exports = router;
