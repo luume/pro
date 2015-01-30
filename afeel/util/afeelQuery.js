@@ -18,30 +18,46 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
     if (error) {
       console.log(error);
     } else {
-      console.log('file read');
       digester.digest(data, function(error, result) {
         if (error) {
           console.log(error);
         } else {
-
-          //var query = util.format(result.query.searchdata);
           var query;
-        //  console.log('ddd =>', result.query.myquery);
-          var queryIdLength = result.query.myquery.length;
-          for(var i = 0 ; i < result.query.myquery.length; i++){
+          var tobj = {};
+          tobj = result.query.myquery;
+          console.log('xml',result.query.myquery);
+          console.log('렝스',result.query.myquery.length);
+          var count = 0;
+          var k;
+          for (k in tobj) {
+            if (tobj.hasOwnProperty(k)) {
+              console.log(tobj.hasOwnProperty(k));
+              count++;
+            }
+          }
+        console.log('카운트', count);
+          for(var i = 0 ; i < count; i++){
+            if(result.query.myquery.length == undefined){
+              if(result.query.myquery.id == queryId){
+                query = util.format(result.query.myquery._text);
+                break;
+              }
+            }
+
             if(result.query.myquery[i].id == queryId){
               query = util.format(result.query.myquery[i]._text);
               break;
             }
           } // for end
-
           global.pool.getConnection(function(err, conn) {
-            if(err) console.error('err >>>>>', err);
-
+            if(err) console.error('err 발생 >>>>>', err);
             conn.query(query, bindQuery,  function(err, row) {
-              console.log(query);
-              console.log(bindQuery);
+
+              console.log('쿼리 ' ,util.format(query));
+              console.log('파라미터', bindQuery);
+
               if(err){
+                conn.release();
                 callback(
                   {
                     success: 0,
@@ -51,6 +67,8 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 );
               };
             //} // if end
+              console.log('쿼리결과', row);
+              conn.release();
               callback(null, row);
           });
 
