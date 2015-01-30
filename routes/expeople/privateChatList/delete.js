@@ -10,7 +10,7 @@ router.post('/:privateRoomNo', function(req, res){
         return;
     }
 
-    util.successCode(res, 'success');
+    res.json(util.successCode(res, 'success'));
 
 });
 

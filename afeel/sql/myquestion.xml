@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<query>
+    <myquery id="myquestionList">
+        SELECT QUESTION.questionData, QUESTION.questionGuideData, QUESTION.questionRegDate, MEMBER.memberBestQ from QUESTION inner join MEMBER where QUESTION.memberNo = MEMBER.memberNo
+    </myquery>
+</query>

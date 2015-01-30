@@ -5,7 +5,7 @@ var util = require('../../afeel/util/vo');
 
 
 // 앱 홈 화면
-router.get('/113', function(req, res) {
+router.get('/', function(req, res) {
 
   var m = util.createValueObject('Member');
 

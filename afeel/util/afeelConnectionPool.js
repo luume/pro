@@ -6,8 +6,8 @@ global.pool = mysql.createPool({
   connectionLimit: 150,
   host: '127.0.0.1',
   //user: 'afeel',
-  user:'afeel',
+  user:'root',
   //password: 'afeel!',
-  password:'afeel!',
-  database: 'test'
+  password:'1234',
+  database: 'sss'
 });
