@@ -35,7 +35,7 @@ https.createServer(options, app).listen(port2, function(){
 
 
 
-//var session = require('express-session');
+var session = require('express-session');
 var afeelPool = require('./afeel/util/afeelConnectionPool')
 
 
@@ -44,7 +44,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
-//app.use(session({secret:'test key', key:'test',cookie:{maxAge:60*1000}}));
+app.use(session({secret:'test key', key:'test',cookie:{maxAge:60*60*24*30}}));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
