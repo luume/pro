@@ -4,7 +4,7 @@ var router = express.Router();
 var util = require('../../afeel/util/vo');
 
 // 이메일 중복 확인
-router.post('/:accesstoken', function(req, res) {
+router.post('/', function(req, res) {
 
   res.json(util.successCode(res, 'success'));
 

@@ -35,6 +35,7 @@ router.post('/', function(req, res) {
 
   global.queryName = 'member';
   var queryidname = 'signupMember';
+  console.log('datas',datas);
   afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
     if(err){
       res.json(err);
