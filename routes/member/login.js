@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var util = require('../../afeel/util/vo');
+var afeelQuery = require('../../afeel/util/afeelQuery');
 
 router.post('/', function(req, res){
 
@@ -21,7 +22,7 @@ router.post('/', function(req, res){
         }
         req.session.memberNo  = datas.memberNo;
         //console.log('세션 정보 = > ', req.session);
-        res.json(util.successCode(res, req.session));
+        res.json(util.successCode(res, req.sessionID));
 
     });
 
