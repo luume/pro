@@ -27,6 +27,7 @@ router.post('/', function(req, res){
     var queryidname = 'myquestionUpdate';
 
     afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+        console.log('333333333333333333333', datas);
         if(err){
             res.json(err);
         }
