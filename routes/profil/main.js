@@ -15,7 +15,12 @@ router.get('/', function(req, res){
         memberHobby : m.Member().memberHobby,
         memberAdd : m.Member().memberAdd,
         memberJob : m.Member().memberJob,
-        profilOriginalFileName  : pro.Profil().profilOriginalFileName
+        memberHeight : m.Member().memberHeight,
+        profilOriginalFileName  : ['https://54.92.4.84/images/Hydrangeas-thumbnail.jpg',
+            'https://54.92.4.84/images/Jellyfish-thumbnail.jpg',
+            'https://54.92.4.84/images/Koala-thumbnail.jpg',
+            'https://54.92.4.84/images/Penguins-thumbnail.jpg',
+            'https://54.92.4.84/images/Lighthouse-thumbnail.jpg']
     }));
 });
 
