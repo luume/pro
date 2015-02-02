@@ -9,6 +9,7 @@ router.post('/', function(req, res){
      errobj = util.variableCheck(req.body);
     console.log('체크요', errobj);
     if(errobj == undefined || errobj.length == 0){
+        console.log('if문 진입');
         res.json(errobj);
         return;
     }else{
