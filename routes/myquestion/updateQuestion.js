@@ -10,7 +10,7 @@ router.post('/', function(req, res){
     if(errobj.length == undefined || errobj.length == 0){
         res.json(errobj);
         return;
-    }
+    }else{
 
 
     var questionNo = req.body.questionNo;
@@ -36,7 +36,7 @@ router.post('/', function(req, res){
         else
             res.json({success:0, result:{message:'질문 수정에 실패하였습니다.(DB에러)'}});
     });
-
+    }
 });
 
 module.exports = router;
