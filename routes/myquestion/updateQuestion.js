@@ -28,9 +28,6 @@ router.post('/', function(req, res){
         res.json(util.successCode(res, datas));
     });
 
-
-    res.json(util.successCode(res, 'success'));
-
 });
 
 module.exports = router;
