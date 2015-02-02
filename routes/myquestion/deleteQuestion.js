@@ -14,18 +14,11 @@ router.post('/', function(req, res){
     }else{
         console.log('else',errobj);
         var questionNo = req.body.questionNo;
-console.log(1111111111111);
         var datas = [];
-        console.log(22222222222);
         datas.push(questionNo);
-        console.log(33333333333);
         global.queryName = 'myquestion';
-        console.log(444444444444444);
         var queryidname = 'myquestionDelete';
-        console.log(55555555555555);
         afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
-
-            console.log('여긴 왓냐', datas);
 
             if(err){
                 res.json(err);
