@@ -3,4 +3,7 @@
     <myquery id="myquestionList">
         SELECT QUESTION.questionNo, QUESTION.questionData, QUESTION.questionGuideData, QUESTION.questionRegDate, MEMBER.memberBestQ from QUESTION inner join MEMBER where QUESTION.memberNo = MEMBER.memberNo
     </myquery>
+    <myquery id="myquestionUpdate">
+        UPDATE QUESTION SET questionData = ?, questionGuideData = ?, questionRegDate = now() WHERE questionNo = ?
+    </myquery>
 </query>

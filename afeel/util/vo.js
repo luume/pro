@@ -267,7 +267,7 @@ function variableCheck(obj){
    }])
     errobj.message = "no parameter";
      errobj.attribute = variabeObject[i];
-
+      console.log('check = ', errobj);
      return errobj;
    }
 
