@@ -36,7 +36,7 @@ https.createServer(options, app).listen(port2, function(){
 
 
 var session = require('express-session');
-var afeelPool = require('./afeel/util/afeelConnectionPool')
+var afeelPool = require('./afeel/util/afeelConnectionPool');
 
 
 // view engine setup
