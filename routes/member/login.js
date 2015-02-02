@@ -22,7 +22,7 @@ router.post('/', function(req, res){
         }
         console.log('dd',datas);
 
-        if(datas[0].affectedRows == 0){
+        if(datas.length == 0){
             res.json({
                 success : 0,
                 result : {
