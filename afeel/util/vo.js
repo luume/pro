@@ -247,16 +247,25 @@ function successCode(res, resultValue){
 }
 
 
-function variableCheck(obj){
+function variableCheck(obj, num){
 console.log('obj ,' , obj);
   var variabeObject = Object.keys(obj);
   var variabeObjectLength = Object.keys(obj).length;
 
   if(variabeObjectLength == undefined)
-    variabeObjectLength = 1;
+    variabeObjectLength = 0;
 
   //console.log(obj.variabeObject[0]);
   var errobj =  {};
+
+
+  if(num != variabeObjectLength){
+    errobj.success = 0;
+    errobj.result = {message:'no parameter', attribute : '파라미터의 개수가 정확하지 않습니다.'};
+    return errobj;
+  }
+
+
   for(var i = 0; i < variabeObjectLength; i++){
     //console.log(obj[variabeObject[i]]);
     //console.log(obj.variabeObject[i]);

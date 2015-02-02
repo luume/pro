@@ -6,7 +6,7 @@ var afeelQuery = require('../../afeel/util/afeelQuery');
 
 router.post('/', function(req, res){
     var errobj = {};
-     errobj = util.variableCheck(req.body);
+     errobj = util.variableCheck(req.body, 3);
     console.log('체크요', errobj);
     if(errobj != undefined ){
         console.log('if문 진입');
