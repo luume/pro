@@ -13,10 +13,10 @@ router.post('/', function(req, res){
     var questionGuideData = req.body.questionGuideData;
 
     var datas = [];
-    datas.push(questionNo);
+
     datas.push(questionData);
     datas.push(questionGuideData);
-
+    datas.push(questionNo);
 
     global.queryName = 'myquestion';
     var queryidname = 'myquestionUpdate';
