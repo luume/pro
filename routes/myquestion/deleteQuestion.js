@@ -8,9 +8,11 @@ router.post('/', function(req, res){
     var errobj = {};
     errobj = util.variableCheck(req.body, 1);
     if(errobj != undefined ){
+        console.log('if',errobj);
         res.json(errobj);
         return;
     }else{
+        console.log('else',errobj);
         var questionNo = req.body.questionNo;
 
         var datas = [];
