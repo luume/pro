@@ -248,7 +248,7 @@ function successCode(res, resultValue){
 
 
 function variableCheck(obj){
-
+console.log('obj ,' , obj);
   var variabeObject = Object.keys(obj);
   var variabeObjectLength = Object.keys(obj).length;
 
