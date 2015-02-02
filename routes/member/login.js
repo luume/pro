@@ -20,7 +20,7 @@ router.post('/', function(req, res){
         if(err){
             res.json(err);
         }
-        console.log('dd',datas);
+        console.log('dd',datas.length);
 
         if(datas.length == 0){
             res.json({
@@ -29,6 +29,7 @@ router.post('/', function(req, res){
                     message : '아이디 또는 비밀번호가 틀렸습니다.'
                 }
             });
+            return;
         }
 
         req.session.memberNo  = datas[0].memberNo;
