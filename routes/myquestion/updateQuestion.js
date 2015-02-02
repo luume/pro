@@ -8,11 +8,11 @@ router.post('/', function(req, res){
     var errobj = {};
      errobj = util.variableCheck(req.body);
     console.log('체크요', errobj);
-    if(errobj.length == undefined || errobj.length == 0){
+    if(errobj.length == undefined){
         res.json(errobj);
         return;
     }else{
-
+    console.log('else문 진입', errobj);
 
     var questionNo = req.body.questionNo;
     var questionData = req.body.questionData;
