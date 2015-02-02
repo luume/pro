@@ -10,7 +10,7 @@ router.post('/', function(req, res){
     if(errobj != undefined ){
         console.log('if',errobj);
         res.json(errobj);
-        return;
+        //return;
     }else{
         console.log('else',errobj);
         var questionNo = req.body.questionNo;

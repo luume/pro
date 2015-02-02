@@ -11,7 +11,7 @@ router.post('/', function(req, res){
     if(errobj != undefined ){
         console.log('if문 진입');
         res.json(errobj);
-        return;
+        //return;
     }else{
         console.log('else문 진입', errobj);
 
