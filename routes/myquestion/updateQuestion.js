@@ -8,7 +8,7 @@ router.post('/', function(req, res){
     var errobj = {};
      errobj = util.variableCheck(req.body);
     console.log('체크요', errobj);
-    if(errobj != undefined || errobj.length != 0){
+    if(errobj != undefined ){
         console.log('if문 진입');
         res.json(errobj);
         return;
