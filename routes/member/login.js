@@ -21,6 +21,16 @@ router.post('/', function(req, res){
             res.json(err);
         }
         console.log('dd',datas);
+
+        if(datas[0].affectedRows == 0){
+            res.json({
+                success : 0,
+                result : {
+                    message : '아이디 또는 비밀번호가 틀렸습니다.'
+                }
+            });
+        }
+
         req.session.memberNo  = datas[0].memberNo;
         //console.log('세션 정보 = > ', req.session);
         res.json(util.successCode(res, 'success'));

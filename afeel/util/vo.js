@@ -225,8 +225,9 @@ function makeCallBackJValueObject(name){
  * @returns {*}
  */
 function successCode(res, resultValue){
+/*
 
- /*if(resultValue != 'success') {
+ if(resultValue != 'success') {
     var errobj = variableCheck(resultValue);
     if (errobj != undefined) {
       return {
@@ -237,6 +238,7 @@ function successCode(res, resultValue){
     }
   }
 */
+
   return{
     success : 1,
     message : 'OK',
@@ -259,10 +261,10 @@ function variableCheck(obj){
     //console.log(obj[variabeObject[i]]);
     //console.log(obj.variabeObject[i]);
    if(obj[variabeObject[i]] === undefined || obj[variabeObject[i]] === ''){
-     /*var error = ValidationError([{
+     var error = ValidationError([{
        message: "해당 객체의 속성값이 존재 하지 않습니다.",
        attribute: variabeObject[i]
-   }])*/
+   }])
     errobj.message = "no parameter";
      errobj.attribute = variabeObject[i];
 
