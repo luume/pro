@@ -23,6 +23,9 @@ router.post('/', function(req, res){
         var queryidname = 'myquestionDelete';
 
         afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+
+            console.log('여긴 왓냐', datas);
+
             if(err){
                 res.json(err);
             }
