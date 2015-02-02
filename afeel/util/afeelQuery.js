@@ -13,7 +13,8 @@ var digester = xml_digester.XmlDigester({});
  *                                       row : 정상처리되었을 경우 쿼리의 결과가 담김
  */
 exports.afeelQuery = function(bindQuery , queryId,  callback) {
-
+  console.log('확인');
+  console.log(bindQuery, queryId);
   fs.readFile(global.directoryPath + global.queryName + '.xml','utf8', function(error, data) {
     if (error) {
       console.log(error);
