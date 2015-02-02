@@ -250,6 +250,9 @@ function variableCheck(obj){
   var variabeObject = Object.keys(obj);
   var variabeObjectLength = Object.keys(obj).length;
 
+  if(variabeObjectLength == undefined)
+    variabeObjectLength = 1;
+
   //console.log(obj.variabeObject[0]);
   var errobj =  {};
   for(var i = 0; i < variabeObjectLength; i++){

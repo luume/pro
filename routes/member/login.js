@@ -23,7 +23,7 @@ router.post('/', function(req, res){
         console.log('dd',datas);
         req.session.memberNo  = datas[0].memberNo;
         //console.log('세션 정보 = > ', req.session);
-        res.json(util.successCode(res, req.sessionID));
+        res.json(util.successCode(res, 'success'));
 
     });
 
