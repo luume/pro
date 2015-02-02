@@ -5,8 +5,13 @@ var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
 
 router.post('/', function(req, res){
+    var errobj = {};
+     errobj = util.variableCheck(req.body);
+    if(errobj.length == undefined || errobj.length == 0){
+        res.json(errobj);
+        return;
+    }
 
-    util.variableCheck(req.body);
 
     var questionNo = req.body.questionNo;
     var questionData = req.body.questionData;
@@ -25,7 +30,10 @@ router.post('/', function(req, res){
         if(err){
             res.json(err);
         }
-        res.json(util.successCode(res, datas));
+        if(datas.affectedRows == 1)
+            res.json(util.successCode(res, 'success'));
+        else
+            res.json({success:0, result:{message:'질문 수정에 실패하였습니다.(DB에러)'}});
     });
 
 });

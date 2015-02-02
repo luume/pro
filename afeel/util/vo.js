@@ -261,12 +261,15 @@ console.log('obj ,' , obj);
     //console.log(obj[variabeObject[i]]);
     //console.log(obj.variabeObject[i]);
    if(obj[variabeObject[i]] === undefined || obj[variabeObject[i]] === ''){
-     var error = ValidationError([{
+   /*  var error = ValidationError([{
        message: "해당 객체의 속성값이 존재 하지 않습니다.",
        attribute: variabeObject[i]
-   }])
-    errobj.message = "no parameter";
-     errobj.attribute = variabeObject[i];
+   }])*/
+     errobj.success = 0;
+     errobj.result = {message:'no parameter', attribute : variabeObject[i]};
+
+    //errobj.message = "no parameter";
+     //errobj.attribute = variabeObject[i];
       console.log('check = ', errobj);
      return errobj;
    }
