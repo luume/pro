@@ -68,7 +68,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                   }
                 );
               };
-
+console.log('로우길이', row.affectedRows);
               if(row.affectedRows == 0){
                 conn.release();
                 callback(
