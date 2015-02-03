@@ -39,19 +39,19 @@ router.get('/:chatroomNo', function(req, res){
     var m = util.createValueObject('Member');
     var ft = util.createValueObject('Feeling_Type');
 
-    res.json(util.successCode(res, {
-
-        memberGender : m.Member().memberGender,
-        memberNick : m.Member().memberNick,
-        memberJob : m.Member().memberJob,
-        memberHobby : m.Member().memberHobby,
-        memberAdd : m.Member().memberAdd,
-        memberBirth : m.Member().memberBirth,
-        memberHeight : m.Member().memberHeight,
-        memberEmailYn : m.Member().memberEmailYn,
-        memberSNSYn : m.Member().memberSNSYn,
-        fType : ft.Feeling_Type().fType
-    }));
+    //res.json(util.successCode(res, {
+    //
+    //    memberGender : m.Member().memberGender,
+    //    memberNick : m.Member().memberNick,
+    //    memberJob : m.Member().memberJob,
+    //    memberHobby : m.Member().memberHobby,
+    //    memberAdd : m.Member().memberAdd,
+    //    memberBirth : m.Member().memberBirth,
+    //    memberHeight : m.Member().memberHeight,
+    //    memberEmailYn : m.Member().memberEmailYn,
+    //    memberSNSYn : m.Member().memberSNSYn,
+    //    fType : ft.Feeling_Type().fType
+    //}));
 });
 
 module.exports = router;

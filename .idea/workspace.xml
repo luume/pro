@@ -64,16 +64,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="endMatchList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/expeople/endMatchList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="1102">
-              <caret line="43" column="31" selection-start-line="35" selection-start-column="12" selection-end-line="43" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="chat.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/afeel/sql/chat.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -87,8 +77,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/chat/forth/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48801368" vertical-offset="57" max-vertical-offset="1178">
-              <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+            <state vertical-scroll-proportion="1.3339041" vertical-offset="0" max-vertical-offset="1178">
+              <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -717,14 +707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/afeel/sql/expeople.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="551">
-          <caret line="17" column="59" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2869">
@@ -749,14 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/expeople/endMatchList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="1102">
-          <caret line="43" column="31" selection-start-line="35" selection-start-column="12" selection-end-line="43" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/chat/forth/showTextAnswer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
@@ -765,10 +739,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/expeople/endMatchList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.81335616" vertical-offset="342" max-vertical-offset="1102">
+          <caret line="43" column="31" selection-start-line="35" selection-start-column="12" selection-end-line="43" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/afeel/sql/expeople.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="551">
+          <caret line="17" column="59" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/chat/forth/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48801368" vertical-offset="57" max-vertical-offset="1178">
-          <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+        <state vertical-scroll-proportion="1.3339041" vertical-offset="0" max-vertical-offset="1178">
+          <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
           <folding />
         </state>
       </provider>
