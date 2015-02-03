@@ -14,7 +14,7 @@ router.post('/', function(req, res) {
 
   var errobj = {};
   errobj = util.variableCheck(req.body, 11);
-  console.log('하하호호 ' , req.files);
+  console.log('하하호호 ' , req);
   if(errobj != undefined){
     res.json(errobj);
     return;
