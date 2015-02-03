@@ -16,15 +16,16 @@ router.get('/:chatroomNo', function(req, res){
         if(err){
             res.json(err);
         }
+        res.json(util.successCode(res, datas));
         //datas[0].rank = data[0].rank;
-        var fType = datas[0].fType;
+        //var fType = datas[0].fType;
 
-        var fTypeArray = fType.split(',');
+        //var fTypeArray = fType.split(',');
 
-        datas[0].fType = fTypeArray;
+        //datas[0].fType = fTypeArray;
 
-        console.log('데이터0', datas[0]);
-        res.json(datas[0]);
+        //console.log('데이터0', datas[0]);
+        //res.json(datas[0]);
     });
 
     var chatroomNo = req.params.chatroomNo;
