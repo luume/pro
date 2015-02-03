@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <query>
     <myquery id="myquestionList">
-        SELECT QUESTION.questionNo, QUESTION.questionData, QUESTION.questionGuideData, QUESTION.questionRegDate, MEMBER.memberBestQ from QUESTION inner join MEMBER where QUESTION.memberNo = MEMBER.memberNo and QUESTION.memberNo = ?
+        SELECT QUESTION.questionNo, QUESTION.questionData, QUESTION.questionGuideData, QUESTION.questionRegDate, MEMBER.memberBestQ from QUESTION
+        inner join MEMBER where QUESTION.memberNo = MEMBER.memberNo and QUESTION.memberNo = ?
     </myquery>
     <myquery id="myquestionUpdate">
         UPDATE QUESTION SET questionData = ?, questionGuideData = ?, questionRegDate = now() WHERE questionNo = ?

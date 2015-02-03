@@ -98,7 +98,7 @@
         <entry file="file://$PROJECT_DIR$/afeel/sql/myquestion.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.20596206" vertical-offset="0" max-vertical-offset="369">
-              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -658,7 +658,7 @@
     <entry file="file://$PROJECT_DIR$/afeel/sql/myquestion.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20596206" vertical-offset="0" max-vertical-offset="369">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
           <folding />
         </state>
       </provider>
