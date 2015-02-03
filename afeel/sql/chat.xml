@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<query>
+    <myquery id="privateChatList">
+        select PRIVATE_ROOM.memberWNo, PRIVATE_ROOM.memberMNo, PRIVATE_MESSAGE.messageFrom,
+        PRIVATE_MESSAGE.messageTo, PRIVATE_MESSAGE.messageData, PRIVATE_MESSAGE.messageDate
+        from PRIVATE_MESSAGE inner join PRIVATE_ROOM
+        where PRIVATE_ROOM.privateRoomNo = PRIVATE_MESSAGE.privateRoomNo and PRIVATE_ROOM.privateRoomNo = ?
+    </myquery>
+</query>

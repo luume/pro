@@ -12,4 +12,8 @@
         SELECT memberPw FROM MEMBER WHERE memberNo = ?
     </myquery>
 
+    <myquery id="genderMember">
+        SELECT memberGender FROM MEMBER WHERE memberNo = ?
+    </myquery>
+
 </query>
