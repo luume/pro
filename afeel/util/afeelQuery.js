@@ -13,8 +13,8 @@ var digester = xml_digester.XmlDigester({});
  *                                       row : 정상처리되었을 경우 쿼리의 결과가 담김
  */
 exports.afeelQuery = function(bindQuery , queryId,  callback) {
-  console.log('확인');
-  console.log(bindQuery, queryId);
+  //console.log('확인');
+  //console.log(bindQuery, queryId);
   fs.readFile(global.directoryPath + global.queryName + '.xml','utf8', function(error, data) {
     if (error) {
       console.log(error);
@@ -26,13 +26,13 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
           var query;
           var tobj = {};
           tobj = result.query.myquery;
-          console.log('xml',result.query.myquery);
-          console.log('렝스',result.query.myquery.length);
+          //console.log('xml',result.query.myquery);
+          //console.log('렝스',result.query.myquery.length);
           var count = 0;
           var k;
           for (k in tobj) {
             if (tobj.hasOwnProperty(k)) {
-              console.log(tobj.hasOwnProperty(k));
+              //console.log(tobj.hasOwnProperty(k));
               count++;
             }
           }
@@ -50,13 +50,13 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
               break;
             }
           } // for end
-          console.log('쿼리',query);
+          //console.log('쿼리',query);
           global.pool.getConnection(function(err, conn) {
             if(err) console.error('err 발생 >>>>>', err);
             conn.query(query, bindQuery,  function(err, row) {
 
-              console.log('쿼리 ' ,util.format(query));
-              console.log('파라미터', bindQuery);
+              //console.log('쿼리 ' ,util.format(query));
+             // console.log('파라미터', bindQuery);
 
               if(err){
                 conn.release();
@@ -69,7 +69,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 );
               };
             //} // if end
-              console.log('쿼리결과', row);
+              //console.log('쿼리결과', row);
               conn.release();
               callback(null, row);
           });
