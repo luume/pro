@@ -68,6 +68,18 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                   }
                 );
               };
+
+              if(row.affectedRows == 0){
+                conn.release();
+                callback(
+                  {
+                    success: 0,
+                    message: {type: 'SQL Exception', message: '개행 결과가 존재하지 않습니다.'},
+                    result : null
+                  }
+                );
+              }
+
             //} // if end
               //console.log('쿼리결과', row);
               conn.release();
