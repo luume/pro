@@ -13,6 +13,7 @@ router.get('/', function(req, res) {
 
   res.json(util.successCode(res,
     {
+      memberEmail : m.Member().memberEmail,
       memberName : m.Member().memberName,
       memberBirth : m.Member().memberBirth,
       memberHobby : m.Member().memberHobby,
