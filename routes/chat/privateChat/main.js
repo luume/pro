@@ -11,6 +11,10 @@ router.get('/:privateRoomNo', function(req, res){
         return;
     }
     var memberNo = req.session.memberNo;
+    if(memberNo == "" || memberNo == undefined){
+        res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
+        return;
+    }
     var datas = [];
     datas.push(memberNo);
 
@@ -23,7 +27,7 @@ router.get('/:privateRoomNo', function(req, res){
         }
         res.json(util.successCode(res, datas));
 
-        console.log('ww',datas);
+        console.log('ww',datas[0].memberGender);
     });
 
 
