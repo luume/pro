@@ -50,7 +50,7 @@ router.get('/:chatroomNo', function(req, res){
             datas[0].fType = fTypeArray;
 
             console.log('데이터0', datas[0]);
-            //res.json(util.successCode(res, datas));
+            res.json(util.successCode(res, datas));
         });
         //datas[0].rank = data[0].rank;
 
