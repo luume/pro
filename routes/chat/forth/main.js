@@ -16,7 +16,7 @@ router.get('/:chatroomNo', function(req, res){
         if(err){
             res.json(err);
         }
-        datas[0].rank = data[0].rank;
+        //datas[0].rank = data[0].rank;
         var fType = datas[0].fType;
 
         var fTypeArray = fType.split(',');
