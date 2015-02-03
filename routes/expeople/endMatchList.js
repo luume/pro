@@ -44,7 +44,8 @@ router.get('/', function(req, res){
 
             var result = {};
             console.log('2번쨰 쿼리 ' ,data);
-            datas.rank = data[0]['rank'];
+            var rankNum = data[0]['rank'];
+            datas.rank = rankNum;
             result = datas;
             //result.rank =
 
