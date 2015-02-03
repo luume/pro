@@ -48,7 +48,7 @@ router.get('/', function(req, res){
             datas.rank = rankNum;
             result = datas;
             //result.rank =
-
+            console.log('datas : ', datas);
             console.log('result : ' , result);
             res.json(result);
 
