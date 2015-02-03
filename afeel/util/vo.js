@@ -52,7 +52,7 @@ function makeCallBackJValueObject(name){
         obj.setget('memberHeight', 170);
         obj.setget('memberPw', '1234');
         obj.setget('memberHobby', '축구');
-        obj.setget('memberJob', '갓수');
+        obj.setget('memberJob', '갓수!!');
         obj.setget('memberLevel', 1);
         obj.setget('memberSmoking', 'N');
         obj.setget('memberMatchCnt', 0);
