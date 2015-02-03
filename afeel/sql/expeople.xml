@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <query>
     <myquery id="endMatchList">
-        SELECT endmatchlist.memberNo, p.profilThumbnail AS profilThumbnail, endmatchlist.memberName, endmatchlist.memberBirth, endmatchlist.memberHobby, endmatchlist.memberAdd, endmatchlist.memberHeight, endmatchlist.memberJob, endmatchlist.memberSnsYn, endmatchlist.memberHPYn, endmatchlist.memberEmailYn, endmatchlist.chatroomNo, endmatchlist.chatroomRegDate, (select fType FROM FEELING_TYPE WHERE fTypeNo = 1) AS ftypeNo1 , (select fType FROM FEELING_TYPE WHERE fTypeNo = 2) AS fTypeNo2 , (select fType FROM FEELING_TYPE WHERE fTypeNo = 3) AS fTypeNo3
+        SELECT endmatchlist.memberNo, p.profilThumbnail AS profilThumbnail, endmatchlist.memberName, endmatchlist.memberBirth, endmatchlist.memberHobby, endmatchlist.memberAdd, endmatchlist.memberHeight, endmatchlist.memberJob, endmatchlist.memberSnsYn, endmatchlist.memberHPYn, endmatchlist.memberEmailYn, endmatchlist.chatroomNo, endmatchlist.chatroomRegDate, CONCAT('[', (select fType FROM FEELING_TYPE WHERE fTypeNo = 1) , ',', (select fType FROM FEELING_TYPE WHERE fTypeNo = 2) , ',' , (select fType FROM FEELING_TYPE WHERE fTypeNo = 3) , ']') AS fType
         FROM
         (
             SELECT m.memberName AS memberName, m.memberBirth AS memberBirth, m.memberHobby AS memberHobby , m.memberAdd AS memberAdd, m.memberHeight AS memberHeight, chat.partnerGender AS partnerGender,
