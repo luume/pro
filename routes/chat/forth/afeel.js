@@ -4,9 +4,10 @@ var router = express.Router();
 var util = require('../../../afeel/util/vo');
 var afeelQuery = require('../../../afeel/util/afeelQuery');
 
-router.get('/:chatroomNo', function(req, res){
+router.get('/', function(req, res){
 
-    var chatroomNo = req.body.chatroomNo;
+    //var chatroomNo = req.body.chatroomNo;
+    var chatroomNo = 123;
     if(chatroomNo == "" || chatroomNo == undefined){
         res.json({success:0, message:"Error(빈값이 넘어왔습니다.[chatroomNo])", result:null});
         return;
@@ -16,6 +17,8 @@ router.get('/:chatroomNo', function(req, res){
         res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
         return;
     }
+
+    console.log('12312321');
 
     var datas = [];
     datas.push(memberNo);
