@@ -8,14 +8,14 @@ var afeelQuery = require('../../afeel/util/afeelQuery');
 router.post('/', function(req, res) {
   var errobj = {};
   errobj = util.variableCheck(req.body, 11);
-
+  console.log('하하호호 ' , req.files);
   if(errobj != undefined){
     res.json(errobj);
     return;
   }
 
 
-  console.log('하하호호 ' , req.files);
+
   //var cir_name = req.body.cir_name;
   var memberEmail = req.body.memberEmail;
   var memberName = req.body.memberName;
