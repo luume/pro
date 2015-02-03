@@ -34,7 +34,7 @@ router.get('/', function(req, res){
             }
 
             datas[0].rank = data[0].rank;
-            res.json(result);
+            res.json(datas[0]);
 
         });
     });
