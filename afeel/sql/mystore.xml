@@ -3,4 +3,7 @@
     <myquery id="myFreeRechargeList">
         SELECT memberEmailYn, memberSNSYn FROM MEMBER WHERE memberNo = ?
     </myquery>
+    <myquery id="myMainList">
+        SELECT memberCash FROM MEMBER WHERE memberNo = ?
+    </myquery>
 </query>

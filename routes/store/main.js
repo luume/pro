@@ -2,14 +2,28 @@ var express = require('express');
 var router = express.Router();
 
 var util = require('../../afeel/util/vo');
+var afeelQuery = require('../../afeel/util/afeelQuery');
 
 router.get('/', function(req, res){
+    var memberNo = req.session.memberNo;
+    var datas = [];
+    datas.push(memberNo);
+
+    global.queryName = 'mystore';
+    var queryidname = 'myMainList';
+
+    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+        if(err){
+            res.json(err);
+        }
+        res.json(util.successCode(res, datas));
+    });
 
     var m = util.createValueObject('Member');
 
-    res.json(util.successCode(res, {
-        memberCash : m.Member().memberCash
-    }));
+    //res.json(util.successCode(res, {
+    //    memberCash : m.Member().memberCash
+    //}));
 });
 
 module.exports = router;
