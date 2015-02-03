@@ -5,12 +5,35 @@ var util = require('../../../afeel/util/vo');
 var afeelQuery = require('../../../afeel/util/afeelQuery');
 
 router.get('/:chatroomNo', function(req, res){
+    var memberNo = req.session.memberNo;
+    var datas = [];
+    datas.push(memberNo);
+
+    global.queryName = 'member';
+    var queryidname = 'fTypeMember';
+
+    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+        if(err){
+            res.json(err);
+        }
+        datas[0].rank = data[0].rank;
+        var fType = datas[0].fType;
+
+        var fTypeArray = fType.split(',');
+
+        datas[0].fType = fTypeArray;
+
+        console.log('데이터0', datas[0]);
+        res.json(datas[0]);
+    });
 
     var chatroomNo = req.params.chatroomNo;
     if(chatroomNo == "" || chatroomNo == undefined){
         res.json({success:0, message:"Error(빈값이 넘어왔습니다.[chatroomNo])", result:null});
         return;
     }
+
+
 
     var m = util.createValueObject('Member');
     var ft = util.createValueObject('Feeling_Type');
