@@ -4,8 +4,14 @@ var router = express.Router();
 var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
 
+router.get('/', function (req ,res) {
+  res.send('<form action="https://54.92.4.84/member/signup" method="post"><input type="file" name="f1"/><br/><input type="file" name="f2"/><br/><input type="file" name="f3"/><br/></form>')
+})
+
 // 회원가입
 router.post('/', function(req, res) {
+
+
   var errobj = {};
   errobj = util.variableCheck(req.body, 11);
   console.log('하하호호 ' , req.files);
