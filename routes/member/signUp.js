@@ -7,6 +7,13 @@ var afeelQuery = require('../../afeel/util/afeelQuery');
 // 회원가입
 router.post('/', function(req, res) {
 
+  var errobj = util.variableCheck(req.body);
+
+  if(errobj == undefined){
+    res.json(errobj);
+    return;
+  }
+
   //var cir_name = req.body.cir_name;
   var memberEmail = req.body.memberEmail;
   var memberName = req.body.memberName;
@@ -32,12 +39,12 @@ router.post('/', function(req, res) {
   datas.push(memberAdd);
   datas.push(memberJob);
   //datas.push(profilOriginalFileName);
-  var reg_email= /^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{2,5}$/;
-
-  if(!reg_email.test(memberEmail)){
+  var isSuccess = util.emailCheck(memberEmail);
+  if(!isSuccess){
     res.json({success:0, message:'email 양식 오류', result:null});
     return;
   }
+
 
   global.queryName = 'member';
   var queryidname = 'signupMember';
@@ -47,7 +54,6 @@ router.post('/', function(req, res) {
       res.json(err);
     }
     res.json(datas);
-
   });
   /*CREATE TABLE MEMBER (
     memberNo        INT     PRIMARY KEY  AUTO_INCREMENT,

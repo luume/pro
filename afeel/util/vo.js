@@ -298,6 +298,36 @@ function sessionCheck(req){
   return isSession
 }
 
+/**
+ * 이메일 유효성 검사
+ * @param email
+ * @returns {boolean}
+ */
+function emailCheck(email){
+  var reg_email= /^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{2,5}$/;
+  var isSuccess = true;
+  if(!reg_email.test(email)){
+    isSuccess = false;
+  }
+
+  return isSuccess;
+}
+
+
+/**
+ * 핸드폰 번호 유효성 검사
+ * @param phone
+ * @returns {boolean}
+ */
+function phoneCheck(phone){
+  var reg_phone = /^\d{3}-\d{3,4}-\d{4}$/;
+  var isSuccess = true;
+  if(!reg_phone.test(phone)){
+    isSuccess = false;
+  }
+
+  return isSuccess;
+}
 
 /*memberNo,
  memberEmail,
@@ -433,6 +463,8 @@ module.exports.getEjo = getEjo;
 module.exports.successCode = successCode;
 module.exports.variableCheck = variableCheck;
 module.exports.sessionCheck = sessionCheck;
+module.exports.emailCheck = emailCheck;
+module.exports.phoneCheck = phoneCheck;
 /*memberNo,
  memberEmail,
  memberNick,
