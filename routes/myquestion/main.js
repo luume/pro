@@ -5,6 +5,7 @@ var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
 
 router.get('/', function(req, res){
+    console.log(req.session.memberNo);
     var memberNo = 4;
     var datas = [];
     datas.push(memberNo);
