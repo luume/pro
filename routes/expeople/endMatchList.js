@@ -5,13 +5,6 @@ var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
 
 router.get('/', function(req, res){
-    //console.log('sdfsdfsdfsdfsdf');
-  /*  var m = util.createValueObject('Member');
-    var cr = util.createValueObject('ChatRoom');
-    var f = util.createValueObject('Feeling');
-    var ft = util.createValueObject('Feeling_Type');
-    var p = util.createValueObject('Profil');
-*/
 
     var isSuccess = util.sessionCheck(req);
 
@@ -25,8 +18,6 @@ router.get('/', function(req, res){
     var datas = [];
     datas.push(req.session.memberNo);
     datas.push(req.session.memberNo);
-
-    //datas.push(profilOriginalFileName);
 
     global.queryName = 'expeople';
     var queryidname = 'endMatchList';
@@ -42,14 +33,7 @@ router.get('/', function(req, res){
                 res.json(err);
             }
 
-            var result = {};
-            console.log('2번쨰 쿼리 ' ,data);
-            var rankNum = data[0]['rank'];
-            datas[0].rank = rankNum;
-            result = datas;
-            //result.rank =
-            console.log('datas : ', datas);
-            console.log('result : ' , result);
+            datas[0].rank = data[0].rank;
             res.json(result);
 
         });
