@@ -20,4 +20,6 @@
         SELECT feelingCode1, feelingCode2, feelingCode3 from FEELING WHERE memberNo = ?
     </myquery>
 
+
+
 </query>

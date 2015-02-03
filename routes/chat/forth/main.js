@@ -16,7 +16,25 @@ router.get('/:chatroomNo', function(req, res){
         if(err){
             res.json(err);
         }
-        res.json(util.successCode(res, datas));
+        //res.json(util.successCode(res, datas));
+        var feellingCode1 = datas[0].feelingCode1;
+        var feellingCode2 = datas[0].feelingCode2;
+        var feellingCode3 = datas[0].feelingCode3;
+        var datas = [];
+        datas.push(feellingCode1);
+        datas.push(feellingCode2);
+        datas.push(feellingCode3);
+        datas.push(memberNo);
+
+        global.queryName = 'chat';
+        var queryidname = 'chatForthList';
+
+        afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+            if(err){
+                res.json(err);
+            }
+            res.json(util.successCode(res, datas));
+        });
         //datas[0].rank = data[0].rank;
         //var fType = datas[0].fType;
 
