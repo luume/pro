@@ -4,7 +4,7 @@ var router = express.Router();
 var util = require('../../../afeel/util/vo');
 var afeelQuery = require('../../../afeel/util/afeelQuery');
 
-router.post('/', function(req, res){
+router.get('/:chatroomNo', function(req, res){
 
     var chatroomNo = req.body.chatroomNo;
     if(chatroomNo == "" || chatroomNo == undefined){
