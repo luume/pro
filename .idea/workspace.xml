@@ -74,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/expeople/privateChatList/main.js">
+      <file leaf-file-name="myquestion.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/afeel/sql/myquestion.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="1292">
-              <caret line="30" column="67" selection-start-line="30" selection-start-column="67" selection-end-line="30" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="361">
+              <caret line="9" column="35" selection-start-line="0" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -87,18 +87,18 @@
       <file leaf-file-name="freeRechargeList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/store/freeRechargeList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="399">
-              <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="646">
+              <caret line="11" column="41" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myquestion.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/afeel/sql/myquestion.xml">
+      <file leaf-file-name="mystore.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/afeel/sql/mystore.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20596206" vertical-offset="0" max-vertical-offset="369">
-              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.15447155" vertical-offset="0" max-vertical-offset="369">
+              <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -107,8 +107,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/myquestion/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="722">
-              <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="171" max-vertical-offset="722">
+              <caret line="20" column="7" selection-start-line="15" selection-start-column="4" selection-end-line="20" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -137,6 +137,8 @@
         <option value="$PROJECT_DIR$/afeel/util/afeelQuery.js" />
         <option value="$PROJECT_DIR$/routes/myquestion/main.js" />
         <option value="$PROJECT_DIR$/afeel/sql/myquestion.xml" />
+        <option value="$PROJECT_DIR$/routes/store/freeRechargeList.js" />
+        <option value="$PROJECT_DIR$/afeel/sql/mystore.xml" />
       </list>
     </option>
   </component>
@@ -631,10 +633,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/store/freeRechargeList.js">
+    <entry file="file://$PROJECT_DIR$/routes/myquestion/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="399">
-          <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="171" max-vertical-offset="722">
+          <caret line="20" column="7" selection-start-line="15" selection-start-column="4" selection-end-line="20" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -647,18 +649,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/myquestion/main.js">
+    <entry file="file://$PROJECT_DIR$/afeel/sql/myquestion.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="722">
-          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="361">
+          <caret line="9" column="35" selection-start-line="0" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/afeel/sql/myquestion.xml">
+    <entry file="file://$PROJECT_DIR$/routes/store/freeRechargeList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20596206" vertical-offset="0" max-vertical-offset="369">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="646">
+          <caret line="11" column="41" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/afeel/sql/mystore.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15447155" vertical-offset="0" max-vertical-offset="369">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
           <folding />
         </state>
       </provider>
