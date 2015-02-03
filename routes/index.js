@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 global.directoryPath = './afeel/sql/';
+
 //회원
 var memberSignUp = require('./member/signUp');
 var memberSignUpSns = require('./member/signUpSns');

@@ -288,6 +288,16 @@ console.log('obj ,' , obj);
 }
 
 
+// 세션 유무 확인
+function sessionCheck(req){
+  var isSession = true;
+  if(req.session.memberNo == undefined){
+    isSession = false;
+  }
+
+  return isSession
+}
+
 
 /*memberNo,
  memberEmail,
@@ -422,7 +432,7 @@ module.exports.createValueObject = createValueObject;
 module.exports.getEjo = getEjo;
 module.exports.successCode = successCode;
 module.exports.variableCheck = variableCheck;
-
+module.exports.sessionCheck = sessionCheck;
 /*memberNo,
  memberEmail,
  memberNick,
