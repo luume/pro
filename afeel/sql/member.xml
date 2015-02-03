@@ -16,4 +16,8 @@
         SELECT memberGender FROM MEMBER WHERE memberNo = ?
     </myquery>
 
+    <myquery id="fTypeMember">
+        SELECT feelingCode1, feelingCode2, feelingCode3 from FEELING WHERE memberNo = ?
+    </myquery>
+
 </query>
