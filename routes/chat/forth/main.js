@@ -17,13 +17,13 @@ router.get('/:chatroomNo', function(req, res){
             res.json(err);
         }
         //res.json(util.successCode(res, datas));
-        var feellingCode1 = datas[0].feelingCode1;
-        var feellingCode2 = datas[0].feelingCode2;
-        var feellingCode3 = datas[0].feelingCode3;
+        var feelingCode1 = datas[0].feelingCode1;
+        var feelingCode2 = datas[0].feelingCode2;
+        var feelingCode3 = datas[0].feelingCode3;
         var datas = [];
-        datas.push(feellingCode1);
-        datas.push(feellingCode2);
-        datas.push(feellingCode3);
+        datas.push(feelingCode1);
+        datas.push(feelingCode2);
+        datas.push(feelingCode3);
         datas.push(memberNo);
 
         global.queryName = 'chat';
