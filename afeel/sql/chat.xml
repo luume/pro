@@ -6,4 +6,8 @@
         from PRIVATE_MESSAGE inner join PRIVATE_ROOM
         where PRIVATE_ROOM.privateRoomNo = PRIVATE_MESSAGE.privateRoomNo and PRIVATE_ROOM.privateRoomNo = ?
     </myquery>
+    <myquery id="showVoiceAnswerList">
+    SELECT VOICE_ANSWER.voiceAnswerOriginalFileName, QUESTION.questionData from QUESTION inner join
+    VOICE_ANSWER on QUESTION.questionNo = VOICE_ANSWER.questionNo where VOICE_ANSWER.chatroomNo = ?
+    </myquery>
 </query>

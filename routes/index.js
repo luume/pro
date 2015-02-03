@@ -30,10 +30,11 @@ var thirdMain = require('./chat/third/main');
 var thirdSendVoiceAnswer = require('./chat/third/sendVoiceAnswer');
 var thirdShowVoiceAnswer = require('./chat/third/showVoiceAnswer');
 var thirdKillVoiceAnswer = require('./chat/third/killVoiceAnswer');
-var forthMain = require('./chat/forth/main');
+
 var forthShowtextanswer = require('./chat/forth/showTextAnswer');
 var forthShowvoiceanswer = require('./chat/forth/showVoiceAnswer');
 var forthAfeel = require('./chat/forth/afeel');
+var forthMain = require('./chat/forth/main');
 var privateChatCreatePrivateChat = require('./chat/privateChat/createPrivateChat');
 var privateChatMain = require('./chat/privateChat/main');
 var privateChatSendChat = require('./chat/privateChat/sendChat');

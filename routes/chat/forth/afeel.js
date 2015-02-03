@@ -18,8 +18,6 @@ router.get('/', function(req, res){
         return;
     }
 
-
-
     var datas = [];
     datas.push(memberNo);
 
