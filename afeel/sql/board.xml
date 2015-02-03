@@ -11,6 +11,4 @@
     <myquery id="noticeList">
         SELECT noticeTitle, noticeContent, noticeRegDate FROM NOTICE WHERE memberNo = ?
     </myquery>
-
-
 </query>

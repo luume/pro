@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<query>
+    <myquery id="profilList">
+        select MEMBER.memberName, MEMBER.memberBirth, MEMBER.memberHobby,
+        MEMBER.memberAdd, MEMBER.memberJob, PROFIL.profilOriginalFileName from
+        PROFIL inner join MEMBER where MEMBER.memberNo = PROFIL.memberNo and PROFIL.memberNo = ?
+    </myquery>
+
+</query>
