@@ -3,7 +3,7 @@ var router = express.Router();
 
 var util = require('../../../afeel/util/vo');
 var afeelQuery = require('../../../afeel/util/afeelQuery');
-
+console.log('12312321');
 router.get('/', function(req, res){
 
     //var chatroomNo = req.body.chatroomNo;
@@ -18,7 +18,7 @@ router.get('/', function(req, res){
         return;
     }
 
-    console.log('12312321');
+
 
     var datas = [];
     datas.push(memberNo);
