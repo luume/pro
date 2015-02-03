@@ -67,8 +67,8 @@
       <file leaf-file-name="registBestQ.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/myquestion/registBestQ.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2486911" vertical-offset="0" max-vertical-offset="741">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.39790577" vertical-offset="0" max-vertical-offset="741">
+              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -663,8 +663,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/myquestion/registBestQ.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2486911" vertical-offset="0" max-vertical-offset="741">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.39790577" vertical-offset="0" max-vertical-offset="741">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
           <folding />
         </state>
       </provider>
