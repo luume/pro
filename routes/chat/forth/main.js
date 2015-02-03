@@ -11,7 +11,7 @@ router.get('/:chatroomNo', function(req, res){
         return;
     }
     var memberNo = req.session.memberNo;
-    if(memberNo == "" || chatroomNo == memberNo){
+    if(memberNo == "" || memberNo == undefined){
         res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
         return;
     }
@@ -23,9 +23,6 @@ router.get('/:chatroomNo', function(req, res){
 
     afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
-            res.json(err);
-        }
-        if(datas == "" || datas == undefined){
             res.json(err);
         }
         //res.json(util.successCode(res, datas));
