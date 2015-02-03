@@ -29,7 +29,19 @@ router.get('/', function(req, res){
         if(err){
             res.json(err);
         }
-        res.json(datas);
+        //res.json(datas);
+
+        afeelQuery.afeelQuery([req.session.memberNo], 'myRank' , function (err, data) {
+            if(err){
+                res.json(err);
+            }
+
+            var result = {};
+            result = datas;
+            result.rank = data.rank;
+            res.json(result);
+
+        });
     });
   /*  profilSaveFileName : [ '../../images/Hydrangeas-thumbnail.jpg' , '../../images/Jellyfish-thumbnaill.jpg', '../../images/Koala-thumbnaill.jpg',
         '../../images/Penguins-thumbnail.jpg', '../../images/Lighthouse-thumbnail.jpg', '../../images/Tulips-thumbnail.jpg']*/

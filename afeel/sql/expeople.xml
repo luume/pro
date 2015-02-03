@@ -14,6 +14,9 @@
         ) endmatchlist JOIN PROFIL p ON endmatchlist.memberNo = p.memberNo
     </myquery>
 
+    <myquery id="myRank">
+        SELECT rank FROM CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo
+    </myquery>
 
 </query>
 
