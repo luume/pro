@@ -25,9 +25,28 @@ router.get('/:privateRoomNo', function(req, res){
         if(err){
             res.json(err);
         }
-        res.json(util.successCode(res, datas));
+        //res.json(util.successCode(res, datas));
 
-        console.log('ww',datas[0].memberGender);
+        //var
+        if (datas[0].memberGender == 'M') {
+
+        } else {
+
+        }
+
+    });
+
+    var datas = [];
+    datas.push(privateRoomNo);
+
+    global.queryName = 'chat';
+    var queryidname = 'privateChatList';
+
+    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+        if(err){
+            res.json(err);
+        }
+        res.json(util.successCode(res, datas));
     });
 
 
