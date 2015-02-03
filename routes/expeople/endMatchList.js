@@ -37,6 +37,7 @@ router.get('/', function(req, res){
             }
 
             var result = {};
+            console.log('2번쨰 쿼리 ' ,data);
             result = datas;
             result.rank = data.rank;
             res.json(result);
