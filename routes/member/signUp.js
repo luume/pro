@@ -6,10 +6,10 @@ var afeelQuery = require('../../afeel/util/afeelQuery');
 
 // 회원가입
 router.post('/', function(req, res) {
+  var errobj = {};
+  errobj = util.variableCheck(req.body, 11);
 
-  var errobj = util.variableCheck(req.body, 11);
-
-  if(errobj == undefined){
+  if(errobj != undefined){
     res.json(errobj);
     return;
   }
