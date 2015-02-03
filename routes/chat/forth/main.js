@@ -30,6 +30,11 @@ router.get('/:chatroomNo', function(req, res){
         var feelingCode1 = datas[0].feelingCode1;
         var feelingCode2 = datas[0].feelingCode2;
         var feelingCode3 = datas[0].feelingCode3;
+        var memberNo = req.session.memberNo;
+        if(memberNo == "" || chatroomNo == memberNo){
+            res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
+            return;
+        }
         var datas = [];
         datas.push(feelingCode1);
         datas.push(feelingCode2);
