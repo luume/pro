@@ -51,15 +51,7 @@ router.get('/:chatroomNo', function(req, res){
 
         //res.json(datas[0]);
     });
-
-    var chatroomNo = req.params.chatroomNo;
-    if(chatroomNo == "" || chatroomNo == undefined){
-        res.json({success:0, message:"Error(빈값이 넘어왔습니다.[chatroomNo])", result:null});
-        return;
-    }
-
-
-
+    
     var m = util.createValueObject('Member');
     var ft = util.createValueObject('Feeling_Type');
 
