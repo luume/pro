@@ -4,5 +4,9 @@
        SELECT requestTitle, requestContent, requestRegDate FROM REQUEST WHERE memberNo = ?
     </myquery>
 
+    <myquery id="faqList">
+        SELECT faqQuestion, faqAnswer FROM FAQ
+    </myquery>
+
 
 </query>
