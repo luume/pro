@@ -25,8 +25,11 @@ router.get('/:chatroomNo', function(req, res){
         if(err){
             res.json(err);
         }
+        if(datas[0] == "" || datas[0] == undefined){
+            res.json(err);
+        }
         //res.json(util.successCode(res, datas));
-        console.log('datassssss',datas[0]);
+        //console.log('datassssss',datas[0]);
         var feelingCode1 = datas[0].feelingCode1;
         var feelingCode2 = datas[0].feelingCode2;
         var feelingCode3 = datas[0].feelingCode3;
