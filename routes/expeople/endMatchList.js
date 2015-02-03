@@ -34,6 +34,13 @@ router.get('/', function(req, res){
             }
 
             datas[0].rank = data[0].rank;
+            var fType = datas[0].fType;
+
+            var fTypeArray = fType.split(',');
+
+            datas[0].fType = fTypeArray;
+
+            console.log('데이터0', datas[0]);
             res.json(datas[0]);
 
         });
