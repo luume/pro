@@ -32,6 +32,12 @@ router.post('/', function(req, res) {
   datas.push(memberAdd);
   datas.push(memberJob);
   //datas.push(profilOriginalFileName);
+  var reg_email= /^[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[@]{1}[-A-Za-z0-9_]+[-A-Za-z0-9_.]*[.]{1}[A-Za-z]{2,5}$/;
+
+  if(!reg_email.test(memberEmail)){
+    res.json({success:0, message:'email 양식 오류', result:null});
+    return;
+  }
 
   global.queryName = 'member';
   var queryidname = 'signupMember';
