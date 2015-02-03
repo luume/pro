@@ -6,6 +6,10 @@ var afeelQuery = require('../../../afeel/util/afeelQuery');
 
 router.get('/:chatroomNo', function(req, res){
     var memberNo = req.session.memberNo;
+    if(memberNo == "" || chatroomNo == memberNo){
+        res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
+        return;
+    }
     var datas = [];
     datas.push(memberNo);
 
@@ -34,16 +38,17 @@ router.get('/:chatroomNo', function(req, res){
             if(err){
                 res.json(err);
             }
-            res.json(util.successCode(res, datas));
+            var fType = datas[0].fType;
+
+            var fTypeArray = fType.split(',');
+
+            datas[0].fType = fTypeArray;
+
+            console.log('데이터0', datas[0]);
+            //res.json(util.successCode(res, datas));
         });
         //datas[0].rank = data[0].rank;
-        //var fType = datas[0].fType;
 
-        //var fTypeArray = fType.split(',');
-
-        //datas[0].fType = fTypeArray;
-
-        //console.log('데이터0', datas[0]);
         //res.json(datas[0]);
     });
 
