@@ -54,7 +54,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
           global.pool.getConnection(function(err, conn) {
             if(err) console.error('err 발생 >>>>>', err);
             conn.query(query, bindQuery,  function(err, row) {
-
+              console.log('로우길ffffff이', row.affectedRows);
               //console.log('쿼리 ' ,util.format(query));
              // console.log('파라미터', bindQuery);
 
@@ -68,7 +68,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                   }
                 );
               };
-console.log('로우길이', row.affectedRows);
+
               if(row.affectedRows == 0){
                 conn.release();
                 callback(
