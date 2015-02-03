@@ -22,9 +22,11 @@ router.get('/:privateRoomNo', function(req, res){
             res.json(err);
         }
         res.json(util.successCode(res, datas));
+
+        console.log('ww',datas[0].memberGender);
     });
 
-    console.log('ww',datas[0].memberGender);
+
 
     //global.queryName = 'chat';
     //var queryidname = 'privateChatList';
