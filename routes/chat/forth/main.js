@@ -5,6 +5,11 @@ var util = require('../../../afeel/util/vo');
 var afeelQuery = require('../../../afeel/util/afeelQuery');
 
 router.get('/:chatroomNo', function(req, res){
+    var chatroomNo = req.params.chatroomNo;
+    if(chatroomNo == "" || chatroomNo == undefined){
+        res.json({success:0, message:"Error(빈값이 넘어왔습니다.[chatroomNo])", result:null});
+        return;
+    }
     var memberNo = req.session.memberNo;
     if(memberNo == "" || chatroomNo == memberNo){
         res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
@@ -21,7 +26,7 @@ router.get('/:chatroomNo', function(req, res){
             res.json(err);
         }
         //res.json(util.successCode(res, datas));
-        console.log('datas',datas);
+        //console.log('datas',datas);
         var feelingCode1 = datas[0].feelingCode1;
         var feelingCode2 = datas[0].feelingCode2;
         var feelingCode3 = datas[0].feelingCode3;
@@ -51,7 +56,11 @@ router.get('/:chatroomNo', function(req, res){
 
         //res.json(datas[0]);
     });
-    
+
+
+
+
+
     var m = util.createValueObject('Member');
     var ft = util.createValueObject('Feeling_Type');
 
