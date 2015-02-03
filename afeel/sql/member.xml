@@ -8,4 +8,8 @@
         SELECT memberNo FROM MEMBER WHERE memberEmail = ? AND memberPw = ?
     </myquery>
 
+    <myquery id="editPasswordList">
+        SELECT memberPw FROM MEMBER WHERE memberNo = ?
+    </myquery>
+
 </query>
