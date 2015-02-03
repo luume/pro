@@ -261,7 +261,8 @@ console.log('obj ,' , obj);
 
   if(num != variabeObjectLength){
     errobj.success = 0;
-    errobj.result = {message:'no parameter', attribute : '파라미터의 개수가 정확하지 않습니다.'};
+    errobj.message = 'no parameter';
+    errobj.result = null;
     return errobj;
   }
 
