@@ -24,11 +24,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="showVoiceAnswer.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="showVoiceAnswer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/chat/forth/showVoiceAnswer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48801368" vertical-offset="0" max-vertical-offset="893">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="893">
+              <caret line="24" column="7" selection-start-line="7" selection-start-column="4" selection-end-line="24" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="showTextAnswer.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/chat/forth/showTextAnswer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.55308217" vertical-offset="0" max-vertical-offset="855">
+              <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -67,8 +77,8 @@
       <file leaf-file-name="chat.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/afeel/sql/chat.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="361">
-              <caret line="8" column="36" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="437">
+              <caret line="12" column="35" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -114,9 +124,10 @@
         <option value="$PROJECT_DIR$/afeel/util/vo.js" />
         <option value="$PROJECT_DIR$/routes/chat/forth/main.js" />
         <option value="$PROJECT_DIR$/routes/chat/forth/afeel.js" />
-        <option value="$PROJECT_DIR$/afeel/sql/chat.xml" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/routes/chat/forth/showVoiceAnswer.js" />
+        <option value="$PROJECT_DIR$/afeel/sql/chat.xml" />
+        <option value="$PROJECT_DIR$/routes/chat/forth/showTextAnswer.js" />
       </list>
     </option>
   </component>
@@ -649,22 +660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/chat/forth/showTextAnswer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="608">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/afeel/sql/chat.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="361">
-          <caret line="8" column="36" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2869">
@@ -699,8 +694,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/chat/forth/showVoiceAnswer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48801368" vertical-offset="0" max-vertical-offset="893">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="893">
+          <caret line="24" column="7" selection-start-line="7" selection-start-column="4" selection-end-line="24" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/afeel/sql/chat.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="437">
+          <caret line="12" column="35" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/chat/forth/showTextAnswer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.55308217" vertical-offset="0" max-vertical-offset="855">
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
           <folding />
         </state>
       </provider>
