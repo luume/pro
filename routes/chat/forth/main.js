@@ -26,13 +26,12 @@ router.get('/:chatroomNo', function(req, res){
             res.json(err);
         }
         //res.json(util.successCode(res, datas));
-        console.log('datas',datas[0]);
+        //console.log('datas',datas[0]);
         var feelingCode1 = datas[0].feelingCode1;
         var feelingCode2 = datas[0].feelingCode2;
         var feelingCode3 = datas[0].feelingCode3;
-        var memberNo = req.session.memberNo;
-        if(memberNo == "" || chatroomNo == memberNo){
-            res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
+        if(feelingCode1 == "" || feelingCode1 == undefined || feelingCode2 == "" || feelingCode2 == undefined || feelingCode3 == "" || feelingCode3 == undefined){
+            res.json({success:0, message:"Error(빈값이 넘어왔습니다.[feelingCode1,2,3])", result:null});
             return;
         }
         var datas = [];
