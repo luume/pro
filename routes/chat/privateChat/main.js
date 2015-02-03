@@ -23,7 +23,7 @@ router.get('/:privateRoomNo', function(req, res){
         }
         res.json(util.successCode(res, datas));
 
-        console.log('ww',datas[0].memberGender);
+        console.log('ww',datas);
     });
 
 
