@@ -25,7 +25,7 @@ router.get('/:chatroomNo', function(req, res){
         if(err){
             res.json(err);
         }
-        if(datas[0] == "" || datas[0] == undefined){
+        if(datas == "" || datas == undefined){
             res.json(err);
         }
         //res.json(util.successCode(res, datas));
