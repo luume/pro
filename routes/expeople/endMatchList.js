@@ -40,6 +40,8 @@ router.get('/', function(req, res){
             console.log('2번쨰 쿼리 ' ,data);
             result = datas;
             result.rank = data.rank;
+
+            console.log('result : ' , result);
             res.json(result);
 
         });
