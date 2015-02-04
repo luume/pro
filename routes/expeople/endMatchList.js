@@ -8,7 +8,7 @@ var async = require('async');
 router.get('/', function(req, res) {
 
     var isSuccess = util.sessionCheck(req);
-    console.log('endmatCh2', 000000000000000000);
+    console.log('endmatCh2', req.session.memberNo);
    /* if (!isSuccess) {
         res.send('<script>alert("session undefinded");</script>');
         return;
