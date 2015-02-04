@@ -66,6 +66,7 @@ router.get('/', function(req, res) {
             }
 
             if(datas.length == 0){
+                console.log('진행중인 이성 에러코드 발생');
                 res.json({ success : 0 , message : '에러 발생', result : null});
                 return;
             }
