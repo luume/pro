@@ -27,6 +27,7 @@ router.get('/:chatroomNo', function(req, res){
             res.json(err);
         }
         memberGender = datas[0].memberGender;
+        console.log('ddddd' ,memberGender);
         //res.json(util.successCode(res, datas));
     });
     console.log('eeeee' ,memberGender);
