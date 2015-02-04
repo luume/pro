@@ -32,10 +32,11 @@ router.post('/', function(req, res){
             });
             return;
         }
-
+        console.log('222222222222222222');
         req.session.memberNo  = datas[0].memberNo;
+        console.log('3333333333333333333');
         //console.log('세션 정보 = > ', req.session);
-        res.json(util.successCode(res, 'success'));
+        res.json( { success : 1 , message : 'ok' , result :  [null]  } );
         res.json('로그인 성공');
     });
 
