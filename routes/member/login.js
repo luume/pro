@@ -33,7 +33,9 @@ router.post('/', function(req, res){
 
         req.session.memberNo  = datas[0].memberNo;
         //console.log('세션 정보 = > ', req.session);
+        console.log('dd','loginlogin');
         res.json(util.successCode(res, 'success'));
+        console.log('dd','loginlogin2222222222222222');
 
     });
 
