@@ -20,9 +20,11 @@ router.post('/', function(req, res){
         if(err){
             res.json(err);
         }
-        console.log('dd',datas.length);
+        console.log('dd11111111',datas.length);
+        console.log('dd11111111',datas);
 
         if(datas.length == 0){
+            console.log('로그인 실패!!!!!!!!!!!!!!!');
             res.json({
                 success : 0,
                 message : '아이디 또는 비밀번호가 틀렸습니다.',
