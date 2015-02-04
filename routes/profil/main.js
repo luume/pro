@@ -29,7 +29,7 @@ router.get('/', function(req, res){
             return;
         }
 
-        global.profilOriginalFileName = [];
+        var profilOriginalFileName = [];
         afeelQuery.afeelQuery([req.session.memberNo], 'profilFileSelect', function (err, profilName) {
             if(err){res.json(err);}
 
@@ -46,14 +46,14 @@ router.get('/', function(req, res){
             }, function(err){
                 console.log('모두 성공');
                 console.log('arr', arr);
-
+                profilOriginalFileName = arr;
                 //conn.release();
                 //res.json({result:arr});
             });
 
         });
-        console.log('글로벌 값', global.profilOriginalFileName);
-        datas['ssss'] = global.profilOriginalFileName;
+        console.log('글로벌 값', profilOriginalFileName);
+        datas['profilOriginalFileName'] = profilOriginalFileName;
 
 
         console.log('리얼 datas = ' , datas);
