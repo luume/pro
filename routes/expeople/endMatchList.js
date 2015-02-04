@@ -30,17 +30,26 @@ router.get('/', function(req, res){
 
         function (callback) {
             afeelQuery.afeelQuery(datas, queryidname , function (err, data1) {
+                if(err){
+                    res.json(err);
+                    return;
+                }
                 callback(null, data1);
             }); // 쿼리종료
-        } // 1번함수
+        }, // 1번함수
 
         function (data2, callback) {
-            afeelQuery.afeelQuery([], queryidname , function (err, data1) {
+            afeelQuery.afeelQuery([], queryidname , function (err, data2) {
                 //callback(null, data2);
+                callback(null,data2);
             }); // 쿼리종료
         } // 2번 함수
 
-    ]);
+    ],
+      function(err, result){
+          // res.json 으로 마지막에 값을 싸줄 곳
+      });
+    );
 
 /*    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
