@@ -10,4 +10,8 @@
     <myquery id="myquestionDelete">
         DELETE FROM QUESTION WHERE questionNo = ?
     </myquery>
+
+    <myquery id="myquestionCount">
+        SELECT COUNT(questionNo) FROM QUESTION WHERE questionType = ?
+    </myquery>
 </query>
