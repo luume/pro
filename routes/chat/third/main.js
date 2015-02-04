@@ -16,6 +16,8 @@ router.get('/:chatroomNo', function(req, res){
         res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNosss])", result:null});
         return;
     }
+    var datas = [];
+    datas.push(memberNo);
     global.queryName = 'member';
     var queryidname = 'genderMember';
     var memberGender = '';
