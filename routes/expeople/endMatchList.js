@@ -21,12 +21,17 @@ router.get('/', function(req, res) {
     datas.push(req.session.memberNo);
     datas.push(req.session.memberNo);
     datas.push(req.session.memberNo);
+    datas.push(req.session.memberNo);
+    datas.push(req.session.memberNo);
+    datas.push(req.session.memberNo);
+    datas.push(req.session.memberNo);
+    datas.push(req.session.memberNo);
 
     global.queryName = 'expeople';
     var queryidname = 'endMatchList';
     console.log('datas', datas);
 
-    async.waterfall([
+    /*async.waterfall([
 
           function (callback) {
               afeelQuery.afeelQuery(datas, queryidname, function (err, data1) {
@@ -48,8 +53,8 @@ router.get('/', function(req, res) {
       ],
       function (err, result) {
             // res.json 으로 실질적으로 쏴주는곳
-      });
-/*    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+      });*/
+    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
             res.json(err);
         }
@@ -71,7 +76,7 @@ router.get('/', function(req, res) {
             res.json(datas[0]);
 
         });
-    });*/
+    });
 
 
 });
