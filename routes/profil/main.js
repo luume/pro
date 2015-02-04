@@ -31,7 +31,12 @@ router.get('/', function(req, res){
         console.log(
           util.successCode(res, datas)
         );
-        res.json(util.successCode(res, datas));
+
+       var temp ={};
+          temp = datas;
+
+        //res.json(util.successCode(res, datas));
+        res.json({success:1, message:'ok', result: temp });
     });
 
     var m = util.createValueObject('Member');
