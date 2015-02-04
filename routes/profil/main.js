@@ -52,7 +52,8 @@ router.get('/', function(req, res){
                 //res.json({result:arr});
                 console.log('글로벌 값', profilOriginalFileName);
                 temp = datas;
-                datas[0]['profilOriginalFileName'] = profilOriginalFileName;
+                datas[0]['profilOriginalFileName'] = [];
+                datas[0]['profilOriginalFileName'] = arr;
 
             });
 
