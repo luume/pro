@@ -16,6 +16,18 @@ router.get('/:chatroomNo', function(req, res){
         res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNosss])", result:null});
         return;
     }
+    global.queryName = 'member';
+    var queryidname = 'genderMember';
+    var memberGender = '';
+
+    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+        if(err){
+            res.json(err);
+        }
+        memberGender = datas[0].memberGender;
+        //res.json(util.successCode(res, datas));
+    });
+    console.log('eeeee' ,memberGender);
     //랜덤 난수발생
     var datas = [];
     var questionType = '1'; //음성 질문 코드
@@ -31,6 +43,8 @@ router.get('/:chatroomNo', function(req, res){
         //console.log('ddd',datas[0].qCount);
         res.json(util.successCode(res, datas));
     });
+
+
 
     var m = util.createValueObject('Member');
     var q = util.createValueObject('Question');
