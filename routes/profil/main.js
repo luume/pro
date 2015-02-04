@@ -46,17 +46,18 @@ router.get('/', function(req, res){
                 callback();
 
             }, function(err){
-                console.log('모두 성공');
-                console.log('arr', arr);
+                //console.log('모두 성공');
+                //console.log('arr', arr);
                 profilOriginalFileName = arr;
                 //conn.release();
                 //res.json({result:arr});
-                console.log('글로벌 값', profilOriginalFileName);
+                //console.log('글로벌 값', profilOriginalFileName);
                 temp = datas;
                // datas[0]['profilOriginalFileName'] = [];
                 datas[0].profilOriginalFileName = arr;
                 temp.aaa = arr;
-                console.log('temp ' , datas[0]);
+                //console.log('temp ' , datas[0]);
+                console.log('전송하기전 값', {success:1, message:'ok', result:datas[0]});
                 res.json({success:1, message:'ok', result:datas[0]});
             });
 
