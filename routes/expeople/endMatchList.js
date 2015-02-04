@@ -3,6 +3,7 @@ var router = express.Router();
 
 var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
+var async = require('async');
 
 router.get('/', function(req, res){
 
@@ -18,11 +19,30 @@ router.get('/', function(req, res){
     var datas = [];
     datas.push(req.session.memberNo);
     datas.push(req.session.memberNo);
+    datas.push(req.session.memberNo);
+    datas.push(req.session.memberNo);
 
     global.queryName = 'expeople';
     var queryidname = 'endMatchList';
     console.log('datas',datas);
-    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+
+    async.waterfall([
+
+        function (callback) {
+            afeelQuery.afeelQuery(datas, queryidname , function (err, data1) {
+                callback(null, data1);
+            }); // 쿼리종료
+        } // 1번함수
+
+        function (data2, callback) {
+            afeelQuery.afeelQuery([], queryidname , function (err, data1) {
+                //callback(null, data2);
+            }); // 쿼리종료
+        } // 2번 함수
+
+    ]);
+
+/*    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
             res.json(err);
         }
@@ -44,7 +64,7 @@ router.get('/', function(req, res){
             res.json(datas[0]);
 
         });
-    });
+    });*/
 
 
 });

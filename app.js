@@ -1,4 +1,5 @@
 var express = require('express');
+var multer  = require('multer');
 var path = require('path');
 var http = require('http');
 var https = require('https');
@@ -38,6 +39,13 @@ https.createServer(options, app).listen(port2, function(){
 var session = require('express-session');
 var afeelPool = require('./afeel/util/afeelConnectionPool');
 
+
+app.use(multer({
+    dest: './public/uploads/',
+    rename: function (fieldname, filename) {
+        return filename + Date.now()
+    }
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
