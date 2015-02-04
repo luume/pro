@@ -28,7 +28,7 @@ router.get('/:chatroomNo', function(req, res){
         if(err){
             res.json(err);
         }
-        console.log('ddd',datas[0]);
+        console.log('ddd',datas[0].qCount);
         //res.json(util.successCode(res, datas));
     });
 

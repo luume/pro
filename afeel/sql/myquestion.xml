@@ -12,6 +12,6 @@
     </myquery>
 
     <myquery id="myquestionCount">
-        SELECT COUNT(questionNo) FROM QUESTION WHERE questionType = ?
+        SELECT COUNT(questionNo) as qCount FROM QUESTION WHERE questionType = ?
     </myquery>
 </query>
