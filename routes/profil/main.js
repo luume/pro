@@ -40,7 +40,7 @@ router.get('/', function(req, res){
             async.each(profilName, function (row, callback) {
 
                 //for(var j = 0 ; j < row.length; j++){
-                console.log('한행', row.profilThumbnail);
+                console.log('한행', row);
                 arr.push(row.profilThumbnail);
                 //}
                 //datas[0]['profilOriginalFileName'].push(row.profilOriginalFileName);
