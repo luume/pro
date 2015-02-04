@@ -29,7 +29,7 @@ router.get('/', function(req, res){
             return;
         }
 
-        var profilThumbnai = [];
+        var profilThumbnail = [];
         var temp;
         afeelQuery.afeelQuery([req.session.memberNo], 'profilFileSelect', function (err, profilName) {
             if(err){res.json(err);}
@@ -40,7 +40,7 @@ router.get('/', function(req, res){
             async.each(profilName, function (row, callback) {
 
                 //for(var j = 0 ; j < row.length; j++){
-                arr.push(row.profilThumbnai);
+                arr.push(row.profilThumbnail);
                 //}
                 //datas[0]['profilOriginalFileName'].push(row.profilOriginalFileName);
                 callback();
@@ -48,13 +48,13 @@ router.get('/', function(req, res){
             }, function(err){
                 //console.log('모두 성공');
                 //console.log('arr', arr);
-                profilThumbnai = arr;
+                profilThumbnail = arr;
                 //conn.release();
                 //res.json({result:arr});
                 //console.log('글로벌 값', profilOriginalFileName);
                 temp = datas;
                // datas[0]['profilOriginalFileName'] = [];
-                datas[0].profilThumbnai = arr;
+                datas[0].profilThumbnail = arr;
                 temp.aaa = arr;
                 //console.log('temp ' , datas[0]);
                 console.log('전송하기전 값', {success:1, message:'ok', result:datas[0]});
