@@ -32,18 +32,9 @@ router.get('/', function(req, res){
           util.successCode(res, datas)
         );
 
-        var copy =Object.keys(datas);
-        var len = copy.length;
-        console.log('copy = ' , copy);
-        var temp = {};
-        for(var i = 0 ; i < len; i++){
-            temp['' + copy[i] + ''] =  datas[copy[i]];
-            console.log( temp['' + copy[i] + '']);
-            console.log( datas[copy[i]]);
-        };
-
+        
         //res.json(util.successCode(res, datas));
-        console.log('템프는s' ,temp);
+
         res.json({success:1, message:'ok', result: temp });
     });
 
