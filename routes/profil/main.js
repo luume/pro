@@ -32,10 +32,10 @@ router.get('/', function(req, res){
           util.successCode(res, datas)
         );
 
-        
-        //res.json(util.successCode(res, datas));
 
-        res.json({success:1, message:'ok', result: temp });
+        res.json(util.successCode(res, datas));
+
+        //res.json({success:1, message:'ok', result: temp });
     });
 
     var m = util.createValueObject('Member');
