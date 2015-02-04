@@ -11,7 +11,7 @@
         DELETE FROM QUESTION WHERE questionNo = ?
     </myquery>
 
-    <myquery id="myquestionCount">
-        SELECT COUNT(questionNo) as qCount FROM QUESTION WHERE questionType = ?
+    <myquery id="myquestionRandom">
+        select questionNo, questionData, questionGuideData from QUESTION where questionType=? order by RAND() limit 0,1;
     </myquery>
 </query>
