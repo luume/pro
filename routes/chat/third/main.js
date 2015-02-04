@@ -29,8 +29,8 @@ router.get('/:chatroomNo', function(req, res){
         if(err){
             res.json(err);
         }
-        console.log('ddd',datas[0].qCount);
-        //res.json(util.successCode(res, datas));
+        //console.log('ddd',datas[0].qCount);
+        res.json(util.successCode(res, datas));
     });
 
     var m = util.createValueObject('Member');
