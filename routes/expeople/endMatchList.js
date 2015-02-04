@@ -8,11 +8,11 @@ var async = require('async');
 router.get('/', function(req, res) {
 
     var isSuccess = util.sessionCheck(req);
-
-    if (!isSuccess) {
+    console.log('endmatCh2', 000000000000000000);
+   /* if (!isSuccess) {
         res.send('<script>alert("session undefinded");</script>');
         return;
-    }
+    }*/
 
     var memberEmail = req.body.memberEmail;
 
@@ -59,7 +59,7 @@ router.get('/', function(req, res) {
             res.json(err);
         }
         //res.json(datas);
-
+        console.log('endmatCh2', 1111111111111111111);
         afeelQuery.afeelQuery([req.session.memberNo], 'myRank' , function (err, data) {
             if(err){
                 res.json(err);
@@ -75,6 +75,8 @@ router.get('/', function(req, res) {
             var fType = datas[0].fType;
 
             var fTypeArray = fType.split(',');
+
+            console.log('endmatCh2', 222222222222222222222222);
 
             datas[0].fType = fTypeArray;
 
