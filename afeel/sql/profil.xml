@@ -7,6 +7,6 @@
     </myquery>
 
     <myquery id="profilFileSelect">
-        select profilOriginalFileName FROM PROFIL WHERE memberNo=?
+        select profilThumbnail FROM PROFIL WHERE memberNo=?
     </myquery>
 </query>
