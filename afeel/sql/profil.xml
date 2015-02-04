@@ -6,4 +6,7 @@
         PROFIL inner join MEMBER where MEMBER.memberNo = PROFIL.memberNo and PROFIL.memberNo = ?
     </myquery>
 
+    <myquery id="profilFileSelect">
+        select profilOriginalFileName FROM PROFIL WHERE memberNo=?
+    </myquery>
 </query>

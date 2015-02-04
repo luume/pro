@@ -28,12 +28,18 @@ router.get('/', function(req, res){
             res.json({ success : 0 , message : '에러 발생', result : null});
             return;
         }
-        console.log(
-          util.successCode(res, datas)
-        );
 
+        var profilOriginalFileName = [];
+        afeelQuery.afeelQuery([req.session.memberNo], 'profilFileSelect', function (err, profilName) {
+            if(err){res.json(err);}
 
-        res.json(util.successCode(res, datas));
+            for(var j = 0 ; j < profilName.length; j++){
+                profilOriginalFileName.push(profilName[0]);
+            }
+        });
+
+        datas[profilOriginalFileName] = profilOriginalFileName;
+        res.json({success:1, message:'ok', result:datas});
 
         //res.json({success:1, message:'ok', result: temp });
     });
