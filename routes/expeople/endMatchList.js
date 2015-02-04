@@ -5,11 +5,11 @@ var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
 var async = require('async');
 
-router.get('/', function(req, res){
+router.get('/', function(req, res) {
 
     var isSuccess = util.sessionCheck(req);
 
-    if(!isSuccess){
+    if (!isSuccess) {
         res.send('<script>alert("session undefinded");</script>');
         return;
     }
@@ -24,33 +24,31 @@ router.get('/', function(req, res){
 
     global.queryName = 'expeople';
     var queryidname = 'endMatchList';
-    console.log('datas',datas);
+    console.log('datas', datas);
 
     async.waterfall([
 
-        function (callback) {
-            afeelQuery.afeelQuery(datas, queryidname , function (err, data1) {
-                if(err){
-                    res.json(err);
-                    return;
-                }
-                callback(null, data1);
-            }); // 쿼리종료
-        }, // 1번함수
+          function (callback) {
+              afeelQuery.afeelQuery(datas, queryidname, function (err, data1) {
+                  if (err) {
+                      res.json(err);
+                      return;
+                  }
+                  callback(null, data1);
+              }); // 쿼리종료
+          }, // 1번함수
 
-        function (data2, callback) {
-            afeelQuery.afeelQuery([], queryidname , function (err, data2) {
-                //callback(null, data2);
-                callback(null,data2);
-            }); // 쿼리종료
-        } // 2번 함수
+          function (data2, callback) {
+              afeelQuery.afeelQuery([], queryidname, function (err, data2) {
+                  //callback(null, data2);
+                  callback(null, data2);
+              }); // 쿼리종료
+          } // 2번 함수
 
-    ],
-      function(err, result){
-          // res.json 으로 마지막에 값을 싸줄 곳
+      ],
+      function (err, result) {
+            // res.json 으로 실질적으로 쏴주는곳
       });
-    );
-
 /*    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
             res.json(err);
