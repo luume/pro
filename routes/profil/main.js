@@ -56,7 +56,7 @@ router.get('/', function(req, res){
                // datas[0]['profilOriginalFileName'] = [];
                 datas[0].profilOriginalFileName = arr;
                 temp.aaa = arr;
-                console.log('temp ' , temp);
+                console.log('temp ' , datas[0]);
                 res.json({success:1, message:'ok', result:datas[0]});
             });
 
