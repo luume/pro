@@ -36,6 +36,7 @@ router.get('/', function(req, res){
           temp = datas;
 
         //res.json(util.successCode(res, datas));
+        console.log('템프는' , temp);
         res.json({success:1, message:'ok', result: temp });
     });
 
