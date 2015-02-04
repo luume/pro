@@ -32,11 +32,14 @@ router.get('/', function(req, res){
           util.successCode(res, datas)
         );
 
-       var temp ={};
-          temp = datas;
+        var copy =Object.keys(datas);
+        var temp = {};
+        for(var i = 0 ; i < datas.length; i ++){
+            temp['' + copy[i] + ''] =  datas[copy[i]];
+        };
 
         //res.json(util.successCode(res, datas));
-        console.log('템프는s' , {success:1 , message:'ok'});
+        console.log('템프는s' ,temp);
         res.json({success:1, message:'ok', result: temp });
     });
 
