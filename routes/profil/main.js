@@ -30,6 +30,7 @@ router.get('/', function(req, res){
         }
 
         var profilOriginalFileName = [];
+        var temp;
         afeelQuery.afeelQuery([req.session.memberNo], 'profilFileSelect', function (err, profilName) {
             if(err){res.json(err);}
 
@@ -49,11 +50,15 @@ router.get('/', function(req, res){
                 profilOriginalFileName = arr;
                 //conn.release();
                 //res.json({result:arr});
+                console.log('글로벌 값', profilOriginalFileName);
+                temp = datas;
+                datas['profilOriginalFileName'] = profilOriginalFileName;
+
             });
 
         });
-        console.log('글로벌 값', profilOriginalFileName);
-        datas['profilOriginalFileName'] = profilOriginalFileName;
+
+
 
 
         console.log('리얼 datas = ' , datas);
