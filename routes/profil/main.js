@@ -38,9 +38,9 @@ router.get('/', function(req, res){
             var a = 0;
             async.each(profilName, function (row, callback) {
 
-                for(var j = 0 ; j < row.length; j++){
-                    arr.push(row.profilOriginalFileName);
-                }
+                //for(var j = 0 ; j < row.length; j++){
+                arr.push(row.profilOriginalFileName);
+                //}
                 callback();
 
             }, function(err){
