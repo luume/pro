@@ -3,7 +3,7 @@
     <myquery id="profilList">
         select MEMBER.memberEmail, MEMBER.memberName, MEMBER.memberBirth, MEMBER.memberHobby,
         MEMBER.memberAdd, MEMBER.memberJob, PROFIL.profilOriginalFileName from
-        PROFIL inner join MEMBER where MEMBER.memberNo = PROFIL.memberNo and PROFIL.profilMainYn = 1 and PROFIL.memberNo = ?
+        PROFIL inner join MEMBER where MEMBER.memberNo = PROFIL.memberNo and PROFIL.memberNo = ?
     </myquery>
 
 </query>
