@@ -65,6 +65,11 @@ router.get('/', function(req, res) {
                 res.json(err);
             }
 
+            if(datas.length == 0){
+                res.json({ success : 0 , message : '에러 발생', result : null});
+                return;
+            }
+
             datas[0].rank = data[0].rank;
             var fType = datas[0].fType;
 
