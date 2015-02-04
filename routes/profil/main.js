@@ -39,6 +39,10 @@ router.get('/', function(req, res){
         });
 
         datas[profilOriginalFileName] = profilOriginalFileName;
+
+
+        console.log('리얼 datas = ' , datas);
+
         res.json({success:1, message:'ok', result:datas});
 
         //res.json({success:1, message:'ok', result: temp });
