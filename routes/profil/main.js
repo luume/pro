@@ -42,7 +42,7 @@ router.get('/', function(req, res){
                 //for(var j = 0 ; j < row.length; j++){
                 arr.push(row.profilOriginalFileName);
                 //}
-                datas[0]['profilOriginalFileName'].push(row.profilOriginalFileName);
+                //datas[0]['profilOriginalFileName'].push(row.profilOriginalFileName);
                 callback();
 
             }, function(err){
@@ -54,7 +54,7 @@ router.get('/', function(req, res){
                 console.log('글로벌 값', profilOriginalFileName);
                 temp = datas;
                // datas[0]['profilOriginalFileName'] = [];
-                //datas[0]['profilOriginalFileName'] = arr;
+                datas[0].profilOriginalFileName = arr;
 
             });
 
