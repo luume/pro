@@ -26,11 +26,11 @@ var secondSendAnswer = require('./chat/second/sendAnswer');
 var secondShowAnswer = require('./chat/second/showAnswer');
 var secondShowAnswerAlive = require('./chat/second/showAnswerAlive');
 var secondKillAnswer = require('./chat/second/killAnswer');
-var thirdMain = require('./chat/third/main');
+
 var thirdSendVoiceAnswer = require('./chat/third/sendVoiceAnswer');
 var thirdShowVoiceAnswer = require('./chat/third/showVoiceAnswer');
 var thirdKillVoiceAnswer = require('./chat/third/killVoiceAnswer');
-
+var thirdMain = require('./chat/third/main');
 var forthShowtextanswer = require('./chat/forth/showTextAnswer');
 var forthShowvoiceanswer = require('./chat/forth/showVoiceAnswer');
 var forthAfeel = require('./chat/forth/afeel');
@@ -92,10 +92,10 @@ router.use('/chat/second/sendanswer', secondSendAnswer);
 router.use('/chat/second/showanswer', secondShowAnswer);
 router.use('/chat/second/showansweralive', secondShowAnswerAlive);
 router.use('/chat/second/killanswer', secondKillAnswer);
-router.use('/chat/third', thirdMain);
 router.use('/chat/third/sendvoiceanswer', thirdSendVoiceAnswer);
 router.use('/chat/third/showvoiceanswer', thirdShowVoiceAnswer);
 router.use('/chat/third/killvoiceanswer', thirdKillVoiceAnswer);
+router.use('/chat/third', thirdMain);
 router.use('/chat/forth/showtextanswer', forthShowtextanswer);
 router.use('/chat/forth/showvoiceanswer', forthShowvoiceanswer);
 router.use('/chat/forth/afeel', forthAfeel);
