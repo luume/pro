@@ -41,7 +41,7 @@ router.get('/', function(req, res){
                 for(var j = 0 ; j < row.length; j++){
                     arr.push(row.profilOriginalFileName);
                 }
-
+                callback();
 
             }, function(err){
                 console.log('모두 성공');
