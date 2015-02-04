@@ -17,6 +17,8 @@ router.get('/', function(req, res){
             res.json(err);
         }
         console.log('데이터는 ' , datas);
+        console.log('데이터는 ' , datas.length);
+        console.log('데이터는 ' , datas == undefined ? 1:2);
         if(datas.affectedRows == 0){
             res.json({ success : 0 , message : '에러 발생', result : null});
         }
