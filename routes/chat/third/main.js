@@ -17,23 +17,8 @@ router.get('/:chatroomNo', function(req, res){
         return;
     }
     var datas = [];
-    datas.push(memberNo);
-    global.queryName = 'member';
-    var queryidname = 'genderMember';
-    var memberGender = '';
-
-    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
-        if(err){
-            res.json(err);
-        }
-        memberGender = datas[0].memberGender;
-        console.log('ddddd' ,memberGender);
-        //res.json(util.successCode(res, datas));
-    });
-    console.log('eeeee' ,memberGender);
-    //랜덤 난수발생
-    var datas = [];
     var questionType = '1'; //음성 질문 코드
+    datas.push(memberNo);
     datas.push(questionType);
 
     global.queryName = 'myquestion';

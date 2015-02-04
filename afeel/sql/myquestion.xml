@@ -12,6 +12,6 @@
     </myquery>
 
     <myquery id="myquestionRandom">
-        select questionNo, questionData, questionGuideData from QUESTION where questionType=? order by RAND() limit 0,1;
+        SELECT questionNo, questionData, questionGuideData, (select memberGender FROM MEMBER where memberNo=?) as memberGender from QUESTION where questionType=? order by RAND() limit 0,1;
     </myquery>
 </query>
