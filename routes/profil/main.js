@@ -52,7 +52,7 @@ router.get('/', function(req, res){
                 //res.json({result:arr});
                 console.log('글로벌 값', profilOriginalFileName);
                 temp = datas;
-                datas['profilOriginalFileName'] = profilOriginalFileName;
+                datas[0]['profilOriginalFileName'] = profilOriginalFileName;
 
             });
 
@@ -61,9 +61,9 @@ router.get('/', function(req, res){
 
 
 
-        console.log('리얼 datas = ' , datas);
+        console.log('리얼 datas = ' , datas[0]);
 
-        res.json({success:1, message:'ok', result:datas});
+        res.json({success:1, message:'ok', result:datas[0]});
 
         //res.json({success:1, message:'ok', result: temp });
     });
