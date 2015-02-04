@@ -35,7 +35,7 @@ router.post('/', function(req, res){
         //console.log('세션 정보 = > ', req.session);
         console.log('dd','loginlogin');
         console.log(util.successCode(res, 'success'));
-        res.json(util.successCode(res, 'success'));
+        res.json(util.successCode(res, '{success}'));
         console.log('dd','loginlogin2222222222222222');
 
     });

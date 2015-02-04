@@ -238,7 +238,6 @@ function successCode(res, resultValue){
     }
   }
 */
-
   return{
     success : 1,
     message : 'OK',
