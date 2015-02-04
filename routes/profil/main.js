@@ -33,9 +33,10 @@ router.get('/', function(req, res){
         );
 
         var copy =Object.keys(datas);
+        var len = copy.length;
         console.log('copy = ' , copy);
         var temp = {};
-        for(var i = 0 ; i < datas.length; i ++){
+        for(var i = 0 ; i < len; i++){
             temp['' + copy[i] + ''] =  datas[copy[i]];
             console.log( temp['' + copy[i] + '']);
             console.log( datas[copy[i]]);
