@@ -54,8 +54,10 @@ router.get('/', function(req, res){
                 console.log('글로벌 값', profilOriginalFileName);
                 temp = datas;
                // datas[0]['profilOriginalFileName'] = [];
-                //datas[0].profilOriginalFileName = arr;
+                datas[0].profilOriginalFileName = arr;
                 temp.aaa = arr;
+                console.log('temp ' , temp);
+                res.json({success:1, message:'ok', result:datas[0]});
             });
 
         });
@@ -63,9 +65,9 @@ router.get('/', function(req, res){
 
 
 
-       console.log('temp ' , temp);
 
-        res.json({success:1, message:'ok', result:datas[0]});
+
+
 
         //res.json({success:1, message:'ok', result: temp });
     });
