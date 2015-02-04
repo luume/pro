@@ -3,7 +3,7 @@ var router = express.Router();
 
 var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
-
+var async = require('async');
 router.get('/', function(req, res){
     var memberNo = req.session.memberNo;
     var datas = [];
@@ -33,17 +33,24 @@ router.get('/', function(req, res){
         afeelQuery.afeelQuery([req.session.memberNo], 'profilFileSelect', function (err, profilName) {
             if(err){res.json(err);}
 
-            for(var j = 0 ; j < profilName.length; j++){
-                (function looper (j) {
-                    setTimeout(function() {
-                        if ( 10 < ++j ) {
-                            console.log('profilName[j]', profilName[j]);
-                            profilOriginalFileName.push(profilName[j].profilOriginalFileName);
-                        }
-                    }, 10)
-                })(0);
 
-            }
+            var arr = [];
+            var a = 0;
+            async.each(profilName, function (row, callback) {
+
+                for(var j = 0 ; j < row.length; j++){
+                    arr.push(row.profilOriginalFileName);
+                }
+
+
+            }, function(err){
+                console.log('모두 성공');
+                console.log('arr', arr);
+
+                //conn.release();
+                //res.json({result:arr});
+            });
+
         });
         console.log('글로벌 값', global.profilOriginalFileName);
         datas['ssss'] = global.profilOriginalFileName;
