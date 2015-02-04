@@ -28,7 +28,9 @@ router.get('/', function(req, res){
             res.json({ success : 0 , message : '에러 발생', result : null});
             return;
         }
-
+        console.log(
+          util.successCode(res, datas)
+        );
         res.json(util.successCode(res, datas));
     });
 
