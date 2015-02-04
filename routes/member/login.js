@@ -25,9 +25,8 @@ router.post('/', function(req, res){
         if(datas.length == 0){
             res.json({
                 success : 0,
-                result : {
-                    message : '아이디 또는 비밀번호가 틀렸습니다.'
-                }
+                message : '아이디 또는 비밀번호가 틀렸습니다.',
+                result : null
             });
             return;
         }
