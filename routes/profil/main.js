@@ -34,7 +34,14 @@ router.get('/', function(req, res){
             if(err){res.json(err);}
 
             for(var j = 0 ; j < profilName.length; j++){
-                profilOriginalFileName.push(profilName[0]);
+                (function looper (j) {
+                    setTimeout(function() {
+                        if ( 10 < ++j ) {
+                            profilOriginalFileName.push(profilName[j]);
+                        }
+                    }, 10)
+                })(0);
+
             }
         });
 
