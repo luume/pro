@@ -40,6 +40,7 @@ router.get('/', function(req, res){
             async.each(profilName, function (row, callback) {
 
                 //for(var j = 0 ; j < row.length; j++){
+                console.log('한행', row.profilThumbnail);
                 arr.push(row.profilThumbnail);
                 //}
                 //datas[0]['profilOriginalFileName'].push(row.profilOriginalFileName);
@@ -47,7 +48,7 @@ router.get('/', function(req, res){
 
             }, function(err){
                 //console.log('모두 성공');
-                //console.log('arr', arr);
+                console.log('arr', arr);
                 profilThumbnail = arr;
                 //conn.release();
                 //res.json({result:arr});
