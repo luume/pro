@@ -13,7 +13,7 @@ router.get('/:chatroomNo', function(req, res){
     }
     var memberNo = req.session.memberNo;
     if(memberNo == "" || memberNo == undefined){
-        res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
+        res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNosss])", result:null});
         return;
     }
     //랜덤 난수발생
