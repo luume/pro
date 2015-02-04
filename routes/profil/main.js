@@ -38,7 +38,7 @@ router.get('/', function(req, res){
             }
         });
 
-        datas[profilOriginalFileName] = profilOriginalFileName;
+        datas['ssss'] = profilOriginalFileName;
 
 
         console.log('리얼 datas = ' , datas);
