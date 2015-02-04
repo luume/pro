@@ -16,7 +16,7 @@ router.get('/', function(req, res){
         if(err){
             res.json(err);
         }
-
+        console.log('데이터는 ' , datas);
         if(datas.affectedRows == 0){
             res.json({ success : 0 , message : '에러 발생', result : null});
         }
