@@ -25,7 +25,7 @@ router.post('/', function(req, res) {
   console.log('길이1', Object.keys(req.files).length);
   console.log('길이2', req.files.profilOriginalFileName);
   //console.log('길이3', req.files.profilOriginalFileName.length);
-  res.json(req.files);
+  //res.json(req.files);
 
   //var cir_name = req.body.cir_name;
   var memberEmail = req.body.memberEmail;
@@ -95,6 +95,7 @@ router.post('/', function(req, res) {
             afeelQuery.afeelQuery([profilOriginalFileName[i], 1], 'insertProfilMain' , function (err, datas) {
               if(err){
                 callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:nul},null)
+                return;
               }
               if(datas.affectedRows == 1){
 
@@ -103,6 +104,7 @@ router.post('/', function(req, res) {
                 //res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
                 i = Object.keys(req.files.profilOriginalFileName).length;
                 callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null}, null)
+                return;
               }
 
               if(i == profilOriginalFileName.length -1) {
@@ -113,7 +115,7 @@ router.post('/', function(req, res) {
             afeelQuery.afeelQuery([profilOriginalFileName[i]], 'insertProfil' , function (err, datas) {
               if(err){
                 callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
-
+                return;
               }
               if(datas.affectedRows == 1){
 
@@ -143,10 +145,10 @@ router.post('/', function(req, res) {
      console.log('result', result);
 
      if(err != null)
-       //res.json({success:0, message:'에러 발생', result:err});
+       res.json({success:0, message:'에러 발생', result:err});
 
       if(result == 1) {
-        //res.json({success: 1, message: 'ok', result: 'success'});
+        res.json({success: 1, message: 'ok', result: 'success'});
       }
   }
 );
