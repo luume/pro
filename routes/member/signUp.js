@@ -4,6 +4,8 @@ var router = express.Router();
 var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
 
+var async = require('async');
+
 // 회원가입
 router.post('/', function(req, res) {
 
@@ -52,6 +54,7 @@ router.post('/', function(req, res) {
   global.queryName = 'member';
   var queryidname = 'signupMember';
   console.log('datas',datas);
+  async.waterfall()
   afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
     if(err){
       res.json(err);
