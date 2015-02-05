@@ -122,7 +122,7 @@ var d = [1,2,3,4];
 
 
 
-      async.each(profilOriginalFileName, function (fArry, callback) {
+      async.each([profilOriginalFileName], function (fArry, callback) {
 
 
         arr.push(fArry);
