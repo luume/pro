@@ -2,9 +2,43 @@ var express = require('express');
 var router = express.Router();
 
 var util = require('../../../afeel/util/vo');
+var afeelQuery = require('../../../afeel/util/afeelQuery');
 
 router.get('/', function(req, res){
 
+    var memberNo = req.session.memberNo;
+    if(memberNo == "" || memberNo == undefined){
+        res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
+        return;
+    }
+    //var datas = [];
+    //datas.push(memberNo);
+    //
+    //global.queryName = 'member';
+    //var queryidname = 'genderMember';
+    //
+    //afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+    //    if(err){
+    //        res.json(err);
+    //    }
+    //    //res.json(util.successCode(res, datas));
+    //
+    //
+    //});
+
+    var datas = [];
+    //datas.push(memberNo);
+
+    global.queryName = 'member';
+    var queryidname = 'myPrivateChatList';
+
+    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+        if(err){
+            res.json(err);
+        }
+        console.log('data',datas);
+        res.json(util.successCode(res, datas));
+    });
 
     var m = util.createValueObject('Member');
     var pm = util.createValueObject('Private_Message');

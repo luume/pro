@@ -47,6 +47,14 @@
         SELECT rank FROM CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberNo = ? AND rank BETWEEN 0 AND 2
     </myquery>
 
+    <myquery id="myPrivateChatList">
+        select pr.privateRoomNo, pr.memberMNo, p.profilThumbnail
+        , (select messageData from PRIVATE_MESSAGE where privateRoomNo = pr.privateRoomNo order by messageNo desc limit 0,1) as messageData
+        , (select messageDate from PRIVATE_MESSAGE where privateRoomNo = pr.privateRoomNo order by messageNo desc limit 0,1) as messageDate
+        FROM PRIVATE_ROOM pr, PROFIL p
+        WHERE p.memberNo = pr.memberMNo AND p.profilMainYn = 1  order by messageDate desc
+    </myquery>
+
 </query>
 
 
