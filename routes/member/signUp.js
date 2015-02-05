@@ -125,7 +125,7 @@ var d = [1,2,3,4];
       async.each([profilOriginalFileName], function (fArry, callback) {
 
 
-        arr.push(selNo);
+        arr.push(selNo.memberNo);
         arr.push(fArry.originalname);
         arr.push(fArry.name);
         arr.push( fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]);
