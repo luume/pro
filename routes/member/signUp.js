@@ -97,7 +97,7 @@ router.post('/', function(req, res) {
            callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
          }
 
-         console.log('first 2', '퍼스트2 성공');
+         console.log('first 2' + '퍼스트2 성공' + selectNo);
          callback(null,selectNo); // 다음로 넘김
 
        });
@@ -108,19 +108,6 @@ router.post('/', function(req, res) {
       console.log('여기까진 1111111111', selNo);
       console.log('여기까진 3333333333', [profilOriginalFileName]);
      // console.log('copy 데이터', Object.keys(req.files.profilOriginalFileName));
-      var arr = [];
-var d = [1,2,3,4];
-      async.each([profilOriginalFileName], function (fArry, callback) {
-        console.log(d);
-      }, function(err){
-        console.log('모두 성공');
-        //console.log('arr', arr);
-
-        //conn.release();
-        //res.json({result:arr});
-      });
-
-
 
       async.each([profilOriginalFileName], function (fArry, callback) {
 
