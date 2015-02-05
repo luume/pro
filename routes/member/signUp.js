@@ -144,7 +144,7 @@ router.post('/', function(req, res) {
         k++;
 
       }, function(err){
-        callback(null, 1);
+
         /*async.each(arr, function (row, callback) {
           console.log('row', row);
 
@@ -207,7 +207,7 @@ router.post('/', function(req, res) {
         //res.json({result:arr});
       });*/
 
-
+      callback(null, 1);
     }
 
   ], function (err, result) {
