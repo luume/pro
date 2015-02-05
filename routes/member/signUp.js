@@ -67,6 +67,7 @@ router.post('/', function(req, res) {
     res.json({success:0, message:'파일이 null', result:null});
   }
   var mNo;
+  console.log('파일길이', Object.keys(req.files.profilOriginalFileName).length);
  async.waterfall([
 
     function (callback) {
