@@ -65,7 +65,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 );
               };
 
-              if(row[0].affectedRows == 0){
+         /*     if(row[0].affectedRows == 0){
                 conn.release();
                 callback(
                   {
@@ -74,7 +74,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                     result : null
                   }
                 );
-              }
+              }*/
 
             //} // if end
             //  console.log('쿼리결과', row);
