@@ -61,6 +61,10 @@ router.post('/', function(req, res) {
   global.queryName = 'member';
   var queryidname = 'signupMember';
   console.log('datas', datas);
+
+  if(req.files == undefined){
+    res.json({success:0, message:'파일이 null', result:null});
+  }
  /* async.waterfall([
 
     function (callback) {
