@@ -115,7 +115,7 @@ router.post('/', function(req, res) {
         arr.push(fArry);
 
       }, function(err){
-        async.each(, function (row, callback) {
+        async.each(arr, function (row, callback) {
           console.log('row', row);
 
           easyimg.thumbnail({
