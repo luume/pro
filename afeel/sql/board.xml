@@ -9,6 +9,7 @@
     </myquery>
 
     <myquery id="noticeList">
-        SELECT noticeTitle, noticeContent, noticeRegDate FROM NOTICE
+        SELECT noticeTitle, noticeContent,
+        DATE_FORMAT(noticeRegDate, '%Y-%m-%d %h:%i:%S ') as noticeRegDate from NOTICE;
     </myquery>
 </query>
