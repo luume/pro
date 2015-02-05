@@ -98,8 +98,8 @@ router.post('/', function(req, res) {
          }
 
          console.log('first 2' + '퍼스트2 성공' + selectNo[0].memberNo);
-         console.log('first 2' + '퍼스트2 성공' + selectNo[0][''+memberNo+'']);
-         callback(null,selectNo.memberNo); // 다음로 넘김
+         //console.log('first 2' + '퍼스트2 성공' + selectNo[0][''+memberNo+'']);
+         callback(null,selectNo[0].memberNo); // 다음로 넘김
 
        });
      },
