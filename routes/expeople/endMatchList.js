@@ -73,7 +73,7 @@ router.get('/', function(req, res) {
 */
           (function () {
             for(var j = 0 ; j < datas.length; j++){
-              console.log(datas[j].rank + ' = ' + data[j].rank);
+              //console.log(datas[j].rank + ' = ' + data[j].rank);
               datas[j].rank = data[j].rank;
             }
           })();
@@ -84,8 +84,8 @@ router.get('/', function(req, res) {
             //var fTypeArray = fType.split(',');
 
            // datas[0].fType = fTypeArray;
-          console.log('길이',datas.length);
-            console.log('진행중인 이성의 데이터 값ss  = ', {success:1 , message:'ok', result : datas});
+          //console.log('길이',datas.length);
+            //console.log('진행중인 이성의 데이터 값ss  = ', {success:1 , message:'ok', result : datas});
             res.json({success:1 , message:'ok', result : datas});
 
         });

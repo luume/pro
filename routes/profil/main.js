@@ -39,7 +39,7 @@ router.get('/', function(req, res){
 
             }, function(err){
                 //console.log('모두 성공');
-                console.log('arr', arr);
+                //console.log('arr', arr);
                 profilThumbnail = arr;
                 temp = datas;
                 datas[0].profilThumbnail = arr;
