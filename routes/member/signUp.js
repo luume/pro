@@ -105,7 +105,7 @@ router.post('/', function(req, res) {
     function (selNo, callback) {
       global.queryName = 'profil';
 
-
+      console.log('여기까진 3333333333');
 
       var k = 0;
       var errs;
