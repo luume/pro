@@ -1,5 +1,5 @@
 var express = require('express');
-var multer  = require('multer');
+global.multer  = require('multer');
 var path = require('path');
 var http = require('http');
 var https = require('https');

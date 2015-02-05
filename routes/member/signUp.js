@@ -31,7 +31,7 @@ router.post('/', function(req, res) {
   var memberHeight = req.body.memberHeight;
   var memberAdd = req.body.memberAdd;
   var memberJob = req.body.memberJob;
-  var profilOriginalFileName = req.body.profilOriginalFileName;
+  var profilOriginalFileName = req.files.profilOriginalFileName;
 
   var datas = [];
   datas.push(memberEmail);
@@ -54,17 +54,47 @@ router.post('/', function(req, res) {
   global.queryName = 'member';
   var queryidname = 'signupMember';
   console.log('datas',datas);
-  async.waterfall()
-  afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
-    if(err){
-      res.json(err);
+  /*async.waterfall([
+
+    function (callback) {
+      afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+        if(err){
+          res.json(err);
+        }
+        console.log('changed row: ',datas.affectedRows);
+        if(datas.affectedRows == 1)
+          //res.json(util.successCode(res, 'success'));
+        else
+          res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
+        
+        callback(null, datas);
+        
+      });
+    },
+
+    function (firstData, callback) {
+
+*//*
+
+      afeelQuery.afeelQuery(datas, 'insertProfil' , function (err, datas) {
+        if(err){
+          res.json(err);
+        }
+        console.log('changed row: ',datas.affectedRows);
+        if(datas.affectedRows == 1)
+        //res.json(util.successCode(res, 'success'));
+        else
+        res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
+
+        callback(null, datas);*//*
+
+      });
     }
-    console.log('changed row: ',datas.affectedRows);
-    if(datas.affectedRows == 1)
-      res.json(util.successCode(res, 'success'));
-    else
-      res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
-  });
+
+  ], function () {
+
+  });*/
+ 
 
 });
 
