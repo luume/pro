@@ -76,13 +76,7 @@ router.post('/', function(req, res) {
           //return;
           callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
         }
-        if(datas.affectedRows == 1){
 
-        }
-        else{
-          //res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
-          callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
-        }
         callback(null); // 다음로 넘김
 
       });
@@ -95,9 +89,7 @@ router.post('/', function(req, res) {
            //return;
            callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
          }
-         if(selectNo.affectedRows != 1){
-           callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
-         }
+
 
          callback(null,selectNo); // 다음로 넘김
 
@@ -124,15 +116,7 @@ router.post('/', function(req, res) {
                 callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
                 return;
               }
-              if(a2.affectedRows == 1){
 
-              }
-              else{
-                //res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
-                i = Object.keys(req.files.profilOriginalFileName).length;
-                callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null}, null)
-                return;
-              }
 
               if(i == profilOriginalFileName.length -1) {
                 callback(null, a2);
@@ -145,15 +129,7 @@ router.post('/', function(req, res) {
                 callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
                 return;
               }
-              if(a3.affectedRows == 1){
 
-              }
-              else{
-                //res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
-                i = Object.keys(req.files.profilOriginalFileName).length;
-                callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null}, null)
-                return;
-              }
 
               if(i == Object.keys(req.files.profilOriginalFileName).length -1) {
                 callback(null, a3);
