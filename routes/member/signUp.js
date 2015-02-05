@@ -17,11 +17,12 @@ router.post('/', function(req, res) {
   //   res.json(errobj);
   //   return;
   // }
+  console.log('bodyssssssss = ', req.body);
   console.log('파일 객체ss', req.files);
   console.log('길이1', req.files.length);
   console.log('길이2', req.files.profilOriginalFileName);
   console.log('길이3', req.files.profilOriginalFileName.length);
-  console.log('body = ', req.body);
+
 
   //var cir_name = req.body.cir_name;
   var memberEmail = req.body.memberEmail;
