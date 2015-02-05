@@ -62,7 +62,7 @@ router.post('/', function(req, res) {
   var queryidname = 'signupMember';
   console.log('datas', datas);
 
-  if(req.files == undefined){
+  if(Object.keys(req.files).length == 0){
     res.json({success:0, message:'파일이 null', result:null});
   }
  /* async.waterfall([
