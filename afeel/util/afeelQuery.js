@@ -50,7 +50,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
               break;
             }
           } // for end
-          //console.log('쿼리',query);
+          console.log('쿼리',query);
           global.pool.getConnection(function(err, conn) {
             if(err) console.error('err 발생 >>>>>', err);
             conn.query(query, bindQuery,  function(err, row) {
