@@ -26,17 +26,6 @@ router.get('/', function(req, res){
             var datas = [];
             //datas.push(memberNo);
 
-            global.queryName = 'expeople';
-            var queryidname = 'myPrivateChatList_M';
-
-            afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
-                if(err){
-                    res.json(err);
-                }
-                //console.log('data',datas);
-                res.json(util.successCode(res, datas));
-            });
-
         } else {
             console.log('여자다');
 
