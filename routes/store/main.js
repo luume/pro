@@ -17,7 +17,10 @@ router.get('/', function(req, res){
         if(err){
             res.json(err);
         }
-        res.json(util.successCode(res, datas));
+        //res.json(util.successCode(res, datas));
+        res.json(util.successCode(res, {
+          memberCash : m.Member().memberCash
+        }));
     });
 
     var m = util.createValueObject('Member');
