@@ -34,18 +34,18 @@ router.get('/:privateRoomNo', function(req, res){
             console.log('여자다');
         }
 
-        var datas = [];
-        datas.push(privateRoomNo);
-
-        global.queryName = 'chat';
-        var queryidname = 'privateChatList';
-
-        afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
-            if(err){
-                res.json(err);
-            }
-            res.json(util.successCode(res, datas));
-        });
+        //var datas = [];
+        //datas.push(privateRoomNo);
+        //
+        //global.queryName = 'chat';
+        //var queryidname = 'privateChatList';
+        //
+        //afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+        //    if(err){
+        //        res.json(err);
+        //    }
+        //    res.json(util.successCode(res, datas));
+        //});
 
     });
 
