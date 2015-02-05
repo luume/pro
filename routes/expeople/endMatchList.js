@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
     }*/
 
     var memberEmail = req.body.memberEmail;
-  console.log('세션아이디s = ' , req.session.memberNo);
+  console.log('세션아이디 = ' , req.session.memberNo);
     var datas = [];
     datas.push(req.session.memberNo);
     datas.push(req.session.memberNo);
