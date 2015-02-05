@@ -107,9 +107,47 @@ router.post('/', function(req, res) {
       global.queryName = 'profil';
 
       console.log('여기까진 3333333333', profilOriginalFileName);
+      var arr = [];
+
+      async.each([Object.keys(req.files.profilOriginalFileName)], function (fArry, callback) {
 
 
-      async.each(profilOriginalFileName, function (row, callback) {
+        arr.push(fArry);
+
+      }, function(err){
+        async.each(, function (row, callback) {
+          console.log('row', row);
+
+          easyimg.thumbnail({
+            src:row.path, dst :row.name.split('.')[0] + '-thumbnail.' +  row.name.split('.')[1],
+            width:70, height:70,
+            x:0, y:0
+          }).then(function (file) {
+            console.log(file);
+          });
+          console.log(k + '번째 쿼리가 실행중입니당.');
+          if(k == 0){
+            afeelQuery.afeelQuery([selNo, row.originalname,  row.name,  row.name.split('.')[0] + '-thumbnail.' +  row.name.split('.')[1]], 'insertProfilMain' , function (err, a2) {
+              if (err) {
+                errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
+              }
+              console.log('성공' + k);
+            });
+          }
+
+          k++;
+
+        }, function(err){
+          console.log('모두 성공');
+          //console.log('arr', arr);
+          callback(null , 1);
+          //conn.release();
+          //res.json({result:arr});
+        });
+      });
+
+
+/*      async.each(, function (row, callback) {
         console.log('row', row);
 
         easyimg.thumbnail({
@@ -128,15 +166,7 @@ router.post('/', function(req, res) {
           console.log('성공' + k);
         });
       }
-      /*else{
-        afeelQuery.afeelQuery([ [selNo, row.originalname,  row.name,  row.name.split('.')[0] + '-thumbnail.' +  row.name.split('.')[1]] ], 'insertProfil' , function (err, a3) {
-          if (err) {
-            console.error('err', err);
-            errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
-          }
-          console.log('성공' + k);
-        });
-      }*/
+
         k++;
 
       }, function(err){
@@ -145,7 +175,7 @@ router.post('/', function(req, res) {
         callback(null , 1);
         //conn.release();
         //res.json({result:arr});
-      });
+      });*/
 
 
     }
