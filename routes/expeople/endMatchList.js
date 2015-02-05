@@ -72,7 +72,9 @@ router.get('/', function(req, res) {
             }
 
           (function () {
-            datas[0].rank = data[0].rank;
+            for(var j = 0 ; j < datas.length; j++){
+              datas[j].rank = data[j].rank;
+            }
           })();
 
 
