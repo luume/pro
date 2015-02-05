@@ -29,7 +29,7 @@ router.get('/', function(req, res){
     var datas = [];
     //datas.push(memberNo);
 
-    global.queryName = 'member';
+    global.queryName = 'expeople';
     var queryidname = 'myPrivateChatList';
 
     afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
