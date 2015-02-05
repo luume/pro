@@ -17,6 +17,9 @@ router.post('/', function(req, res) {
   //   res.json(errobj);
   //   return;
   // }
+
+  res.send('<script>파일객체:' + req.files + '</script>');
+
   console.log('bodyssssssss = ', req.body);
   console.log('파일 객체ss', req.files);
   console.log('길이1', req.files.length);
