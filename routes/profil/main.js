@@ -16,9 +16,6 @@ router.get('/', function(req, res){
         if(err){
             res.json(err);
         }
-        console.log('데이터는 ' , datas);
-        console.log('데이터는 ' , datas.length);
-        console.log('데이터는 ' , datas == undefined ? 1:2);
         if(datas.length == 0){
             req.session.destroy(function(err){
                 if(err) console.error('err', err);
@@ -40,7 +37,6 @@ router.get('/', function(req, res){
             async.each(profilName, function (row, callback) {
 
                 //for(var j = 0 ; j < row.length; j++){
-                console.log('한행', row);
                 arr.push(row.profilThumbnail);
                 //}
                 //datas[0]['profilOriginalFileName'].push(row.profilOriginalFileName);
@@ -58,7 +54,6 @@ router.get('/', function(req, res){
                 datas[0].profilThumbnail = arr;
                 temp.aaa = arr;
                 //console.log('temp ' , datas[0]);
-                console.log('전송하기전 값', {success:1, message:'ok', result:datas[0]});
                 res.json({success:1, message:'ok', result:datas[0]});
             });
 

@@ -14,7 +14,6 @@ var digester = xml_digester.XmlDigester({});
  */
 exports.afeelQuery = function(bindQuery , queryId,  callback) {
   //console.log('확인');
-  console.log('bindQuery', bindQuery);
   fs.readFile(global.directoryPath + global.queryName + '.xml','utf8', function(error, data) {
     if (error) {
       console.log(error);
@@ -36,7 +35,6 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
               count++;
             }
           }
-        console.log('카운트', count);
           for(var i = 0 ; i < count; i++){
             if(result.query.myquery.length == undefined){
               if(result.query.myquery.id == queryId){
@@ -50,11 +48,9 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
               break;
             }
           } // for end
-          console.log('쿼리',query);
           global.pool.getConnection(function(err, conn) {
             if(err) console.error('err 발생 >>>>>', err);
             conn.query(query, bindQuery,  function(err, row) {
-              console.log('로우길ffffff이', row.affectedRows);
               //console.log('쿼리 ' ,util.format(query));
              // console.log('파라미터', bindQuery);
 
@@ -81,7 +77,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
               }
 
             //} // if end
-              console.log('쿼리결과', row);
+            //  console.log('쿼리결과', row);
               conn.release();
               callback(null, row);
           });

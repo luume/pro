@@ -20,11 +20,8 @@ router.post('/', function(req, res){
         if(err){
             res.json(err);
         }
-        console.log('dd11111111',datas.length);
-        console.log('dd11111111',datas);
 
         if(datas.length == 0){
-            console.log('로그인 실패!!!!!!!!!!!!!!!');
             res.json({
                 success : 0,
                 message : '아이디 또는 비밀번호가 틀렸습니다.',
@@ -32,12 +29,9 @@ router.post('/', function(req, res){
             });
             return;
         }
-        console.log('222222222222222222');
         req.session.memberNo  = datas[0].memberNo;
-        console.log('3333333333333333333');
         //console.log('세션 정보 = > ', req.session);
         res.json( { success : 1 , message : 'ok' ,result : 'success'  } );
-        console.log('로그인 성공');
     });
 
 

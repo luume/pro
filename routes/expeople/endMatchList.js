@@ -8,7 +8,7 @@ var async = require('async');
 router.get('/', function(req, res) {
 
     var isSuccess = util.sessionCheck(req);
-    console.log('endmatCh2', req.session.memberNo);
+  //  console.log('endmatCh2', req.session.memberNo);
    /* if (!isSuccess) {
         res.send('<script>alert("session undefinded");</script>');
         return;
@@ -29,7 +29,7 @@ router.get('/', function(req, res) {
 
     global.queryName = 'expeople';
     var queryidname = 'endMatchList';
-    console.log('datas', datas);
+  //  console.log('datas', datas);
 
     /*async.waterfall([
 
@@ -66,7 +66,7 @@ router.get('/', function(req, res) {
 
             if(datas.length == 0){
                 console.log('진행중인 이성 에러코드 발생');
-                console.log({ success : 0 , message : '에러 발생', result : [ null ] });
+           //     console.log({ success : 0 , message : '에러 발생', result : [ null ] });
                 res.json({ success : 0 , message : '에러 발생', result : [ null ] });
                 return;
             }
