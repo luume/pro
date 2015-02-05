@@ -19,7 +19,6 @@ router.get('/', function(req, res){
         if(datas.length == 0){
             req.session.destroy(function(err){
                 if(err) console.error('err', err);
-                //res.json(util.successCode(res, 'success'));
             });
             console.log('프로필 메인 에러코드 발생');
             res.json({ success : 0 , message : '에러 발생', result : null});
@@ -35,25 +34,18 @@ router.get('/', function(req, res){
             var arr = [];
             var a = 0;
             async.each(profilName, function (row, callback) {
-
-                //for(var j = 0 ; j < row.length; j++){
                 arr.push(row.profilThumbnail);
-                //}
-                //datas[0]['profilOriginalFileName'].push(row.profilOriginalFileName);
+
                 callback();
 
             }, function(err){
                 //console.log('모두 성공');
                 console.log('arr', arr);
                 profilThumbnail = arr;
-                //conn.release();
-                //res.json({result:arr});
-                //console.log('글로벌 값', profilOriginalFileName);
                 temp = datas;
-               // datas[0]['profilOriginalFileName'] = [];
                 datas[0].profilThumbnail = arr;
                 temp.aaa = arr;
-                //console.log('temp ' , datas[0]);
+
                 res.json({success:1, message:'ok', result:datas[0]});
             });
 
