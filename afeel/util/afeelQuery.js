@@ -52,14 +52,14 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
             if(err) console.error('err 발생 >>>>>', err);
             conn.query(query, bindQuery,  function(err, row) {
               console.log('쿼리 ' ,util.format(query));
-             console.log('파라미터', bindQuery);
+              console.log('파라미터', bindQuery);
               console.log('row', row);
               if(err){
                 conn.release();
                 callback(
                   {
                     success: 0,
-                    message: {type: 'SQL Exception', message: err},
+                    message:err,
                     result : null
                   }
                 );
@@ -70,7 +70,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 callback(
                   {
                     success: 0,
-                    message: {type: 'SQL Exception', message: '개행 결과가 존재하지 않습니다.'},
+                    message: '개행 결과가 존재하지 않습니다.',
                     result : null
                   }
                 );

@@ -134,6 +134,7 @@ var d = [1,2,3,4];
         }).then(function (file) {
           console.log(file);
         });
+
         console.log(k + '번째 쿼리가 실행중입니당.');
         if(k == 0){
           afeelQuery.afeelQuery([selNo, fArry.originalname,  fArry.name,  fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]], 'insertProfilMain' , function (err, a2) {
