@@ -72,14 +72,14 @@ router.post('/', function(req, res) {
         if(err){
         //  res.json(err);
           //return;
-          callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:nul},null)
+          callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
         }
         if(datas.affectedRows == 1){
 
         }
         else{
           //res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
-          callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:nul},null)
+          callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
         }
 
         callback(null); // 다음로 넘김
@@ -94,7 +94,7 @@ router.post('/', function(req, res) {
           if( i == 0 ){
             afeelQuery.afeelQuery([profilOriginalFileName[i], 1], 'insertProfilMain' , function (err, datas) {
               if(err){
-                callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:nul},null)
+                callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
                 return;
               }
               if(datas.affectedRows == 1){
