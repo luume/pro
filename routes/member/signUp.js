@@ -97,8 +97,8 @@ router.post('/', function(req, res) {
            callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
          }
 
-         console.log('first 2' + '퍼스트2 성공' + selectNo);
-         callback(null,selectNo); // 다음로 넘김
+         console.log('first 2' + '퍼스트2 성공' + selectNo.memberNo);
+         callback(null,selectNo.memberNo); // 다음로 넘김
 
        });
      },
@@ -112,7 +112,7 @@ router.post('/', function(req, res) {
       async.each([profilOriginalFileName], function (fArry, callback) {
 
         console.log('셀값 ' , selNo);
-        arr.push(selNo[0].memberNo);
+        arr.push(selNo);
         arr.push(fArry.originalname);
         arr.push(fArry.name);
         arr.push( fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]);
