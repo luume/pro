@@ -52,6 +52,8 @@ router.post('/', function(req, res) {
   datas.push(parseInt(memberHeight));
   datas.push(memberAdd);
   datas.push(memberJob);
+
+  var arr = [];
   //datas.push(profilOriginalFileName);
   //var isSuccess = util.emailCheck(memberEmail);
   //if(!isSuccess){
@@ -97,9 +99,9 @@ router.post('/', function(req, res) {
            callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
          }
 
-         console.log('first 2' + '퍼스트2 성공' + selectNo[0][memberNo]);
-         console.log('first 2' + '퍼스트2 성공' + selectNo[0][''+memberNo+'']);
-         callback(null,selectNo.memberNo); // 다음로 넘김
+         console.log('first 2' + '퍼스트2 성공' + selectNo[0].memberNo);
+         //console.log('first 2' + '퍼스트2 성공' + selectNo[0][''+memberNo+'']);
+         callback(null,selectNo[0].memberNo); // 다음로 넘김
 
        });
      },
@@ -109,6 +111,7 @@ router.post('/', function(req, res) {
       console.log('여기까진 1111111111', selNo);
       console.log('여기까진 3333333333', [profilOriginalFileName]);
      // console.log('copy 데이터', Object.keys(req.files.profilOriginalFileName));
+
 
       async.each([profilOriginalFileName], function (fArry, callback) {
 
@@ -141,7 +144,7 @@ router.post('/', function(req, res) {
         k++;
 
       }, function(err){
-        callback(null, 1);
+
         /*async.each(arr, function (row, callback) {
           console.log('row', row);
 
@@ -204,7 +207,7 @@ router.post('/', function(req, res) {
         //res.json({result:arr});
       });*/
 
-
+      callback(null, 1);
     }
 
   ], function (err, result) {
