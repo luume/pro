@@ -29,9 +29,9 @@ router.get('/:privateRoomNo', function(req, res){
 
         //var
         if (datas[0].memberGender == 'M') { //datas[0].memberGender 로 현재 사용자의 성별을 파악함
-
+            console.log('남자다');
         } else {
-
+            console.log('여자다');
         }
 
     });
