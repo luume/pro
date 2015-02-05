@@ -32,8 +32,6 @@ router.get('/:chatroomNo', function(req, res){
         res.json(util.successCode(res, datas));
     });
 
-
-
     var m = util.createValueObject('Member');
     var q = util.createValueObject('Question');
 
