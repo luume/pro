@@ -105,12 +105,12 @@ router.post('/', function(req, res) {
 
     function (selNo, callback) {
       global.queryName = 'profil';
-
-      console.log('여기까진 3333333333', profilOriginalFileName);
+      console.log('여기까진 1111111111', selNo);
+      console.log('여기까진 3333333333', [profilOriginalFileName]);
      // console.log('copy 데이터', Object.keys(req.files.profilOriginalFileName));
       var arr = [];
 var d = [1,2,3,4];
-      async.each(profilOriginalFileName, function (fArry, callback) {
+      async.each([profilOriginalFileName], function (fArry, callback) {
         console.log(d);
       }, function(err){
         console.log('모두 성공');
