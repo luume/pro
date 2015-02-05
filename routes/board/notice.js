@@ -6,6 +6,10 @@ var afeelQuery = require('../../afeel/util/afeelQuery');
 
 router.get('/', function(req, res){
     var memberNo = req.session.memberNo;
+    if(memberNo == "" || chatroomNo == memberNo){
+        res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
+        return;
+    }
     var datas = [];
     datas.push(memberNo);
 
