@@ -20,6 +20,10 @@
         SELECT feelingCode1, feelingCode2, feelingCode3 from FEELING WHERE memberNo = ?
     </myquery>
 
+    <myquery id = "selectMemberNo">
+        SELECT memberNo FROM MEMBER WHERE memberEmail = ?
+    </myquery>
+
 
 
 </query>
