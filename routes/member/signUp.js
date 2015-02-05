@@ -8,13 +8,13 @@ var afeelQuery = require('../../afeel/util/afeelQuery');
 router.post('/', function(req, res) {
 
 
-  var errobj = {};
-  errobj = util.variableCheck(req.body, 11);
-  console.log('하하호호 ' , req);
-  if(errobj != undefined){
-    res.json(errobj);
-    return;
-  }
+ // var errobj = {};
+ // errobj = util.variableCheck(req.body, 11);
+ ///// console.log('하하호호 ' , req);
+ // if(errobj != undefined){
+ //   res.json(errobj);
+ //   return;
+ // }
 
 
 
@@ -43,11 +43,11 @@ router.post('/', function(req, res) {
   datas.push(memberAdd);
   datas.push(memberJob);
   //datas.push(profilOriginalFileName);
-  var isSuccess = util.emailCheck(memberEmail);
-  if(!isSuccess){
-    res.json({success:0, message:'email 양식 오류', result:null});
-    return;
-  }
+  //var isSuccess = util.emailCheck(memberEmail);
+  //if(!isSuccess){
+  //  res.json({success:0, message:'email 양식 오류', result:null});
+  //  return;
+  //}
 
   global.queryName = 'member';
   var queryidname = 'signupMember';
