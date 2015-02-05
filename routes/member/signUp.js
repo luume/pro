@@ -52,6 +52,8 @@ router.post('/', function(req, res) {
   datas.push(parseInt(memberHeight));
   datas.push(memberAdd);
   datas.push(memberJob);
+
+  var arr = [];
   //datas.push(profilOriginalFileName);
   //var isSuccess = util.emailCheck(memberEmail);
   //if(!isSuccess){
@@ -109,6 +111,7 @@ router.post('/', function(req, res) {
       console.log('여기까진 1111111111', selNo);
       console.log('여기까진 3333333333', [profilOriginalFileName]);
      // console.log('copy 데이터', Object.keys(req.files.profilOriginalFileName));
+
 
       async.each([profilOriginalFileName], function (fArry, callback) {
 
