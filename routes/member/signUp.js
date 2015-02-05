@@ -25,7 +25,7 @@ router.post('/', function(req, res) {
   console.log('길이1', req.files.length);
   console.log('길이2', req.files.profilOriginalFileName);
   //console.log('길이3', req.files.profilOriginalFileName.length);
-  res.json("파일객체:" + req.files);
+  res.json(req.files);
 
   //var cir_name = req.body.cir_name;
   var memberEmail = req.body.memberEmail;
