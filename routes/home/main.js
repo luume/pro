@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var util = require('../../afeel/util/vo');
-
+var afeelQuery = require('../../afeel/util/afeelQuery');
 
 // 앱 홈 화면
 router.get('/', function(req, res) {
