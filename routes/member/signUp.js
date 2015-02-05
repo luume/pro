@@ -124,7 +124,7 @@ var d = [1,2,3,4];
 
       async.each([profilOriginalFileName], function (fArry, callback) {
 
-        console.log('셀값 ' , selNo[0]);
+        console.log('셀값 ' , selNo);
         arr.push(selNo[0].memberNo);
         arr.push(fArry.originalname);
         arr.push(fArry.name);
