@@ -39,7 +39,7 @@ router.post('/', function(req, res) {
   var memberAdd = req.body.memberAdd;
   var memberJob = req.body.memberJob;
   var profilOriginalFileName = req.files.profilOriginalFileName;
-  console.log('1111');
+  console.log('profilOriginalFileName', profilOriginalFileName);
   var datas = [];
   datas.push(memberEmail);
   datas.push(memberName);
@@ -89,7 +89,7 @@ router.post('/', function(req, res) {
 
     function (callback) {
 
-      for(var i = 0 ; i < profilOriginalFileName.length; i++){
+      for(var i = 0 ; i < Object.keys(req.files).length; i++){
         (function () {
           if( i == 0 ){
             afeelQuery.afeelQuery([profilOriginalFileName[i], 1], 'insertProfilMain' , function (err, datas) {
