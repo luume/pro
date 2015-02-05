@@ -70,14 +70,16 @@ router.post('/', function(req, res) {
     function (callback) {
       afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
-          res.json(err);
-          return;
+        //  res.json(err);
+          //return;
+          callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:nul},null)
         }
         if(datas.affectedRows == 1){
 
         }
         else{
-          res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
+          //res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
+          callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:nul},null)
         }
 
         callback(null); // 다음로 넘김
