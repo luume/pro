@@ -51,8 +51,8 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
           global.pool.getConnection(function(err, conn) {
             if(err) console.error('err 발생 >>>>>', err);
             conn.query(query, bindQuery,  function(err, row) {
-              //console.log('쿼리 ' ,util.format(query));
-             // console.log('파라미터', bindQuery);
+              console.log('쿼리 ' ,util.format(query));
+             console.log('파라미터', bindQuery);
 
               if(err){
                 conn.release();
