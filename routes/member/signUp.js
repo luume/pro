@@ -18,7 +18,7 @@ router.post('/', function(req, res) {
   //   return;
   // }
 
-  res.send('<script>alert("파일객체:" + req.files );' + '</script>');
+  res.json("파일객체:" + req.files);
 
   console.log('bodyssssssss = ', req.body);
   console.log('파일 객체ss', req.files);
