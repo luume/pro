@@ -68,7 +68,8 @@ router.post('/', function(req, res) {
   }
 
   console.log('여기까진 옴');
-  var mNo;
+  var k=0;
+  var errs;
   //console.log('파일길이', Object.keys(req.files.profilOriginalFileName).length);
  async.waterfall([
 
@@ -107,8 +108,7 @@ router.post('/', function(req, res) {
 
       console.log('여기까진 3333333333');
 
-      var k = 0;
-      var errs;
+
       async.each(profilOriginalFileName, function (row, callback) {
         console.log('row', row);
 
