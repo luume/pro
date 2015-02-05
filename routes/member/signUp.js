@@ -120,6 +120,7 @@ router.post('/', function(req, res) {
           if (err) {
             errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
           }
+          console.log('성공' + k);
         });
       }else{
         afeelQuery.afeelQuery([ [selNo, row.originalname,  row.name,  row.name.split('.')[0] + '-thumbnail.' +  row.name.split('.')[1]] ], 'insertProfil' , function (err, a3) {
@@ -127,6 +128,7 @@ router.post('/', function(req, res) {
             console.error('err', err);
             errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
           }
+          console.log('성공' + k);
         });
       }
         k++;
