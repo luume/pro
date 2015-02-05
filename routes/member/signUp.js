@@ -64,13 +64,16 @@ router.post('/', function(req, res) {
   //console.log('datas', datas);
 
   if(Object.keys(req.files).length == 0){
-    res.json({success:0, message:'파일이 null', result:null});
+  //  res.json({success:0, message:'파일이 null', result:null});
   }
+
+  console.log('여기까진 옴');
   var mNo;
   //console.log('파일길이', Object.keys(req.files.profilOriginalFileName).length);
  async.waterfall([
 
     function (callback) {
+      console.log('여기까진 12222옴');
       afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
         //  res.json(err);
