@@ -125,7 +125,12 @@ var d = [1,2,3,4];
       async.each([profilOriginalFileName], function (fArry, callback) {
 
 
-        arr.push(fArry);
+        arr.push(selNo);
+        arr.push(fArry.originalname);
+        arr.push(fArry.name);
+        arr.push( fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]);
+        //arr.push(fArry.originalname);
+
 
         easyimg.thumbnail({
           src:fArry.path, dst :fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1],
@@ -137,7 +142,7 @@ var d = [1,2,3,4];
 
         console.log(k + '번째 쿼리가 실행중입니당.');
         if(k == 0){
-          afeelQuery.afeelQuery([selNo, fArry.originalname,  fArry.name,  fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]], 'insertProfilMain' , function (err, a2) {
+          afeelQuery.afeelQuery(arr, 'insertProfilMain' , function (err, a2) {
             if (err) {
               errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
             }
