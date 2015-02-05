@@ -122,7 +122,8 @@ router.post('/', function(req, res) {
           }
           console.log('성공' + k);
         });
-      }else{
+      }
+      /*else{
         afeelQuery.afeelQuery([ [selNo, row.originalname,  row.name,  row.name.split('.')[0] + '-thumbnail.' +  row.name.split('.')[1]] ], 'insertProfil' , function (err, a3) {
           if (err) {
             console.error('err', err);
@@ -130,7 +131,7 @@ router.post('/', function(req, res) {
           }
           console.log('성공' + k);
         });
-      }
+      }*/
         k++;
 
       }, function(err){
