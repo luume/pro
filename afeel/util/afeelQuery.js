@@ -81,7 +81,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
               }
 
             //} // if end
-              //console.log('쿼리결과', row);
+              console.log('쿼리결과', row);
               conn.release();
               callback(null, row);
           });
