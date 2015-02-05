@@ -71,7 +71,11 @@ router.get('/', function(req, res) {
                 return;
             }
 
+          (function () {
             datas[0].rank = data[0].rank;
+          })();
+
+
             var fType = datas[0].fType;
 
             var fTypeArray = fType.split(',');
@@ -79,7 +83,7 @@ router.get('/', function(req, res) {
             datas[0].fType = fTypeArray;
 
             console.log('진행중인 이성의 데이터 값  = ', datas[0]);
-            res.json(datas[0]);
+            res.json(util.successCode(datas[0]));
 
         });
     });
