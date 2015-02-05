@@ -97,8 +97,8 @@ router.post('/', function(req, res) {
            callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
          }
 
-         console.log('first 2' + '퍼스트2 성공' + selectNo[memberNo]);
-         console.log('first 2' + '퍼스트2 성공' + selectNo[''+memberNo+'']);
+         console.log('first 2' + '퍼스트2 성공' + selectNo[0][memberNo]);
+         console.log('first 2' + '퍼스트2 성공' + selectNo[0][''+memberNo+'']);
          callback(null,selectNo.memberNo); // 다음로 넘김
 
        });
