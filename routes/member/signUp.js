@@ -56,7 +56,7 @@ router.post('/', function(req, res) {
   global.queryName = 'member';
   var queryidname = 'signupMember';
   console.log('datas', datas);
-  async.waterfall([
+ /* async.waterfall([
 
     function (callback) {
       afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
@@ -126,7 +126,7 @@ router.post('/', function(req, res) {
         res.json({success: 1, message: 'ok', result: 'success'});
       }
   }
-);
+);*/
 
 });
 module.exports = router;
