@@ -134,60 +134,13 @@ router.post('/', function(req, res) {
 
       }, function(err){
         console.log('모두 성공');
-        console.log('arr', arr);
+        //console.log('arr', arr);
         callback(null , 1);
         //conn.release();
         //res.json({result:arr});
       });
 
 
-
-
-
-
-
-
-/*
-
-      for(var i = 0 ; i < Object.keys(req.files.profilOriginalFileName).length; i++){
-        (function () {
-
-
-
-          if( i == 0 ){
-            console.log(i + '번쨰 ' , profilOriginalFileName[i].originalname);
-            afeelQuery.afeelQuery([selNo, profilOriginalFileName[i].originalname,  profilOriginalFileName[i].name,  profilOriginalFileName[i].name.split('.')[0] + '-thumbnail.' +  profilOriginalFileName[i].name.split('.')[1]], 'insertProfilMain' , function (err, a2) {
-              if(err){
-                console.error(i + '번쨰에서 에러 ㅅㅂ', err);
-                callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
-                return;
-              }
-
-
-              if(i == profilOriginalFileName.length -1) {
-                callback(null, a2);
-              }
-            });  // 첫번째 파일은 메인 프로필사진
-          }else{
-            console.log(i + '번쨰 ' , profilOriginalFileName[i].originalname);
-            afeelQuery.afeelQuery([ [selNo, profilOriginalFileName[i].originalname,  profilOriginalFileName[i].name,  profilOriginalFileName[i].name.split('.')[0] + '-thumbnail.' +  profilOriginalFileName[i].name.split('.')[1]] ], 'insertProfil' , function (err, a3) {
-              if(err){
-                console.error('err', err);
-                callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
-                return;
-              }
-
-
-              if( i == Object.keys(req.files.profilOriginalFileName).length -1) {
-                callback(null, a3);
-              }
-            });  // 2번째부턴 사진등록만
-          }
-        })();
-      } // for문 종료*/
-
-
-      callback(null,'1');
     }
 
   ], function (err, result) {
@@ -205,3 +158,55 @@ router.post('/', function(req, res) {
 
 });
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+ for(var i = 0 ; i < Object.keys(req.files.profilOriginalFileName).length; i++){
+ (function () {
+
+
+
+ if( i == 0 ){
+ console.log(i + '번쨰 ' , profilOriginalFileName[i].originalname);
+ afeelQuery.afeelQuery([selNo, profilOriginalFileName[i].originalname,  profilOriginalFileName[i].name,  profilOriginalFileName[i].name.split('.')[0] + '-thumbnail.' +  profilOriginalFileName[i].name.split('.')[1]], 'insertProfilMain' , function (err, a2) {
+ if(err){
+ console.error(i + '번쨰에서 에러 ㅅㅂ', err);
+ callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
+ return;
+ }
+
+
+ if(i == profilOriginalFileName.length -1) {
+ callback(null, a2);
+ }
+ });  // 첫번째 파일은 메인 프로필사진
+ }else{
+ console.log(i + '번쨰 ' , profilOriginalFileName[i].originalname);
+ afeelQuery.afeelQuery([ [selNo, profilOriginalFileName[i].originalname,  profilOriginalFileName[i].name,  profilOriginalFileName[i].name.split('.')[0] + '-thumbnail.' +  profilOriginalFileName[i].name.split('.')[1]] ], 'insertProfil' , function (err, a3) {
+ if(err){
+ console.error('err', err);
+ callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
+ return;
+ }
+
+
+ if( i == Object.keys(req.files.profilOriginalFileName).length -1) {
+ callback(null, a3);
+ }
+ });  // 2번째부턴 사진등록만
+ }
+ })();
+ } // for문 종료*/
+
+
+//callback(null,'1');
