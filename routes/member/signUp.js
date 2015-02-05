@@ -77,7 +77,7 @@ router.post('/', function(req, res) {
           //return;
           callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
         }
-
+        console.log('first 1', '퍼스트1 성공');
         callback(null); // 다음로 넘김
 
       });
@@ -91,7 +91,7 @@ router.post('/', function(req, res) {
            callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
          }
 
-
+         console.log('first 2', '퍼스트2 성공');
          callback(null,selectNo); // 다음로 넘김
 
        });
