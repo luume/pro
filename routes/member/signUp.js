@@ -107,7 +107,7 @@ router.post('/', function(req, res) {
       global.queryName = 'profil';
 
       console.log('여기까진 3333333333', profilOriginalFileName);
-      console.log('copy 데이터', [Object.keys(req.files.profilOriginalFileName));
+      console.log('copy 데이터', [Object.keys(req.files.profilOriginalFileName)]);
       var arr = [];
 
       async.each([Object.keys(req.files.profilOriginalFileName)], function (fArry, callback) {
