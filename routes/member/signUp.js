@@ -16,7 +16,7 @@ router.post('/', function(req, res) {
  //   return;
  // }
 
-   console.log('파일 객체', req.body.files);
+   console.log('파일 객체ss', req.files);
 
   //var cir_name = req.body.cir_name;
   var memberEmail = req.body.memberEmail;
