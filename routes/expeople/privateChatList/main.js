@@ -11,20 +11,24 @@ router.get('/', function(req, res){
     //    res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
     //    return;
     //}
-    //var datas = [];
-    //datas.push(memberNo);
-    //
-    //global.queryName = 'member';
-    //var queryidname = 'genderMember';
-    //
-    //afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
-    //    if(err){
-    //        res.json(err);
-    //    }
-    //    //res.json(util.successCode(res, datas));
-    //
-    //
-    //});
+    var datas = [];
+    datas.push(memberNo);
+
+    global.queryName = 'member';
+    var queryidname = 'genderMember';
+
+    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+        if(err){
+            res.json(err);
+        }
+        if (datas[0].memberGender == 'M') { //datas[0].memberGender 로 현재 사용자의 성별을 파악함
+            console.log('남자다');
+        } else {
+            console.log('여자다');
+        }
+
+
+    });
 
     var datas = [];
     //datas.push(memberNo);
