@@ -88,7 +88,7 @@ router.post('/', function(req, res) {
     },
 
     function (callback) {
-
+      global.queryName = 'profil';
       for(var i = 0 ; i < Object.keys(req.files.profilOriginalFileName).length; i++){
         (function () {
           if( i == 0 ){
