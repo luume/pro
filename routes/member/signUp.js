@@ -153,6 +153,7 @@ var d = [1,2,3,4];
         k++;
 
       }, function(err){
+        callback(null, 1);
         /*async.each(arr, function (row, callback) {
           console.log('row', row);
 
