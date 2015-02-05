@@ -16,6 +16,13 @@ router.get('/', function(req, res){
         if(err){
             res.json(err);
         }
+        console.log('sil data', datas);
+        console.log('gara data', {
+                noticeNo : not.Notice().noticeNo,
+                noticeTitle : not.Notice().noticeTitle,
+                noticeContent : not.Notice().noticeContent,
+                noticeRegDate : not.Notice().noticeRegDate
+            });
         res.json(util.successCode(res, datas));
     });
 

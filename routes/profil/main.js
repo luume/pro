@@ -20,7 +20,6 @@ router.get('/', function(req, res){
             req.session.destroy(function(err){
                 if(err) console.error('err', err);
             });
-            console.log('프로필 메인 에러코드 발생');
             res.json({ success : 0 , message : '에러 발생', result : null});
             return;
         }
