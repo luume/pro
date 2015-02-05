@@ -17,8 +17,8 @@ router.get('/', function(req, res){
         if(err){
             res.json(err);
         }
-        console.log('storedata',datas);
-        console.log('garadata', {memberCash : m.Member().memberCash});
+        //console.log('storedata',datas);
+        //console.log('garadata', {memberCash : m.Member().memberCash});
         res.json(util.successCode(res, datas));
         //res.json(util.successCode(res, {
         //  memberCash : m.Member().memberCash
