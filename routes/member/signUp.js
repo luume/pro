@@ -140,7 +140,7 @@ router.post('/', function(req, res) {
               }
             });  // 첫번째 파일은 메인 프로필사진
           }else{
-            afeelQuery.afeelQuery([profilOriginalFileName[i]], 'insertProfil' , function (err, datas) {
+            afeelQuery.afeelQuery([  [selNo, profilOriginalFileName[i].originalname,  profilOriginalFileName[i].name,  profilOriginalFileName[i].name.split('.')[0] + '-thumbnail.' +  profilOriginalFileName[i].name.split('.')[1], 0 ], 'insertProfil' , function (err, datas) {
               if(err){
                 console.error('err', err);
                 callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
