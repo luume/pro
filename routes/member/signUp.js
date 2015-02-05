@@ -71,6 +71,7 @@ router.post('/', function(req, res) {
       afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
           res.json(err);
+          return;
         }
         if(datas.affectedRows == 1){
 
@@ -92,6 +93,7 @@ router.post('/', function(req, res) {
             afeelQuery.afeelQuery([profilOriginalFileName[i], 1], 'insertProfilMain' , function (err, datas) {
               if(err){
                 res.json(err);
+                return;
               }
               if(datas.affectedRows == 1){
 
@@ -109,6 +111,7 @@ router.post('/', function(req, res) {
             afeelQuery.afeelQuery([profilOriginalFileName[i]], 'insertProfil' , function (err, datas) {
               if(err){
                 res.json(err);
+                return;
               }
               if(datas.affectedRows == 1){
 
