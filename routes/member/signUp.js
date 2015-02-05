@@ -99,16 +99,60 @@ router.post('/', function(req, res) {
 
     function (selNo, callback) {
       global.queryName = 'profil';
-      for(var i = 0 ; i < Object.keys(req.files.profilOriginalFileName).length - 1; i++){
+
+
+
+      var k = 0;
+      var errs;
+      async.each(profilOriginalFileName[i], function (row, callback) {
+        console.log('row', row);
+
+        easyimg.thumbnail({
+          src:row.path, dst :row.name.split('.')[0] + '-thumbnail.' +  row.name.split('.')[1],
+          width:70, height:70,
+          x:0, y:0
+        }).then(function (file) {
+          console.log(file);
+        });
+
+      if(k == 0){
+        afeelQuery.afeelQuery([selNo, profilOriginalFileName[i].originalname,  profilOriginalFileName[i].name,  profilOriginalFileName[i].name.split('.')[0] + '-thumbnail.' +  profilOriginalFileName[i].name.split('.')[1]], 'insertProfilMain' , function (err, a2) {
+          if (err) {
+            console.error(i + '번쨰에서 에러 ㅅㅂ', err);
+            errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
+          }
+        });
+      }else{
+        afeelQuery.afeelQuery([ [selNo, profilOriginalFileName[i].originalname,  profilOriginalFileName[i].name,  profilOriginalFileName[i].name.split('.')[0] + '-thumbnail.' +  profilOriginalFileName[i].name.split('.')[1]] ], 'insertProfil' , function (err, a3) {
+          if (err) {
+            console.error('err', err);
+            errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
+          }
+        });
+      }
+        k++;
+
+      }, function(err){
+        console.log('모두 성공');
+        console.log('arr', arr);
+        callback(null , 1);
+        //conn.release();
+        //res.json({result:arr});
+      });
+
+
+
+
+
+
+
+
+/*
+
+      for(var i = 0 ; i < Object.keys(req.files.profilOriginalFileName).length; i++){
         (function () {
 
-          easyimg.thumbnail({
-            src:profilOriginalFileName[i].path, dst :profilOriginalFileName[i].name.split('.')[0] + '-thumbnail.' +  profilOriginalFileName[i].name.split('.')[1],
-            width:270, height:270,
-            x:0, y:0
-          }).then(function (file) {
-            console.log(file);
-          });
+
 
           if( i == 0 ){
             console.log(i + '번쨰 ' , profilOriginalFileName[i].originalname);
@@ -140,7 +184,7 @@ router.post('/', function(req, res) {
             });  // 2번째부턴 사진등록만
           }
         })();
-      } // for문 종료
+      } // for문 종료*/
 
 
       callback(null,'1');
