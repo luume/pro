@@ -23,26 +23,42 @@ router.get('/', function(req, res){
         }
         if (datas[0].memberGender == 'M') { //datas[0].memberGender 로 현재 사용자의 성별을 파악함
             console.log('남자다');
+            var datas = [];
+            //datas.push(memberNo);
+
+            global.queryName = 'expeople';
+            var queryidname = 'myPrivateChatList_M';
+
+            afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+                if(err){
+                    res.json(err);
+                }
+                //console.log('data',datas);
+                res.json(util.successCode(res, datas));
+            });
+
         } else {
             console.log('여자다');
+
+            var datas = [];
+            //datas.push(memberNo);
+
+            global.queryName = 'expeople';
+            var queryidname = 'myPrivateChatList_W';
+
+            afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+                if(err){
+                    res.json(err);
+                }
+                //console.log('data',datas);
+                res.json(util.successCode(res, datas));
+            });
         }
 
 
     });
 
-    var datas = [];
-    //datas.push(memberNo);
 
-    global.queryName = 'expeople';
-    var queryidname = 'myPrivateChatList';
-
-    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
-        if(err){
-            res.json(err);
-        }
-        //console.log('data',datas);
-        res.json(util.successCode(res, datas));
-    });
 
     var m = util.createValueObject('Member');
     var pm = util.createValueObject('Private_Message');
