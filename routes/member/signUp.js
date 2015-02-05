@@ -99,7 +99,7 @@ router.post('/', function(req, res) {
 
     function (selNo, callback) {
       global.queryName = 'profil';
-      for(var i = 0 ; i < Object.keys(req.files.profilOriginalFileName).length; i++){
+      for(var i = 0 ; i < Object.keys(req.files.profilOriginalFileName).length - 1; i++){
         (function () {
 
           easyimg.thumbnail({
