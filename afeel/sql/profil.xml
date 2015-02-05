@@ -11,10 +11,10 @@
     </myquery>
 
     <myquery id="insertProfil">
-        INSERT INTO PROFIL() VALUES(0, ?, ?, ? , ?, 0)
+        INSERT INTO PROFIL(profilNo, memberNo, profilOriginalFileName, profilSaveFileName, profilThumbnail) VALUES(0, ?, ?, ? , ?, ?)
     </myquery>
 
     <myquery id="insertProfilMain">
-        INSERT INTO PROFIL() VALUES(0, ?, ?, ? , ?, 1)
+        INSERT INTO PROFIL(profilNo, memberNo, profilOriginalFileName, profilSaveFileName, profilThumbnail) VALUES(0, ?, ?, ? , ?, ?)
     </myquery>
 </query>
