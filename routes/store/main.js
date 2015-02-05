@@ -19,10 +19,10 @@ router.get('/', function(req, res){
         }
         console.log('storedata',datas);
         console.log('garadata', {memberCash : m.Member().memberCash});
-        //res.json(util.successCode(res, datas));
-        res.json(util.successCode(res, {
-          memberCash : m.Member().memberCash
-        }));
+        res.json(util.successCode(res, datas));
+        //res.json(util.successCode(res, {
+        //  memberCash : m.Member().memberCash
+        //}));
     });
 
     var m = util.createValueObject('Member');
