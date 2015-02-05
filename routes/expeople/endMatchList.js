@@ -81,7 +81,7 @@ router.get('/', function(req, res) {
             var fTypeArray = fType.split(',');
 
             datas[0].fType = fTypeArray;
-
+          console.log('길이',datas.length);
             console.log('진행중인 이성의 데이터 값  = ', util.successCode(datas[0]));
             res.json(util.successCode(datas[0]));
 
