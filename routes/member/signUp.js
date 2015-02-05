@@ -114,7 +114,7 @@ router.post('/', function(req, res) {
         }).then(function (file) {
           console.log(file);
         });
-
+      console.log(k + '번째 쿼리가 실행중입니당.');
       if(k == 0){
         afeelQuery.afeelQuery([selNo, row.originalname,  row.name,  row.name.split('.')[0] + '-thumbnail.' +  row.name.split('.')[1]], 'insertProfilMain' , function (err, a2) {
           if (err) {
