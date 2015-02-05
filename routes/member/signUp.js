@@ -110,6 +110,7 @@ router.post('/', function(req, res) {
           });
 
           if( i == 0 ){
+            console.log(i + '번쨰 ' , profilOriginalFileName[i].originalname);
             afeelQuery.afeelQuery([selNo, profilOriginalFileName[i].originalname,  profilOriginalFileName[i].name,  profilOriginalFileName[i].name.split('.')[0] + '-thumbnail.' +  profilOriginalFileName[i].name.split('.')[1], 1], 'insertProfilMain' , function (err, a2) {
               if(err){
                 console.error('err', err);
@@ -123,6 +124,7 @@ router.post('/', function(req, res) {
               }
             });  // 첫번째 파일은 메인 프로필사진
           }else{
+            console.log(i + '번쨰 ' , profilOriginalFileName[i].originalname);
             afeelQuery.afeelQuery([ [selNo, profilOriginalFileName[i].originalname,  profilOriginalFileName[i].name,  profilOriginalFileName[i].name.split('.')[0] + '-thumbnail.' +  profilOriginalFileName[i].name.split('.')[1], 0] ], 'insertProfil' , function (err, a3) {
               if(err){
                 console.error('err', err);
@@ -131,7 +133,7 @@ router.post('/', function(req, res) {
               }
 
 
-              if(i == Object.keys(req.files.profilOriginalFileName).length -1) {
+              if( i == Object.keys(req.files.profilOriginalFileName).length -1) {
                 callback(null, a3);
               }
             });  // 2번째부턴 사진등록만
