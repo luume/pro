@@ -104,7 +104,7 @@ router.post('/', function(req, res) {
 
       var k = 0;
       var errs;
-      async.each(profilOriginalFileName[i], function (row, callback) {
+      async.each(profilOriginalFileName, function (row, callback) {
         console.log('row', row);
 
         easyimg.thumbnail({
@@ -116,14 +116,14 @@ router.post('/', function(req, res) {
         });
 
       if(k == 0){
-        afeelQuery.afeelQuery([selNo, profilOriginalFileName[i].originalname,  profilOriginalFileName[i].name,  profilOriginalFileName[i].name.split('.')[0] + '-thumbnail.' +  profilOriginalFileName[i].name.split('.')[1]], 'insertProfilMain' , function (err, a2) {
+        afeelQuery.afeelQuery([selNo, row.originalname,  row.name,  row.name.split('.')[0] + '-thumbnail.' +  row.name.split('.')[1]], 'insertProfilMain' , function (err, a2) {
           if (err) {
             console.error(i + '번쨰에서 에러 ㅅㅂ', err);
             errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
           }
         });
       }else{
-        afeelQuery.afeelQuery([ [selNo, profilOriginalFileName[i].originalname,  profilOriginalFileName[i].name,  profilOriginalFileName[i].name.split('.')[0] + '-thumbnail.' +  profilOriginalFileName[i].name.split('.')[1]] ], 'insertProfil' , function (err, a3) {
+        afeelQuery.afeelQuery([ [selNo, row.originalname,  row.name,  row.name.split('.')[0] + '-thumbnail.' +  row.name.split('.')[1]] ], 'insertProfil' , function (err, a3) {
           if (err) {
             console.error('err', err);
             errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
