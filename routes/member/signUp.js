@@ -21,10 +21,10 @@ router.post('/', function(req, res) {
 
 
 
-  console.log('bodyssssssss = ', req.body);
-  console.log('파일 객체ss', req.files);
-  console.log('길이1', Object.keys(req.files).length);
-  console.log('길이2', req.files.profilOriginalFileName);
+//  console.log('bodyssssssss = ', req.body);
+//  console.log('파일 객체ss', req.files);
+//  console.log('길이1', Object.keys(req.files).length);
+//  console.log('길이2', req.files.profilOriginalFileName);
   //console.log('길이3', req.files.profilOriginalFileName.length);
   //res.json(req.files);
 
@@ -40,7 +40,7 @@ router.post('/', function(req, res) {
   var memberAdd = req.body.memberAdd;
   var memberJob = req.body.memberJob;
   var profilOriginalFileName = req.files.profilOriginalFileName;
-  console.log('profilOriginalFileName', profilOriginalFileName);
+  //console.log('profilOriginalFileName', profilOriginalFileName);
   var datas = [];
   datas.push(memberEmail);
   datas.push(memberName);
@@ -58,16 +58,16 @@ router.post('/', function(req, res) {
   //  res.json({success:0, message:'email 양식 오류', result:null});
   //  return;
   //}
-  console.log('222222222222222');
+  //console.log('222222222222222');
   global.queryName = 'member';
   var queryidname = 'signupMember';
-  console.log('datas', datas);
+  //console.log('datas', datas);
 
   if(Object.keys(req.files).length == 0){
     res.json({success:0, message:'파일이 null', result:null});
   }
   var mNo;
-  console.log('파일길이', Object.keys(req.files.profilOriginalFileName).length);
+  //console.log('파일길이', Object.keys(req.files.profilOriginalFileName).length);
  async.waterfall([
 
     function (callback) {
@@ -75,6 +75,7 @@ router.post('/', function(req, res) {
         if(err){
         //  res.json(err);
           //return;
+          console.log('first1 err' , err);
           callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
         }
         console.log('first 1', '퍼스트1 성공');
@@ -88,6 +89,7 @@ router.post('/', function(req, res) {
          if(err){
            //  res.json(err);
            //return;
+           console.log('first2 err' , err);
            callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
          }
 
