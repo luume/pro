@@ -10,13 +10,13 @@ var async = require('async');
 router.post('/', function(req, res) {
 
 
- // var errobj = {};
- // errobj = util.variableCheck(req.body, 11);
- ///// console.log('하하호호 ' , req);
- // if(errobj != undefined){
- //   res.json(errobj);
- //   return;
- // }
+  // var errobj = {};
+  // errobj = util.variableCheck(req.body, 11);
+  ///// console.log('하하호호 ' , req);
+  // if(errobj != undefined){
+  //   res.json(errobj);
+  //   return;
+  // }
   console.log('파일 객체ss', req);
   console.log('파일 객체ss', req.files);
 
@@ -53,49 +53,78 @@ router.post('/', function(req, res) {
 
   global.queryName = 'member';
   var queryidname = 'signupMember';
-  console.log('datas',datas);
-  /*async.waterfall([
+  console.log('datas', datas);
+  async.waterfall([
 
     function (callback) {
       afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
           res.json(err);
         }
-        console.log('changed row: ',datas.affectedRows);
-        if(datas.affectedRows == 1)
-          //res.json(util.successCode(res, 'success'));
-        else
+        if(datas.affectedRows == 1){
+
+        }
+        else{
           res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
-        
-        callback(null, datas);
-        
+        }
+
+        callback(null); // 다음로 넘김
+
       });
     },
 
-    function (firstData, callback) {
+    function (callback) {
 
-*//*
+      for(var i = 0 ; i < profilOriginalFileName.length; i++){
+        (function () {
+          if( i == 0 ){
+            afeelQuery.afeelQuery([profilOriginalFileName[i], 1], 'insertProfilMain' , function (err, datas) {
+              if(err){
+                res.json(err);
+              }
+              if(datas.affectedRows == 1){
 
-      afeelQuery.afeelQuery(datas, 'insertProfil' , function (err, datas) {
-        if(err){
-          res.json(err);
-        }
-        console.log('changed row: ',datas.affectedRows);
-        if(datas.affectedRows == 1)
-        //res.json(util.successCode(res, 'success'));
-        else
-        res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
+              }
+              else{
+                res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
+                break;
+              }
 
-        callback(null, datas);*//*
+              if(i == profilOriginalFileName.length -1) {
+                callback(null, datas);
+              }
+            });  // 첫번째 파일은 메인 프로필사진
+          }else{
+            afeelQuery.afeelQuery([profilOriginalFileName[i]], 'insertProfil' , function (err, datas) {
+              if(err){
+                res.json(err);
+              }
+              if(datas.affectedRows == 1){
 
-      });
+              }
+              else{
+                res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
+                break;
+              }
+
+              if(i == profilOriginalFileName.length -1) {
+                callback(null, datas);
+              }
+            });  // 2번째부턴 사진등록만
+          }
+        })();
+      } // for문 종료
+
+
+      callback(null,'1');
     }
 
-  ], function () {
-
-  });*/
- 
+  ], function (err, result) {
+      if(result == 1) {
+        res.json({success: 1, message: 'ok', result: 'success'});
+      }
+  }
+);
 
 });
-
 module.exports = router;
