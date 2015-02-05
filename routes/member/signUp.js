@@ -65,7 +65,7 @@ router.post('/', function(req, res) {
   if(Object.keys(req.files).length == 0){
     res.json({success:0, message:'파일이 null', result:null});
   }
- /* async.waterfall([
+ async.waterfall([
 
     function (callback) {
       afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
@@ -135,7 +135,7 @@ router.post('/', function(req, res) {
         res.json({success: 1, message: 'ok', result: 'success'});
       }
   }
-);*/
+);
 
 });
 module.exports = router;
