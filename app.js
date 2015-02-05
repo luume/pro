@@ -20,7 +20,7 @@ var options = {
 var routes = require('./routes/index');
 var routes2 = require('./test/index');
 var sessionjs = require('./routes/session');
-var port1 = 80;
+var port1 = 3000;
 var port2 = 443;
 var app = express();
 //app.use(express.urlencoded());
