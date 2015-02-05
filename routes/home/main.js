@@ -8,7 +8,7 @@ var afeelQuery = require('../../afeel/util/afeelQuery');
 router.get('/', function(req, res) {
 
   var memberNo = req.session.memberNo;
-
+  var datas = [];
   global.queryName = 'chat';
   var queryidname = 'chatMain';
 
