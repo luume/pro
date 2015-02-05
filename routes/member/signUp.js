@@ -15,8 +15,8 @@ router.post('/', function(req, res) {
  //   res.json(errobj);
  //   return;
  // }
-
-   console.log('파일 객체ss', req.files);
+  console.log('파일 객체ss', req);
+  console.log('파일 객체ss', req.files);
 
   //var cir_name = req.body.cir_name;
   var memberEmail = req.body.memberEmail;

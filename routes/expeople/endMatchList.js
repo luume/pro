@@ -79,11 +79,11 @@ router.get('/', function(req, res) {
           })();
 
 
-            var fType = datas[0].fType;
+            //var fType = datas[0].fType;
 
-            var fTypeArray = fType.split(',');
+            //var fTypeArray = fType.split(',');
 
-            datas[0].fType = fTypeArray;
+           // datas[0].fType = fTypeArray;
           console.log('길이',datas.length);
             console.log('진행중인 이성의 데이터 값ss  = ', {success:1 , message:'ok', result : datas});
             res.json({success:1 , message:'ok', result : datas});
