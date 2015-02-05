@@ -65,7 +65,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 );
               };
 
-              if(row.affectedRows == 0){
+              if(row[0].affectedRows == 0){
                 conn.release();
                 callback(
                   {
