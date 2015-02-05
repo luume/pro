@@ -64,13 +64,13 @@ router.get('/', function(req, res) {
                 res.json(err);
             }
 
-            if(datas.length == 0){
+         /*   if(datas.length == 0){
                 console.log('진행중인 이성 에러코드 발생');
            //     console.log({ success : 0 , message : '에러 발생', result : [ null ] });
                 res.json({ success : 0 , message : '에러 발생', result : [ null ] });
                 return;
             }
-
+*/
           (function () {
             for(var j = 0 ; j < datas.length; j++){
               console.log(datas[j].rank + ' = ' + data[j].rank);

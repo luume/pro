@@ -16,7 +16,7 @@ router.post('/', function(req, res) {
  //   return;
  // }
 
-
+   console.log('파일 객체', req.body.files);
 
   //var cir_name = req.body.cir_name;
   var memberEmail = req.body.memberEmail;
@@ -60,7 +60,7 @@ router.post('/', function(req, res) {
     if(datas.affectedRows == 1)
       res.json(util.successCode(res, 'success'));
     else
-      res.json({success:0, result:{message:'회원가입에 실패하였습니다.(DB에러)'}});
+      res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
   });
 
 });
