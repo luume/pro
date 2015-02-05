@@ -5,6 +5,7 @@ var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
 
 var async = require('async');
+var easyimg = require('easyimage');
 
 // 회원가입
 router.post('/', function(req, res) {
@@ -65,6 +66,7 @@ router.post('/', function(req, res) {
   if(Object.keys(req.files).length == 0){
     res.json({success:0, message:'파일이 null', result:null});
   }
+  var mNo;
  async.waterfall([
 
     function (callback) {
@@ -81,18 +83,43 @@ router.post('/', function(req, res) {
           //res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
           callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
         }
-
+        mNo = datas.memberNo;
         callback(null); // 다음로 넘김
 
       });
     },
 
-    function (callback) {
+     function (callback) {
+       afeelQuery.afeelQuery([memberEmail], 'selectMemberNo' , function (err, selectNo) {
+         if(err){
+           //  res.json(err);
+           //return;
+           callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
+         }
+         if(datas.affectedRows != 1){
+           callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
+         }
+
+         callback(null,selectNo); // 다음로 넘김
+
+       });
+     },
+
+    function (selNo, callback) {
       global.queryName = 'profil';
       for(var i = 0 ; i < Object.keys(req.files.profilOriginalFileName).length; i++){
         (function () {
+
+          easyimg.thumbnail({
+            src:profilOriginalFileName[i].path, dst :profilOriginalFileName[i].name.split('.')[0] + '-thumbnail.' +  profilOriginalFileName[i].name.split('.')[1],
+            width:270, height:270,
+            x:0, y:0
+          }).then(function (file) {
+            console.log(file);
+          });
+
           if( i == 0 ){
-            afeelQuery.afeelQuery([profilOriginalFileName[i], 1], 'insertProfilMain' , function (err, datas) {
+            afeelQuery.afeelQuery([selNo, profilOriginalFileName[i].originalname,  profilOriginalFileName[i].name,  profilOriginalFileName[i].name.split('.')[0] + '-thumbnail.' +  profilOriginalFileName[i].name.split('.')[1], 1], 'insertProfilMain' , function (err, datas) {
               if(err){
                 console.error('err', err);
                 callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
