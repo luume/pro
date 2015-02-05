@@ -141,7 +141,7 @@ router.post('/', function(req, res) {
 
      console.log('에러는', err);
 
-     if(err != undefined)res.json({success:0, message:'에러 발생', result:err});
+     if(err != null)res.json({success:0, message:'에러 발생', result:err});
 
       if(result == 1) {
         res.json({success: 1, message: 'ok', result: 'success'});
