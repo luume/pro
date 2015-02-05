@@ -78,7 +78,7 @@ router.get('/', function(req, res) {
 
             datas[0].fType = fTypeArray;
 
-            console.log('진행중인 이성 데이터 값  = ', datas[0]);
+            console.log('진행중인 이성의 데이터 값  = ', datas[0]);
             res.json(datas[0]);
 
         });

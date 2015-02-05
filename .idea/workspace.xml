@@ -60,7 +60,7 @@
         <entry file="file://$PROJECT_DIR$/routes/expeople/endMatchList.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.58921695" vertical-offset="1141" max-vertical-offset="1920">
-              <caret line="80" column="42" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
+              <caret line="80" column="33" selection-start-line="80" selection-start-column="33" selection-end-line="80" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -950,7 +950,7 @@
     <entry file="file://$PROJECT_DIR$/routes/expeople/endMatchList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.58921695" vertical-offset="1141" max-vertical-offset="1920">
-          <caret line="80" column="42" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
+          <caret line="80" column="33" selection-start-line="80" selection-start-column="33" selection-end-line="80" selection-end-column="33" />
           <folding />
         </state>
       </provider>
