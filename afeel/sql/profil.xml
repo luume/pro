@@ -9,4 +9,12 @@
     <myquery id="profilFileSelect">
         select profilThumbnail FROM PROFIL WHERE memberNo=?
     </myquery>
+
+    <myquery id="insertProfil">
+        INSERT INTO PROFIL() VALUES(0, ?, ?, ? , ?, 0)
+    </myquery>
+
+    <myquery id="insertProfilMain">
+        INSERT INTO PROFIL() VALUES(0, ?, ?, ? , ?, 1)
+    </myquery>
 </query>
