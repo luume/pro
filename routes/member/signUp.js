@@ -127,8 +127,27 @@ var d = [1,2,3,4];
 
         arr.push(fArry);
 
+        easyimg.thumbnail({
+          src:fArry.path, dst :fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1],
+          width:70, height:70,
+          x:0, y:0
+        }).then(function (file) {
+          console.log(file);
+        });
+        console.log(k + '번째 쿼리가 실행중입니당.');
+        if(k == 0){
+          afeelQuery.afeelQuery([selNo, fArry.originalname,  fArry.name,  fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]], 'insertProfilMain' , function (err, a2) {
+            if (err) {
+              errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
+            }
+            console.log('성공' + k);
+          });
+        }
+
+        k++;
+
       }, function(err){
-        async.each(arr, function (row, callback) {
+        /*async.each(arr, function (row, callback) {
           console.log('row', row);
 
           easyimg.thumbnail({
@@ -156,7 +175,7 @@ var d = [1,2,3,4];
           callback(null , 1);
           //conn.release();
           //res.json({result:arr});
-        });
+        });*/
       });
 
 
