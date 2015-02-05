@@ -86,8 +86,8 @@ router.post('/', function(req, res) {
 
               }
               else{
-                res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
-                break;
+                //res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
+                //break;
               }
 
               if(i == profilOriginalFileName.length -1) {
@@ -103,8 +103,8 @@ router.post('/', function(req, res) {
 
               }
               else{
-                res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
-                break;
+                //res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
+                //break;
               }
 
               if(i == profilOriginalFileName.length -1) {
