@@ -6,7 +6,6 @@ var afeelQuery = require('../../afeel/util/afeelQuery');
 
 var async = require('async');
 var easyimg = require('easyimage');
-var each = require('async-each');
 
 // 회원가입
 router.post('/', function(req, res) {
@@ -110,14 +109,26 @@ router.post('/', function(req, res) {
       console.log('여기까진 3333333333', profilOriginalFileName);
      // console.log('copy 데이터', Object.keys(req.files.profilOriginalFileName));
       var arr = [];
+var d = [1,2,3,4];
+      async.each(profilOriginalFileName, function (fArry, callback) {
+        console.log(d);
+      }, function(err){
+        console.log('모두 성공');
+        //console.log('arr', arr);
 
-      each(profilOriginalFileName, function (fArry, callback) {
+        //conn.release();
+        //res.json({result:arr});
+      });
+
+
+
+      async.each(profilOriginalFileName, function (fArry, callback) {
 
 
         arr.push(fArry);
 
       }, function(err){
-        each(arr, function (row, callback) {
+        async.each(arr, function (row, callback) {
           console.log('row', row);
 
           easyimg.thumbnail({
