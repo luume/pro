@@ -53,7 +53,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
             conn.query(query, bindQuery,  function(err, row) {
               console.log('쿼리 ' ,util.format(query));
              console.log('파라미터', bindQuery);
-
+              console.log('row', row);
               if(err){
                 conn.release();
                 callback(
@@ -65,7 +65,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 );
               };
 
-              if(row[0].affectedRows == 0){
+              if(row.affectedRows == 0){
                 conn.release();
                 callback(
                   {
