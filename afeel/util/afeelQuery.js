@@ -14,7 +14,7 @@ var digester = xml_digester.XmlDigester({});
  */
 exports.afeelQuery = function(bindQuery , queryId,  callback) {
   //console.log('확인');
-  //console.log(bindQuery, queryId);
+  console.log('bindQuery', bindQuery);
   fs.readFile(global.directoryPath + global.queryName + '.xml','utf8', function(error, data) {
     if (error) {
       console.log(error);
