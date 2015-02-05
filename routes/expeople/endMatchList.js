@@ -82,7 +82,7 @@ router.get('/', function(req, res) {
 
             datas[0].fType = fTypeArray;
           console.log('길이',datas.length);
-            console.log('진행중인 이성의 데이터 값ss  = ', datas);
+            console.log('진행중인 이성의 데이터 값ss  = ', util.successCode(datas));
             res.json(util.successCode(datas));
 
         });
