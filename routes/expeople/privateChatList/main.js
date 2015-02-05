@@ -29,20 +29,21 @@ router.get('/', function(req, res){
         } else {
             console.log('여자다');
 
-            var datas = [];
-            //datas.push(memberNo);
 
-            global.queryName = 'expeople';
-            var queryidname = 'myPrivateChatList_W';
-
-            afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
-                if(err){
-                    res.json(err);
-                }
-                //console.log('data',datas);
-                res.json(util.successCode(res, datas));
-            });
         }
+        var datas = [];
+        //datas.push(memberNo);
+
+        global.queryName = 'expeople';
+        var queryidname = 'myPrivateChatList_W';
+
+        afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+            if(err){
+                res.json(err);
+            }
+            //console.log('data',datas);
+            res.json(util.successCode(res, datas));
+        });
 
 
     });
