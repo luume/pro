@@ -34,7 +34,7 @@ router.post('/', function(req, res) {
   var memberAdd = req.body.memberAdd;
   var memberJob = req.body.memberJob;
   var profilOriginalFileName = req.files.profilOriginalFileName;
-
+  console.log('1111');
   var datas = [];
   datas.push(memberEmail);
   datas.push(memberName);
@@ -52,7 +52,7 @@ router.post('/', function(req, res) {
   //  res.json({success:0, message:'email 양식 오류', result:null});
   //  return;
   //}
-
+  console.log('222222222222222');
   global.queryName = 'member';
   var queryidname = 'signupMember';
   console.log('datas', datas);
