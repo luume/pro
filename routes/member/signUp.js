@@ -89,7 +89,7 @@ router.post('/', function(req, res) {
 
     function (callback) {
 
-      for(var i = 0 ; i < Object.keys(req.files).length; i++){
+      for(var i = 0 ; i < Object.keys(req.files.profilOriginalFileName).length; i++){
         (function () {
           if( i == 0 ){
             afeelQuery.afeelQuery([profilOriginalFileName[i], 1], 'insertProfilMain' , function (err, datas) {
@@ -101,7 +101,7 @@ router.post('/', function(req, res) {
               }
               else{
                 //res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
-                i = profilOriginalFileName.length;
+                i = Object.keys(req.files.profilOriginalFileName).length;
                 callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null}, null)
               }
 
@@ -120,12 +120,12 @@ router.post('/', function(req, res) {
               }
               else{
                 //res.json({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null});
-                i = profilOriginalFileName.length;
+                i = Object.keys(req.files.profilOriginalFileName).length;
                 callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null}, null)
                 return;
               }
 
-              if(i == profilOriginalFileName.length -1) {
+              if(i == Object.keys(req.files.profilOriginalFileName).length -1) {
                 callback(null, datas);
               }
             });  // 2번째부턴 사진등록만
