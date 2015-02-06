@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 global.directoryPath = './afeel/sql/';
+global.isQuerySuccess = false; // 쿼리 성공 여부를 확인하는 전역변수..
+global.afeelCon = '';
 
 //회원
 var memberSignUp = require('./member/signUp');

@@ -83,7 +83,12 @@ router.post('/', function(req, res) {
           //return;
           console.log('first1 err' , err);
           callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
+          global.afeelCon.rollback();
         }
+
+
+
+
         console.log('first 1', '퍼스트1 성공');
         callback(null); // 다음로 넘김
 
@@ -132,19 +137,23 @@ router.post('/', function(req, res) {
         });
 
         console.log(k + '번째 쿼리가 실행중입니당.');
-        if(k == 0){
+          if(k == 0){
           afeelQuery.afeelQuery(arr, 'insertProfilMain' , function (err, a2) {
             if (err) {
+              global.afeelCon.rollback();
               errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
             }
             console.log('성공' + k);
+            global.afeelCon.commit();
           });
         }else{
           afeelQuery.afeelQuery(arr, 'insertProfil' , function (err, a2) {
             if (err) {
+              global.afeelCon.rollback();
               errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
             }
             console.log('성공' + k);
+            global.afeelCon.commit();
           });
         }
 
