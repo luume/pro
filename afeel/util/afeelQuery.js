@@ -63,6 +63,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
               //  console.log('row', row);
                 if(err){
                   //global.afeelCon.release();
+                  console.log(queryId  + ' =  ' + err);
                   callback(
                     {
                       success: 0,
@@ -76,6 +77,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
 
                 if(row.affectedRows == 0 || row == null || row == undefined || row == false){
                   //global.afeelCon .release();
+                  console.log('0행입니다.');
                   global.isQuerySuccess = false;
                   conn.release();
 

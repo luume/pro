@@ -31,12 +31,12 @@ router.get('/', function(req, res){
                         res.json({ success : 0 , message : '데이터 없음', result : null});
                         return;
                     }
-                    console.log('첫번째 처리 성공' , datas[0].memberGender);
+                  //  console.log('첫번째 처리 성공' , datas[0].memberGender);
                     callback(null, datas[0].memberGender);
                 })
             },
             function(memberGender, callback) {
-                console.log('넘어온 멤버 젠더', memberGender);
+              //  console.log('넘어온 멤버 젠더', memberGender);
                 if (memberGender == 'M') { //datas[0].memberGender 로 현재 사용자의 성별을 파악함
                     //console.log('남자다');
                     global.queryName = 'expeople';
@@ -57,7 +57,7 @@ router.get('/', function(req, res){
                     });
 
                 } else {
-                    console.log('여자다');
+                 //   console.log('여자다');
                     global.queryName = 'expeople';
                     var queryidname = 'myPrivateChatList_W';
                     afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
@@ -71,7 +71,7 @@ router.get('/', function(req, res){
 
                             return;
                         }
-                        console.log('여자인 데이터 잘가져옴');
+                       // console.log('여자인 데이터 잘가져옴');
                         //console.log('data',datas);
                         callback(null, datas);
                         //res.json(util.successCode(res, datas));
