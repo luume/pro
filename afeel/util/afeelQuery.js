@@ -50,17 +50,19 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
           } // for end
 
           global.pool.getConnection(function(err, conn) {
-            global.afeelCon = conn;
+            if(global.afeelCon == '' || global.afeelCon == undefined == global.afeelCon == null)
+              global.afeelCon = conn;
+            
             if(err) console.error('err 발생 >>>>>', err);
 
 
-            conn.beginTransaction(function(err) {
-              conn.query(query, bindQuery,  function(err, row) {
+            global.afeelCon .beginTransaction(function(err) {
+              global.afeelCon .query(query, bindQuery,  function(err, row) {
                 console.log('쿼리 ' ,util.format(query));
                 console.log('파라미터', bindQuery);
                 console.log('row', row);
                 if(err){
-                  conn.release();
+                  global.afeelCon.release();
                   callback(
                     {
                       success: 0,
@@ -73,7 +75,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 };
 
                 if(row.affectedRows == 0 || row == null || row == undefined || row == false){
-                   conn.release();
+                  global.afeelCon .release();
                   global.isQuerySuccess = false;
                   callback(
                     {
@@ -88,7 +90,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 //} // if end
                 //  console.log('쿼리결과', row);
                 global.isQuerySuccess = true;
-               conn.release();
+               //conn.release();
                 callback(null, row);
               }); // 쿼리 문 종료
 
