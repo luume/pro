@@ -19,10 +19,7 @@ router.get('/', function(req, res){
             return
         }
         if(datas == false){
-            req.session.destroy(function(err){
-                if(err) console.error('err', err);
-            });
-            res.json({ success : 0 , message : '에러 발생', result : null});
+            res.json(err);
             return;
         }
         res.json(util.successCode(res, datas));
