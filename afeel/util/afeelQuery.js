@@ -70,7 +70,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                   );
                 };
 
-                if(row.affectedRows == 0 || row == undefined || row == null){
+                if(row.affectedRows == 0 || row == undefined || row == null || row == false){
                   console.log(' 쿼리 노개행 여기옵니다')
                   conn.rollback(function(){
                     conn.release();
