@@ -19,7 +19,7 @@ router.get('/', function(req, res){
 
     async.waterfall([
             function(callback) {
-                console.log('첫번째 처리');
+                //console.log('첫번째 처리');
                 global.queryName = 'member';
                 var queryidname = 'genderMember';
                 afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
@@ -31,9 +31,9 @@ router.get('/', function(req, res){
                 });
             },
             function(memberGender, callback) {
-                console.log('넘어온 멤버 젠더', memberGender);
+                //console.log('넘어온 멤버 젠더', memberGender);
                 if (memberGender == 'M') { //datas[0].memberGender 로 현재 사용자의 성별을 파악함
-                    console.log('남자다');
+                    //console.log('남자다');
                     global.queryName = 'expeople';
                     var queryidname = 'myPrivateChatList_M';
                     afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
@@ -46,7 +46,7 @@ router.get('/', function(req, res){
                     });
 
                 } else {
-                    console.log('여자다');
+                    //console.log('여자다');
                     global.queryName = 'expeople';
                     var queryidname = 'myPrivateChatList_W';
                     afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
@@ -60,8 +60,8 @@ router.get('/', function(req, res){
                 }
             }
         ],	function(err, results) {
-            console.log('최종 처리');
-            console.log('results' , results); // result <- done
+            //console.log('최종 처리');
+            //console.log('results' , results); // result <- done
             res.json(util.successCode(res, results));
         }
     );
