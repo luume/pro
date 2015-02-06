@@ -11,6 +11,10 @@ router.get('/', function(req, res){
     //    res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
     //    return;
     //}
+
+
+
+
     var datas = [];
     datas.push(memberNo);
 

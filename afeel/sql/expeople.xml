@@ -52,7 +52,8 @@
         (select messageData from PRIVATE_MESSAGE where privateRoomNo = pr.privateRoomNo order by messageNo desc limit 0,1) as messageData,
         (select  DATE_FORMAT(messageDate, '%Y-%m-%d %H:%i:%S ') as messageDate from PRIVATE_MESSAGE where privateRoomNo = pr.privateRoomNo order by messageNo desc limit 0,1) as messageDate
         FROM PRIVATE_ROOM pr, PROFIL p
-        WHERE p.memberNo = pr.memberMNo AND p.profilMainYn = 1  order by messageDate desc
+        WHERE p.memberNo = pr.memberMNo AND p.profilMainYn = 1 and pr.memberWNo = ?
+        order by messageDate desc
     </myquery>
 
     <myquery id="myPrivateChatList_M">
@@ -60,7 +61,8 @@
         (select messageData from PRIVATE_MESSAGE where privateRoomNo = pr.privateRoomNo order by messageNo desc limit 0,1) as messageData,
         (select  DATE_FORMAT(messageDate, '%Y-%m-%d %H:%i:%S ') as messageDate from PRIVATE_MESSAGE where privateRoomNo = pr.privateRoomNo order by messageNo desc limit 0,1) as messageDate
         FROM PRIVATE_ROOM pr, PROFIL p
-        WHERE p.memberNo = pr.memberWNo AND p.profilMainYn = 1  order by messageDate desc
+        WHERE p.memberNo = pr.memberWNo AND p.profilMainYn = 1  and pr.memberMNo = ?
+        order by messageDate desc
     </myquery>
 
 </query>
