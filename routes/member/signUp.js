@@ -152,7 +152,7 @@ router.post('/', function(req, res) {
 
 
         easyimg.thumbnail({
-          src:fArry.path, dst :fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1],
+          src:fArry.path, dst : './public/images/'+ fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1],
           width:70, height:70,
           x:0, y:0
         }).then(function (file) {
