@@ -8,11 +8,12 @@ var async = require('async');
 
 router.get('/', function(req, res){
 
-    var memberNo = req.session.memberNo;
+    //var memberNo = req.session.memberNo;
     //if(memberNo == "" || memberNo == undefined){
     //    res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
     //    return;
     //}
+    var memberNo = 4;
     var datas = [];
     datas.push(memberNo);
 
