@@ -25,6 +25,7 @@ router.get('/', function(req, res){
                 afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
                     if(err){
                         res.json(err);
+                        return;
                     }
                     if(datas == false){ //select 결과 row 0일때 처리
                         res.json({ success : 0 , message : '데이터 없음', result : null});
