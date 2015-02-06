@@ -147,12 +147,12 @@ router.post('/', function(req, res) {
         arr.push(selNo);
         arr.push(fArry.originalname);
         arr.push(fArry.name);
-        arr.push( fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]);
+        arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]);
         //arr.push(fArry.originalname);
 
 
         easyimg.thumbnail({
-          src:fArry.path, dst : './public/images/'+ fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1],
+          src:fArry.path, dst : 'http://54.92.4.84:3000/images/'+ fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1],
           width:70, height:70,
           x:0, y:0
         }).then(function (file) {
