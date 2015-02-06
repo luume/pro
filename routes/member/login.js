@@ -4,13 +4,16 @@ var router = express.Router();
 var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
 
+
+var utils = require('util');
+
 router.post('/', function(req, res){
 
     var memberEmail = req.body.memberEmail;
     var memberPw = req.body.memberPw;
 
     var datas = [];
-    datas.push(memberEmail);
+    datas.push(utils.format(memberEmail));
     datas.push(memberPw);
 
     var varibCheck = function (test ,num) {
