@@ -153,7 +153,7 @@ router.post('/', function(req, res) {
         //arr.push(fArry.originalname);
 
         var destPath = path.join(__dirname, '..', 'public', 'images', fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]);
-        console.log('패스는',destPath);
+        console.log('패스는',__dirname);
         easyimg.thumbnail({
           src:fArry.path, dst : destPath,
           width:70, height:70,
