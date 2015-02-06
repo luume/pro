@@ -15,6 +15,7 @@ router.get('/', function(req, res){
 
     afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
         if(err){
+            console.log('스토어 메인 에러', err);
             res.json(err);
             return;
         }

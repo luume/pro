@@ -21,7 +21,7 @@ router.get('/', function(req, res){
             function(callback) {
                 //console.log('첫번째 처리');
                 global.queryName = 'member';
-           /*     var queryidname = 'genderMember';
+                var queryidname = 'genderMember';
                 afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
                     if(err){
                         res.json(err);
@@ -32,8 +32,8 @@ router.get('/', function(req, res){
                     }
                     console.log('첫번째 처리 성공' , datas[0].memberGender);
                     callback(null, datas[0].memberGender);
-                });*/
-                callback(null, 'W');
+                })
+                callback(null, datas);
             },
             function(memberGender, callback) {
                 console.log('넘어온 멤버 젠더', memberGender);
