@@ -142,7 +142,9 @@ router.post('/', function(req, res) {
           if(k == 0){
           afeelQuery.afeelQuery(arr, 'insertProfilMain' , function (err, a2) {
             if (err) {
-              global.afeelCon.rollback();
+              global.afeelCon.rollback(function (err) {
+                console.log('로올백');
+              });
               errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
               return;
             }
@@ -152,12 +154,16 @@ router.post('/', function(req, res) {
         }else{
           afeelQuery.afeelQuery(arr, 'insertProfil' , function (err, a2) {
             if (err) {
-              global.afeelCon.rollback();
+              global.afeelCon.rollback(function (err) {
+                console.log('로올백');
+              });
               errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
               return;
             }
             console.log('성공' + k);
-            global.afeelCon.commit();
+            global.afeelCon.commit(function () {
+              console.log('왜 여기오냐 ..');
+            });
           });
         }
 

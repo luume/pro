@@ -26,6 +26,11 @@ router.get('/', function(req, res) {
     datas.push(req.session.memberNo);
     datas.push(req.session.memberNo);
     datas.push(req.session.memberNo);
+    datas.push(req.session.memberNo);
+    datas.push(req.session.memberNo);
+    datas.push(req.session.memberNo);
+    datas.push(req.session.memberNo);
+    datas.push(req.session.memberNo);
 
     global.queryName = 'expeople';
     var queryidname = 'endMatchList';
@@ -82,7 +87,7 @@ router.get('/', function(req, res) {
           async.each(data, function (row, callback) {
             console.log('이치 row ' , row);
             console.log('datas[j].rank = ' , datas[0].rank);
-            datas[0].rank = row.rank;
+            datas[j ].rank = row.rank;
             j++;
             callback();
 

@@ -31,11 +31,11 @@
         WHERE z.rank = (IF((select memberGender FROM MEMBER where memberNo = ?) = 'M', 0, 1 ))
         ) qq  JOIN
         (
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM1No = ? AND rank BETWEEN 0 AND 2 AND memberNo = 8 UNION
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM2No = ? AND rank BETWEEN 0 AND 2 AND memberNo = 8 UNION
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM3No = ? AND rank BETWEEN 0 AND 2 AND memberNo = 8 UNION
-        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM4No = ? AND rank BETWEEN 0 AND 2 AND memberNo = 8 UNION
-        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberWNo = ? AND rank BETWEEN 0 AND 2 AND memberNo = 8
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM1No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? UNION
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM2No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? UNION
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM3No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? UNION
+        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM4No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? UNION
+        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberWNo = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?
         ) zz ON qq.chatroomNo = zz.chatroomNo
         ) rdata JOIN MEMBER mem ON rdata.memberNo = mem.memberNo
         ) rdata2 JOIN PROFIL pr ON rdata2.memberNo = pr.memberNo  WHERE profilMainYn = 1
