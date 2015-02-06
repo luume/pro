@@ -50,6 +50,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
           } // for end
 
           global.pool.getConnection(function(err, conn) {
+            global.afeelCon = conn;
             if(err) console.error('err 발생 >>>>>', err);
 
             conn.query(query, bindQuery,  function(err, row) {
