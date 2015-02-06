@@ -16,7 +16,7 @@ router.get('/', function(req, res){
         if(err){
             res.json(err);
         }
-        if(datas == false){
+        if(datas.length == 0){
             req.session.destroy(function(err){
                 if(err) console.error('err', err);
             });
