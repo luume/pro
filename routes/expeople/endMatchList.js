@@ -69,7 +69,10 @@ router.get('/', function(req, res) {
                 res.json(err);
                 return;
             }
-
+            if(datas == false){
+                res.json({ success : 0 , message : '데이터 없음', result : null});
+                return;
+            }
          /*   if(datas.length == 0){
                 console.log('진행중인 이성 에러코드 발생');
            //     console.log({ success : 0 , message : '에러 발생', result : [ null ] });
