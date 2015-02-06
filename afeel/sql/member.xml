@@ -24,6 +24,4 @@
         SELECT memberNo FROM MEMBER WHERE memberEmail = ?
     </myquery>
 
-
-
 </query>
