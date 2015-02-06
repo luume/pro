@@ -26,6 +26,10 @@ router.get('/', function(req, res){
                     if(err){
                         res.json(err);
                     }
+                    if(datas == false){ //select 결과 row 0일때 처리
+                        res.json({ success : 0 , message : '데이터 없음', result : null});
+                        return;
+                    }
                     console.log('첫번째 처리 성공' , datas[0].memberGender);
                     callback(null, datas[0].memberGender);
                 });
@@ -42,7 +46,7 @@ router.get('/', function(req, res){
                             return;
                         }
                         if(datas == false){
-                            res.json(err);
+                            res.json({ success : 0 , message : '데이터 없음', result : null});
                             return;
                         }
                         //console.log('data',datas);

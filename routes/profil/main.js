@@ -18,10 +18,7 @@ router.get('/', function(req, res){
             return;
         }
         if(datas == false){
-            req.session.destroy(function(err){
-                if(err) console.error('err', err);
-            });
-            res.json({ success : 0 , message : '에러 발생', result : null});
+            res.json({ success : 0 , message : '데이터 없음', result : null});
             return;
         }
 
@@ -39,8 +36,6 @@ router.get('/', function(req, res){
                 callback();
 
             }, function(err){
-                //console.log('모두 성공');
-                //console.log('arr', arr);
                 profilThumbnail = arr;
                 temp = datas;
                 datas[0].profilThumbnail = arr;
