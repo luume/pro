@@ -5,6 +5,7 @@ var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
 
 router.get('/', function(req, res){
+    console.log('스토어 메인 에러!!!!!!!!!!!')
     //console.log('session',req.session.memberNo);
     var memberNo = req.session.memberNo;
     var datas = [];
