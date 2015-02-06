@@ -177,6 +177,14 @@ try{
             if (err) {
               global.afeelCon.rollback(function (err) {
                 console.log('로올백');
+
+                global.queryName = 'member';
+                afeelQuery.afeelQuery([], 'commit' , function (err, a2) {
+
+                  console.log('수동 로올백00');
+
+                });
+
               });
               errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
               return;
@@ -189,6 +197,14 @@ try{
             if (err) {
               global.afeelCon.rollback(function (err) {
                 console.log('로올백');
+                global.queryName = 'member';
+                afeelQuery.afeelQuery([], 'commit' , function (err, a2) {
+
+                  console.log('수동 로올백11');
+
+                });
+
+
               });
               errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
               return;

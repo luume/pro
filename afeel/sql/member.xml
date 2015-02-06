@@ -24,4 +24,12 @@
         SELECT memberNo FROM MEMBER WHERE memberEmail = ?
     </myquery>
 
+    <myquery id = "commit">
+        commit
+    </myquery>
+
+    <myquery id = "rollback">
+        rollback
+    </myquery>
+
 </query>
