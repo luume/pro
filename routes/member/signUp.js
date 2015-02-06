@@ -119,6 +119,14 @@ router.post('/', function(req, res) {
            return;
          }
 
+         if(selectNo == false){
+           global.afeelCon.rollback(function (err) {
+             console.log('false 셀렉트에서 로올백');
+           });
+           callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
+           return;
+         }
+
          console.log('first 2' + '퍼스트2 성공' + selectNo[0].memberNo);
          //console.log('first 2' + '퍼스트2 성공' + selectNo[0][''+memberNo+'']);
          callback(null,selectNo[0].memberNo); // 다음로 넘김
