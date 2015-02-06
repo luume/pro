@@ -37,7 +37,6 @@ router.post('/', function(req, res){
                 message : '아이디 또는 비밀번호가 틀렸습니다.',
                 result : null
             });
-
             return;
         }
         req.session.memberNo  = datas[0].memberNo;
