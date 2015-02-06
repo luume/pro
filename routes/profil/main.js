@@ -15,6 +15,7 @@ router.get('/', function(req, res){
     afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
             res.json(err);
+            return;
         }
         if(datas == false){
             req.session.destroy(function(err){
