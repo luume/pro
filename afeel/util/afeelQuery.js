@@ -85,13 +85,13 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 } // 0행 종료
 
 
-                conn.commit(function (err) {
+               /* conn.commit(function (err) {
 
                   if(err) conn.rollback();
 
                   conn.release();
                   callback(null, row);
-                });
+                });*/
 
                 //} // if end
                 //  console.log('쿼리결과', row);
