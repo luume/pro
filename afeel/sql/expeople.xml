@@ -48,13 +48,14 @@
     </myquery>
 
     <myquery id="myPrivateChatList_W">
-        <![CDATA[ select pr.privateRoomNo, (select memberName from MEMBER where memberNo = pr.memberMNo) as memberName, p.profilThumbnail,
+        select pr.privateRoomNo, (select memberName from MEMBER where memberNo = pr.memberMNo) as memberName, p.profilThumbnail,
         ifnull((select messageData from PRIVATE_MESSAGE where privateRoomNo = pr.privateRoomNo order by messageNo desc limit 0,1), "") as messageData,
         (select  DATE_FORMAT(messageDate, '%Y-%m-%d %H:%i:%S ') as messageDate from PRIVATE_MESSAGE where privateRoomNo = pr.privateRoomNo order by messageNo desc limit 0,1) as messageDate
         FROM PRIVATE_ROOM pr, PROFIL p
-        WHERE p.memberNo = pr.memberMNo AND p.profilMainYn = 1 and pr.memberWNo = ? and
-        ifnull((select messageData from PRIVATE_MESSAGE where privateRoomNo = pr.privateRoomNo order by messageNo desc limit 0,1), "") <> ""
-        order by messageDate desc ]]>
+        WHERE
+        not ifnull((select messageData from PRIVATE_MESSAGE where privateRoomNo = pr.privateRoomNo order by messageNo desc limit 0,1), "") = ""
+        and p.memberNo = pr.memberMNo AND p.profilMainYn = 1 and pr.memberWNo = ?
+        order by messageDate desc
     </myquery>
 
     <myquery id="myPrivateChatList_M">
