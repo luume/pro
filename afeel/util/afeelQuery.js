@@ -80,7 +80,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                   callback(
                     {
                       success: 0,
-                      message: '개행 결과가 존재하지 않습니다.',
+                      message: 'SQL 실행 결과가 존재하지 않습니다.',
                       result : null
                     }
                   );

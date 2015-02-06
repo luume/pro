@@ -13,6 +13,12 @@ router.post('/', function(req, res){
     datas.push(memberEmail);
     datas.push(memberPw);
 
+    var varibCheck = function (test ,num) {
+        if(test.length > num){
+
+        }
+    }
+
     global.queryName = 'member';
     var queryidname = 'loginMember';
     console.log('datas',datas);

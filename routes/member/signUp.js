@@ -42,7 +42,7 @@ router.post('/', function(req, res) {
   var memberAdd = req.body.memberAdd;
   var memberJob = req.body.memberJob;
   var profilOriginalFileName = req.files.profilOriginalFileName;
-  //console.log('profilOriginalFileName', profilOriginalFileName);
+  console.log('profilOriginalFileName의 값 = ', profilOriginalFileName);
 
 
   var varibleCheck = function (test, num) {
