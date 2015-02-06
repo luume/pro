@@ -40,7 +40,7 @@ router.get('/', function(req, res){
                 temp = datas;
                 datas[0].profilThumbnail = arr;
                 temp.aaa = arr;
-
+                global.afeelCon.release();
                 res.json({success:1, message:'ok', result:datas[0]});
             });
 

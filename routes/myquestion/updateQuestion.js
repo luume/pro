@@ -33,10 +33,13 @@ router.post('/', function(req, res){
             if(err){
                 res.json(err);
             }
-            if(datas.affectedRows == 1)
+            if(datas.affectedRows == 1) {
+                global.afeelCon.release();
                 res.json(util.successCode(res, 'success'));
-            else
-                res.json({success:0, result:{message:'질문 수정에 실패하였습니다.(DB에러)'}});
+            }else {
+                global.afeelCon.release();
+                res.json({success: 0, result: {message: '질문 수정에 실패하였습니다.(DB에러)'}});
+            }
         });
     }
 });

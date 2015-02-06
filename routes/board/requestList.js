@@ -15,6 +15,8 @@ router.get('/', function(req, res){
     afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
             res.json(err);
+            global.afeelCon.release();
+            return;
         }
         console.log('sil data', datas);
         console.log('gara data', {
@@ -24,6 +26,7 @@ router.get('/', function(req, res){
                 noticeRegDate : not.Notice().noticeRegDate
             });
         res.json(util.successCode(res, datas));
+      global.afeelCon.release();
     });
 
     var re = util.createValueObject('Request');

@@ -24,10 +24,12 @@ router.get('/:chatroomNo', function(req, res){
     afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
             res.json(err);
+            global.afeelCon.release();
             return;
         }
         if(datas == false){
             res.json({ success : 0 , message : '데이터 없음', result : null});
+            global.afeelCon.release();
             return;
         }
         //res.json(util.successCode(res, datas));
@@ -51,6 +53,7 @@ router.get('/:chatroomNo', function(req, res){
         afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
             if(err){
                 res.json(err);
+                global.afeelCon.release();
             }
             var fType = datas[0].fType;
 
@@ -59,6 +62,7 @@ router.get('/:chatroomNo', function(req, res){
             datas[0].fType = fTypeArray;
 
             console.log('데이터0', datas[0]);
+            global.afeelCon.release();
             res.json(util.successCode(res, datas));
         });
         //datas[0].rank = data[0].rank;
