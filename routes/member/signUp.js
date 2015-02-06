@@ -174,7 +174,7 @@ router.post('/', function(req, res) {
               return;
             }
             console.log('성공' + k);
-            global.afeelCon.commit();
+
           });
         }else{
           afeelQuery.afeelQuery(arr, 'insertProfil' , function (err, a2) {
@@ -186,9 +186,9 @@ router.post('/', function(req, res) {
               return;
             }
             console.log('성공' + k);
-            global.afeelCon.commit(function () {
+           /* global.afeelCon.commit(function () {
               console.log('왜 여기오냐 ..');
-            });
+            });*/
           });
         }
 
@@ -207,6 +207,7 @@ router.post('/', function(req, res) {
 
      console.log('에러는', err);
      console.log('result', result);
+     global.afeelCon.commit();
       global.afeelCon.release();
       if(result == 1) {
         res.json({success: 1, message: 'ok', result: 'success'});
