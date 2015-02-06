@@ -156,6 +156,9 @@ try{
         //arr.push(fArry.originalname);
 }catch(exception){
       console.log('으아아아아');
+    global.afeelCon.rollback(function (err) {
+      console.log('캐치문 롤백');
+    })
 }
 
         var destPath = '/home/ubuntu/test/pro/public/images/' + fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1];
