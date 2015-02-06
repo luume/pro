@@ -174,6 +174,7 @@ router.post('/', function(req, res) {
           //conn.release();
           //res.json({result:arr});
         });*/
+        console.log('이치에서 콜백을 호출하고있습니당...');
       });
 
 
@@ -206,7 +207,7 @@ router.post('/', function(req, res) {
         //conn.release();
         //res.json({result:arr});
       });*/
-
+      console.log('워터폴에서 콜백을 호출하고있습니당...');
       callback(null, 1);
     }
 
