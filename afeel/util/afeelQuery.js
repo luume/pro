@@ -68,10 +68,12 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                       result : null
                     }
                   );
+
+                  return;
                 };
 
                 if(row.affectedRows == 0 || row == null || row == undefined || row == false){
-                  // conn.release();
+                   conn.release();
                   global.isQuerySuccess = false;
                   callback(
                     {
@@ -80,16 +82,17 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                       result : null
                     }
                   );
+                  return;
                 }
 
                 //} // if end
                 //  console.log('쿼리결과', row);
                 global.isQuerySuccess = true;
-                //conn.release();
+               conn.release();
                 callback(null, row);
               }); // 쿼리 문 종료
 
-            });
+            }); // begin end
   /*          conn.query(query, bindQuery,  function(err, row) {
               console.log('쿼리 ' ,util.format(query));
               console.log('파라미터', bindQuery);
