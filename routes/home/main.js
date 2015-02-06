@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
   afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
     if(err){
       res.json(err);
-      global.afeelCon.release();
+
       return;
     }
     if(datas == false){

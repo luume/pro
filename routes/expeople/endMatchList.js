@@ -94,7 +94,7 @@ router.get('/', function(req, res) {
           async.each(data, function (row, callback) {
           //  console.log('이치 row ' , row);
         //    console.log('datas[j].rank = ' , datas[0].rank);
-            datas[j ].rank = row.rank;
+            datas[j].rank = row.rank;
             j++;
             callback();
 

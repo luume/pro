@@ -141,8 +141,8 @@ router.post('/', function(req, res) {
       console.log('여기까진 1111111111', selNo);
       console.log('여기까진 3333333333', profilOriginalFileName.length);
      // console.log('copy 데이터', Object.keys(req.files.profilOriginalFileName));
-      var oneFile = typeof profilOriginalFileName === 'object';{
-        profilOriginalFileName = [profilOriginalFileName];
+      if( typeof profilOriginalFileName === 'object'){
+        profilOriginalFileName = new Array(profilOriginalFileName);
       }
 
       async.each(profilOriginalFileName, function (fArry, callback) {
@@ -165,7 +165,7 @@ router.post('/', function(req, res) {
           console.log(file);
         });
 
-        console.log(k + '번째 쿼리가 실행중입니당.');
+
           if(k == 0){
           afeelQuery.afeelQuery(arr, 'insertProfilMain' , function (err, a2) {
             if (err) {
