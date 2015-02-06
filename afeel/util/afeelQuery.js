@@ -294,7 +294,7 @@ exports.afeelGQuery = function(bindQuery , queryId,  callback) {
           global.pool.getConnection(function(err, conn) {
             if (err) console.error('err 발생 >>>>>', err);
 
-              if(global.afeelCon == undefined || global.afeelCon == null){
+              if(global.afeelCon == undefined || global.afeelCon == null ||  global.afeelCon == '' ||  global.afeelCon  == false){
                 global.afeelCon=conn;
               }
               global.afeelCon.beginTransaction(function(err) {
