@@ -78,6 +78,7 @@ router.get('/', function(req, res) {
             }
           })();*/
           var j = 0;
+          console.log('datas = ', datas);
           async.each(data, function (row, callback) {
             console.log('이치 row ' , row);
             console.log('datas[j].rank = ' , datas[j].rank);
