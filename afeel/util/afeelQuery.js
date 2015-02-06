@@ -62,7 +62,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 console.log('파라미터', bindQuery);
                 console.log('row', row);
                 if(err){
-                  global.afeelCon.release();
+                  //global.afeelCon.release();
                   callback(
                     {
                       success: 0,
@@ -75,7 +75,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 };
 
                 if(row.affectedRows == 0 || row == null || row == undefined || row == false){
-                  global.afeelCon .release();
+                  //global.afeelCon .release();
                   global.isQuerySuccess = false;
                   callback(
                     {
