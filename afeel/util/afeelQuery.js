@@ -125,6 +125,242 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
 };  // afeelQuery end
 
 
+
+exports.afeeTransactionQuery = function(bindQuery , queryId,  callback) {
+  //console.log('확인');
+  fs.readFile(global.directoryPath + global.queryName + '.xml','utf8', function(error, data) {
+    if (error) {
+      console.log(error);
+    } else {
+
+      async.waterfall([
+          function (callback) {
+
+            digester.digest(data, function(error, result) {
+              if (error) {
+                console.log(error);
+              } else {
+
+                var tobj = {};
+                tobj = result.query.myquery;
+                //console.log('xml',result.query.myquery);
+                //console.log('렝스',result.query.myquery.length);
+                var count = 0;
+                var k;
+                for (k in tobj) {
+                  if (tobj.hasOwnProperty(k)) {
+                    //console.log(tobj.hasOwnProperty(k));
+                    count++;
+                  }
+                }
+                for(var i = 0 ; i < count; i++){
+                  if(result.query.myquery.length == undefined){
+                    if(result.query.myquery.id == queryId){
+                      query = util.format(result.query.myquery._text);
+                      break;
+                    }
+                  }
+
+                  if(result.query.myquery[i].id == queryId){
+                    query = util.format(result.query.myquery[i]._text);
+                    break;
+                  }
+                } // for end
+
+
+              }
+            });
+            callback(null, query);
+          }
+        ], function (err, result) {
+            var j = 0; // 반복횟수
+            var queryObj = [];
+            global.pool.getConnection(function(err, conn) {
+              async.eachSeries(bindQuery, function (bindData, call) {
+                global.afeelCon.beginTransaction(function (err) {
+                  conn.query(queryId[j], bindData, function (err, row) {
+                    if (err) {
+                      callback(
+                        {
+                          success: 0,
+                          message: err,
+                          result : null
+                        }
+                      );
+                      return;
+                    }
+                    if (row.affectedRows == 0 || row == null || row == undefined || row == false) {
+                      //global.afeelCon .release();
+                      console.log('0행입니다.');
+                      global.isQuerySuccess = false;
+                      conn.release();
+                      callback(
+                        {
+                          success: 0,
+                          message: 'SQL 실행 결과가 존재하지 않습니다.',
+                          result : null
+                        }
+                      );
+                      return;
+                    }
+
+                    //queryObj = new QueryArgument();
+                    //queryObj.setter_getter('queryObject' + j, row);
+
+                    global.isQuerySuccess = true;
+                    callback(null, row);
+                  }); // 쿼리 문 종료
+
+                });// end transation
+
+                j++;
+
+                call();
+              }, function (err) {
+                conn.release();
+
+              });  // end each
+         }); // poll end
+
+
+
+        }// 워터폴 종료부분
+      );
+
+
+    }
+
+  });
+
+
+};  // afeelQuery end
+
+
+
+
+
+
+
+exports.afeelGQuery = function(bindQuery , queryId,  callback) {
+  //console.log('확인');
+  fs.readFile(global.directoryPath + global.queryName + '.xml','utf8', function(error, data) {
+    if (error) {
+      console.log(error);
+    } else {
+
+      async.waterfall([
+          function (callback) {
+
+            digester.digest(data, function(error, result) {
+              if (error) {
+                console.log(error);
+              } else {
+
+                var tobj = {};
+                tobj = result.query.myquery;
+                //console.log('xml',result.query.myquery);
+                //console.log('렝스',result.query.myquery.length);
+                var count = 0;
+                var k;
+                for (k in tobj) {
+                  if (tobj.hasOwnProperty(k)) {
+                    //console.log(tobj.hasOwnProperty(k));
+                    count++;
+                  }
+                }
+                for(var i = 0 ; i < count; i++){
+                  if(result.query.myquery.length == undefined){
+                    if(result.query.myquery.id == queryId){
+                      query = util.format(result.query.myquery._text);
+                      break;
+                    }
+                  }
+
+                  if(result.query.myquery[i].id == queryId){
+                    query = util.format(result.query.myquery[i]._text);
+                    break;
+                  }
+                } // for end
+
+
+              }
+            });
+            callback(null, query);
+          }
+        ], function (err, result) {
+
+
+
+          global.pool.getConnection(function(err, conn) {
+            if (err) console.error('err 발생 >>>>>', err);
+
+              if(global.afeelCon == undefined || global.afeelCon == null){
+                global.afeelCon=conn;
+              }
+              global.afeelCon.beginTransaction(function(err) {
+                global.afeelCon.query(query, bindQuery, function (err, row) {
+
+                  if (err) {
+                    //global.afeelCon.release();
+                    console.log(queryId + ' =  ' + err);
+                    callback(
+                      {
+                        success: 0,
+                        message: err,
+                        result : null
+                      }
+                    );
+
+                    return;
+                  }
+                  ;
+
+                  if (row.affectedRows == 0 || row == null || row == undefined || row == false) {
+                    //global.afeelCon .release();
+                    console.log('0행입니다.');
+                    global.isQuerySuccess = false;
+
+                    callback(
+                      {
+                        success: 0,
+                        message: 'SQL 실행 결과가 존재하지 않습니다.',
+                        result : null
+                      }
+                    );
+                    return;
+                  }
+
+                  //} // if end
+                  //  console.log('쿼리결과', row);
+                  global.isQuerySuccess = true;
+                  //conn.release();
+                  callback(null, row);
+                }); // 쿼리 문 종료
+              });
+          });
+
+
+        }
+      );
+
+
+    }
+
+  });
+
+
+};  // afeelQuery end
+
+
+
+
+
+var QueryArgument = function(){
+  QueryArgument.prototype.setter_getter = function(name, value){  // memberNo
+    this['' + name + ''] = value;
+  };
+};
+
 exports.releaseCon = function (con) {
   con.release();
 };
