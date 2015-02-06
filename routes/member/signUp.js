@@ -143,7 +143,7 @@ router.post('/', function(req, res) {
      // console.log('copy 데이터', Object.keys(req.files.profilOriginalFileName));
 
 
-      async.each([profilOriginalFileName], function (fArry, callback) {
+      async.each(profilOriginalFileName, function (fArry, callback) {
 
         console.log('셀값 ' , selNo);
         console.log(fArry);
