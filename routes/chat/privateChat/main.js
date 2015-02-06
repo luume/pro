@@ -30,9 +30,7 @@ router.get('/:privateRoomNo', function(req, res){
             res.json({ success : 0 , message : '데이터 없음', result : null});
             return;
         }
-        //res.json(util.successCode(res, datas));
 
-        //var
         if (datas[0].memberGender == 'M') { //datas[0].memberGender 로 현재 사용자의 성별을 파악함
             console.log('남자다');
         } else {

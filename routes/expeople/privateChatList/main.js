@@ -22,7 +22,7 @@ router.get('/', function(req, res){
                 //console.log('첫번째 처리');
                 global.queryName = 'member';
                 var queryidname = 'genderMember';
-                afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+                afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
                     if(err){
                         res.json(err);
                     }
@@ -40,7 +40,7 @@ router.get('/', function(req, res){
                     //console.log('남자다');
                     global.queryName = 'expeople';
                     var queryidname = 'myPrivateChatList_M';
-                    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+                    afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
                         if(err){
                             res.json(err);
                             return;
@@ -58,7 +58,7 @@ router.get('/', function(req, res){
                     console.log('여자다');
                     global.queryName = 'expeople';
                     var queryidname = 'myPrivateChatList_W';
-                    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+                    afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
                         if(err){
                             res.json(err);
                             return;
