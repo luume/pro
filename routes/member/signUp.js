@@ -7,6 +7,8 @@ var afeelQuery = require('../../afeel/util/afeelQuery');
 var async = require('async');
 var easyimg = require('easyimage');
 
+var path = require('path');
+
 // 회원가입
 router.post('/', function(req, res) {
 
@@ -147,12 +149,12 @@ router.post('/', function(req, res) {
         arr.push(selNo);
         arr.push(fArry.originalname);
         arr.push(fArry.name);
-        arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]);
+        arr.push(fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]);
         //arr.push(fArry.originalname);
 
-
+        var destPath = path.join(__dirname, '..', 'public', 'thumbnail', fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]);
         easyimg.thumbnail({
-          src:fArry.path, dst : 'http://54.92.4.84:3000/images/'+ fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1],
+          src:fArry.path, dst : destPath,
           width:70, height:70,
           x:0, y:0
         }).then(function (file) {
