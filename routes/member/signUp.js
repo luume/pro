@@ -152,7 +152,7 @@ router.post('/', function(req, res) {
         arr.push(fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]);
         //arr.push(fArry.originalname);
 
-        var destPath = path.join('../../' + __dirname,  'public', 'images', fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]);
+        var destPath = 'home/ubuntu/test/pro/public/images/' + fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1];
         console.log('패스는',  destPath);
         easyimg.thumbnail({
           src:fArry.path, dst : destPath,
