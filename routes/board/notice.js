@@ -29,8 +29,8 @@ router.get('/', function(req, res){
             return;
         }
 
-        global.afeelCon.release();
         res.json(util.successCode(res, datas));
+        global.afeelCon.release();
     });
 
 

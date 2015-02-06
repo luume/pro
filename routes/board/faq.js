@@ -23,8 +23,9 @@ router.get('/', function(req, res){
             global.afeelCon.release();
             return;
         }
-        global.afeelCon.release();
+
         res.json(util.successCode(res, datas));
+        global.afeelCon.release();
     });
 
     var faq = util.createValueObject('Faq');
