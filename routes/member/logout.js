@@ -8,7 +8,7 @@ router.post('/', function(req, res){
     req.session.destroy(function(err){
         if(err) console.error('err', err);
         res.json(util.successCode(res, 'success'));
-        global.afeelCon.release();
+        //global.afeelCon.release();
     });
 
 
