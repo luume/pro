@@ -62,6 +62,7 @@ router.get('/', function(req, res) {
     afeelQuery.afeelQuery([req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo], queryidname , function (err, datas) {
         if(err){
             res.json(err);
+          global.afeelCon.release();
             return;
         }
         //res.json(datas);
@@ -90,7 +91,7 @@ router.get('/', function(req, res) {
             }
           })();*/
           var j = 0;
-          console.log('datas = ', datas);
+          //console.log('datas = ', datas);
           async.each(data, function (row, callback) {
           //  console.log('이치 row ' , row);
         //    console.log('datas[j].rank = ' , datas[0].rank);
