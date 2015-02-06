@@ -68,10 +68,12 @@ router.get('/', function(req, res) {
         afeelQuery.afeelQuery([req.session.memberNo], 'myRank' , function (err, data) {
             if(err){
                 res.json(err);
+              global.afeelCon.release();
                 return;
             }
             if(datas == false){
                 res.json({ success : 0 , message : '데이터 없음', result : null});
+              global.afeelCon.release();
                 return;
             }
          /*   if(datas.length == 0){
@@ -112,6 +114,7 @@ router.get('/', function(req, res) {
            // datas[0].fType = fTypeArray;
           //console.log('길이',datas.length);
             //console.log('진행중인 이성의 데이터 값ss  = ', {success:1 , message:'ok', result : datas});
+          global.afeelCon.release();
             res.json({success:1 , message:'ok', result : datas});
 
         });
