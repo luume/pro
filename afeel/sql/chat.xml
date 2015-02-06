@@ -30,12 +30,4 @@
         AND p.profilMainYn = 1
         AND c.chatroomRegDate > DATE_ADD(now(), INTERVAL -1 day) ORDER BY RAND() LIMIT 0,5
     </myquery>
-
-    <myquery id="chatMain2">
-        SELECT p.profilThumbnail
-        FROM CHATROOM c, PROFIL p
-        WHERE c.memberWNo = p.memberNo
-        AND p.profilMainYn = 1
-        AND c.chatroomRegDate > DATE_ADD(now(), INTERVAL -1 day) ORDER BY RAND() LIMIT 0,5
-    </myquery>
 </query>
