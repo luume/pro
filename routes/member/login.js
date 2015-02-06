@@ -37,13 +37,13 @@ router.post('/', function(req, res){
                 message : '아이디 또는 비밀번호가 틀렸습니다.',
                 result : null
             });
-            global.afeelCon.release();
+
             return;
         }
         req.session.memberNo  = datas[0].memberNo;
         //console.log('세션 정보 = > ', req.session);
         res.json( { success : 1 , message : 'ok' ,result : 'success'  } );
-        global.afeelCon.release();
+
     });
 
 

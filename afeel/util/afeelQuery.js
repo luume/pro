@@ -77,6 +77,8 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 if(row.affectedRows == 0 || row == null || row == undefined || row == false){
                   //global.afeelCon .release();
                   global.isQuerySuccess = false;
+                  conn.release();
+
                   callback(
                     {
                       success: 0,
@@ -90,6 +92,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 //} // if end
                 //  console.log('쿼리결과', row);
                 global.isQuerySuccess = true;
+                conn.release();
                //conn.release();
                 callback(null, row);
               }); // 쿼리 문 종료

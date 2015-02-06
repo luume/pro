@@ -44,12 +44,12 @@ router.get('/', function(req, res){
                     afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
                         if(err){
                             res.json(err);
-                            global.afeelCon.release();
+
                             return;
                         }
                         if(datas == false){
                             res.json({ success : 0 , message : '데이터 없음', result : null});
-                            global.afeelCon.release();
+
                             return;
                         }
                         //console.log('data',datas);
@@ -64,12 +64,12 @@ router.get('/', function(req, res){
                     afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
                         if(err){
                             res.json(err);
-                            global.afeelCon.release();
+
                             return;
                         }
                         if(datas == false){
                             res.json({ success : 0 , message : '데이터 없음', result : null});
-                            global.afeelCon.release();
+
                             return;
                         }
                         console.log('여자인 데이터 잘가져옴');
@@ -82,7 +82,7 @@ router.get('/', function(req, res){
         ],	function(err, results) {
             console.log('최종 처리');
             console.log('results' , results); // result <- done
-          global.afeelCon.release();
+
             res.json(util.successCode(res, results));
         }
     );

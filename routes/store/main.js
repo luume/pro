@@ -16,17 +16,17 @@ router.get('/', function(req, res){
     afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
         if(err){
             res.json(err);
-            global.afeelCon.release();
+
             return;
         }
         if(datas == false){
             res.json({ success : 0 , message : '데이터 없음', result : null});
-            global.afeelCon.release();
+
             return;
         }
         //console.log('storedata',datas);
         //console.log('garadata', {memberCash : m.Member().memberCash});
-        global.afeelCon.release();
+
         res.json(util.successCode(res, datas));
         //res.json(util.successCode(res, {
         //  memberCash : m.Member().memberCash

@@ -53,7 +53,7 @@ router.get('/:chatroomNo', function(req, res){
         afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
             if(err){
                 res.json(err);
-                global.afeelCon.release();
+
             }
             var fType = datas[0].fType;
 
@@ -62,7 +62,7 @@ router.get('/:chatroomNo', function(req, res){
             datas[0].fType = fTypeArray;
 
             console.log('데이터0', datas[0]);
-            global.afeelCon.release();
+
             res.json(util.successCode(res, datas));
         });
         //datas[0].rank = data[0].rank;

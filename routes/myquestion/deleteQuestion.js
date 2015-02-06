@@ -25,11 +25,11 @@ router.post('/', function(req, res){
             }
             if (datas.affectedRows == 1) {
                 res.json(util.successCode(res, 'success'));
-                global.afeelCon.release();
+
 
             }else {
                 res.json({success: 0, result: {message: '삭제에 실패하였습니다.(잘못된 질문번호 입력)'}});
-                global.afeelCon.release();
+
             }
         });
     }

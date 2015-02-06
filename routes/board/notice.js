@@ -19,18 +19,15 @@ router.get('/', function(req, res){
 
     afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
         if(err){
-            global.afeelCon.release();
             res.json(err);
             return;
         }
-        if(datas == false){
-            global.afeelCon.release();
+        if(datas == false){global.afeelCon.release();
             res.json({ success : 0 , message : '데이터 없음', result : null});
             return;
         }
 
         res.json(util.successCode(res, datas));
-        global.afeelCon.release();
     });
 
 

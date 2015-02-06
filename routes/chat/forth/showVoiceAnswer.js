@@ -20,15 +20,15 @@ router.get('/:chatroomNo', function(req, res){
     afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
             res.json(err);
-            global.afeelCon.release();
+
             return;
         }
         if(datas == false){
             res.json({ success : 0 , message : '데이터 없음', result : null});
-            global.afeelCon.release();
+
             return;
         }
-        global.afeelCon.release();
+
         res.json(util.successCode(res, datas));
     });
 

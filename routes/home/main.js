@@ -20,10 +20,10 @@ router.get('/', function(req, res) {
     }
     if(datas == false){
       res.json({ success : 0 , message : '데이터 없음', result : null});
-      global.afeelCon.release();
+
       return;
     }
-    global.afeelCon.release();
+
     res.json(util.successCode(res, datas));
   });
   var m = util.createValueObject('Member');
