@@ -27,8 +27,14 @@ router.get('/', function(req, res){
     afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
             res.json(err);
+            return;
+        }
+        if(datas == false){
+            res.json({ success : 0 , message : '데이터 없음', result : null});
+            return;
         }
         res.json(util.successCode(res, datas));
+
     });
 
     var cr = util.createValueObject('ChatRoom');
