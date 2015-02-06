@@ -88,7 +88,7 @@ router.post('/', function(req, res) {
 
     function (callback) {
       console.log('여기까진 12222옴');
-      afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+      afeelQuery.afeelGQuery(datas, queryidname , function (err, datas) {
         if(err){
         //  res.json(err);
           //return;
@@ -108,7 +108,7 @@ router.post('/', function(req, res) {
     },
 
      function (callback) {
-       afeelQuery.afeelQuery([memberEmail], 'selectMemberNo' , function (err, selectNo) {
+       afeelQuery.afeelGQuery([memberEmail], 'selectMemberNo' , function (err, selectNo) {
          if(err){
            //  res.json(err);
            //return;
@@ -167,7 +167,7 @@ router.post('/', function(req, res) {
 
 
           if(k == 0){
-          afeelQuery.afeelQuery(arr, 'insertProfilMain' , function (err, a2) {
+          afeelQuery.afeelGQuery(arr, 'insertProfilMain' , function (err, a2) {
             if (err) {
               global.afeelCon.rollback(function (err) {
                 console.log('로올백');
@@ -179,7 +179,7 @@ router.post('/', function(req, res) {
 
           });
         }else{
-          afeelQuery.afeelQuery(arr, 'insertProfil' , function (err, a2) {
+          afeelQuery.afeelGQuery(arr, 'insertProfil' , function (err, a2) {
             if (err) {
               global.afeelCon.rollback(function (err) {
                 console.log('로올백');
