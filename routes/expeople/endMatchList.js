@@ -92,14 +92,14 @@ router.get('/', function(req, res) {
           var j = 0;
           console.log('datas = ', datas);
           async.each(data, function (row, callback) {
-            console.log('이치 row ' , row);
-            console.log('datas[j].rank = ' , datas[0].rank);
+          //  console.log('이치 row ' , row);
+        //    console.log('datas[j].rank = ' , datas[0].rank);
             datas[j ].rank = row.rank;
             j++;
             callback();
 
           }, function(err){
-            console.log('모두 성공');
+          //  console.log('모두 성공');
             //console.log('arr', arr);
 
             //conn.release();
