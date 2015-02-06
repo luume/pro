@@ -59,7 +59,7 @@ router.get('/', function(req, res) {
       function (err, result) {
             // res.json 으로 실질적으로 쏴주는곳
       });*/
-    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+    afeelQuery.afeelQuery([req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo], queryidname , function (err, datas) {
         if(err){
             res.json(err);
             return;

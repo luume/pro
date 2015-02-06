@@ -56,8 +56,8 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
             if(err) console.error('err 발생 >>>>>', err);
 
 
-            global.afeelCon .beginTransaction(function(err) {
-              global.afeelCon .query(query, bindQuery,  function(err, row) {
+            global.afeelCon.beginTransaction(function(err) {
+              global.afeelCon.query(query, bindQuery,  function(err, row) {
                 console.log('쿼리 ' ,util.format(query));
                 console.log('파라미터', bindQuery);
                 console.log('row', row);
