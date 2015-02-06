@@ -94,7 +94,7 @@ router.post('/', function(req, res) {
           //return;
           console.log('first1 err' , err);
           callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
-       //   global.afeelCon.rollback();
+          global.afeelCon.rollback();
           return;
         }
 

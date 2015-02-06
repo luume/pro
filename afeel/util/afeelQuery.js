@@ -51,7 +51,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
 
           global.pool.getConnection(function(err, conn) {
             //if(global.afeelCon == '' || global.afeelCon == undefined == global.afeelCon == null)
-     //         global.afeelCon = conn;
+              global.afeelCon = conn;
             
             if(err) console.error('err 발생 >>>>>', err);
 
