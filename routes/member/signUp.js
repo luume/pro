@@ -84,6 +84,7 @@ router.post('/', function(req, res) {
           console.log('first1 err' , err);
           callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
           global.afeelCon.rollback();
+          return;
         }
 
 
@@ -102,6 +103,7 @@ router.post('/', function(req, res) {
            //return;
            console.log('first2 err' , err);
            callback({success:0, message:'회원가입에 실패하였습니다.(DB에러)', result:null},null)
+           return;
          }
 
          console.log('first 2' + '퍼스트2 성공' + selectNo[0].memberNo);
@@ -142,6 +144,7 @@ router.post('/', function(req, res) {
             if (err) {
               global.afeelCon.rollback();
               errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
+              return;
             }
             console.log('성공' + k);
             global.afeelCon.commit();
@@ -151,6 +154,7 @@ router.post('/', function(req, res) {
             if (err) {
               global.afeelCon.rollback();
               errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
+              return;
             }
             console.log('성공' + k);
             global.afeelCon.commit();
