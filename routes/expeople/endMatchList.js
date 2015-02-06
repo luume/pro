@@ -81,8 +81,8 @@ router.get('/', function(req, res) {
           console.log('datas = ', datas);
           async.each(data, function (row, callback) {
             console.log('이치 row ' , row);
-            console.log('datas[j].rank = ' , datas[j].rank);
-            datas[j].rank = row.rank;
+            console.log('datas[j].rank = ' , datas[0].rank);
+            datas[0].rank = row.rank;
             j++;
             callback();
 
