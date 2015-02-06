@@ -71,12 +71,25 @@ router.get('/', function(req, res) {
                 return;
             }
 */
-          (function () {
+          /*(function () {
             for(var j = 0 ; j < datas.length; j++){
               console.log(datas[j].rank + ' = ' + data[j].rank);
               datas[j].rank = data[j].rank;
             }
-          })();
+          })();*/
+          var j = 0;
+          async.each(data, function (row, callback) {
+            datas[j].rank = row.rank;
+            j++;
+            callback();
+
+          }, function(err){
+            console.log('모두 성공');
+            //console.log('arr', arr);
+
+            //conn.release();
+            //res.json({result:arr});
+          });
 
 
             //var fType = datas[0].fType;
