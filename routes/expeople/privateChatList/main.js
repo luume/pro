@@ -67,6 +67,7 @@ router.get('/', function(req, res){
                             res.json({ success : 0 , message : '데이터 없음', result : null});
                             return;
                         }
+                        console.log('여자인 데이터 잘가져옴');
                         //console.log('data',datas);
                         callback(null, datas);
                         //res.json(util.successCode(res, datas));
