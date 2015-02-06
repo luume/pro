@@ -62,6 +62,7 @@ router.get('/', function(req, res) {
     afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
             res.json(err);
+            return;
         }
         //res.json(datas);
         afeelQuery.afeelQuery([req.session.memberNo], 'myRank' , function (err, data) {
