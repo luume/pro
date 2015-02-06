@@ -13,7 +13,7 @@ router.get('/', function(req, res){
     global.queryName = 'mystore';
     var queryidname = 'myMainList';
 
-    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+    afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
         if(err){
             res.json(err);
             return;
