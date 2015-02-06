@@ -139,74 +139,22 @@ router.post('/', function(req, res) {
             }
             console.log('성공' + k);
           });
+        }else{
+          afeelQuery.afeelQuery(arr, 'insertProfil' , function (err, a2) {
+            if (err) {
+              errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
+            }
+            console.log('성공' + k);
+          });
         }
 
         k++;
-
+        callback();
       }, function(err){
 
-        /*async.each(arr, function (row, callback) {
-          console.log('row', row);
-
-          easyimg.thumbnail({
-            src:row.path, dst :row.name.split('.')[0] + '-thumbnail.' +  row.name.split('.')[1],
-            width:70, height:70,
-            x:0, y:0
-          }).then(function (file) {
-            console.log(file);
-          });
-          console.log(k + '번째 쿼리가 실행중입니당.');
-          if(k == 0){
-            afeelQuery.afeelQuery([selNo, row.originalname,  row.name,  row.name.split('.')[0] + '-thumbnail.' +  row.name.split('.')[1]], 'insertProfilMain' , function (err, a2) {
-              if (err) {
-                errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
-              }
-              console.log('성공' + k);
-            });
-          }
-
-          k++;
-
-        }, function(err){
-          console.log('모두 성공');
-          //console.log('arr', arr);
-          callback(null , 1);
-          //conn.release();
-          //res.json({result:arr});
-        });*/
         console.log('이치에서 콜백을 호출하고있습니당...');
       });
 
-
-/*      async.each(, function (row, callback) {
-        console.log('row', row);
-
-        easyimg.thumbnail({
-          src:row.path, dst :row.name.split('.')[0] + '-thumbnail.' +  row.name.split('.')[1],
-          width:70, height:70,
-          x:0, y:0
-        }).then(function (file) {
-          console.log(file);
-        });
-      console.log(k + '번째 쿼리가 실행중입니당.');
-      if(k == 0){
-        afeelQuery.afeelQuery([selNo, row.originalname,  row.name,  row.name.split('.')[0] + '-thumbnail.' +  row.name.split('.')[1]], 'insertProfilMain' , function (err, a2) {
-          if (err) {
-            errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
-          }
-          console.log('성공' + k);
-        });
-      }
-
-        k++;
-
-      }, function(err){
-        console.log('모두 성공');
-        //console.log('arr', arr);
-        callback(null , 1);
-        //conn.release();
-        //res.json({result:arr});
-      });*/
       console.log('워터폴에서 콜백을 호출하고있습니당...');
       callback(null, 1);
     }
