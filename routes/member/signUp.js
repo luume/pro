@@ -41,6 +41,15 @@ router.post('/', function(req, res) {
   var memberJob = req.body.memberJob;
   var profilOriginalFileName = req.files.profilOriginalFileName;
   //console.log('profilOriginalFileName', profilOriginalFileName);
+
+
+  var varibleCheck = function (test, num) {
+    if(test.length > num ){
+      return;
+    }
+  }
+
+
   var datas = [];
   datas.push(memberEmail);
   datas.push(memberName);
