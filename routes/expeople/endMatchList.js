@@ -73,7 +73,7 @@ router.get('/', function(req, res) {
 */
           (function () {
             for(var j = 0 ; j < datas.length; j++){
-              //console.log(datas[j].rank + ' = ' + data[j].rank);
+              console.log(datas[j].rank + ' = ' + data[j].rank);
               datas[j].rank = data[j].rank;
             }
           })();
