@@ -34,7 +34,6 @@ router.get('/', function(req, res){
                     console.log('첫번째 처리 성공' , datas[0].memberGender);
                     callback(null, datas[0].memberGender);
                 })
-                callback(null, datas);
             },
             function(memberGender, callback) {
                 console.log('넘어온 멤버 젠더', memberGender);
@@ -45,7 +44,6 @@ router.get('/', function(req, res){
                     afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
                         if(err){
                             res.json(err);
-
                             return;
                         }
                         if(datas == false){
