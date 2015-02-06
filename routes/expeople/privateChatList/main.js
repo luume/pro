@@ -19,6 +19,8 @@ router.get('/', function(req, res){
     async.waterfall([
             function(callback) {
                 console.log('첫번째 처리');
+                global.queryName = 'member';
+                var queryidname = 'genderMember';
                 afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
                     if(err){
                         res.json(err);
@@ -66,8 +68,7 @@ router.get('/', function(req, res){
 
 
 
-    //global.queryName = 'member';
-    //var queryidname = 'genderMember';
+
 
 
 
