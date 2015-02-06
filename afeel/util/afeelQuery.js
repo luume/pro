@@ -71,6 +71,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 };
 
                 if(row.affectedRows == 0 || row == undefined || row == null){
+                  console.log(' 쿼리 노개행 여기옵니다')
                   conn.rollback(function(){
                     conn.release();
                     callback(
@@ -86,7 +87,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
 
 
                 conn.commit(function (err) {
-
+                  console.log(' 커밋')
                   if(err) conn.rollback();
 
                   conn.release();
