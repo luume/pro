@@ -139,7 +139,7 @@ router.post('/', function(req, res) {
     function (selNo, callback) {
       global.queryName = 'profil';
       console.log('여기까진 1111111111', selNo);
-      console.log('여기까진 3333333333', [profilOriginalFileName].length);
+      console.log('여기까진 3333333333', profilOriginalFileName.length);
      // console.log('copy 데이터', Object.keys(req.files.profilOriginalFileName));
 
 
