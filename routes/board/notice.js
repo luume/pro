@@ -17,7 +17,7 @@ router.get('/', function(req, res){
     global.queryName = 'board';
     var queryidname = 'noticeList';
 
-    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+    afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
         if(err){
             global.afeelCon.release();
             res.json(err);
@@ -33,14 +33,7 @@ router.get('/', function(req, res){
         res.json(util.successCode(res, datas));
     });
 
-    var not = util.createValueObject('Notice');
 
-    //res.json(util.successCode(res, {
-    //    noticeNo : not.Notice().noticeNo,
-    //    noticeTitle : not.Notice().noticeTitle,
-    //    noticeContent : not.Notice().noticeContent,
-    //    noticeRegDate : not.Notice().noticeRegDate
-    //}));
 });
 
 module.exports = router;
