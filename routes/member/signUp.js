@@ -141,12 +141,12 @@ router.post('/', function(req, res) {
       console.log('여기까진 1111111111', selNo);
       console.log('여기까진 3333333333', profilOriginalFileName.length);
      // console.log('copy 데이터', Object.keys(req.files.profilOriginalFileName));
-      if( typeof profilOriginalFileName === 'object'){
+      /*if( typeof profilOriginalFileName === 'object'){
         profilOriginalFileName = new Array(profilOriginalFileName);
-      }
+      }*/
 
       async.each(profilOriginalFileName, function (fArry, callback) {
-
+try{
         console.log('셀값 ' , selNo);
         console.log(fArry);
         arr.push(selNo);
@@ -154,6 +154,9 @@ router.post('/', function(req, res) {
         arr.push(fArry.name);
         arr.push(fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]);
         //arr.push(fArry.originalname);
+}catch(exception){
+      console.log('으아아아아');
+}
 
         var destPath = '/home/ubuntu/test/pro/public/images/' + fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1];
         console.log('패스는',  destPath);
