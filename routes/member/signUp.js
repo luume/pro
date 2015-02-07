@@ -131,6 +131,7 @@ router.post('/', function(req, res) {
                                     return;
                                 }
                                 arr = [];
+                                k++;
                             }); // query end
                         }else{
                             afeelQuery.afeelQuery(arr, 'insertProfil' , function (err, a2) {
@@ -142,10 +143,11 @@ router.post('/', function(req, res) {
                                 }
                                 console.log('성공' + k);
                                 arr = [];
+                                k++;
                             }); // query end
                         }
 
-                        k++;
+
                         callback(); // 아래 err fun으로 호출
                     }, function(err){
 
