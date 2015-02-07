@@ -33,6 +33,7 @@ router.post('/', function(req, res) {
 
     var errs;
     var datas = [];
+    var arr = [];
     datas.push(memberEmail);
     datas.push(memberName);
     datas.push(memberNick);
