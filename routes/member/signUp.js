@@ -44,6 +44,9 @@ router.post('/', function(req, res) {
     datas.push(parseInt(memberHeight));
     datas.push(memberAdd);
     datas.push(memberJob);
+    global.queryName = 'member';
+    var queryidname = 'signupMember';
+
     global.pool.getConnection(function (err, conn) {
 
         conn.beginTransaction(function (err) {
