@@ -11,8 +11,8 @@ router.get('/', function(req, res) {
   var datas = [];
   global.queryName = 'chat';
   var queryidname = 'chatMain';
-
-  afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
+//잠시더미처리
+  /*afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
     if(err){
       console.log('home 에러', err);
       res.json(err);
@@ -26,26 +26,14 @@ router.get('/', function(req, res) {
     }
 
     res.json(util.successCode(res, datas));
-  });
+  });*/
   var m = util.createValueObject('Member');
 
   var p = util.createValueObject('Profil');
 
-  //res.json(util.successCode(res,
-  //  {
-  //    memberEmail : m.Member().memberEmail,
-  //    memberName : m.Member().memberName,
-  //    memberBirth : m.Member().memberBirth,
-  //    memberHobby : m.Member().memberHobby,
-  //    memberAdd : m.Member().memberAdd,
-  //    memberHeight : m.Member().memberHeight,
-  //    memberJob : m.Member().memberJob,
-  //    memberSnsYn : m.Member().memberSNSYn,
-  //    memberHPYn : m.Member().memberHPYn,
-  //    memberEmailYn : m.Member().memberEmailYn,
-  //    memberStMeeting : m.Member().memberStMeeting
-  //  }
-  //));
+  res.json({
+    profilThumbnail : ['http://54.92.4.84:3000/images/Hydrangeas-thumbnail.jpg', 'http://54.92.4.84:3000/images/Jellyfish-thumbnail.jpg', 'http://54.92.4.84:3000/images/Penguins-thumbnail.jpg', 'http://54.92.4.84:3000/images/Tulips-thumbnail.jpg', 'http://54.92.4.84:3000/images/Lighthouse-thumbnail.jpg']
+  });
 
 
 });
