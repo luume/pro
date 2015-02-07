@@ -33,7 +33,7 @@ router.post('/', function(req, res) {
 
     var errs;
     var datas = [];
-    var arr = [];
+    var k =0;
     datas.push(memberEmail);
     datas.push(memberName);
     datas.push(memberNick);
@@ -100,12 +100,13 @@ router.post('/', function(req, res) {
                         profilOriginalFileName = new Array(profilOriginalFileName);
                         console.log('오브젝트여서 배열에 담음', profilOriginalFileName);
                      }
-                    var k =0;
+
                     global.queryName = 'profil';
                     async.each(profilOriginalFileName, function (fArry, callback) {
 
                         console.log('셀값 ' , selNo);
                         console.log(fArry);
+                        var arr = [];
                         arr.push(selNo);
                         arr.push(fArry.originalname);
                         arr.push(fArry.name);
@@ -124,25 +125,25 @@ router.post('/', function(req, res) {
 
                         if(k == 0){
                             afeelQuery.afeelQuery(arr, 'insertProfilMain' , function (err, a2) {
+                                console.log('메인 k', k);
                                 console.log('메인프로필입니다.', arr);
                                 if (err) {
                                     conn.rollback();
                                     errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
                                     return;
                                 }
-                                arr = [];
                                 k++;
                             }); // query end
                         }else{
                             afeelQuery.afeelQuery(arr, 'insertProfil' , function (err, a2) {
                                 console.log('no메인프로필입니다.', arr);
+                                console.log('no메인 k.', k);
                                 if (err) {
                                     conn.rollback();
                                     errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
                                     return;
                                 }
                                 console.log('성공' + k);
-                                arr = [];
                                 k++;
                             }); // query end
                         }
