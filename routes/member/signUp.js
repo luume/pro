@@ -127,7 +127,7 @@ router.post('/', function(req, res) {
                                     errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
                                     return;
                                 }
-
+                                arr = [];
                             }); // query end
                         }else{
                             afeelQuery.afeelQuery(arr, 'insertProfil' , function (err, a2) {
@@ -137,6 +137,7 @@ router.post('/', function(req, res) {
                                     return;
                                 }
                                 console.log('성공' + k);
+                                arr = [];
                             }); // query end
                         }
 
