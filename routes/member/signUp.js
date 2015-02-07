@@ -99,6 +99,7 @@ router.post('/', function(req, res) {
                      profilOriginalFileName = new Array(profilOriginalFileName);
                      }*/
                     var k =0;
+                    global.queryName = 'profil';
                     async.each(profilOriginalFileName, function (fArry, callback) {
 
                         console.log('셀값 ' , selNo);
@@ -152,7 +153,9 @@ router.post('/', function(req, res) {
                 } // 3번쨰 워터폴 종료
             ],
                 function (err, result) {
+                    console.log('마지막 처리부분');
                     if(result == 1){
+                        console.log('커밋직전');
                         conn.commit(function (err) {
                             if(err){
                                 conn.rollback();
