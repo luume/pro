@@ -124,6 +124,7 @@ router.post('/', function(req, res) {
 
                         if(k == 0){
                             afeelQuery.afeelQuery(arr, 'insertProfilMain' , function (err, a2) {
+                                console.log('메인프로필입니다.', arr);
                                 if (err) {
                                     conn.rollback();
                                     errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
@@ -133,6 +134,7 @@ router.post('/', function(req, res) {
                             }); // query end
                         }else{
                             afeelQuery.afeelQuery(arr, 'insertProfil' , function (err, a2) {
+                                console.log('no메인프로필입니다.', arr);
                                 if (err) {
                                     conn.rollback();
                                     errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
