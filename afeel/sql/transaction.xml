@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<myquery id = "commit">
+    commit
+</myquery>
+
+<myquery id = "rollback">
+rollback
+</myquery>

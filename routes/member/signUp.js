@@ -88,7 +88,7 @@ router.post('/', function(req, res) {
 
     function (callback) {
       console.log('여기까진 12222옴');
-      afeelQuery.afeelGQuery(datas, queryidname , function (err, datas) {
+      afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
         //  res.json(err);
           //return;
@@ -98,9 +98,6 @@ router.post('/', function(req, res) {
           return;
         }
 
-
-
-
         console.log('first 1', '퍼스트1 성공');
         callback(null); // 다음로 넘김
 
@@ -108,7 +105,7 @@ router.post('/', function(req, res) {
     },
 
      function (callback) {
-       afeelQuery.afeelGQuery([memberEmail], 'selectMemberNo' , function (err, selectNo) {
+       afeelQuery.afeelQuery([memberEmail], 'selectMemberNo' , function (err, selectNo) {
          if(err){
            //  res.json(err);
            //return;
@@ -146,7 +143,7 @@ router.post('/', function(req, res) {
       }*/
 
       async.each(profilOriginalFileName, function (fArry, callback) {
-try{
+    try{
         console.log('셀값 ' , selNo);
         console.log(fArry);
         arr.push(selNo);
@@ -154,12 +151,10 @@ try{
         arr.push(fArry.name);
         arr.push(fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1]);
         //arr.push(fArry.originalname);
-}catch(exception){
+    }catch(exception){
       console.log('으아아아아');
-    global.afeelCon.rollback(function (err) {
-      console.log('캐치문 롤백');
-    })
-}
+
+    }
 
         var destPath = '/home/ubuntu/test/pro/public/images/' + fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1];
         console.log('패스는',  destPath);
@@ -173,51 +168,35 @@ try{
 
 
           if(k == 0){
-          afeelQuery.afeelGQuery(arr, 'insertProfilMain' , function (err, a2) {
+          afeelQuery.afeelQuery(arr, 'insertProfilMain' , function (err, a2) {
             if (err) {
-              global.afeelCon.rollback(function (err) {
-                console.log('로올백');
-
-                global.queryName = 'member';
-                afeelQuery.afeelQuery([], 'commit' , function (err, a2) {
-
+                global.queryName = 'transaction';
+                afeelQuery.afeelQuery([], 'rollback' , function (err, a2) {
                   console.log('수동 로올백00');
-
                 });
 
-              });
-              errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
-              return;
+                errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
+                return;
             }
-            console.log('성공' + k);
 
-          });
+          }); // query end
         }else{
-          afeelQuery.afeelGQuery(arr, 'insertProfil' , function (err, a2) {
+          afeelQuery.afeelQuery(arr, 'insertProfil' , function (err, a2) {
             if (err) {
-              global.afeelCon.rollback(function (err) {
-                console.log('로올백');
-                global.queryName = 'member';
-                afeelQuery.afeelQuery([], 'commit' , function (err, a2) {
-
+                global.queryName = 'transaction';
+                afeelQuery.afeelQuery([], 'rollback' , function (err, a2) {
                   console.log('수동 로올백11');
-
                 });
 
-
-              });
               errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
               return;
             }
             console.log('성공' + k);
-           /* global.afeelCon.commit(function () {
-              console.log('왜 여기오냐 ..');
-            });*/
-          });
+          }); // query end
         }
 
         k++;
-        callback();
+        callback(); // 아래 err fun으로 호출
       }, function(err){
 
         console.log('이치에서 콜백을 호출하고있습니당...');
@@ -225,14 +204,20 @@ try{
 
       console.log('워터폴에서 콜백을 호출하고있습니당...');
       callback(null, 1);
-    }
+    } // 3번쨰 워터폴 종료
 
   ], function (err, result) {
 
      console.log('에러는', err);
      console.log('result', result);
-     global.afeelCon.commit();
-      global.afeelCon.release();
+     /*global.afeelCon.commit();
+      global.afeelCon.release();*/
+     afeelQuery.afeelQuery([], 'commit' , function (err, a2) {
+         //console.log('수동 로올백11');
+         res.json({success: 1, message: 'ok', result: 'success'});
+     });
+
+
       if(result == 1) {
         res.json({success: 1, message: 'ok', result: 'success'});
       }else{
