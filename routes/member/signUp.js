@@ -150,7 +150,7 @@ router.post('/', function(req, res) {
                     callback(null, 1);
                 } // 3번쨰 워터폴 종료
             ],
-                function (err, reult) {
+                function (err, result) {
                     if(result == 1){
                         conn.commit(function (err) {
                             if(err){
