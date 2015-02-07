@@ -69,7 +69,7 @@ var storeRechargeCash = require('./store/rechargeCash');
 var storeFreeRechargeList = require('./store/freeRechargeList');
 
 
-
+var ftest = require('./member/f');
 
 router.use('/member/signup', memberSignUp);
 router.use('/member/signupsns', memberSignUpSns);
@@ -80,6 +80,7 @@ router.use('/member/editpassword', memberEditPassword);
 router.use('/member/push', memberPush);
 router.use('/member/withdraw', memberWithDraw);
 router.use('/member/emailcheck', memberEmailCheck);
+router.use('/member/f', ftest); // 페이스북테스트용
 
 
 router.use('/home', homeMain);

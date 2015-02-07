@@ -218,11 +218,11 @@ router.post('/', function(req, res) {
      });
 
 
-      if(result == 1) {
+     /* if(result == 1) {
         res.json({success: 1, message: 'ok', result: 'success'});
       }else{
         res.json(err);
-      }
+      }*/
   }
 );
 
