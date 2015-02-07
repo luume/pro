@@ -95,9 +95,11 @@ router.post('/', function(req, res) {
                     console.log('여기까진 1111111111', selNo);
                     console.log('여기까진 3333333333', profilOriginalFileName.length);
                     // console.log('copy 데이터', Object.keys(req.files.profilOriginalFileName));
-                    /*if( typeof profilOriginalFileName === 'object'){
-                     profilOriginalFileName = new Array(profilOriginalFileName);
-                     }*/
+                    if( profilOriginalFileName.constructor == Object){
+                        console.log('오브젝트여서 배열에 담기전', profilOriginalFileName);
+                        profilOriginalFileName = new Array(profilOriginalFileName);
+                        console.log('오브젝트여서 배열에 담음', profilOriginalFileName);
+                     }
                     var k =0;
                     global.queryName = 'profil';
                     async.each(profilOriginalFileName, function (fArry, callback) {
