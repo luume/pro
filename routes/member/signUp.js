@@ -212,6 +212,7 @@ router.post('/', function(req, res) {
      console.log('result', result);
      /*global.afeelCon.commit();
       global.afeelCon.release();*/
+         global.queryName = 'transaction';
      afeelQuery.afeelQuery([], 'commit' , function (err, a2) {
          //console.log('수동 로올백11');
          res.json({success: 1, message: 'ok', result: 'success'});
