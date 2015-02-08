@@ -37,8 +37,6 @@ router.post('/', function(req, res) {
     }); // 트랜잭션 종료
   });
 
-
-  res.json(util.successCode(res,'[success]'));
 });
 
 module.exports = router;
