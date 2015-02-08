@@ -20,11 +20,13 @@ router.post('/', function(req, res) {
       res.json(err);
       return;
     }
-    if(datas == false){
-      res.json({ success : 0 , message : '데이터 없음', result : null});
+    if(datas.length == 1){
+      res.json({ success : 0 , message : 'Email 중복', result : null});
       return;
     }
-    console.log('dd',datas.length);
+    else {
+      res.json(util.successCode(res, '[success]'));
+    }
 
     //res.json(util.successCode(res, datas));
   });
