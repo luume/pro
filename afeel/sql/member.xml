@@ -32,6 +32,10 @@
         UPDATE MEMBER SET memberPushYn = 0 WHERE memberNo = ?
     </myquery>
 
+    <myquery id = "editPasswordMember">
+        UPDATE MEMBER SET memberPw = ? WHERE memberNo = ?
+    </myquery>
+
 
 
 </query>
