@@ -14,4 +14,8 @@
     <myquery id="myquestionRandom">
         SELECT questionNo, questionData, questionGuideData, (select memberGender FROM MEMBER where memberNo=?) as memberGender from QUESTION where questionType=? order by RAND() limit 0,1;
     </myquery>
+
+    <myquery id="regMyquestion">
+        INSERT INTO QUESTION(memberNo, questionData, questionGuideData, questionType, questionRegDate) values (?,?,?,0,NOW())
+    </myquery>
 </query>
