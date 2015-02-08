@@ -16,10 +16,10 @@ router.post('/', function(req, res) {
   var queryidname = 'checkEmailMember';
 
   afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
-    if(err){
-      res.json(err);
-      return;
-    }
+    //if(err){
+    //  res.json(err);
+    //  return;
+    //}
     if(datas.length == 1){
       res.json({ success : 0 , message : 'Email 중복', result : null});
       return;
@@ -34,5 +34,4 @@ router.post('/', function(req, res) {
   //res.json(util.successCode(res, 'success'));
 
 });
-
 module.exports = router;
