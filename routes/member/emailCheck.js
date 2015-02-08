@@ -24,7 +24,7 @@ router.post('/', function(req, res) {
       res.json({ success : 0 , message : '데이터 없음', result : null});
       return;
     }
-    console.log(datas);
+    console.log('dd',datas.length);
 
     //res.json(util.successCode(res, datas));
   });
