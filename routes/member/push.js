@@ -79,16 +79,15 @@ router.post('/', function(req, res){
         ],	function(err, results) {
             //console.log('최종 처리');
             console.log('results' , results); // result <- done
-
             res.json(util.successCode(res, results));
         }
     );
 
     var m = util.createValueObject('Member');
 
-    res.json(util.successCode(res, {
-        memberPushYn : m.Member().memberPushYn
-    }));
+    //res.json(util.successCode(res, {
+    //    memberPushYn : m.Member().memberPushYn
+    //}));
 
 });
 
