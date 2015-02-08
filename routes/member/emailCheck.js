@@ -20,7 +20,9 @@ router.post('/', function(req, res) {
     //  res.json(err);
     //  return;
     //}
-    if(datas.length == 1){
+    if(datas.length == undefined){
+      res.json(util.successCode(res, '[success]'));
+    } else if(datas.length > 0){
       res.json({ success : 0 , message : 'Email 중복', result : null});
       return;
     }
