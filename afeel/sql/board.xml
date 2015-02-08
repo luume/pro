@@ -12,4 +12,9 @@
         SELECT noticeTitle, noticeContent,
         DATE_FORMAT(noticeRegDate, '%Y-%m-%d %H:%i:%S ') as noticeRegDate from NOTICE;
     </myquery>
+
+    <myquery id="regRequest">
+        INSERT INTO REQUEST(memberNo, requestTitle, requestContent, requestRegdate) values (?,?,?,NOW())
+    </myquery>
+
 </query>
