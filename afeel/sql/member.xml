@@ -36,6 +36,10 @@
         UPDATE MEMBER SET memberPw = ? WHERE memberNo = ?
     </myquery>
 
+    <myquery id = "checkEmailMember">
+        SELECT memberEmail from MEMBER WHERE memberEmail = ?
+    </myquery>
+
 
 
 </query>
