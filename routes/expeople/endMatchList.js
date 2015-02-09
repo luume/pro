@@ -33,8 +33,7 @@ router.get('/', function(req, res) {
     datas.push(req.session.memberNo);
     datas.push(req.session.memberNo);
 
-    global.queryName = 'expeople';
-    var queryidname = 'endMatchList';
+
   //  console.log('datas', datas);
 
     /*async.waterfall([
@@ -60,13 +59,14 @@ router.get('/', function(req, res) {
       function (err, result) {
             // res.json 으로 실질적으로 쏴주는곳
       });*/
-
+    var queryidname = 'endMatchList';
     var temp;
     var j =0;
     async.waterfall([
 
             function (call) {
-                afeelQuery.afeelQuery([req.session.memberNo], 'memberGender', function (err, gender) {
+                global.queryName = 'member';
+                afeelQuery.afeelQuery([req.session.memberNo], 'genderMember', function (err, gender) {
                     if(err){
                         console.log('에러',err);
                         res.json(err);
@@ -79,6 +79,7 @@ router.get('/', function(req, res) {
 
             function (gender, call) {
                 console.log('엔드매치 실행전');
+                global.queryName = 'expeople';
                 if(gender == 'M'){
                     afeelQuery.afeelQuery(datas, 'endMatchListM', function (err, datarow) {
                         if(err){
