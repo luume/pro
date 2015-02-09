@@ -42,8 +42,8 @@ var privateChatMain = require('./chat/privateChat/main');
 var privateChatSendChat = require('./chat/privateChat/sendChat');
 
 // 프로필
-var profilMain = require('./profil/main');
 var profilYour = require('./profil/yourprofil');
+var profilMain = require('./profil/main');
 var profilProfilupdate = require('./profil/profilUpdate');
 
 // 게시판 관련
@@ -108,9 +108,8 @@ router.use('/chat/privatechat', privateChatMain);
 router.use('/chat/privatechat/createprivatechat', privateChatCreatePrivateChat);
 router.use('/chat/privatechat/sendchat', privateChatSendChat);
 
-
-router.use('/profil', profilMain);
 router.use('/profil/yourprofil', profilYour);
+router.use('/profil', profilMain);
 router.use('/profil/profilupdate', profilProfilupdate);
 
 
