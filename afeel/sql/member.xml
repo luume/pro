@@ -51,7 +51,7 @@
     </myquery>
 
     <myquery id = "feelingMember">
-        UPDATE MEMBER SET memberWithdraw=1 and memberWithdrawReason=? WHERE memberNo=?
+        UPDATE MEMBER SET memberWithdraw=1 , memberWithdrawReason=? WHERE memberNo=?
     </myquery>
 
 
