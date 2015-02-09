@@ -49,7 +49,7 @@ router.post('/', function(req, res){
 });
 
 
-router.post('/:memberToken', function(req, res){
+router.get('/:memberToken', function(req, res){
     console.log('토큰값이 넘어오고있습니다.');
     var memberToken = req.params.memberToken;
 
