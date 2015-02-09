@@ -35,7 +35,7 @@ router.get('/', function(req, res) {
     //
     //}
 
-    console.log('datas[0]',datas);
+    console.log('datas[0]',datas[0].profilThumbnail);
 
 
     //var homeArray = new Array();
