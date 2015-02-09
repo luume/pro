@@ -107,38 +107,52 @@ router.get('/', function(req, res) {
             },
 
             function (datarow, call) {
-                afeelQuery.afeelQuery([req.session.memberNo], 'myRate1' , function (err, data) {
-                    if(err){
-                        res.json(err);
+                var ar = [];
 
-                        return;
-                    }
-                    console.log('2번쨰 워터폴 함수', data);
-                    if(data == false){
+                for(var i =0 ; i < datarow.length; i ++){
+                    ar.push(datarow[i].memberNo);
+                }
+                temp = datarow;
+                async.each(ar, function (memberNoArray, callback) {
 
-                       call(null, 0);
-
-                        return;
-                    }
-                    temp = datarow;
-                    async.each(datarow, function (row, callback) {
-                        //  console.log('이치 row ' , row);
-                        //    console.log('datas[j].rank = ' , datas[0].rank);
-                        console.log('이치문 돔');
-                        if(datarow[j] == undefined){
+                    afeelQuery.afeelQuery([memberNoArray], 'myRate1' , function (err, data) {
+                        if(err){
                             res.json(err);
-                            return;
-                        }else{
-                            temp[j].memberRate = row;
-                            callback();
-                        }
-                        j++;
-                    }, function(err){
-                        console.log('temp는 ', temp);
-                        call(null, 1);
-                    });
 
-                }); // 쿼리
+                            return;
+                        }
+                        console.log('2번쨰 워터폴 함수', data);
+                        if(data == false){
+
+                            call(null, 0);
+
+                            return;
+                        }
+
+                        async.each(datarow, function (row, callback) {
+                            //  console.log('이치 row ' , row);
+                            //    console.log('datas[j].rank = ' , datas[0].rank);
+                            console.log('이치문 돔');
+                            if(datarow[j] == undefined){
+                                res.json(err);
+                                return;
+                            }else{
+                                temp[j].memberRate = row;
+                                callback();
+                            }
+                            j++;
+                        }, function(err){
+                            console.log('temp는 ', temp);
+                            callback();
+                        });
+
+                    }); // 쿼리
+
+                }, function(err){
+                    call(null, 1);
+                });
+
+
             } // 2번쨰워터폴종료
             
         ],
@@ -147,14 +161,16 @@ router.get('/', function(req, res) {
             if(result==1){
                 res.json({success:1 , message:'ok', result : temp});
             }else{
-                afeelQuery.afeelQuery([req.session.memberNo], 'myRate2' , function (err, data) {
+                console.log('망햇어요 ㅡㅡ');
+                res.json({success:1 , message:'ok', result : temp});
+               /* afeelQuery.afeelQuery([req.session.memberNo], 'myRate2' , function (err, data) {
                     if(err){
                         res.json(err);
                         return;
                     }
 
                     res.json({success:1 , message:'ok', result : temp});
-                });
+                });*/
 
             }
 
