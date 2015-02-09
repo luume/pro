@@ -68,6 +68,7 @@ router.get('/:memberTo', function(req, res){
                             profilThumbnail = arr;
                             temp = datas;
                             datas[0].profilThumbnail = arr;
+                            datas[0].memberRate = memberdata.memberRate;
                             temp.aaa = arr;
 
                             res.json({success:1, message:'ok', result:datas[0]});
