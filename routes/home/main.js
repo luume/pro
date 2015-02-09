@@ -36,8 +36,9 @@ router.get('/', function(req, res) {
     //}
     var arr = [];
     for(i=0; i<datas.length; i++){
+      arr.push(datas[i]);
+      //arr.push(datas[i].profilThumbnail);
 
-      arr.push(datas[i].profilThumbnail);
       //datas[i].profilThumbnail = arr;
       //[i].profilThumbnail = arr;
     }
