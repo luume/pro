@@ -134,7 +134,8 @@ router.get('/', function(req, res) {
                             //    console.log('datas[j].rank = ' , datas[0].rank);
                             console.log('이치문 돔');
                             if(datarow[j] == undefined){
-                                res.json(err);
+                                //res.json(err);
+                                call(null, 0);
                                 return;
                             }else{
                                 temp[j].memberRate = row;
