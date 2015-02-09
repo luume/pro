@@ -43,7 +43,7 @@
     <myquery id = "feelingMember">
         SELECT feelingCode1, feelingCode2, feelingCode3, memberRate from
         FEELING
-        where memberTo = 8 and memberNo = 4
+        where memberTo = ? and memberNo = ?
     </myquery>
 
 
