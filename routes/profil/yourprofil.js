@@ -71,7 +71,8 @@ router.get('/:memberTo', function(req, res){
                             datas[0].profilThumbnail = arr;
                             temp.aaa = arr;
 
-                            res.json({success:1, message:'ok', result:datas[0]});
+                            //res.json({success:1, message:'ok', result:});
+                            callback(null, datas[0]);
                         });
 
                     });
