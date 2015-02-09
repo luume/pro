@@ -70,7 +70,7 @@ router.post('/:memberToken', function(req, res){
             res.json(err);
             return;
         }
-        console.log('페이스북 쿼리 결과,' datas);
+        console.log('페이스북 쿼리 결과,', datas);
         if(datas == null || datas == false){
             console.log('페이스북 토큰이 노존재');
             res.json({success:0, message:'토큰이 존재하지 않습니다.', result:null});
