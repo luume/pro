@@ -31,17 +31,17 @@ router.get('/:memberTo', function(req, res){
 
             },
             function(memberdata, callback) {
-                console.log('memberdata.feelingCode1' , memberdata.feelingCode1);
+                //console.log('memberdata.feelingCode1' , memberdata.feelingCode1);
                 var datas = [];
-                datas.push(memberdata[0].feelingCode1);
-                datas.push(feelingCode2);
-                datas.push(feelingCode3);
-                datas.push(memberNo);
+                datas.push(memberdata.feelingCode1);
+                datas.push(memberdata.feelingCode2);
+                datas.push(memberdata.feelingCode3);
+                datas.push(memberTo);
 
                 global.queryName = 'profil';
                 var queryidname = 'profilYour';
 
-                afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
+                afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
                     if(err){
                         res.json(err);
                         return;
@@ -53,7 +53,7 @@ router.get('/:memberTo', function(req, res){
 
                     var profilThumbnail = [];
                     var temp;
-                    afeelQuery.afeelQuery([req.session.memberNo], 'profilFileSelect', function (err, profilName) {
+                    afeelQuery.afeelQuery([memberTo], 'profilFileSelect', function (err, profilName) {
                         if(err){res.json(err);}
 
 
@@ -83,9 +83,6 @@ router.get('/:memberTo', function(req, res){
             res.json(util.successCode(res, results));
         }
     );
-
-
-
 
 
     var m = util.createValueObject('Member');
