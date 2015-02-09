@@ -37,7 +37,7 @@
         ) zz ON qq.chatroomNo = zz.chatroomNo
         ) rdata JOIN MEMBER mem ON rdata.memberNo = mem.memberNo
         ) rdata2 JOIN PROFIL pr ON rdata2.memberNo = pr.memberNo  WHERE profilMainYn = 1
-        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo GROUP BY chatroomNo
+        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo GROUP BY chatroomNo HAVING aaa.memberNo!= (SELECT deleteMemberNo FROM FILTERING WHERE memberNo = ?)
     </myquery>
 
     <myquery id="endMatchListW">
@@ -77,7 +77,7 @@
         ) zz ON qq.chatroomNo = zz.chatroomNo
         ) rdata JOIN MEMBER mem ON rdata.memberNo = mem.memberNo
         ) rdata2 JOIN PROFIL pr ON rdata2.memberNo = pr.memberNo  WHERE profilMainYn = 1
-        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo GROUP BY chatroomNo
+        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo GROUP BY chatroomNo HAVING aaa.memberNo!= (SELECT deleteMemberNo FROM FILTERING WHERE memberNo = ?)
     </myquery>
 
     <myquery id="myRate1">
@@ -110,8 +110,8 @@
         order by messageDate desc
     </myquery>
 
-    <myquery id="deleteMatchList">
-        select memberRate FROM FEELING WHERE memberTo = ?
+    <myquery id="insertFiltering">
+        INSERT INTO FILTERING() VALUES(0, ?, ?, ?)
     </myquery>
 
 </query>

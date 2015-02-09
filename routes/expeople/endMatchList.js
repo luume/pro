@@ -32,6 +32,7 @@ router.get('/', function(req, res) {
     datas.push(req.session.memberNo);
     datas.push(req.session.memberNo);
     datas.push(req.session.memberNo);
+    datas.push(req.session.memberNo);
 
 
   //  console.log('datas', datas);
@@ -245,15 +246,15 @@ router.get('/', function(req, res) {
 
 router.get('/:chartroomNo', function(req, res) {
     var chartroomNo = req.params.chartroomNo;
-
-
-    afeelQuery.afeelQuery([chartroomNo], 'deleteMatchList', function (err, gender) {
+    var deleteMemberNo = req.body.memberNo;
+    console.log('진행중인 이성 삭제 진입', chartroomNo );
+    console.log('진행중인 이성 삭제 진입', deleteMemberNo );
+    afeelQuery.afeelQuery([req.session.memberNo, deleteMemberNo, chartroomNo], 'insertFiltering', function (err, gender) {
         if(err){
             console.log('에러',err);
             res.json(err);
             return;
         }
-        console.log('0번쨰 워터폴 함수', gender);
         res.json({success : 1 , message : 'ok', result: [ 'success' ] });
     });
 });
