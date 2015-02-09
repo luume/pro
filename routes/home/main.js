@@ -24,16 +24,16 @@ router.get('/', function(req, res) {
 
       return;
     }
-    for(i=0; i<datas.length; i++){
-      var arr = [];
-      arr.push(datas[i].profilThumbnail);
-      //console.log(datas[i]);
-      profilThumbnail = arr;
-      temp = datas;
-      datas[i].profilThumbnail = arr;
-      temp.aaa = arr;
-
-    }
+    //for(i=0; i<datas.length; i++){
+    //  var arr = [];
+    //  arr.push(datas[i].profilThumbnail);
+    //  //console.log(datas[i]);
+    //  profilThumbnail = arr;
+    //  temp = datas;
+    //  datas[i].profilThumbnail = arr;
+    //  temp.aaa = arr;
+    //
+    //}
 
     console.log('datas[0]',datas);
 
