@@ -5,7 +5,7 @@ var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
 var async = require('async');
 router.get('/:memberTo', function(req, res){
-    var memberNo = req.session.memberNo; //현재 사용자
+    var memberNo = 4; //현재 사용자
     var memberTo = req.params.memberTo; //프로필을 볼 사용자
     var datas = [];
     datas.push(memberNo);
