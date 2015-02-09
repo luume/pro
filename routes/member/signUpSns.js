@@ -3,14 +3,25 @@ var router = express.Router();
 
 var util = require('../../afeel/util/vo');
 
-var graph = require('fbgraph');                  
+var graph = require('fbgraph');
 
 // 회원가입(SNS 연동)
 router.post('/', function(req, res) {
 
+  var memberToken = req.body.memberToken;
+  var memberNick = req.body.memberNick;
+  var memberTel = req.body.memberTel;
+  var memberGender = req.body.memberGender;
+  var memberBirth = req.body.memberBirth;
+  var memberHobby = req.body.memberHobby;
+  var memberHeight = req.body.memberHeight;
+  var memberAdd = req.body.memberAdd;
+  var memberJob = req.body.memberJob;
+
   var m = util.createValueObject('Member');
 
   var p = util.createValueObject('Profil');
+
 
   res.json(util.successCode(res,
     {
