@@ -66,6 +66,7 @@ router.get('/', function(req, res) {
     async.waterfall([
 
             function (call) {
+                console.log('엔드매치 실행전');
                 afeelQuery.afeelQuery(datas, queryidname, function (err, datarow) {
                     if(err){
                         res.json(err);
