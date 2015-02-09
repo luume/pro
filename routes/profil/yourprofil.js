@@ -25,13 +25,13 @@ router.get('/:memberTo', function(req, res){
                         res.json({ success : 0 , message : '데이터 없음', result : null});
                         return;
                     }
-                    console.log('첫번째 처리 성공' , datas[0]);
+                    //console.log('첫번째 처리 성공' , datas[0]);
                     callback(null, datas[0]);
                 })
 
             },
             function(memberdata, callback) {
-
+                console.log('첫번째 처리 성공' , memberdata);
                 var datas = [];
                 datas.push(memberdata[0].feelingCode1);
                 datas.push(feelingCode2);
