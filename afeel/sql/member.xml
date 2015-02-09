@@ -8,6 +8,10 @@
         SELECT memberNo, memberGender FROM MEMBER WHERE memberEmail = ? AND memberPw = ? AND memberWithdraw = 0
     </myquery>
 
+    <myquery id="facebookLoginMember">
+        SELECT memberNo, memberGender FROM MEMBER WHERE memberToken = ?
+    </myquery>
+
     <myquery id="editPasswordList">
         SELECT memberPw FROM MEMBER WHERE memberNo = ?
     </myquery>
