@@ -27,8 +27,9 @@ router.get('/', function(req, res) {
     for(i=0; i<datas.length; i++){
       var arr = [];
       arr.push(datas);
+      console.log(datas[i]);
     }
-    console.log(arr);
+
 
     //var homeArray = new Array();
     //res.json(util.successCode(res, homeArray))
