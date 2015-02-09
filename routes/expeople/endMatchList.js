@@ -300,7 +300,7 @@ router.post('/:chartroomNo', function(req, res) {
             res.json(err);
             return;
         }
-        res.json({success : 1 , message : 'ok', result: [ 'success' ] });
+        res.json({success : 1 , message : 'ok', result:  'success'  });
     });
 });
 
