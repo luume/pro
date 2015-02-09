@@ -67,20 +67,19 @@ router.post('/:memberToken', function(req, res){
     console.log('datas',datas);
     afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
-            res.json(err);
-            return;
-        }
-        console.log('페이스북 쿼리 결과,', datas);
-        if(datas == null || datas == false){
+            //res.json(err);
             console.log('페이스북 토큰이 노존재');
             res.json({success:0, message:'토큰이 존재하지 않습니다.', result:null});
             return;
-        }else{
-            console.log('페이스북 토큰이 존재');
-            req.session.memberNo  = datas[0].memberNo;
-            res.json( { success : 1 , message : 'ok' ,result : datas  } );
-            return;
         }
+        console.log('페이스북 쿼리 결과,', datas);
+
+
+        console.log('페이스북 토큰이 존재');
+        req.session.memberNo  = datas[0].memberNo;
+        res.json( { success : 1 , message : 'ok' ,result : datas  } );
+        return;
+
 
         //console.log('세션 정보 = > ', req.session);
 
