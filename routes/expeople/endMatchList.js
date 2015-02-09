@@ -61,6 +61,7 @@ router.get('/', function(req, res) {
       });*/
 
     var temp;
+    var j =0;
     async.waterfall([
 
             function (call) {
