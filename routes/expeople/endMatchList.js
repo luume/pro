@@ -304,4 +304,17 @@ router.post('/:chartroomNo', function(req, res) {
     });
 });
 
+
+router.get('/reset', function(req, res) {
+
+    afeelQuery.afeelQuery([], 'reset', function (err, gender) {
+        if(err){
+            console.log('에러',err);
+            res.json(err);
+            return;
+        }
+        res.json({success : 1 , message : 'ok', result:  'success'  });
+    });
+});
+
 module.exports = router;
