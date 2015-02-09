@@ -97,6 +97,7 @@ router.get('/', function(req, res) {
                                 callback();
                         }
                     }, function(err){
+                        console.log('temp는 ', temp);
                         call(null, 1);
                     });
 
@@ -105,7 +106,7 @@ router.get('/', function(req, res) {
             
         ],
         function (err, result) {
-
+            console.log('마지막 temp ', temp);
             if(result==1){
                 res.json({success:1 , message:'ok', result : temp});
             }
