@@ -70,7 +70,7 @@ router.get('/', function(req, res) {
                         res.json(err);
                         return;
                     }
-
+                    console.log('첫번쨰 워터폴 함수', datas);
                     call(null, datas)
                 });
             },
@@ -82,7 +82,7 @@ router.get('/', function(req, res) {
 
                         return;
                     }
-
+                    console.log('2번쨰 워터폴 함수', data);
                     if(data == false){
 
                        call(null, 0);
