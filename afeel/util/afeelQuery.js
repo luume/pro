@@ -22,6 +22,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
     } else {
 
       async.waterfall([
+
         function (callback) {
 
           digester.digest(data, function(error, result) {

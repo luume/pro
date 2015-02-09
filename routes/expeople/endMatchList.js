@@ -66,15 +66,41 @@ router.get('/', function(req, res) {
     async.waterfall([
 
             function (call) {
-                console.log('엔드매치 실행전');
-                afeelQuery.afeelQuery(datas, queryidname, function (err, datarow) {
+                afeelQuery.afeelQuery([req.session.memberNo], 'memberGender', function (err, gender) {
                     if(err){
+                        console.log('에러',err);
                         res.json(err);
                         return;
                     }
-                    console.log('첫번쨰 워터폴 함수', datarow);
-                    call(null, datarow)
+                    console.log('0번쨰 워터폴 함수', gender);
+                    call(null, gender)
                 });
+            },
+
+            function (gender, call) {
+                console.log('엔드매치 실행전');
+                if(gender == 'M'){
+                    afeelQuery.afeelQuery(datas, 'endMatchListM', function (err, datarow) {
+                        if(err){
+                            console.log('에러',err);
+                            res.json(err);
+                            return;
+                        }
+                        console.log('첫번쨰 워터폴 함수', datarow);
+                        call(null, datarow)
+                    });
+                }else if(gender == 'W') {
+                    datas.pop();
+                    afeelQuery.afeelQuery(datas, 'endMatchListW', function (err, datarow) {
+                        if (err) {
+                            console.log('에러', err);
+                            res.json(err);
+                            return;
+                        }
+                        console.log('첫번쨰 워터폴 함수', datarow);
+                        call(null, datarow)
+                    });
+                }
             },
 
             function (datarow, call) {
