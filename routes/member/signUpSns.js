@@ -5,6 +5,13 @@ var util = require('../../afeel/util/vo');
 
 //var graph = require('fbgraph');
 var fbgraph = require('fbgraphapi');
+/*
+router.use(fbgraph.auth( {
+  appId : "1535434773399452",
+  appSecret : "dd3dd990afd2bd570ab00631a3c8a652",
+  redirectUri : "http://54.92.4.84:80/"
+}));*/
+
 // 회원가입(SNS 연동)
 router.post('/', function(req, res) {
 
@@ -22,7 +29,7 @@ router.post('/', function(req, res) {
 
   var p = util.createValueObject('Profil');
 
-  var fb = new fbgraph.Facebook(accessToken);
+  var fb = new fbgraph.Facebook(memberToken);
   fb.me(function(err, me) {
     if(err)console.error('fbGraph에러입니다', err);
 
