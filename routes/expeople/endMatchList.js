@@ -289,7 +289,7 @@ router.get('/', function(req, res) {
 
 });
 
-router.get('/:chartroomNo', function(req, res) {
+router.post('/:chartroomNo', function(req, res) {
     var chartroomNo = req.params.chartroomNo;
     var deleteMemberNo = req.body.memberNo;
     console.log('진행중인 이성 삭제 진입', chartroomNo );
