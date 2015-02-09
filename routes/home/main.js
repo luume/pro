@@ -24,8 +24,8 @@ router.get('/', function(req, res) {
 
       return;
     }
-
-    res.json(util.successCode(res, datas));
+    var homeArray = new Array(datas);
+    res.json(util.successCode(res, homeArray))
   });
   var m = util.createValueObject('Member');
 
