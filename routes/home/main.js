@@ -24,8 +24,14 @@ router.get('/', function(req, res) {
 
       return;
     }
-    var homeArray = new Array(datas);
-    res.json(util.successCode(res, homeArray))
+    for(i=0; i<datas.length; i++){
+      var arr = [];
+      arr.push(datas);
+    }
+    console.log(arr);
+
+    //var homeArray = new Array();
+    //res.json(util.successCode(res, homeArray))
   });
   var m = util.createValueObject('Member');
 
