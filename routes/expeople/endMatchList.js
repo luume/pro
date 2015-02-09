@@ -81,6 +81,7 @@ router.get('/', function(req, res) {
                 console.log('엔드매치 실행전');
                 global.queryName = 'expeople';
                 if(gender == 'M'){
+                    console.log('남자다');
                     afeelQuery.afeelQuery(datas, 'endMatchListM', function (err, datarow) {
                         if(err){
                             console.log('에러',err);
@@ -91,6 +92,7 @@ router.get('/', function(req, res) {
                         call(null, datarow)
                     });
                 }else if(gender == 'W') {
+                    console.log('여자다');
                     datas.pop();
                     afeelQuery.afeelQuery(datas, 'endMatchListW', function (err, datarow) {
                         if (err) {
