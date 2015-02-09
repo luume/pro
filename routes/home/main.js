@@ -34,8 +34,9 @@ router.get('/', function(req, res) {
     //  temp.aaa = arr;
     //
     //}
+    var arr = [];
     for(i=0; i<datas.length; i++){
-      var arr = [];
+      
       arr.push(datas[i].profilThumbnail);
       //datas[i].profilThumbnail = arr;
       //[i].profilThumbnail = arr;
