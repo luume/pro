@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
     }*/
 
     var memberEmail = req.body.memberEmail;
-  console.log('세션아이디ss = ' , req.session.memberNo);
+  console.log('엔드매치세션아이디ss = ' , req.session.memberNo);
     var datas = [];
     datas.push(req.session.memberNo);
     datas.push(req.session.memberNo);
@@ -86,15 +86,14 @@ router.get('/', function(req, res) {
                     async.each(datas, function (row, callback) {
                         //  console.log('이치 row ' , row);
                         //    console.log('datas[j].rank = ' , datas[0].rank);
+                        console.log('이치문 돔');
                         if(datas[j] == undefined){
                             res.json(err);
                             return;
                         } else {
                             temp[j].rank = row.rank;
                             j++;
-
-                            if(j == datas.length)
-                                callback();
+                            callback();
                         }
                     }, function(err){
                         console.log('temp는 ', temp);
