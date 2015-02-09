@@ -45,6 +45,15 @@ router.get('/', function(req, res){
             });
 
         });
+
+
+
+
+
+
+
+
+        //res.json({success:1, message:'ok', result: temp });
     });
 
     var m = util.createValueObject('Member');

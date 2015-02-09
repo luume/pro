@@ -6,17 +6,8 @@
         PROFIL inner join MEMBER where MEMBER.memberNo = PROFIL.memberNo and PROFIL.memberNo = ?
     </myquery>
 
-    <myquery id="profilYour">
-        SELECT
-        MEMBER.memberName, MEMBER.memberNick, MEMBER.memberBirth,
-        MEMBER.memberHobby, MEMBER.memberAdd, MEMBER.memberHeight,
-        MEMBER.memberJob, MEMBER.memberSNSYn, MEMBER.memberEmailYn,
-        CONCAT((select fType FROM FEELING_TYPE WHERE fTypeNo = ?), ',', (select fType FROM FEELING_TYPE WHERE fTypeNo = ?) , ',' , (select fType FROM FEELING_TYPE WHERE fTypeNo = ?)) as fType
-        FROM MEMBER WHERE MEMBER.memberNo = ?
-    </myquery>
-
     <myquery id="profilFileSelect">
-        select profilThumbnail FROM PROFIL WHERE memberNo=? order by profilMainYn desc
+        select profilThumbnail FROM PROFIL WHERE memberNo=?
     </myquery>
 
     <myquery id="insertProfil">
