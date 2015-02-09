@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
     }*/
 
     var memberEmail = req.body.memberEmail;
-  console.log('엔드매치세션아이디ss = ' , req.session.memberNo);
+ // console.log('엔드매치세션아이디ss = ' , req.session.memberNo);
     var datas = [];
     datas.push(req.session.memberNo);
     datas.push(req.session.memberNo);
@@ -68,31 +68,31 @@ router.get('/', function(req, res) {
                 global.queryName = 'member';
                 afeelQuery.afeelQuery([req.session.memberNo], 'genderMember', function (err, gender) {
                     if(err){
-                        console.log('에러',err);
+                     //   console.log('에러',err);
                         res.json(err);
                         return;
                     }
-                    console.log('0번쨰 워터폴 함수', gender);
+                  //  console.log('0번쨰 워터폴 함수', gender);
                     call(null, gender[0].memberGender);
                 });
             },
 
             function (gender, call) {
-                console.log('엔드매치 실행전');
+              //  console.log('엔드매치 실행전');
                 global.queryName = 'expeople';
                 if(gender == 'M'){
                     console.log('남자다');
                     afeelQuery.afeelQuery(datas, 'endMatchListM', function (err, datarow) {
                         if(err){
-                            console.log('에러',err);
+                       //     console.log('에러',err);
                             res.json(err);
                             return;
                         }
-                        console.log('첫번쨰 워터폴 함수', datarow);
+                       // console.log('첫번쨰 워터폴 함수', datarow);
                         call(null, datarow)
                     });
                 }else if(gender == 'W') {
-                    console.log('여자다');
+                //    console.log('여자다');
                     datas.pop();
                     afeelQuery.afeelQuery(datas, 'endMatchListW', function (err, datarow) {
                         if (err) {
@@ -100,7 +100,7 @@ router.get('/', function(req, res) {
                             res.json(err);
                             return;
                         }
-                        console.log('첫번쨰 워터폴 함수', datarow);
+                      //  console.log('첫번쨰 워터폴 함수', datarow);
                         call(null, datarow)
                     });
                 }
@@ -121,7 +121,7 @@ router.get('/', function(req, res) {
 
                             return;
                         }
-                        console.log('2번쨰 워터폴 함수', data);
+                      //  console.log('2번쨰 워터폴 함수', data);
                         if(data == false ){
                             call(null, 0);
                             return;
@@ -153,11 +153,11 @@ router.get('/', function(req, res) {
             
         ],
         function (err, result) {
-            console.log('마지막 temp ', temp);
+           // console.log('마지막 temp ', temp);
             if(result==1){
                 res.json({success:1 , message:'ok', result : temp});
             }else{
-                console.log('망햇어요 ㅡㅡ');
+              //  console.log('망햇어요 ㅡㅡ');
                 res.json({success:1 , message:'ok', result : temp});
                /* afeelQuery.afeelQuery([req.session.memberNo], 'myRate2' , function (err, data) {
                     if(err){

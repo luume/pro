@@ -79,8 +79,8 @@ router.get('/', function(req, res){
                 }
             }
         ],	function(err, results) {
-            console.log('최종 처리');
-            console.log('results' , results); // result <- done
+           // console.log('최종 처리');
+           // console.log('results' , results); // result <- done
 
             res.json(util.successCode(res, results));
         }
