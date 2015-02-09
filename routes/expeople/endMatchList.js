@@ -73,7 +73,7 @@ router.get('/', function(req, res) {
                         return;
                     }
                     console.log('0번쨰 워터폴 함수', gender);
-                    call(null, gender)
+                    call(null, gender[0].memberGender);
                 });
             },
 
