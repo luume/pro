@@ -28,12 +28,13 @@ router.get('/', function(req, res) {
       var arr = [];
       arr.push(datas[i].profilThumbnail);
       //console.log(datas[i]);
+
     }
     profilThumbnail = arr;
     temp = datas;
     datas[0].profilThumbnail = arr;
     temp.aaa = arr;
-    console.log('datas[0]',datas[0]);
+    console.log('datas[0]',datas);
 
 
     //var homeArray = new Array();
