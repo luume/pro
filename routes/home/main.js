@@ -26,9 +26,14 @@ router.get('/', function(req, res) {
     }
     for(i=0; i<datas.length; i++){
       var arr = [];
-      arr.push(datas);
-      console.log(datas[i]);
+      arr.push(datas[i].profilThumbnail);
+      //console.log(datas[i]);
     }
+    profilThumbnail = arr;
+    temp = datas;
+    datas[0].profilThumbnail = arr;
+    temp.aaa = arr;
+    console.log('datas[0]',datas[0]);
 
 
     //var homeArray = new Array();
