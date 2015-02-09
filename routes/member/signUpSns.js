@@ -3,8 +3,8 @@ var router = express.Router();
 
 var util = require('../../afeel/util/vo');
 
-var graph = require('fbgraph');
-
+//var graph = require('fbgraph');
+var fbgraph = require('fbgraphapi');
 // 회원가입(SNS 연동)
 router.post('/', function(req, res) {
 
@@ -21,6 +21,13 @@ router.post('/', function(req, res) {
   var m = util.createValueObject('Member');
 
   var p = util.createValueObject('Profil');
+
+  var fb = new fbgraph.Facebook(accessToken);
+  fb.me(function(err, me) {
+    if(err)console.error('fbGraph에러입니다', err);
+
+    console.log('fbgRaph 테스트입니다 = ', me);
+  });
 
 
   res.json(util.successCode(res,
