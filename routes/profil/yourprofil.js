@@ -9,7 +9,7 @@ router.get('/', function(req, res){
     var datas = [];
     datas.push(memberNo);
 
-    
+
 
     var m = util.createValueObject('Member');
     var pro = util.createValueObject('Profil');

@@ -94,9 +94,15 @@ router.get('/', function(req, res) {
           async.each(data, function (row, callback) {
           //  console.log('이치 row ' , row);
         //    console.log('datas[j].rank = ' , datas[0].rank);
-            datas[j].rank = row.rank;
-            j++;
-            callback();
+          if(datas[j].rank == undefined){
+              res.json(err);
+              return;
+          } else {
+              datas[j].rank = row.rank;
+              j++;
+              callback();
+          }
+
 
           }, function(err){
           //  console.log('모두 성공');
