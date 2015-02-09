@@ -115,13 +115,13 @@ router.post('/', function(req, res) {
                         //arr.push(fArry.originalname);
                         var destPath = '/home/ubuntu/test/pro/public/images/' + fArry.name.split('.')[0] + '-thumbnail.' +  fArry.name.split('.')[1];
                         console.log('패스는',  destPath);
-                        easyimg.thumbnail({
+                        /*easyimg.thumbnail({
                             src:fArry.path, dst : destPath,
                             width:70, height:70,
                             x:0, y:0
                         }).then(function (file) {
                             console.log(file);
-                        });
+                        });*/
 
 
                         if(k == 0){

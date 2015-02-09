@@ -3,6 +3,8 @@ var router = express.Router();
 
 var util = require('../../afeel/util/vo');
 
+var graph = require('fbgraph');
+
 // 회원가입(SNS 연동)
 router.post('/', function(req, res) {
 
