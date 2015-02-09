@@ -63,7 +63,25 @@ router.get('/', function(req, res) {
     var queryidname = 'endMatchList';
     var temp;
     var j =0;
+    var count = 0;
     async.waterfall([
+
+            function (call) {
+                afeelQuery.afeelQuery([req.session.memberNo], 'filteringMember', function (err, gender) {
+                    if(err){
+                        //   console.log('에러',err);
+                        //res.json(err);
+                        count = 0;
+                        call(null);
+                        return;
+                    }
+                    //  console.log('0번쨰 워터폴 함수', gender);
+                    //call(null, gender[0].memberGender);
+                    count = 1;
+                    call(null);
+                });
+
+            },
 
             function (call) {
                 global.queryName = 'member';
@@ -78,32 +96,57 @@ router.get('/', function(req, res) {
                 });
             },
 
+
             function (gender, call) {
               //  console.log('엔드매치 실행전');
                 global.queryName = 'expeople';
                 if(gender == 'M'){
                     console.log('남자다');
-                    afeelQuery.afeelQuery(datas, 'endMatchListM', function (err, datarow) {
-                        if(err){
-                       //     console.log('에러',err);
-                            res.json(err);
-                            return;
-                        }
-                       // console.log('첫번쨰 워터폴 함수', datarow);
-                        call(null, datarow)
-                    });
+                    if(count == 0){
+                        afeelQuery.afeelQuery(datas, 'endMatchListM', function (err, datarow) {
+                            if(err){
+                           //     console.log('에러',err);
+                                res.json(err);
+                                return;
+                            }
+                           // console.log('첫번쨰 워터폴 함수', datarow);
+                            call(null, datarow)
+                        });
+                    }else if(count == 1){
+                        afeelQuery.afeelQuery(datas, 'endMatchListMFilter', function (err, datarow) {
+                            if(err){
+                                //     console.log('에러',err);
+                                res.json(err);
+                                return;
+                            }
+                            // console.log('첫번쨰 워터폴 함수', datarow);
+                            call(null, datarow)
+                        });
+                    }
                 }else if(gender == 'W') {
                 //    console.log('여자다');
                     datas.pop();
-                    afeelQuery.afeelQuery(datas, 'endMatchListW', function (err, datarow) {
-                        if (err) {
-                            console.log('에러', err);
-                            res.json(err);
-                            return;
-                        }
-                      //  console.log('첫번쨰 워터폴 함수', datarow);
-                        call(null, datarow)
-                    });
+                    if(count == 0){
+                        afeelQuery.afeelQuery(datas, 'endMatchListW', function (err, datarow) {
+                            if (err) {
+                                console.log('에러', err);
+                                res.json(err);
+                                return;
+                            }
+                          //  console.log('첫번쨰 워터폴 함수', datarow);
+                            call(null, datarow)
+                        });
+                    }else if(count == 1){
+                        afeelQuery.afeelQuery(datas, 'endMatchListWFilter', function (err, datarow) {
+                            if (err) {
+                                console.log('에러', err);
+                                res.json(err);
+                                return;
+                            }
+                            //  console.log('첫번쨰 워터폴 함수', datarow);
+                            call(null, datarow)
+                        });
+                    }
                 }
             },
 
