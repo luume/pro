@@ -31,6 +31,7 @@ router.get('/', function(req, res) {
     datas.push(req.session.memberNo);
     datas.push(req.session.memberNo);
     datas.push(req.session.memberNo);
+    datas.push(req.session.memberNo);
 
     global.queryName = 'expeople';
     var queryidname = 'endMatchList';
@@ -65,17 +66,17 @@ router.get('/', function(req, res) {
     async.waterfall([
 
             function (call) {
-                afeelQuery.afeelQuery([req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo], queryidname, function (err, datas) {
+                afeelQuery.afeelQuery(datas, queryidname, function (err, datarow) {
                     if(err){
                         res.json(err);
                         return;
                     }
-                    console.log('첫번쨰 워터폴 함수', datas);
-                    call(null, datas)
+                    console.log('첫번쨰 워터폴 함수', datarow);
+                    call(null, datarow)
                 });
             },
 
-            function (datas, call) {
+            function (datarow, call) {
                 afeelQuery.afeelQuery([req.session.memberNo], 'myRate1' , function (err, data) {
                     if(err){
                         res.json(err);
@@ -89,12 +90,12 @@ router.get('/', function(req, res) {
 
                         return;
                     }
-                    temp = datas;
-                    async.each(datas, function (row, callback) {
+                    temp = datarow;
+                    async.each(datarow, function (row, callback) {
                         //  console.log('이치 row ' , row);
                         //    console.log('datas[j].rank = ' , datas[0].rank);
                         console.log('이치문 돔');
-                        if(datas[j] == undefined){
+                        if(datarow[j] == undefined){
                             res.json(err);
                             return;
                         }else{
