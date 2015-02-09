@@ -25,23 +25,23 @@ router.get('/:memberTo', function(req, res){
                         res.json({ success : 0 , message : '데이터 없음', result : null});
                         return;
                     }
-                    console.log('첫번째 처리 성공' , datas[0]);
+                    //console.log('첫번째 처리 성공' , datas[0]);
                     callback(null, datas[0]);
                 })
 
             },
             function(memberdata, callback) {
-
+                //console.log('memberdata.feelingCode1' , memberdata.feelingCode1);
                 var datas = [];
-                datas.push(memberdata[0].feelingCode1);
-                datas.push(feelingCode2);
-                datas.push(feelingCode3);
-                datas.push(memberNo);
+                datas.push(memberdata.feelingCode1);
+                datas.push(memberdata.feelingCode2);
+                datas.push(memberdata.feelingCode3);
+                datas.push(memberTo);
 
                 global.queryName = 'profil';
                 var queryidname = 'profilYour';
 
-                afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
+                afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
                     if(err){
                         res.json(err);
                         return;
@@ -53,7 +53,7 @@ router.get('/:memberTo', function(req, res){
 
                     var profilThumbnail = [];
                     var temp;
-                    afeelQuery.afeelQuery([req.session.memberNo], 'profilFileSelect', function (err, profilName) {
+                    afeelQuery.afeelQuery([memberTo], 'profilFileSelect', function (err, profilName) {
                         if(err){res.json(err);}
 
 
@@ -67,10 +67,12 @@ router.get('/:memberTo', function(req, res){
                         }, function(err){
                             profilThumbnail = arr;
                             temp = datas;
+                            datas[0].memberRate = memberdata.memberRate;
                             datas[0].profilThumbnail = arr;
                             temp.aaa = arr;
 
-                            res.json({success:1, message:'ok', result:datas[0]});
+                            //res.json({success:1, message:'ok', result:});
+                            callback(null, datas[0]);
                         });
 
                     });
@@ -83,9 +85,6 @@ router.get('/:memberTo', function(req, res){
             res.json(util.successCode(res, results));
         }
     );
-
-
-
 
 
     var m = util.createValueObject('Member');
