@@ -72,9 +72,11 @@ router.post('/:memberToken', function(req, res){
         }
 
         if(datas == null || datas == false){
+            console.log('페이스북 토큰이 노존재');
             res.json({success:0, message:'토큰이 존재하지 않습니다.', result:null});
             return;
         }else{
+            console.log('페이스북 토큰이 존재');
             req.session.memberNo  = datas[0].memberNo;
             res.json( { success : 1 , message : 'ok' ,result : datas  } );
             return;
