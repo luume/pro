@@ -74,7 +74,6 @@ router.get('/:memberTo', function(req, res){
                             //res.json({success:1, message:'ok', result:});
                             callback(null, datas[0]);
                         });
-
                     });
                 });
 
