@@ -122,30 +122,25 @@ router.get('/', function(req, res) {
                             return;
                         }
                         console.log('2번쨰 워터폴 함수', data);
-                        if(data == false){
-
+                        if(data == false ){
                             call(null, 0);
-
                             return;
                         }
 
-                        async.each(datarow, function (row, callback) {
+                        temp[j].memberRate = data[0].memberRate;
+                        j++;
+                        callback();
+                /*        async.each(datarow, function (row, callback) {
                             //  console.log('이치 row ' , row);
                             //    console.log('datas[j].rank = ' , datas[0].rank);
                             console.log('이치문 돔');
-                            if(datarow[j] == undefined){
-                                //res.json(err);
-                                call(null, 0);
-                                return;
-                            }else{
-                                temp[j].memberRate = row;
-                                callback();
-                            }
+                            temp[j].memberRate = row;
+                            callback();
                             j++;
                         }, function(err){
                             console.log('temp는 ', temp);
                             callback();
-                        });
+                        });*/
 
                     }); // 쿼리
 
