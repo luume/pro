@@ -99,7 +99,7 @@ router.get('/', function(req, res) {
                             res.json(err);
                             return;
                         }else{
-                            temp.memberRate[j] = row;
+                            temp[j].memberRate = row;
                             callback();
                         }
                         j++;
