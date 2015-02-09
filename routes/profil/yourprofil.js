@@ -31,7 +31,7 @@ router.get('/:memberTo', function(req, res){
 
             },
             function(memberdata, callback) {
-                console.log('memberdata[0]' , memberdata[0]);
+                console.log('memberdata' , memberdata);
                 var datas = [];
                 datas.push(memberdata[0].feelingCode1);
                 datas.push(feelingCode2);
