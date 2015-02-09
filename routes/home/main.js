@@ -36,30 +36,36 @@ router.get('/', function(req, res) {
     //}
     var arr = [];
     for(i=0; i<datas.length; i++){
-      arr.push(datas[i]);
-      //arr.push(datas[i].profilThumbnail);
+      //arr.push(datas[i]);
+      arr.push(datas[i].profilThumbnail);
 
       //datas[i].profilThumbnail = arr;
       //[i].profilThumbnail = arr;
     }
 
     //console.log('arr',arr);
-
+    res.json({
+      success : 1,
+      message : 'OK',
+      result : [{
+        profilThumbnail: arr
+      }]
+    });
 
     //var homeArray = new Array();
-    res.json(util.successCode(res, arr))
+    //res.json(util.successCode(res, arr))
   });
   var m = util.createValueObject('Member');
 
   var p = util.createValueObject('Profil');
 
-  //res.json({
-  //  success : 1,
-  //  message : 'ok',
-  //  result : [{
-  //    profilThumbnail: ['http://54.92.4.84:3000/images/Hydrangeas-thumbnail.jpg', 'http://54.92.4.84:3000/images/Jellyfish-thumbnail.jpg', 'http://54.92.4.84:3000/images/Penguins-thumbnail.jpg', 'http://54.92.4.84:3000/images/Tulips-thumbnail.jpg', 'http://54.92.4.84:3000/images/Lighthouse-thumbnail.jpg']
-  //  }]
-  //});
+  res.json({
+    success : 1,
+    message : 'ok',
+    result : [{
+      profilThumbnail: ['http://54.92.4.84:3000/images/Hydrangeas-thumbnail.jpg', 'http://54.92.4.84:3000/images/Jellyfish-thumbnail.jpg', 'http://54.92.4.84:3000/images/Penguins-thumbnail.jpg', 'http://54.92.4.84:3000/images/Tulips-thumbnail.jpg', 'http://54.92.4.84:3000/images/Lighthouse-thumbnail.jpg']
+    }]
+  });
 
 
 });
