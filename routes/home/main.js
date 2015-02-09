@@ -59,13 +59,7 @@ router.get('/', function(req, res) {
 
   var p = util.createValueObject('Profil');
 
-  res.json({
-    success : 1,
-    message : 'ok',
-    result : [{
-      profilThumbnail: ['http://54.92.4.84:3000/images/Hydrangeas-thumbnail.jpg', 'http://54.92.4.84:3000/images/Jellyfish-thumbnail.jpg', 'http://54.92.4.84:3000/images/Penguins-thumbnail.jpg', 'http://54.92.4.84:3000/images/Tulips-thumbnail.jpg', 'http://54.92.4.84:3000/images/Lighthouse-thumbnail.jpg']
-    }]
-  });
+
 
 
 });
