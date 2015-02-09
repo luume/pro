@@ -5,8 +5,10 @@ var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
 var async = require('async');
 router.get('/:memberTo', function(req, res){
-    var memberNo = 4; //현재 사용자
+    var memberNo = req.session.memberNo; //현재 사용자
     var memberTo = req.params.memberTo; //프로필을 볼 사용자
+    console.log('유어프로필 현재사용자', memberNo);
+    console.log('유어프로필 볼 사용자', memberTo);
     var datas = [];
     datas.push(memberNo);
     datas.push(memberTo);
@@ -83,7 +85,7 @@ router.get('/:memberTo', function(req, res){
             }
         ],	function(err, results) {
             //console.log('최종 처리');
-            console.log('results' , results); // result <- done
+            console.log('너 프로필 ' , results); // result <- done
             res.json(util.successCode(res, results));
         }
     );
