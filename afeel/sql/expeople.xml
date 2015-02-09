@@ -3,23 +3,21 @@
     <myquery id="endMatchList">
         SELECT aaa.memberNo AS memberNo, aaa.memberName AS memberName, aaa.memberBirth AS memberBirth, aaa.memberAdd AS memberAdd,
         aaa.memberHeight AS memberHeight , aaa.memberJob AS memberJob , aaa.memberSnsYn AS memberSnsYn, aaa.memberHPYn AS memberHPYn,
-        aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail,
-         CONCAT( (select fType FROM FEELING_TYPE WHERE fTypeNo = bbb.feelingCode1) , ',',
-        (select fType FROM FEELING_TYPE WHERE fTypeNo = bbb.feelingCode2) , ',' , (select fType FROM FEELING_TYPE WHERE fTypeNo = bbb.feelingCode3) ) AS fType,
-        bbb.memberRate AS memberRate FROM
+        aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail
+        FROM
         (
         SELECT rdata2.memberNo AS memberNo, rdata2.memberName AS memberName, rdata2.memberBirth AS memberBirth, rdata2.memberAdd AS memberAdd,
         rdata2.memberHeight AS memberHeight , rdata2.memberJob AS memberJob , rdata2.memberSnsYn AS memberSnsYn, rdata2.memberHPYn AS memberHPYn,
         rdata2.memberEmailYn AS memberEmailYn , rdata2.chatroomNo AS chatroomNo, rdata2.rank AS rank , pr.profilThumbnail AS profilThumbnail,
-        pr.profilSaveFileName AS profilSaveFileName
+        pr.profilSaveFileName AS profilSaveFileName, rdata2.chatroomRegDate
         FROM
         (
         SELECT rdata.memberNo AS memberNo, mem.memberName AS memberName, mem.memberBirth AS memberBirth, mem.memberAdd AS memberAdd,
         mem.memberHeight AS memberHeight , mem.memberJob AS memberJob , mem.memberSnsYn AS memberSnsYn, mem.memberHPYn AS memberHPYn,
-        mem.memberEmailYn AS memberEmailYn , rdata.chatroomNo AS chatroomNo, rdata.myRank AS rank
+        mem.memberEmailYn AS memberEmailYn , rdata.chatroomNo AS chatroomNo, rdata.myRank AS rank, rdata.chatroomRegDate
         FROM
         (
-        SELECT qq.chatroomNo AS chatroomNo, qq.chatroomRegDate AS chatroomRegDate, qq.rank AS rank, qq.memberNo AS memberNo,
+        SELECT  qq.chatroomNo AS chatroomNo, qq.chatroomRegDate AS chatroomRegDate, qq.rank AS rank, qq.memberNo AS memberNo,
         qq.partnerGender, zz.myRank FROM (
         SELECT z.chatroomNo AS chatroomNo, z.chatroomRegDate AS chatroomRegDate, z.rank AS rank, z.memberNo AS memberNo,
         IF((select memberGender FROM MEMBER where memberNo = ?) = 'M' , 'W' , 'M') as partnerGender FROM
@@ -27,24 +25,27 @@
         SELECT  croom.chatroomNo AS chatroomNo, croom.chatroomRegDate AS chatroomRegDate, crank.rank AS rank, crank.memberNo AS memberNo,
         IF((select memberGender FROM MEMBER where memberNo = ?) = 'M' , 'W' , 'M') as partnerGender FROM CHAT_RANK crank JOIN CHATROOM croom
         ON croom.chatroomNo = crank.chatroomNo
-        )  z JOIN (select c.chatroomNo AS chatroomNo from CHAT_RANK cr JOIN CHATROOM c ON cr.chatroomNo = c.chatroomNo WHERE memberNo = ?) x ON z.chatroomNo = x.chatroomNo
-        WHERE z.rank = (IF((select memberGender FROM MEMBER where memberNo = ?) = 'M', 0, 1 ))
+        )  z JOIN (select c.chatroomNo AS chatroomNo from CHAT_RANK cr JOIN CHATROOM c ON cr.chatroomNo = c.chatroomNo WHERE memberNo = 10) x ON z.chatroomNo = x.chatroomNo
+        WHERE z.rank = (IF((select memberGender FROM MEMBER where memberNo = ?) = 'M', 0, 1 )) AND  z.rank = (IF((select memberGender FROM MEMBER where memberNo = 10) = 'M', 0, 2 ))
         ) qq  JOIN
         (
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM1No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? UNION
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM2No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? UNION
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM3No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? UNION
-        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM4No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? UNION
-        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberWNo = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM1No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?  UNION
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM2No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM3No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
+        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM4No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
+        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberWNo = ? AND rank BETWEEN 0 AND 2 AND memberNo= ?
         ) zz ON qq.chatroomNo = zz.chatroomNo
         ) rdata JOIN MEMBER mem ON rdata.memberNo = mem.memberNo
         ) rdata2 JOIN PROFIL pr ON rdata2.memberNo = pr.memberNo  WHERE profilMainYn = 1
-        ) aaa JOIN FEELING bbb ORDER BY chatroomNo
-
+        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo GROUP BY chatroomNo
     </myquery>
 
-    <myquery id="myRank">
-        SELECT rank FROM CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberNo = ? AND rank BETWEEN 0 AND 2
+    <myquery id="myRate1">
+        select memberRate FROM FEELING WHERE memberNo = ?
+    </myquery>
+
+    <myquery id="myRate2">
+        select memberRate FROM FEELING WHERE memberTo = ?
     </myquery>
 
     <myquery id="myPrivateChatList_W">

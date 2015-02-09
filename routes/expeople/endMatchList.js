@@ -65,7 +65,7 @@ router.get('/', function(req, res) {
     async.waterfall([
 
             function (call) {
-                afeelQuery.afeelQuery([req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo], queryidname, function (err, datas) {
+                afeelQuery.afeelQuery([req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo], queryidname, function (err, datas) {
                     if(err){
                         res.json(err);
                         return;
@@ -76,9 +76,16 @@ router.get('/', function(req, res) {
             },
 
             function (datas, call) {
-                afeelQuery.afeelQuery([req.session.memberNo], 'myRank' , function (err, data) {
+                afeelQuery.afeelQuery([req.session.memberNo], 'myRate1' , function (err, data) {
                     if(err){
                         res.json(err);
+
+                        return;
+                    }
+
+                    if(data == false){
+
+                       call(null, 0);
 
                         return;
                     }
@@ -90,17 +97,17 @@ router.get('/', function(req, res) {
                         if(datas[j] == undefined){
                             res.json(err);
                             return;
-                        } else {
-                            temp[j].rank = row.rank;
-                            j++;
+                        }else{
+                            temp.memberRate[j] = row;
                             callback();
                         }
+                        j++;
                     }, function(err){
                         console.log('temp는 ', temp);
                         call(null, 1);
                     });
 
-                });
+                }); // 쿼리
             } // 2번쨰워터폴종료
             
         ],
@@ -108,6 +115,16 @@ router.get('/', function(req, res) {
             console.log('마지막 temp ', temp);
             if(result==1){
                 res.json({success:1 , message:'ok', result : temp});
+            }else{
+                afeelQuery.afeelQuery([req.session.memberNo], 'myRate2' , function (err, data) {
+                    if(err){
+                        res.json(err);
+                        return;
+                    }
+
+                    res.json({success:1 , message:'ok', result : temp});
+                });
+
             }
 
         }
