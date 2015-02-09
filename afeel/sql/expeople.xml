@@ -4,7 +4,7 @@
         SELECT aaa.memberNo AS memberNo, aaa.memberName AS memberName, aaa.memberBirth AS memberBirth, aaa.memberAdd AS memberAdd,
         aaa.memberHeight AS memberHeight , aaa.memberJob AS memberJob , aaa.memberSnsYn AS memberSnsYn, aaa.memberHPYn AS memberHPYn,
         aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail,
-        aaa.profilSaveFileName AS profilSaveFileName , CONCAT( (select fType FROM FEELING_TYPE WHERE fTypeNo = bbb.feelingCode1) , ',',
+         CONCAT( (select fType FROM FEELING_TYPE WHERE fTypeNo = bbb.feelingCode1) , ',',
         (select fType FROM FEELING_TYPE WHERE fTypeNo = bbb.feelingCode2) , ',' , (select fType FROM FEELING_TYPE WHERE fTypeNo = bbb.feelingCode3) ) AS fType,
         bbb.memberRate AS memberRate FROM
         (
