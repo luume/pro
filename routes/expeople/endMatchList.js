@@ -59,6 +59,59 @@ router.get('/', function(req, res) {
       function (err, result) {
             // res.json 으로 실질적으로 쏴주는곳
       });*/
+
+    var temp;
+    async.waterfall([
+
+            function (call) {
+                afeelQuery.afeelQuery([req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo, req.session.memberNo], queryidname, function (err, datas) {
+                    if(err){
+                        res.json(err);
+                        return;
+                    }
+
+                    call(null, datas)
+                });
+            },
+
+            function (datas, call) {
+                afeelQuery.afeelQuery([req.session.memberNo], 'myRank' , function (err, data) {
+                    if(err){
+                        res.json(err);
+
+                        return;
+                    }
+                    temp = datas;
+                    async.each(datas, function (row, callback) {
+                        //  console.log('이치 row ' , row);
+                        //    console.log('datas[j].rank = ' , datas[0].rank);
+                        if(datas[j] == undefined){
+                            res.json(err);
+                            return;
+                        } else {
+                            temp[j].rank = row.rank;
+                            j++;
+
+                            if(j == datas.length)
+                                callback();
+                        }
+                    }, function(err){
+                        call(null, 1);
+                    });
+
+                });
+            } // 2번쨰워터폴종료
+            
+        ],
+        function (err, result) {
+
+            if(result==1){
+                res.json({success:1 , message:'ok', result : temp});
+            }
+
+        }
+    ); // 워터폴엔드
+/*
     afeelQuery.afeelQuery([req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo,req.session.memberNo], queryidname , function (err, datas) {
         if(err){
             res.json(err);
@@ -76,19 +129,19 @@ router.get('/', function(req, res) {
 
                 return;
             }
-         /*   if(datas.length == 0){
+         *//*   if(datas.length == 0){
                 console.log('진행중인 이성 에러코드 발생');
            //     console.log({ success : 0 , message : '에러 발생', result : [ null ] });
                 res.json({ success : 0 , message : '에러 발생', result : [ null ] });
                 return;
             }
-*/
-          /*(function () {
+*//*
+          *//*(function () {
             for(var j = 0 ; j < datas.length; j++){
               console.log(datas[j].rank + ' = ' + data[j].rank);
               datas[j].rank = data[j].rank;
             }
-          })();*/
+          })();*//*
           var j = 0;
           //console.log('datas = ', datas);
           async.each(data, function (row, callback) {
@@ -124,7 +177,7 @@ router.get('/', function(req, res) {
             res.json({success:1 , message:'ok', result : datas});
 
         });
-    });
+    });*/
 
 
 });
