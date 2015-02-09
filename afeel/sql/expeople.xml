@@ -110,6 +110,10 @@
         order by messageDate desc
     </myquery>
 
+    <myquery id="deleteMatchList">
+        select memberRate FROM FEELING WHERE memberTo = ?
+    </myquery>
+
 </query>
 
 

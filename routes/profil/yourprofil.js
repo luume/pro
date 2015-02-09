@@ -21,6 +21,8 @@ router.get('/:memberTo', function(req, res){
                         res.json(err);
                         return;
                     }
+
+                    console.log('1워터폴 유어프로필', datas);
                     if(datas == false){ //select 결과 row 0일때 처리
                         res.json({ success : 0 , message : '데이터 없음', result : null});
                         return;
@@ -46,6 +48,7 @@ router.get('/:memberTo', function(req, res){
                         res.json(err);
                         return;
                     }
+                    console.log('2워터폴 유어프로필', datas);
                     if(datas == false){
                         res.json({ success : 0 , message : '데이터 없음', result : null});
                         return;

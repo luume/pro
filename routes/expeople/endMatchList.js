@@ -243,4 +243,19 @@ router.get('/', function(req, res) {
 
 });
 
+router.get('/:chartroomNo', function(req, res) {
+    var chartroomNo = req.params.chartroomNo;
+
+
+    afeelQuery.afeelQuery([chartroomNo], 'deleteMatchList', function (err, gender) {
+        if(err){
+            console.log('에러',err);
+            res.json(err);
+            return;
+        }
+        console.log('0번쨰 워터폴 함수', gender);
+        res.json({success : 1 , message : 'ok', result: [ 'success' ] });
+    });
+});
+
 module.exports = router;
