@@ -50,6 +50,10 @@
         where memberTo = ? and memberNo = ?
     </myquery>
 
+    <myquery id = "feelingMember">
+        UPDATE MEMBER SET memberWithdraw=1 and memberWithdrawReason=? WHERE memberNo=?
+    </myquery>
+
 
 
 </query>
