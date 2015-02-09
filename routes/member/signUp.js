@@ -33,7 +33,7 @@ router.post('/', function(req, res) {
 
     var errs;
     var datas = [];
-    var k =0;
+
     datas.push(memberEmail);
     datas.push(memberName);
     datas.push(memberNick);
@@ -102,7 +102,8 @@ router.post('/', function(req, res) {
                      }
 
                     global.queryName = 'profil';
-                    async.each(profilOriginalFileName, function (fArry, callback) {
+                    var k = 0;
+                    async.eachSeries(profilOriginalFileName, function (fArry, callback) {
 
                         console.log('셀값 ' , selNo);
                         console.log(fArry);
@@ -132,7 +133,7 @@ router.post('/', function(req, res) {
                                     errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
                                     return;
                                 }
-                                k++;
+
                             }); // query end
                         }else{
                             afeelQuery.afeelQuery(arr, 'insertProfil' , function (err, a2) {
@@ -144,12 +145,14 @@ router.post('/', function(req, res) {
                                     return;
                                 }
                                 console.log('성공' + k);
-                                k++;
+
                             }); // query end
                         }
+                        k++;
+                        if(profilOriginalFileName.length == k){
+                            callback(); // 아래 err fun으로 호출
+                        }
 
-
-                        callback(); // 아래 err fun으로 호출
                     }, function(err){
 
                         console.log('이치에서 콜백을 호출하고있습니당...');
@@ -173,7 +176,7 @@ router.post('/', function(req, res) {
                 }
             ); // 워터폴 종료지점
         }); // 트랜잭션 종료
-
+        conn.release();
     });
 
 

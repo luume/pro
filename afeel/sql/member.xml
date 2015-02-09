@@ -5,7 +5,7 @@
     </myquery>
 
     <myquery id="loginMember">
-        SELECT memberNo, memberGender FROM MEMBER WHERE memberEmail = ? AND memberPw = ?
+        SELECT memberNo, memberGender FROM MEMBER WHERE memberEmail = ? AND memberPw = ? AND memberWithdraw = 0
     </myquery>
 
     <myquery id="editPasswordList">
