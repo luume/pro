@@ -64,7 +64,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
         }
       ], function (err, result) {
 
-
+        console.log('리절트 = ' , result);
 
         global.pool.getConnection(function(err, conn) {
           if (err) console.error('err 발생 >>>>>', err);
