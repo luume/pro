@@ -244,6 +244,8 @@ exports.afeeTransactionQuery = function(bindQuery , queryId,  callback) {
 
 exports.afeelGQuery = function(bindQuery , queryId,  callback) {
   //console.log('확인');
+  console.log('bind쿼리 = ' , bindQuery);
+  console.log('queryId = ' , queryId);
   fs.readFile(global.directoryPath + global.queryName + '.xml','utf8', function(error, data) {
     if (error) {
       console.log(error);
