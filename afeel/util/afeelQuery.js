@@ -71,7 +71,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
 
           console.log('bind쿼리 = ' , bindQuery);
           console.log('queryId = ' , queryId);
-          console.log('sql = ' , query);
+         // console.log('sql = ' , query);
           //  global.afeelCon.beginTransaction(function(err) {
           conn.query(query, bindQuery, function (err, row) {
 
