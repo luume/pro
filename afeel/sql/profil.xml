@@ -25,4 +25,12 @@
     <myquery id="insertProfilMain">
         INSERT INTO PROFIL(memberNo,	profilOriginalFileName, profilSaveFileName,  profilThumbnail,  profilMainYn) VALUES(?, ?, ? , ?, 1)
     </myquery>
+
+    <myquery id="deleteProfil">
+        DELETE FROM PROFIL profilThumbnail = '' WHERE memberNo = ?
+    </myquery>
+
+    <myquery id="selectAllThumbnail">
+        SELECT profilThumbnail FROM PROFIL WHERE memberNo = ?
+    </myquery>
 </query>

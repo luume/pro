@@ -54,6 +54,10 @@
         UPDATE MEMBER SET memberWithdraw=1 , memberWithdrawReason=? WHERE memberNo=?
     </myquery>
 
+    <myquery id = "updateMember">
+        UPDATE MEMBER SET memberHobby = ? , memberJob = ? , memberAdd = ? WHERE memberNo = ?
+    </myquery>
+
 
 
 </query>
