@@ -124,6 +124,9 @@ router.get('/', function(req, res) {
                             // console.log('첫번쨰 워터폴 함수', datarow);
                             call(null, datarow)
                         });
+                    }else{
+                        console.log('남자엘즈문');
+                        call(new Error('남자엘즈문'), null);
                     }
                 }else if(gender == 'W') {
                 //    console.log('여자다');
@@ -148,6 +151,9 @@ router.get('/', function(req, res) {
                             //  console.log('첫번쨰 워터폴 함수', datarow);
                             call(null, datarow)
                         });
+                    }else{
+                        console.log('여자엘즈문');
+                        call(new Error('여자엘즈문'), null);
                     }
                 }
             },
