@@ -24,7 +24,7 @@ router.get('/', function(req, res){
 
         var profilThumbnail = [];
         var temp;
-        afeelQuery.afeelQuery([req.session.memberNo], 'profilFileSelect', function (err, profilName) {
+        afeelQuery.afeelQuery([req.session.memberNo], 'profilFileSelect', 'profil', function (err, profilName) {
             if(err){res.json(err);}
 
 
