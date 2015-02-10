@@ -45,7 +45,7 @@
     </myquery>
 
     <myquery id = "feelingMember">
-        SELECT feelingCode1, feelingCode2, feelingCode3, memberRate from
+        SELECT ifnull(feelingCode1,0) AS feelingCode1, ifnull(feelingCode2,0) AS feelingCode2, ifnull(feelingCode3,0) AS feelingCode3, memberRate from
         FEELING
         where memberTo = ? and memberNo = ?
     </myquery>

@@ -41,6 +41,17 @@ router.get('/:memberTo', function(req, res){
                 datas.push(memberdata.feelingCode2);
                 datas.push(memberdata.feelingCode3);
                 datas.push(memberTo);
+                var codeSum = '';
+
+                if(memberdata.feelingCode1 != 0){
+                    codeSum += memberdata.feelingCode1;
+                }
+                if(memberdata.feelingCode2 != 0 ){
+                    codeSum += ',' + memberdata.feelingCode2;
+                }
+                if(memberdata.feelingCode3 != 0){
+                    codeSum += ',' + memberdata.feelingCode3;
+                }
 
                 global.queryName = 'profil';
                 var queryidname = 'profilYour';
@@ -73,8 +84,9 @@ router.get('/:memberTo', function(req, res){
                             temp = datas;
                             datas[0].memberRate = memberdata.memberRate;
                             datas[0].profilThumbnail = arr;
+                            datas[0].fType = codeSum;
                             temp.aaa = arr;
-
+                            temp.fType = codeSum;
                             //res.json({success:1, message:'ok', result:});
                             callback(null, datas[0]);
                         });
