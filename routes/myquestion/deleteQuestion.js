@@ -18,7 +18,7 @@ router.post('/', function(req, res){
         datas.push(questionNo);
         global.queryName = 'myquestion';
         var queryidname = 'myquestionDelete';
-        afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+        afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
 
             if (err) {
                 res.json(err);

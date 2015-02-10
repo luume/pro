@@ -18,7 +18,7 @@ router.get('/:memberTo', function(req, res){
                 global.queryName = 'member';
                 var queryidname = 'feelingMember';
                 //feeling code 및 feeling rate 가져옴
-                afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+                afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) {
                     if(err){
                         res.json(err);
                         return;
@@ -45,7 +45,7 @@ router.get('/:memberTo', function(req, res){
                 global.queryName = 'profil';
                 var queryidname = 'profilYour';
 
-                afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+                afeelQuery.afeelQuery(datas, queryidname , 'profil', function (err, datas) {
                     if(err){
                         res.json(err);
                         return;
@@ -58,7 +58,7 @@ router.get('/:memberTo', function(req, res){
 
                     var profilThumbnail = [];
                     var temp;
-                    afeelQuery.afeelQuery([memberTo], 'profilFileSelect', function (err, profilName) {
+                    afeelQuery.afeelQuery([memberTo], 'profilFileSelect', 'profil', function (err, profilName) {
                         if(err){res.json(err);}
 
 

@@ -13,7 +13,7 @@ router.get('/', function(req, res){
     global.queryName = 'mystore';
     var queryidname = 'myFreeRechargeList';
 
-    afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
+    afeelQuery.afeelQuery([req.session.memberNo], queryidname , 'mystore', function (err, datas) {
         if(err){
             console.log('스토어 리차지 에러', err);
             res.json(err);

@@ -13,7 +13,7 @@ var afeelQuery = require('../../afeel/util/afeelQuery');
     global.queryName = 'myquestion';
     var queryidname = 'myquestionList';
 
-    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+    afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
         if(err){
             res.json(err);
             return;
