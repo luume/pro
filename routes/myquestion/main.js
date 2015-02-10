@@ -21,7 +21,7 @@ router.get('/', function(req, res){
     global.queryName = 'myquestion';
     var queryidname = 'myquestionList';
 
-    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+    afeelQuery.afeelQuery(datas, 'myquestionList' , function (err, datas) {
         if(err){
             res.json(err);
 
@@ -34,7 +34,7 @@ router.get('/', function(req, res){
         }
         res.json(util.successCode(res, datas));
 
-    });
+    }, 'myquestion');
 
     var m = util.createValueObject('Member');
     var q = util.createValueObject('Question');
