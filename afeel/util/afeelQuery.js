@@ -28,7 +28,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
 
         function (callback) {
           var query;
-          digester.digest(data, function(error, xmlfile) {
+          digester.digest(xmlfile, function(error, result) {
             if (error) {
               console.log(error);
             } else {
