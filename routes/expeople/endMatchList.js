@@ -51,7 +51,7 @@ router.get('/', function(req, res) {
     async.waterfall([
 
             function (call) {
-                afeelQuery.afeelQuery([req.session.memberNo], 'filteringMember', function (err, gender) {
+                afeelQuery.afeelQuery([req.session.memberNo], 'filteringMember', function (err, memberNo) {
                     /*if(err){
                         //   console.log('에러',err);
                         //res.json(err);
@@ -60,11 +60,11 @@ router.get('/', function(req, res) {
                         call(null);
                         return;
                     }*/
-                    console.log('젠더는',gender);
+                    console.log('첫번째 쿼리 memberNo결과값 = ',memberNo);
                     //  console.log('0번쨰 워터폴 함수', gender);
                     //call(null, gender[0].memberGender);
 
-                    if(gender === false || gender === undefined || gender === null){
+                    if(memberNo === false || memberNo === undefined || memberNo === null){
                         //console.log('여자의 if문 카운트는 ' , count);
                         call(null,0);
                     }else{
