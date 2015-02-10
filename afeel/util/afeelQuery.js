@@ -21,7 +21,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
     if (error) {
       console.log(error);
     } else {
-
+    console.log('xml data = ' , data);
       async.waterfall([
 
         function (callback) {
