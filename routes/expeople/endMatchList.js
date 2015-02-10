@@ -62,7 +62,7 @@ router.get('/', function(req, res) {
       });*/
     var queryidname = 'endMatchList';
     var temp;
-    var j =0;
+
     var count = 0;
     async.waterfall([
 
@@ -160,7 +160,7 @@ router.get('/', function(req, res) {
 
             function (datarow, call) {
                 var ar = [];
-
+                var j =0;
                 for(var i =0 ; i < datarow.length; i ++){
                     ar.push(datarow[i].memberNo);
                 }
