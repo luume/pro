@@ -9,7 +9,15 @@ router.get('/', function(req, res){
     var memberNo = req.session.memberNo;
     var datas = [];
     datas.push(memberNo);
-
+    console.log('*************************');
+    console.log('*************************');
+    console.log('*************************');
+    console.log('*************************');
+    console.log('마이퀘스천 진입!!!!!!!!');
+    console.log('*************************');
+    console.log('*************************');
+    console.log('*************************');
+    console.log('*************************');
     global.queryName = 'myquestion';
     var queryidname = 'myquestionList';
 
