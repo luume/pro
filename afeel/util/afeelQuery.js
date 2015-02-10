@@ -46,7 +46,7 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
                 }
               }
 
-              console.log('tObj = ' , tobj);
+              console.log('xml result = ' , result);
 
               for(var i = 0 ; i < count; i++){
                 if(result.query.myquery.length == undefined){
