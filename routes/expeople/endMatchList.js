@@ -130,7 +130,7 @@ router.get('/', function(req, res) {
                         call(new Error('남자엘즈문'), null);
                     }
                 }else if(gender == 'W') {
-                //    console.log('여자다');
+                    console.log('여자의 카운트는 ' , count);
                     datas.pop();
                     if(count == 0){
                         afeelQuery.afeelQuery(datas, 'endMatchListW', function (err, datarow) {
