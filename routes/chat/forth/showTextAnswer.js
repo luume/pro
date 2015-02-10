@@ -17,7 +17,7 @@ router.get('/:chatroomNo', function(req, res){
     global.queryName = 'chat';
     var queryidname = 'showTextAnswerList';
 
-    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+    afeelQuery.afeelQuery(datas, queryidname ,'chat', function (err, datas) {
         if(err){
             res.json(err);
 

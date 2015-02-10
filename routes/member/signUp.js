@@ -53,7 +53,7 @@ router.post('/', function(req, res) {
 
             async.waterfall([
                 function (callback) {
-                    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+                    afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) {
                         if(err){
                             //  res.json(err);
                             //return;
@@ -70,7 +70,7 @@ router.post('/', function(req, res) {
                 },  // 1번쨰 워터폴 종료
 
                 function (callback) {
-                    afeelQuery.afeelQuery([memberEmail], 'selectMemberNo' , function (err, selectNo) {
+                    afeelQuery.afeelQuery([memberEmail], 'selectMemberNo' , 'member', function (err, selectNo) {
                         if (err) {
                             console.log('first2 err', err);
                             conn.rollback();
@@ -125,7 +125,7 @@ router.post('/', function(req, res) {
 
 
                         if(k == 0){
-                            afeelQuery.afeelQuery(arr, 'insertProfilMain' , function (err, a2) {
+                            afeelQuery.afeelQuery(arr, 'insertProfilMain' , 'profil', function (err, a2) {
                                 console.log('메인 k', k);
                                 console.log('메인프로필입니다.', arr);
                                 if (err) {
@@ -136,7 +136,7 @@ router.post('/', function(req, res) {
 
                             }); // query end
                         }else{
-                            afeelQuery.afeelQuery(arr, 'insertProfil' , function (err, a2) {
+                            afeelQuery.afeelQuery(arr, 'insertProfil' , 'profil', function (err, a2) {
                                 console.log('no메인프로필입니다.', arr);
                                 console.log('no메인 k.', k);
                                 if (err) {

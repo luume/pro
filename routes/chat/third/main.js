@@ -24,7 +24,7 @@ router.get('/:chatroomNo', function(req, res){
     global.queryName = 'myquestion';
     var queryidname = 'myquestionRandom';
 
-    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+    afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
         if(err){
             res.json(err);
         }

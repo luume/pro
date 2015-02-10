@@ -21,7 +21,7 @@ router.get('/:privateRoomNo', function(req, res){
     global.queryName = 'member';
     var queryidname = 'genderMember';
 
-    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+    afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) {
         if(err){
             res.json(err);
             return;

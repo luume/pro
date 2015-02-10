@@ -51,7 +51,7 @@ router.get('/', function(req, res) {
     async.waterfall([
 
             function (call) {
-                afeelQuery.afeelQuery([req.session.memberNo], 'filteringMember', function (err, memberNo) {
+                afeelQuery.afeelQuery([req.session.memberNo], 'filteringMember', 'expeople', function (err, memberNo) {
                     /*if(err){
                         //   console.log('에러',err);
                         //res.json(err);
@@ -80,7 +80,7 @@ router.get('/', function(req, res) {
             function (count, call) {
                 console.log('워터폴 인자로 넘어온 count 값 = ' , count);
                 global.queryName = 'member';
-                afeelQuery.afeelQuery([req.session.memberNo], 'genderMember', function (err, gender) {
+                afeelQuery.afeelQuery([req.session.memberNo], 'genderMember', 'member', function (err, gender) {
                     if(err){
                      //   console.log('에러',err);
                         res.json(err);
@@ -115,7 +115,7 @@ router.get('/', function(req, res) {
                 if(gender == 'M'){
                     console.log('남자다');
                     if(count == 0){
-                        afeelQuery.afeelQuery(datas, 'endMatchListM', function (err, datarow) {
+                        afeelQuery.afeelQuery(datas, 'endMatchListM', 'expeople', function (err, datarow) {
                             if(err){
                            //     console.log('에러',err);
                                 res.json(err);
@@ -125,7 +125,7 @@ router.get('/', function(req, res) {
                             call(null, datarow)
                         });
                     }else if(count == 1){
-                        afeelQuery.afeelQuery(datas, 'endMatchListMFilter', function (err, datarow) {
+                        afeelQuery.afeelQuery(datas, 'endMatchListMFilter', 'expeople', function (err, datarow) {
                             if(err){
                                 //     console.log('에러',err);
                                 res.json(err);
@@ -141,7 +141,7 @@ router.get('/', function(req, res) {
                 }else if(gender == 'W') {
                     datas.pop();
                     if(count == 0){
-                        afeelQuery.afeelQuery(datas, 'endMatchListW', function (err, datarow) {
+                        afeelQuery.afeelQuery(datas, 'endMatchListW', 'expeople', function (err, datarow) {
                             if (err) {
                                 console.log('에러', err);
                                 res.json(err);
@@ -152,7 +152,7 @@ router.get('/', function(req, res) {
                         });
                     }else if(count == 1){
                         console.log('데이터스 = ', datas);
-                        afeelQuery.afeelQuery(datas, 'endMatchListWFilter', function (err, datarow) {
+                        afeelQuery.afeelQuery(datas, 'endMatchListWFilter', 'expeople', function (err, datarow) {
                             if (err) {
                                 console.log('에러', err);
                                 res.json(err);
@@ -177,7 +177,7 @@ router.get('/', function(req, res) {
                 temp = datarow;
                 async.eachSeries(ar, function (memberNoArray, callback) {
 
-                    afeelQuery.afeelQuery([memberNoArray], 'myRate1' , function (err, data) {
+                    afeelQuery.afeelQuery([memberNoArray], 'myRate1' , 'expeople', function (err, data) {
                         if(err){
                             res.json(err);
 

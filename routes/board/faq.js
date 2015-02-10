@@ -12,7 +12,7 @@ router.get('/', function(req, res){
     global.queryName = 'board';
     var queryidname = 'faqList';
 
-    afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
+    afeelQuery.afeelQuery([req.session.memberNo], queryidname , 'board', function (err, datas) {
         if(err){
             res.json(err);
             return;

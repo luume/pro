@@ -15,7 +15,7 @@ router.post('/', function(req, res) {
   global.queryName = 'member';
   var queryidname = 'checkEmailMember';
 
-  afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+  afeelQuery.afeelQuery(datas, queryidname ,'member', function (err, datas) {
     //console.log(datas);
     //if(err){
     //  res.json(err);

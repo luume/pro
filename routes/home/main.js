@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
   global.queryName = 'chat';
   var queryidname = 'chatMain';
 //잠시더미처리
-  afeelQuery.afeelQuery([req.session.memberNo], queryidname , function (err, datas) {
+  afeelQuery.afeelQuery([req.session.memberNo], queryidname , 'chat', function (err, datas) {
     if(err){
       console.log('home 에러', err);
       res.json(err);

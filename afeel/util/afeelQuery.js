@@ -14,15 +14,15 @@ var async = require('async');
  *                                       row : 정상처리되었을 경우 쿼리의 결과가 담김
  */
 
-exports.afeelQuery = function(bindQuery , queryId, callback, queryname) {
+exports.afeelQuery = function(bindQuery , queryId, queryname, callback) {
   //console.log('확인');
 
   //fs.readFileS(global.directoryPath + global.queryName + '.xml','utf8', function(error, data) {
-  if(queryname == undefined || queryname == null){
+  //if(queryname === undefined || queryname === null){
     var xmlfile = fs.readFileSync(global.directoryPath + queryname + '.xml','utf8');
-  }else{
+  /*}else{
     var xmlfile = fs.readFileSync(global.directoryPath + global.queryName + '.xml','utf8');
-  }
+  }*/
 
   /*  if (error) {
       console.log(error);

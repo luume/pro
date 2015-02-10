@@ -28,7 +28,7 @@ router.post('/', function(req, res){
 
    global.pool.getConnection(function (err, conn) {
       conn.beginTransaction(function (err) {
-         afeelQuery.afeelQuery(datas, queryidname , function (err, row) {
+         afeelQuery.afeelQuery(datas, queryidname ,'board', function (err, row) {
             if(err){
                res.json(err);
                return;

@@ -19,7 +19,7 @@ router.post('/', function(req, res){
             function(callback) {
                 global.queryName = 'member';
                 var queryidname = 'pushCheckMember';
-                afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+                afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) {
                     if(err){
                         res.json(err);
                         return;
@@ -39,7 +39,7 @@ router.post('/', function(req, res){
                     //pushOff 으로 Update
                     global.pool.getConnection(function (err, conn) {
                         conn.beginTransaction(function (err) {
-                            afeelQuery.afeelQuery(datas, queryidname , function (err, row) {
+                            afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, row) {
                                 if(err){
                                     res.json(err);
                                     return;
@@ -60,7 +60,7 @@ router.post('/', function(req, res){
                     //pushOn 으로 Update
                     global.pool.getConnection(function (err, conn) {
                         conn.beginTransaction(function (err) {
-                            afeelQuery.afeelQuery(datas, queryidname , function (err, row) {
+                            afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, row) {
                                 if(err){
                                 res.json(err);
                                 return;

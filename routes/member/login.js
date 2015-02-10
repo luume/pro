@@ -25,7 +25,7 @@ router.post('/', function(req, res){
     global.queryName = 'member';
     var queryidname = 'loginMember';
     console.log('datas',datas);
-    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+    afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) {
         if(err){
             res.json(err);
             return;
@@ -65,7 +65,7 @@ router.get('/:memberToken', function(req, res){
     global.queryName = 'member';
     var queryidname = 'facebookLoginMember';
     console.log('datas',datas);
-    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+    afeelQuery.afeelQuery(datas, queryidname ,'member', function (err, datas) {
         if(err){
             //res.json(err);
             console.log('페이스북 토큰이 노존재');

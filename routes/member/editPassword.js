@@ -48,7 +48,7 @@ router.post('/', function(req, res){
                 global.queryName = 'member';
                 var queryidname = 'editPasswordList';
                 //현재 비밀번호 유효성 체크
-                afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+                afeelQuery.afeelQuery(datas, queryidname , 'member' ,function (err, datas) {
                     if(err){
                         res.json(err);
                         return;
@@ -72,7 +72,7 @@ router.post('/', function(req, res){
                 //비밀번호 Update
                 global.pool.getConnection(function (err, conn) {
                     conn.beginTransaction(function (err) {
-                        afeelQuery.afeelQuery(datas, queryidname , function (err, row) {
+                        afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, row) {
                             if(err){
                                 res.json(err);
                                 return;
