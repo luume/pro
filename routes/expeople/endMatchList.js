@@ -100,10 +100,11 @@ router.get('/', function(req, res) {
                 datas.push(req.session.memberNo);
                 datas.push(req.session.memberNo);
                 datas.push(req.session.memberNo);
-                datas.push(req.session.memberNo);
+
               //  console.log('엔드매치 실행전');
                 global.queryName = 'expeople';
                 if(gender == 'M'){
+                    datas.push(req.session.memberNo);
                     console.log('남자다');
                     if(count == 0){
                         afeelQuery.afeelQuery(datas, 'endMatchListM', function (err, datarow) {
@@ -131,7 +132,6 @@ router.get('/', function(req, res) {
                     }
                 }else if(gender == 'W') {
                 //    console.log('여자다');
-                    datas.pop();
                     if(count == 0){
                         afeelQuery.afeelQuery(datas, 'endMatchListW', function (err, datarow) {
                             if (err) {
