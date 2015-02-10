@@ -16,23 +16,7 @@ router.get('/', function(req, res) {
 
     var memberEmail = req.body.memberEmail;
  // console.log('엔드매치세션아이디ss = ' , req.session.memberNo);
-    var datas = [];
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
-    datas.push(req.session.memberNo);
+
 
 
   //  console.log('datas', datas);
@@ -100,6 +84,23 @@ router.get('/', function(req, res) {
 
 
             function (gender, call) {
+                var datas = [];
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
+                datas.push(req.session.memberNo);
               //  console.log('엔드매치 실행전');
                 global.queryName = 'expeople';
                 if(gender == 'M'){
