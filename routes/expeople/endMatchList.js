@@ -65,8 +65,10 @@ router.get('/', function(req, res) {
                     //call(null, gender[0].memberGender);
 
                     if(gender == false){
+                        console.log('여자의 if문 카운트는 ' , count);
                         count = 0;
                     }else{
+                        console.log('여자의 else 카운트는 ' , count);
                         count = 1;
                     }
 
@@ -136,7 +138,6 @@ router.get('/', function(req, res) {
                         call(new Error('남자엘즈문'), null);
                     }
                 }else if(gender == 'W') {
-                    console.log('여자의 카운트는 ' , count);
                     datas.pop();
                     if(count == 0){
                         afeelQuery.afeelQuery(datas, 'endMatchListW', function (err, datarow) {
