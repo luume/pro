@@ -52,14 +52,14 @@ router.get('/', function(req, res) {
 
             function (call) {
                 afeelQuery.afeelQuery([req.session.memberNo], 'filteringMember', function (err, gender) {
-                    if(err){
+                    /*if(err){
                         //   console.log('에러',err);
                         //res.json(err);
                         console.log('여기서 걸리네 ㅡㅡ');
                         count = 0;
                         call(null);
                         return;
-                    }
+                    }*/
                     console.log('젠더는',gender);
                     //  console.log('0번쨰 워터폴 함수', gender);
                     //call(null, gender[0].memberGender);
