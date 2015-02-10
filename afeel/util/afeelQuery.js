@@ -52,9 +52,6 @@ exports.afeelQuery = function(bindQuery , queryId, queryname, callback) {
                 }
               }
 
-              for(var j=0; j < count; j++){
-                console.log('xml result = ', result[j]);
-              }
 
               for(var i = 0 ; i < count; i++){
                 if(result.query.myquery.length == undefined){
@@ -77,7 +74,7 @@ exports.afeelQuery = function(bindQuery , queryId, queryname, callback) {
         }
       ], function (err, result) {
 
-        console.log('리절트 = ' , result);
+       // console.log('리절트 = ' , result);
 
         global.pool.getConnection(function(err, conn) {
           if (err) console.error('err 발생 >>>>>', err);
