@@ -100,11 +100,10 @@ router.get('/', function(req, res) {
                 datas.push(req.session.memberNo);
                 datas.push(req.session.memberNo);
                 datas.push(req.session.memberNo);
-
+                datas.push(req.session.memberNo);
               //  console.log('엔드매치 실행전');
                 global.queryName = 'expeople';
                 if(gender == 'M'){
-                    datas.push(req.session.memberNo);
                     console.log('남자다');
                     if(count == 0){
                         afeelQuery.afeelQuery(datas, 'endMatchListM', function (err, datarow) {
@@ -132,6 +131,7 @@ router.get('/', function(req, res) {
                     }
                 }else if(gender == 'W') {
                 //    console.log('여자다');
+                    datas.pop();
                     if(count == 0){
                         afeelQuery.afeelQuery(datas, 'endMatchListW', function (err, datarow) {
                             if (err) {
@@ -143,13 +143,14 @@ router.get('/', function(req, res) {
                             call(null, datarow)
                         });
                     }else if(count == 1){
+                        console.log('데이터스 = ', datas);
                         afeelQuery.afeelQuery(datas, 'endMatchListWFilter', function (err, datarow) {
                             if (err) {
                                 console.log('에러', err);
                                 res.json(err);
                                 return;
                             }
-                            //  console.log('첫번쨰 워터폴 함수', datarow);
+                            console.log('첫번쨰 워터폴 함수', datarow);
                             call(null, datarow)
                         });
                     }else{
