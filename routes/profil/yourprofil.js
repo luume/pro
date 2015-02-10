@@ -61,7 +61,6 @@ router.get('/:memberTo', function(req, res){
                     afeelQuery.afeelQuery([memberTo], 'profilFileSelect', 'profil', function (err, profilName) {
                         if(err){res.json(err);}
 
-
                         var arr = [];
                         var a = 0;
                         async.each(profilName, function (row, callback) {

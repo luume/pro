@@ -11,7 +11,9 @@
         MEMBER.memberName, MEMBER.memberNick, MEMBER.memberBirth,
         MEMBER.memberHobby, MEMBER.memberAdd, MEMBER.memberHeight,
         MEMBER.memberJob, MEMBER.memberSNSYn, MEMBER.memberEmailYn,
-        CONCAT((select fType FROM FEELING_TYPE WHERE fTypeNo = ?), ',', (select fType FROM FEELING_TYPE WHERE fTypeNo = ?) , ',' , (select fType FROM FEELING_TYPE WHERE fTypeNo = ?)) as fType
+        (select fTypeNo FROM FEELING_TYPE WHERE fTypeNo = ?) AS fNo1,
+        (select fTypeNo FROM FEELING_TYPE WHERE fTypeNo = ?) AS fNo2,
+        (select fTypeNo FROM FEELING_TYPE WHERE fTypeNo = ?) AS fNo3
         FROM MEMBER WHERE MEMBER.memberNo = ?
     </myquery>
 

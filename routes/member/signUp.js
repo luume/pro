@@ -24,6 +24,7 @@ router.post('/', function(req, res) {
     var profilOriginalFileName = req.files.profilOriginalFileName;
     console.log('profilOriginalFileName의 값 = ', profilOriginalFileName);
     console.log('바디의값 ' , req.body);
+    console.log('file의값 ' , req.files);
 
     var varibleCheck = function (test, num) {
         if(test.length > num ){
