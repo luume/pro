@@ -65,11 +65,11 @@ router.get('/', function(req, res) {
                     //call(null, gender[0].memberGender);
 
                     if(gender === false || gender === undefined || gender === null){
-                        console.log('여자의 if문 카운트는 ' , count);
-                        call(null,0)
+                        //console.log('여자의 if문 카운트는 ' , count);
+                        call(null,0);
                     }else{
-                        console.log('여자의 else 카운트는 ' , count);
-                       call(null, 1)
+                        //console.log('여자의 else 카운트는 ' , count);
+                       call(null, 1);
                     }
 
                     //call(null, count);
@@ -78,6 +78,7 @@ router.get('/', function(req, res) {
             },
 
             function (count, call) {
+                console.log('워터폴 인자로 넘어온 count 값 = ' , count);
                 global.queryName = 'member';
                 afeelQuery.afeelQuery([req.session.memberNo], 'genderMember', function (err, gender) {
                     if(err){
