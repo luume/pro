@@ -47,7 +47,7 @@ router.get('/', function(req, res) {
     var queryidname = 'endMatchList';
     var temp;
 
-    var count = 0;
+    //var count = 0;
     async.waterfall([
 
             function (call) {
@@ -66,18 +66,18 @@ router.get('/', function(req, res) {
 
                     if(gender === false || gender === undefined || gender === null){
                         console.log('여자의 if문 카운트는 ' , count);
-                        count = 0;
+                        call(null,0)
                     }else{
                         console.log('여자의 else 카운트는 ' , count);
-                        count = 1;
+                       call(null, 1)
                     }
 
-                    call(null);
+                    //call(null, count);
                 });
 
             },
 
-            function (call) {
+            function (count, call) {
                 global.queryName = 'member';
                 afeelQuery.afeelQuery([req.session.memberNo], 'genderMember', function (err, gender) {
                     if(err){
@@ -86,12 +86,12 @@ router.get('/', function(req, res) {
                         return;
                     }
                   //  console.log('0번쨰 워터폴 함수', gender);
-                    call(null, gender[0].memberGender);
+                    call(null, gender[0].memberGender, count);
                 });
             },
 
 
-            function (gender, call) {
+            function (gender,count, call) {
                 var datas = [];
                 datas.push(req.session.memberNo);
                 datas.push(req.session.memberNo);
