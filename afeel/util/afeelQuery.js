@@ -36,13 +36,18 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
               //console.log('xml',result.query.myquery);
               //console.log('렝스',result.query.myquery.length);
               var count = 0;
+              var countArray = [];
               var k;
               for (k in tobj) {
                 if (tobj.hasOwnProperty(k)) {
                   //console.log(tobj.hasOwnProperty(k));
+                  countArray.push(count);
                   count++;
                 }
               }
+
+              console.log('tObj = ' , tobj);
+
               for(var i = 0 ; i < count; i++){
                 if(result.query.myquery.length == undefined){
                   if(result.query.myquery.id == queryId){
