@@ -13,10 +13,10 @@ var async = require('async');
  * @param callback (err, row)   err : 에러 일경우를 위한 매개변수. null이면 에러가 발생하지않음.
  *                                       row : 정상처리되었을 경우 쿼리의 결과가 담김
  */
-var query;
+
 exports.afeelQuery = function(bindQuery , queryId,  callback) {
   //console.log('확인');
-
+  var query;
   fs.readFile(global.directoryPath + global.queryName + '.xml','utf8', function(error, data) {
     if (error) {
       console.log(error);
