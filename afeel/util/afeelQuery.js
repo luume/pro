@@ -17,16 +17,18 @@ var async = require('async');
 exports.afeelQuery = function(bindQuery , queryId,  callback) {
   //console.log('확인');
 
-  fs.readFile(global.directoryPath + global.queryName + '.xml','utf8', function(error, data) {
-    if (error) {
+  //fs.readFileS(global.directoryPath + global.queryName + '.xml','utf8', function(error, data) {
+  var xmlfile = fs.readFileSync(global.directoryPath + global.queryName + '.xml','utf8');
+
+  /*  if (error) {
       console.log(error);
-    } else {
-    console.log('xml data = ' , data);
+    } else {*/
+    console.log('xml data = ' , xmlfile);
       async.waterfall([
 
         function (callback) {
           var query;
-          digester.digest(data, function(error, result) {
+          digester.digest(data, function(error, xmlfile) {
             if (error) {
               console.log(error);
             } else {
@@ -128,9 +130,9 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
       );
 
 
-    }
+    //}
 
-  });
+  //});
 
 
 };  // afeelQuery end
