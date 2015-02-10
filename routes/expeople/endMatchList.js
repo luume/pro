@@ -310,7 +310,7 @@ router.post('/:chartroomNo', function(req, res) {
     var deleteMemberNo = req.body.memberNo;
     console.log('진행중인 이성 삭제 진입', chartroomNo );
     console.log('진행중인 이성 삭제 진입', deleteMemberNo );
-    afeelQuery.afeelQuery([req.session.memberNo, deleteMemberNo, chartroomNo], 'insertFiltering', function (err, gender) {
+    afeelQuery.afeelQuery([req.session.memberNo, deleteMemberNo, chartroomNo], 'insertFiltering', 'expeople', function (err, gender) {
         if(err){
             console.log('에러',err);
             res.json(err);
@@ -323,7 +323,7 @@ router.post('/:chartroomNo', function(req, res) {
 
 router.get('/reset', function(req, res) {
 
-    afeelQuery.afeelQuery([], 'reset', function (err, gender) {
+    afeelQuery.afeelQuery([], 'reset',  'expeople', function (err, gender) {
         if(err){
             console.log('에러',err);
             res.json(err);
