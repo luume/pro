@@ -134,7 +134,7 @@ router.post('/', function(req, res) {
                                     errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
                                     return;
                                 }
-
+                                callback(); // 아래 err fun으로 호출
                             }); // query end
                         }else{
                             afeelQuery.afeelQuery(arr, 'insertProfil' , 'profil', function (err, a2) {
@@ -146,13 +146,13 @@ router.post('/', function(req, res) {
                                     return;
                                 }
                                 console.log('성공' + k);
-
+                                callback(); // 아래 err fun으로 호출
                             }); // query end
                         }
                         k++;
-                        if(profilOriginalFileName.length == k){
+                       /* if(profilOriginalFileName.length == k){
                             callback(); // 아래 err fun으로 호출
-                        }
+                        }*/
 
                     }, function(err){
                         console.log('이치에서 콜백을 호출하고있습니당...');
@@ -171,6 +171,7 @@ router.post('/', function(req, res) {
                             if(err){
                                 conn.rollback();
                             }
+                            res.json({success:1,message:'ok',result:'succes'});
                         });
                     }
                 }
