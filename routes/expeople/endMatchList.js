@@ -63,7 +63,13 @@ router.get('/', function(req, res) {
                     console.log('젠더는',gender);
                     //  console.log('0번쨰 워터폴 함수', gender);
                     //call(null, gender[0].memberGender);
-                    count = 1;
+
+                    if(gender == false){
+                        count = 0;
+                    }else{
+                        count = 1;
+                    }
+
                     call(null);
                 });
 
