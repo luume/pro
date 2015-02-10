@@ -159,7 +159,7 @@ router.get('/', function(req, res) {
                     ar.push(datarow[i].memberNo);
                 }
                 temp = datarow;
-                async.each(ar, function (memberNoArray, callback) {
+                async.eachSeries(ar, function (memberNoArray, callback) {
 
                     afeelQuery.afeelQuery([memberNoArray], 'myRate1' , function (err, data) {
                         if(err){
