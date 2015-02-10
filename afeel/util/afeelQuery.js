@@ -16,8 +16,7 @@ var async = require('async');
 var query;
 exports.afeelQuery = function(bindQuery , queryId,  callback) {
   //console.log('확인');
-  console.log('bind쿼리 = ' , bindQuery);
-  console.log('queryId = ' , queryId);
+
   fs.readFile(global.directoryPath + global.queryName + '.xml','utf8', function(error, data) {
     if (error) {
       console.log(error);
@@ -70,7 +69,9 @@ exports.afeelQuery = function(bindQuery , queryId,  callback) {
         global.pool.getConnection(function(err, conn) {
           if (err) console.error('err 발생 >>>>>', err);
 
-
+          console.log('bind쿼리 = ' , bindQuery);
+          console.log('queryId = ' , queryId);
+          console.log('sql = ' , query);
           //  global.afeelCon.beginTransaction(function(err) {
           conn.query(query, bindQuery, function (err, row) {
 
