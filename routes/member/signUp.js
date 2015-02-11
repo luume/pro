@@ -122,11 +122,14 @@ router.post('/', function(req, res) {
                         });*/
 
                         if(k == 0) {
+                            console.log('k가 0이다~~~~~~~~~~~~~~~~~~~~~~~~~~');
                             afeelQuery.afeelQuery([req.session.memberNo], 'selectCount' , 'profil', function (err, rowCount) {
                                 indexCount = rowCount == undefined || rowCount == false ? 0 : rowCount.length;
+                                k++;
                                 callback(); // 아래 err fun으로 호출
                             }); // query end
                         }else if(k == 1){
+                            console.log('k가 1이다~~~~~~~~~~~~~~~~~~~~~~~~~~');
                             var arr = [];
                             arr.push(selNo);
                             arr.push('http://54.92.4.84:3000/images/' + fArry.originalname);
@@ -141,9 +144,11 @@ router.post('/', function(req, res) {
                                     errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
                                     return;
                                 }
+                                k++;
                                 callback(); // 아래 err fun으로 호출
                             }); // query end
                         }else{
+                            console.log('k가 else다~~~~~~~~~~~~~~~~~~~~~~~~~~');
                             var arr = [];
                             arr.push(selNo);
                             arr.push('http://54.92.4.84:3000/images/' + fArry.originalname);
@@ -163,10 +168,11 @@ router.post('/', function(req, res) {
                                     return;
                                 }
                                 console.log('성공' + k);
+                                k++;
                                 callback(); // 아래 err fun으로 호출
                             }); // query end
                         }
-                        k++;
+
                        /* if(profilOriginalFileName.length == k){
                             callback(); // 아래 err fun으로 호출
                         }*/
