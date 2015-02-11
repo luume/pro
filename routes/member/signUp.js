@@ -131,6 +131,7 @@ router.post('/', function(req, res) {
                         if(k == 0){
                             console.log('k가 0이다~~~~~~~~~~~~~~~~~~~~~~~~~~');
                             var arr = [];
+                            console.log('아 브레이크 포인트', fArry);
                             arr.push(selNo);
                             arr.push('http://54.92.4.84:3000/images/' + fArry.originalname  + '.jpg');
                             arr.push('http://54.92.4.84:3000/images/' + fArry.name + '.jpg');
