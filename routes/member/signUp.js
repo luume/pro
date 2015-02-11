@@ -110,9 +110,9 @@ router.post('/', function(req, res) {
                         console.log(fArry);
                         var arr = [];
                         arr.push(selNo);
-                        arr.push(fArry.originalname);
-                        arr.push(fArry.name);
-                        arr.push(fArry.name.split('.')[0] + '-thumbnail.' +  '.jpg');
+                        arr.push('http://54.92.4.84:3000/images/' + fArry.originalname);
+                        arr.push('http://54.92.4.84:3000/images/' + fArry.name);
+                        arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail.' +  '.jpg');
                         //arr.push(fArry.originalname);
                         var destPath = '/home/ubuntu/test/pro/public/images/' + fArry.name.split('.')[0] + '-thumbnail.' +   '.jpg';
                         console.log('패스는',  destPath);
