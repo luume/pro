@@ -146,7 +146,7 @@ router.post('/', function(req, res) {
                                     errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
                                     return;
                                 }
-                                k++;
+                              //  k++;
                                 callback(); // 아래 err fun으로 호출
                             }); // query end
                         }else{
@@ -162,7 +162,7 @@ router.post('/', function(req, res) {
                                         indexCount = rowCount == undefined || rowCount == false ? 0 : rowCount.length;
                                         console.log('인덱스 카운트 좀 새보겟습니다 :  ', indexCount);
                                         arr.push(indexCount - 1);
-                                        calls(null, 1); // 아래 err fun으로 호출
+                                        calls(null); // 아래 err fun으로 호출
                                     }); // query end
                                 },
 
@@ -176,7 +176,7 @@ router.post('/', function(req, res) {
                                             return;
                                         }
                                         console.log('성공' + k);
-                                        k++;
+                                       // k++;
                                         calls(null, 1); // 아래 err fun으로 호출
                                     }); // query end
                                 }
@@ -189,6 +189,8 @@ router.post('/', function(req, res) {
 
 
                         }
+
+                        k++;
 
                        /* if(profilOriginalFileName.length == k){
                             callback(); // 아래 err fun으로 호출
