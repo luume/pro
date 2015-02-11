@@ -16,6 +16,17 @@ router.post('/', function(req, res) {
         ssl: true
     });
 
+    for(i=0; i<4; i++){
+        var lowerStr = (Math.random() * 26 + 97);
+        if(i%2 ==0){
+            password += (Math.random() * 26 + 97);
+        }
+        else{
+            password += lowerStr;
+        }
+    }
+
+    console.log('pp',password);
     server.send({
         text : 'i hope eat something',
         from : 'you <khj98291@gmail.com>',
