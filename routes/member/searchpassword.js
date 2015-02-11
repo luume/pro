@@ -10,8 +10,8 @@ router.post('/', function(req, res) {
     var memberEmail = req.body.memberEmail;
 
     var server = email.server.connect({
-        user: 'khj98291@gmail.com',
-        password: 'fdfd04814',   //내 비번!!!
+        user: 'afeelco@gmail.com',
+        password: 'afeel123',   //내 비번!!!
         host: 'smtp.gmail.com',
         ssl: true
     });
@@ -26,11 +26,11 @@ router.post('/', function(req, res) {
     }
     //console.log('pp',password);
     server.send({
-        text : 'i hope eat something',
+        text : '임시 비밀번호',
         from : 'aFeel <afeelco@gmail.com>',
         to : memberEmail,
         //cc : 'ccl <hacit@naver.com>',
-        subject : 'text email',
+        subject : '회원님의 임시 비밀번호 입니다.',
         attachment:
             [
                 {data:"<html><i>임시 비밀번호: </i>"+pwd+"</html>",
