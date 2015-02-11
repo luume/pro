@@ -132,8 +132,8 @@ router.post('/', function(req, res) {
                             console.log('k가 0이다~~~~~~~~~~~~~~~~~~~~~~~~~~');
                             var arr = [];
                             arr.push(selNo);
-                            arr.push('http://54.92.4.84:3000/images/' + fArry.originalname.jpg);
-                            arr.push('http://54.92.4.84:3000/images/' + fArry.name.jpg);
+                            arr.push('http://54.92.4.84:3000/images/' + fArry.originalname  + '.jpg');
+                            arr.push('http://54.92.4.84:3000/images/' + fArry.name + '.jpg');
                             arr.push('http://54.92.4.84:3000/images/' + fArry.name + '-thumbnail' +  '.jpg');
 
                             var jj =0;
@@ -165,8 +165,8 @@ router.post('/', function(req, res) {
                                 function (countIndex, calls) {
                                     var arr = [];
                                     arr.push(selNo);
-                                    arr.push('http://54.92.4.84:3000/images/' + fArry.originalname.jpg);
-                                    arr.push('http://54.92.4.84:3000/images/' + fArry.name.jpg);
+                                    arr.push('http://54.92.4.84:3000/images/' + fArry.originalname  + '.jpg');
+                                    arr.push('http://54.92.4.84:3000/images/' + fArry.name  + '.jpg');
                                     arr.push('http://54.92.4.84:3000/images/' + fArry.name + '-thumbnail' +  '.jpg');
                                     arr.push(countIndex);
                                     afeelQuery.afeelQuery(arr, 'insertProfil' , 'profil', function (err, a2) {
