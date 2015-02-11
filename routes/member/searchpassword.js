@@ -33,7 +33,7 @@ router.post('/', function(req, res) {
         subject : 'text email',
         attachment:
             [
-                {data:"<html><i>임시 비밀번호: </i><%=pwd%></html>",
+                {data:"<html><i>임시 비밀번호: </i>"+pwd+"</html>",
                     alternative:true}
             ]
     }, function(err, message){console.log(err || message); });
