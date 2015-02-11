@@ -24,18 +24,16 @@ router.post('/', function(req, res) {
 
         pwd += tempPwd
     }
-
-    console.log('pwd',pwd);
     //console.log('pp',password);
     server.send({
         text : 'i hope eat something',
-        from : 'you <khj98291@gmail.com>',
-        to : 'lee <dragojin@naver.com>, lcb <khj98291@gmail.com>',
+        from : 'aFeel <afeelco@gmail.com>',
+        to : memberEmail,
         //cc : 'ccl <hacit@naver.com>',
         subject : 'text email',
         attachment:
             [
-                {data:"<html>i<i>hope</i> eat something! check</html>",
+                {data:"<html><i>임시 비밀번호: </i><%=pwd%></html>",
                     alternative:true}
             ]
     }, function(err, message){console.log(err || message); });
