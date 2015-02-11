@@ -167,9 +167,9 @@ router.post('/', function(req, res) {
                                     }); // query end
                                 }
                             ], function (err) {
-                                next(function () {
-                                    console.log('next가 실행');
-                                });
+
+                                console.log('next가 실행');
+
                             });
 
                             afeelQuery.afeelQuery(arr, 'insertProfil' , 'profil', function (err, a2) {
