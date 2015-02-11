@@ -103,7 +103,7 @@ router.post('/', function(req, res) {
                      }
 
                     global.queryName = 'profil';
-                    var k = 0;
+                    var k = -1;
                     var indexCount;
                     async.eachSeries(profilOriginalFileName, function (fArry, callback) {
 
@@ -121,14 +121,14 @@ router.post('/', function(req, res) {
                             console.log(file);
                         });*/
 
-                        if(k == 0) {
+                        if(k == -1) {
                             console.log('k가 0이다~~~~~~~~~~~~~~~~~~~~~~~~~~');
                             afeelQuery.afeelQuery([req.session.memberNo], 'countIndex' , 'profil', function (err, rowCount) {
                                 indexCount = rowCount == undefined || rowCount == false ? 0 : rowCount.length;
                                 k++;
                                 callback(); // 아래 err fun으로 호출
                             }); // query end
-                        }else if(k == 1){
+                        }else if(k == 0){
                             console.log('k가 1이다~~~~~~~~~~~~~~~~~~~~~~~~~~');
                             var arr = [];
                             arr.push(selNo);
