@@ -12,15 +12,59 @@ router.post('/', function(req, res){
     var memberAdd = req.body.memberAdd;
     var memberJob = req.body.memberJob;
     var memberHobby = req.body.memberHobby;
+    var profilArray = req.body.profilUpdate;
     console.log('프로필업데이트 file', req.files);
     console.log('프로필업데이트 body', req.body);
 
-
+    var temp;
+    var indexCheck = [];
    global.pool.getConnection(function (err, conn) {
 
         conn.beginTransaction(function (err) {
 
             async.waterfall([
+/*
+                function (callback) {
+                    afeelQuery.afeelQuery(datas, 'selectProfilUpdateTime', 'profil', function (err, datas) {
+                        if(err){
+                            callback(0, null);
+                            return;
+                        }
+                        var ii = 0;
+                        *//*arr.push(fArry.originalname);
+                        arr.push(fArry.name);
+                        arr.push(fArry.name.split('.')[0] + '-thumbnail.' +  '.jpg');*//*
+                        var profilFileLength =  profilArray.length;
+                        var count = 0;
+
+                        for(var i = 0 ; i < profilFileLength; i++){
+                            if(profilArray.indexOf(datas[i].profilOriginalFileName)){
+                                indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
+                            }
+                        }
+
+
+                        async.eachSeries(profilArray, function (index, call) {
+                            if(ii == tem)
+                            afeelQuery.afeelQuery(datas, 'updateProfil', 'profil', function (err, datas) {
+                                if(err){
+                                    callback(0, null);
+                                    return;
+                                }
+                                console.log('datas ? ' , datas);
+                                callback(null, 1);
+                            });
+
+                            call();
+                        }, function (err) {
+
+                        });
+
+                        console.log('datas ? ' , datas);
+                        callback(null, 1);
+                    });
+                }*/
+
 
                 function (callback) {
                     var datas = [];
@@ -28,11 +72,21 @@ router.post('/', function(req, res){
                     datas.push(memberJob);
                     datas.push(memberAdd);
                     datas.push(req.session.memberNo);
-                    afeelQuery.afeelQuery(datas, 'selectThumbnail', 'profil', function (err, datas) {
+                    afeelQuery.afeelQuery(datas, 'selectAllThumbnail', 'profil', function (err, datas) {
                         if(err){
                             callback(0, null);
                             return;
                         }
+                        var ii = 0;
+                        async.each(datas, function (item, call) {
+
+                            item.profilOriginalFileName = profilArray[ii];
+                            ii++;
+                            call();
+                        }, function (err) {
+
+                        });
+
                         console.log('datas ? ' , datas);
                         callback(null, 1);
                     });

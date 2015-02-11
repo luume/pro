@@ -104,15 +104,12 @@ router.post('/', function(req, res) {
 
                     global.queryName = 'profil';
                     var k = 0;
+                    var indexCount;
                     async.eachSeries(profilOriginalFileName, function (fArry, callback) {
 
                         console.log('셀값 ' , selNo);
                         console.log(fArry);
-                        var arr = [];
-                        arr.push(selNo);
-                        arr.push('http://54.92.4.84:3000/images/' + fArry.originalname);
-                        arr.push('http://54.92.4.84:3000/images/' + fArry.name);
-                        arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail.' +  '.jpg');
+
                         //arr.push(fArry.originalname);
                         var destPath = '/home/ubuntu/test/pro/public/images/' + fArry.name.split('.')[0] + '-thumbnail.' +   '.jpg';
                         console.log('패스는',  destPath);
@@ -124,8 +121,23 @@ router.post('/', function(req, res) {
                             console.log(file);
                         });*/
 
+                        if(k == 0) {
+                            afeelQuery.afeelQuery([req.session.memberNo], 'selectCount' , 'profil', function (err, rowCount) {
+                                indexCount = rowCount == undefined || rowCount == false ? 0 : rowCount.length;
+                                callback(); // 아래 err fun으로 호출
+                            }); // query end
+                        }else if(k == 1){
+                            var arr = [];
+                            arr.push(selNo);
+                            arr.push('http://54.92.4.84:3000/images/' + fArry.originalname);
+                            arr.push('http://54.92.4.84:3000/images/' + fArry.name);
+                            arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail.' +  '.jpg');
+                            if(indexCount == 0){
+                                arr.push(indexCount);
+                            }else{
+                                arr.push(indexCount - 1);
+                            }
 
-                        if(k == 0){
                             afeelQuery.afeelQuery(arr, 'insertProfilMain' , 'profil', function (err, a2) {
                                 console.log('메인 k', k);
                                 console.log('메인프로필입니다.', arr);
@@ -137,6 +149,16 @@ router.post('/', function(req, res) {
                                 callback(); // 아래 err fun으로 호출
                             }); // query end
                         }else{
+                            var arr = [];
+                            arr.push(selNo);
+                            arr.push('http://54.92.4.84:3000/images/' + fArry.originalname);
+                            arr.push('http://54.92.4.84:3000/images/' + fArry.name);
+                            arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail.' +  '.jpg');
+                            if(indexCount == 0){
+                                arr.push(indexCount);
+                            }else{
+                                arr.push(indexCount - 1);
+                            }
                             afeelQuery.afeelQuery(arr, 'insertProfil' , 'profil', function (err, a2) {
                                 console.log('no메인프로필입니다.', arr);
                                 console.log('no메인 k.', k);

@@ -19,11 +19,15 @@
     </myquery>
 
     <myquery id="insertProfil">
-        INSERT INTO PROFIL(memberNo, profilOriginalFileName, profilSaveFileName, profilThumbnail) VALUES(?, ?, ? , ?, 0)
+        INSERT INTO PROFIL(memberNo, profilOriginalFileName, profilSaveFileName, profilThumbnail, profilIndex) VALUES(?, ?, ? , ?, 0, ?)
     </myquery>
 
     <myquery id="insertProfilMain">
-        INSERT INTO PROFIL(memberNo,	profilOriginalFileName, profilSaveFileName,  profilThumbnail,  profilMainYn) VALUES(?, ?, ? , ?, 1)
+        INSERT INTO PROFIL(memberNo,	profilOriginalFileName, profilSaveFileName,  profilThumbnail,  profilMainYn, profilIndex) VALUES(?, ?, ? , ?, 1, 0)
+    </myquery>
+
+    <myquery id="countIndex">
+        SELECT count(*) FROM PROFIL WHERE memberNo = ?
     </myquery>
 
     <myquery id="deleteProfil">
@@ -32,5 +36,9 @@
 
     <myquery id="selectAllThumbnail">
         SELECT profilThumbnail FROM PROFIL WHERE memberNo = ?
+    </myquery>
+
+    <myquery id="selectProfilUpdateTime">
+        SELECT profilThumbnail, profilRegDate FROM PROFIL WHERE memberNo = ?
     </myquery>
 </query>
