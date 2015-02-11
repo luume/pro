@@ -13,7 +13,7 @@ router.post('/:privateRoomNo', function(req, res){
     datas.push(privateRoomNo);
     global.queryName = 'expeople';
     var queryidname = 'privateRoomDelete';
-    afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
+    afeelQuery.afeelQuery(datas, queryidname , 'expeople', function (err, datas) {
 
         if (err) {
             res.json(err);
