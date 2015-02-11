@@ -168,7 +168,7 @@ router.post('/', function(req, res) {
                                     arr.push('http://54.92.4.84:3000/images/' + fArry.originalname);
                                     arr.push('http://54.92.4.84:3000/images/' + fArry.name);
                                     arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail' +  '.jpg');
-                                    arr.push(countIndex - 1);
+                                    arr.push(countIndex);
                                     afeelQuery.afeelQuery(arr, 'insertProfil' , 'profil', function (err, a2) {
                                         console.log('no메인프로필입니다.', arr);
                                         console.log('no메인 k.', k);
