@@ -58,6 +58,10 @@
         UPDATE MEMBER SET memberHobby = ? , memberJob = ? , memberAdd = ? WHERE memberNo = ?
     </myquery>
 
+    <myquery id = "UpdateMemberCash">
+        UPDATE MEMBER SET memberCash = ? WHERE memberNo = ?
+    </myquery>
+
 
 
 </query>

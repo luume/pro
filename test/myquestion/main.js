@@ -19,6 +19,8 @@ router.get('/:memberNo', function(req, res){
         questionRegDate : q.Question().questionRegDate,
         memberBestQ : m.Member().memberBestQ
     });
+
+
 });
 
 module.exports = router;
