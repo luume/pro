@@ -111,7 +111,7 @@ router.post('/', function(req, res) {
                         console.log(fArry);
 
                         //arr.push(fArry.originalname);
-                        var destPath = '/home/ubuntu/test/pro/public/images/' + fArry.name.split('.')[0] + '-thumbnail.' +   '.jpg';
+                        var destPath = '/home/ubuntu/test/pro/public/images/' + fArry.name.split('.')[0] + '-thumbnail' +   '.jpg';
                         console.log('패스는',  destPath);
                         /*easyimg.thumbnail({
                             src:fArry.path, dst : destPath,
@@ -131,12 +131,7 @@ router.post('/', function(req, res) {
                             arr.push(selNo);
                             arr.push('http://54.92.4.84:3000/images/' + fArry.originalname);
                             arr.push('http://54.92.4.84:3000/images/' + fArry.name);
-                            arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail.' +  '.jpg');
-                            if(indexCount == 0){
-                                arr.push(indexCount);
-                            }else{
-                                arr.push(indexCount - 1);
-                            }
+                            arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail' +  '.jpg');
 
                             afeelQuery.afeelQuery(arr, 'insertProfilMain' , 'profil', function (err, a2) {
                                 console.log('메인 k', k);
@@ -153,7 +148,7 @@ router.post('/', function(req, res) {
                             arr.push(selNo);
                             arr.push('http://54.92.4.84:3000/images/' + fArry.originalname);
                             arr.push('http://54.92.4.84:3000/images/' + fArry.name);
-                            arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail.' +  '.jpg');
+                            arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail' +  '.jpg');
                             if(indexCount == 0){
                                 arr.push(indexCount);
                             }else{
