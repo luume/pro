@@ -180,10 +180,11 @@ router.post('/', function(req, res) {
                                         calls(null, 1); // 아래 err fun으로 호출
                                     }); // query end
                                 }
-                            ], function (err) {
-
-                                console.log('next가 실행');
-                                callback();
+                            ], function (err, result) {
+                                if(result == 1) {
+                                    console.log('next가 실행');
+                                    callback();
+                                }
                             });
 
 
