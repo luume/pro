@@ -14,7 +14,7 @@ var memberEditPassword = require('./member/editPassword');
 var memberPush = require('./member/push');
 var memberWithDraw = require('./member/withDraw');
 var memberEmailCheck = require('./member/emailCheck');
-var memberSearchPassword = require('./member/searchPassword');
+var memberSearchPassword = require('./member/searchpassword');
 
 // 메인 화면
 var homeMain = require('./home/main');
