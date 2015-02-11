@@ -134,7 +134,7 @@ router.post('/', function(req, res) {
                             arr.push(selNo);
                             arr.push('http://54.92.4.84:3000/images/' + fArry.originalname);
                             arr.push('http://54.92.4.84:3000/images/' + fArry.name);
-                            arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail' +  '.jpg');
+                            arr.push('http://54.92.4.84:3000/images/' + fArry.name + '-thumbnail' +  '.jpg');
 
                             var jj =0;
 
@@ -167,7 +167,7 @@ router.post('/', function(req, res) {
                                     arr.push(selNo);
                                     arr.push('http://54.92.4.84:3000/images/' + fArry.originalname);
                                     arr.push('http://54.92.4.84:3000/images/' + fArry.name);
-                                    arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail' +  '.jpg');
+                                    arr.push('http://54.92.4.84:3000/images/' + fArry.name + '-thumbnail' +  '.jpg');
                                     arr.push(countIndex);
                                     afeelQuery.afeelQuery(arr, 'insertProfil' , 'profil', function (err, a2) {
                                         console.log('no메인프로필입니다.', arr);
