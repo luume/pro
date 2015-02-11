@@ -155,20 +155,20 @@ router.post('/', function(req, res) {
                             async.waterfall([
                                 function (calls) {
                                     afeelQuery.afeelQuery([req.session.memberNo], 'countIndex' , 'profil', function (err, rowCount) {
-                                        indexCount = rowCount == undefined || rowCount == false ? 0 : rowCount.length;
+
                                         console.log('인덱스 카운트 좀 새보겟습니다 :  ', indexCount);
 
-                                        calls(null); // 아래 err fun으로 호출
+                                        calls(null, rowCount.length); // 아래 err fun으로 호출
                                     }); // query end
                                 },
 
-                                function (calls) {
+                                function (countIndex, calls) {
                                     var arr = [];
                                     arr.push(selNo);
                                     arr.push('http://54.92.4.84:3000/images/' + fArry.originalname);
                                     arr.push('http://54.92.4.84:3000/images/' + fArry.name);
                                     arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail' +  '.jpg');
-                                    arr.push(indexCount - 1);
+                                    arr.push(countIndex - 1);
                                     afeelQuery.afeelQuery(arr, 'insertProfil' , 'profil', function (err, a2) {
                                         console.log('no메인프로필입니다.', arr);
                                         console.log('no메인 k.', k);
