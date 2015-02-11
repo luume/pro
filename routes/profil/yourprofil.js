@@ -37,9 +37,9 @@ router.get('/:memberTo', function(req, res){
             function(memberdata, callback) {
                 //console.log('memberdata.feelingCode1' , memberdata.feelingCode1);
                 var datas = [];
-                //datas.push(memberdata.feelingCode1);
-                //datas.push(memberdata.feelingCode2);
-                //datas.push(memberdata.feelingCode3);
+                datas.push(memberdata.feelingCode1);
+                datas.push(memberdata.feelingCode2);
+                datas.push(memberdata.feelingCode3);
                 datas.push(memberTo);
                 var codeSum = '';
 
