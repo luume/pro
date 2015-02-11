@@ -14,6 +14,7 @@ var memberEditPassword = require('./member/editPassword');
 var memberPush = require('./member/push');
 var memberWithDraw = require('./member/withDraw');
 var memberEmailCheck = require('./member/emailCheck');
+var memberSearchPassword = require('./member/searchPassword');
 
 // 메인 화면
 var homeMain = require('./home/main');
@@ -81,6 +82,7 @@ router.use('/member/editpassword', memberEditPassword);
 router.use('/member/push', memberPush);
 router.use('/member/withdraw', memberWithDraw);
 router.use('/member/emailcheck', memberEmailCheck);
+router.use('/member/searchpassword', memberSearchPassword);
 router.use('/member/f', ftest); // 페이스북테스트용
 
 
