@@ -202,6 +202,10 @@
         INSERT INTO FILTERING() VALUES(0, ?, ?, ?)
     </myquery>
 
+    <myquery id="privateRoomDelete">
+        DELETE FROM PRIVATE_ROOM WHERE privateRoomNo = ?
+    </myquery>
+
 </query>
 
 
