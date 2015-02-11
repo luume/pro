@@ -27,7 +27,7 @@
     </myquery>
 
     <myquery id="deleteProfil">
-        DELETE FROM PROFIL WHERE memberNo = ? AND profilThumbnail = ''         
+        DELETE FROM PROFIL WHERE memberNo = ? AND profilThumbnail = ''
     </myquery>
 
     <myquery id="selectAllThumbnail">

@@ -4,7 +4,7 @@ var router = express.Router();
 var util = require('../../../afeel/util/vo');
 
 router.get('/:chatroomNo', function(req, res){
-
+// d
     var chatroomNo = req.params.chatroomNo;
     if(chatroomNo == "" || chatroomNo == undefined){
         res.json({success:0, message:"Error(빈값이 넘어왔습니다.[chatroomNo])", result:null});
