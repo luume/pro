@@ -215,7 +215,28 @@ router.post('/', function(req, res) {
                             if(err){
                                 conn.rollback();
                             }
-                            res.json({success:1,message:'ok',result:'succes'});
+
+                            var queryidname = 'loginMember';
+
+                            afeelQuery.afeelQuery([memberEmail, memberPw], queryidname , 'member', function (err, datas) {
+                                if(err){
+                                    res.json(err);
+                                    return;
+                                }
+
+                                if(datas == null || datas == false){
+                                    res.json({
+                                        success : 0,
+                                        message : '아이디 또는 비밀번호가 틀렸습니다.',
+                                        result : null
+                                    });
+                                    return;
+                                }
+                                req.session.memberNo  = datas[0].memberNo;
+                                //console.log('세션 정보 = > ', req.session);
+                                res.json( { success : 1 , message : 'ok' ,result : datas  } );
+                            });
+
                         });
                     }
                 }
