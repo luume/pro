@@ -162,7 +162,7 @@ router.post('/', function(req, res) {
                                         indexCount = rowCount == undefined || rowCount == false ? 0 : rowCount.length;
                                         console.log('인덱스 카운트 좀 새보겟습니다 :  ', indexCount);
                                         arr.push(indexCount - 1);
-                                        calls(null, 1); // 아래 err fun으로 호출
+                                        calls(null); // 아래 err fun으로 호출
                                     }); // query end
                                 },
 
