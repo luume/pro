@@ -19,7 +19,7 @@
     </myquery>
 
     <myquery id="insertProfil">
-        INSERT INTO PROFIL(memberNo, profilOriginalFileName, profilSaveFileName, profilThumbnail, profilIndex) VALUES(?, ?, ? , ?, 0, ?)
+        INSERT INTO PROFIL(memberNo, profilOriginalFileName, profilSaveFileName, profilThumbnail,profilMainYn, profilIndex) VALUES(?, ?, ? , ?, 0, ?)
     </myquery>
 
     <myquery id="insertProfilMain">
