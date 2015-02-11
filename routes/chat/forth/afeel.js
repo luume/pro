@@ -59,7 +59,7 @@ router.post('/:memberTo', function(req, res){
                                 var datas = [];
                                 datas.push(calOmegi);
                                 datas.push(memberNo);
-                                afeelQuery.afeelQuery([req.session.memberNo], queryidname , 'member', function (err, datas) { //오메기떡 차감
+                                afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) { //오메기떡 차감
                                     if(err){
                                         res.json(err);
                                         return;
