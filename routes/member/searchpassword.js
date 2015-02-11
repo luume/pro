@@ -15,9 +15,11 @@ router.post('/', function(req, res) {
         host: 'smtp.gmail.com',
         ssl: true
     });
+    var password = 0;
 
     for(i=0; i<4; i++){
         var lowerStr = (Math.random() * 26 + 97);
+
         if(i%2 ==0){
             password += (Math.random() * 26 + 97);
         }
