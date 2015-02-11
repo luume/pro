@@ -36,8 +36,11 @@ router.post('/', function(req, res) {
                 {data:"<html><i>임시 비밀번호: </i>"+pwd+"</html>",
                     alternative:true}
             ]
-    }, function(err, message){console.log(err || message); });
-    res.json(util.successCode(res, 'success'));
+    },
+        function(err, message)
+        {console.log(err || message);}
+    );
+    res.json(util.successCode(res, '[success]'));
 
 });
 
