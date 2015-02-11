@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var util = require('../../../afeel/util/vo');
+var afeelQuery = require('../../../afeel/util/afeelQuery');
 
 router.post('/:privateRoomNo', function(req, res){
     var privateRoomNo = req.params.privateRoomNo;
