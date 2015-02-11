@@ -96,6 +96,7 @@ router.post('/:memberTo', function(req, res){
                                         res.json(err);
                                         return;
                                     }
+                                    console.log('채팅방생성됨');
                                     callback(null, '1');
                                 });
 
