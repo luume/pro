@@ -233,9 +233,10 @@ router.post('/', function(req, res) {
                                     return;
                                 }
                                 req.session.memberNo  = datas[0].memberNo;
-                                //console.log('세션 정보 = > ', req.session);
-                                res.json( { success : 1 , message : 'ok' ,result : datas  } );
+                                res.json({success:1,message:'ok',result:'succes'});
                             });
+
+
 
                         });
                     }
