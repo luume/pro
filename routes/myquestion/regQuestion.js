@@ -10,11 +10,13 @@ router.post('/', function(req, res) {
   var memberNo = req.session.memberNo;
   var questionData = req.body.questionData;
   var questionGuideData = req.body.questionGuideData;
+  var questionType = req.body.questionType;
 
   var datas = [];
   datas.push(memberNo);
   datas.push(questionData);
   datas.push(questionGuideData);
+  datas.push(questionType);
 
   global.queryName = 'myquestion';
   var queryidname = 'regMyquestion';

@@ -16,6 +16,6 @@
     </myquery>
 
     <myquery id="regMyquestion">
-        INSERT INTO QUESTION(memberNo, questionData, questionGuideData, questionType, questionRegDate) values (?,?,?,0,NOW())
+        INSERT INTO QUESTION(memberNo, questionData, questionGuideData, questionType, questionRegDate) values (?,?,?,?,NOW())
     </myquery>
 </query>
