@@ -12,7 +12,8 @@ router.post('/', function(req, res){
     var memberAdd = req.body.memberAdd;
     var memberJob = req.body.memberJob;
     var memberHobby = req.body.memberHobby;
-
+    console.log('프로필업데이트 file', req.files);
+    console.log('프로필업데이트 body', req.body);
 
 
    global.pool.getConnection(function (err, conn) {
@@ -20,6 +21,22 @@ router.post('/', function(req, res){
         conn.beginTransaction(function (err) {
 
             async.waterfall([
+
+                function (callback) {
+                    var datas = [];
+                    datas.push(memberHobby);
+                    datas.push(memberJob);
+                    datas.push(memberAdd);
+                    datas.push(req.session.memberNo);
+                    afeelQuery.afeelQuery(datas, 'selectThumbnail', 'profil', function (err, datas) {
+                        if(err){
+                            callback(0, null);
+                            return;
+                        }
+                        console.log('datas ? ' , datas);
+                        callback(null, 1);
+                    });
+                }, // 0번쨰 워터폴 종료
 
                 function (callback) {
                     var datas = [];
@@ -43,7 +60,7 @@ router.post('/', function(req, res){
                             // /home/ubuntu/test/pro/public/images/temp_14235530671423553081199-thumbnail..jpg
                             async.each(datas, function (index, call) {
                                 del(['/home/ubuntu/test/pro/public/images/' + index.Thumbnail], function (err, paths) {
-                                    console.log('파일이 지워졋다', paths);
+                                    //console.log('파일이 지워졋다', paths);
                                 });
                                 call();
                             }, function(err){
