@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="58630c1b-2a67-42bd-a435-8a0ef129b84a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/afeel/sql/profil.xml" afterPath="$PROJECT_DIR$/afeel/sql/profil.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pro.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,7 +81,7 @@
         <entry file="file://$PROJECT_DIR$/afeel/sql/profil.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.6494725" vertical-offset="113" max-vertical-offset="966">
-              <caret line="29" column="70" selection-start-line="29" selection-start-column="70" selection-end-line="29" selection-end-column="70" />
+              <caret line="29" column="72" selection-start-line="29" selection-start-column="72" selection-end-line="29" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -1105,7 +1106,7 @@
     <entry file="file://$PROJECT_DIR$/afeel/sql/profil.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6494725" vertical-offset="113" max-vertical-offset="966">
-          <caret line="29" column="70" selection-start-line="29" selection-start-column="70" selection-end-line="29" selection-end-column="70" />
+          <caret line="29" column="72" selection-start-line="29" selection-start-column="72" selection-end-line="29" selection-end-column="72" />
           <folding />
         </state>
       </provider>
