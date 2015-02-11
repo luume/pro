@@ -156,8 +156,8 @@ router.post('/', function(req, res) {
                                 function (calls) {
                                     afeelQuery.afeelQuery([req.session.memberNo], 'countIndex' , 'profil', function (err, rowCount) {
 
-                                        console.log('인덱스 카운트 좀 새보겟습니다 :  ', indexCount);
-
+                                      //  console.log('인덱스 카운트 좀 새보겟습니다 :  ', indexCount);
+                                        console.log('로우카운트인덱스 ', rowCount.length);
                                         calls(null, rowCount.length); // 아래 err fun으로 호출
                                     }); // query end
                                 },
