@@ -164,25 +164,29 @@ router.post('/', function(req, res) {
                                         arr.push(indexCount - 1);
                                         calls(null, 1); // 아래 err fun으로 호출
                                     }); // query end
+                                },
+
+                                function (calls) {
+                                    afeelQuery.afeelQuery(arr, 'insertProfil' , 'profil', function (err, a2) {
+                                        console.log('no메인프로필입니다.', arr);
+                                        console.log('no메인 k.', k);
+                                        if (err) {
+                                            conn.rollback();
+                                            errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
+                                            return;
+                                        }
+                                        console.log('성공' + k);
+                                        k++;
+                                        calls(null, 1); // 아래 err fun으로 호출
+                                    }); // query end
                                 }
                             ], function (err) {
 
                                 console.log('next가 실행');
-
+                                callback();
                             });
 
-                            afeelQuery.afeelQuery(arr, 'insertProfil' , 'profil', function (err, a2) {
-                                console.log('no메인프로필입니다.', arr);
-                                console.log('no메인 k.', k);
-                                if (err) {
-                                    conn.rollback();
-                                    errs = {success: 0, message: '회원가입에 실패하였습니다.(DB에러)', result: null};
-                                    return;
-                                }
-                                console.log('성공' + k);
-                                k++;
-                                callback(); // 아래 err fun으로 호출
-                            }); // query end
+
                         }
 
                        /* if(profilOriginalFileName.length == k){
