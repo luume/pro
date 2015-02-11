@@ -123,7 +123,7 @@ router.post('/', function(req, res) {
 
                         if(k == 0) {
                             console.log('k가 0이다~~~~~~~~~~~~~~~~~~~~~~~~~~');
-                            afeelQuery.afeelQuery([req.session.memberNo], 'selectCount' , 'profil', function (err, rowCount) {
+                            afeelQuery.afeelQuery([req.session.memberNo], 'countIndex' , 'profil', function (err, rowCount) {
                                 indexCount = rowCount == undefined || rowCount == false ? 0 : rowCount.length;
                                 k++;
                                 callback(); // 아래 err fun으로 호출
