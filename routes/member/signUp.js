@@ -128,13 +128,15 @@ router.post('/', function(req, res) {
                                 k++;
                                 callback(); // 아래 err fun으로 호출
                             }); // query end
-                        }else if(k == 0){
-                            console.log('k가 1이다~~~~~~~~~~~~~~~~~~~~~~~~~~');
+                        if(k == 0){
+                            console.log('k가 0이다~~~~~~~~~~~~~~~~~~~~~~~~~~');
                             var arr = [];
                             arr.push(selNo);
                             arr.push('http://54.92.4.84:3000/images/' + fArry.originalname);
                             arr.push('http://54.92.4.84:3000/images/' + fArry.name);
                             arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail' +  '.jpg');
+
+                            var jj =0;
 
                             afeelQuery.afeelQuery(arr, 'insertProfilMain' , 'profil', function (err, a2) {
                                 console.log('메인 k', k);
@@ -156,6 +158,19 @@ router.post('/', function(req, res) {
                             arr.push('http://54.92.4.84:3000/images/' + fArry.name.split('.')[0] + '-thumbnail' +  '.jpg');
                             console.log('인덱스 카운트 좀 새보겟습니다 :  ', indexCount);
                             arr.push(indexCount - 1);
+
+                            async.waterfall([
+                                function (calls) {
+                                    afeelQuery.afeelQuery([req.session.memberNo], 'countIndex' , 'profil', function (err, rowCount) {
+                                        indexCount = rowCount == undefined || rowCount == false ? 0 : rowCount.length;
+                                        calls(null, 1); // 아래 err fun으로 호출
+                                    }); // query end
+                                }
+                            ], function (err) {
+                                next(function () {
+                                    console.log('next가 실행');
+                                });
+                            });
 
                             afeelQuery.afeelQuery(arr, 'insertProfil' , 'profil', function (err, a2) {
                                 console.log('no메인프로필입니다.', arr);
