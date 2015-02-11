@@ -30,4 +30,8 @@
         AND p.profilMainYn = 1
         AND c.chatroomRegDate > DATE_ADD(now(), INTERVAL -1 day) ORDER BY RAND() LIMIT 0,5
     </myquery>
+
+    <myquery id="createPrivateChat">
+        INSERT INTO PRIVATE_ROOM(memberWNo, memberMNo, privateRoomRegDate) VALUES(?,?,NOW())
+    </myquery>
 </query>
