@@ -26,7 +26,7 @@ router.post('/:memberTo', function(req, res){
     //}
 
     var datas = [];
-    datas.push(memberNo);
+    datas.push(memberNo);//
 
     async.waterfall([
             function(callback) {
