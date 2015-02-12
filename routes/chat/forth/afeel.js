@@ -107,9 +107,25 @@ router.post('/:memberTo', function(req, res){
                                             })
                                         },
                                         function(data, callback) {
-                                            console.log('중복 채팅방 분기');
+                                            console.log('캐시 복구');
+                                            var Cashdatas = [];
+                                            Cashdatas.push(omegi);
+                                            Cashdatas.push(memberNo);
+                                            var queryidname = 'PlusMemberCash';
                                             if( data.cnt > 0) {
-                                                callback('0', data.privateRoomNo);
+                                                afeelQuery.afeelQuery(Cashdatas, queryidname , 'expeople', function (err, datas) {
+                                                    if(err){
+                                                        res.json(err);
+                                                        return;
+                                                    }
+                                                    if(datas.affectedRows == 0){
+                                                        res.json(err);
+                                                        return;
+                                                    }
+                                                    //  console.log('첫번째 처리 성공' , datas[0].memberGender);
+                                                    callback('0', data.privateRoomNo);
+                                                });
+                                                //callback('0', data.privateRoomNo);
                                                 //console.log('privateRoomNo',);
                                             } else {
                                                 console.log('채팅방생성해야함');
