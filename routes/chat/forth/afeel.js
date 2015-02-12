@@ -148,8 +148,8 @@ router.post('/:memberTo', function(req, res){
                         }
                     );
                 } else { //캐시가 불충분할경우
-                    //   console.log('여자다');
-                    callback(null, '0');
+                    console.log('캐시부족');
+                    callback(null, '100');
                 }
             }
         ],	function(err, results) {
