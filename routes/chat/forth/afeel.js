@@ -106,8 +106,8 @@ router.post('/:memberTo', function(req, res){
                                                 callback(null, datas[0]);
                                             })
                                         },
-                                        function(datas, callback) {
-                                            if( datas[0].cnt > 0) {
+                                        function(data, callback) {
+                                            if( data.cnt > 0) {
                                                 console.log('datas[0].privateRoomNo',privateRoomNo);
                                             } else {
                                                 var queryidname = 'createPrivateChat';
