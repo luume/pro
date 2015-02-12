@@ -12,7 +12,7 @@ router.post('/', function(req, res){
     var memberAdd = req.body.memberAdd;
     var memberJob = req.body.memberJob;
     var memberHobby = req.body.memberHobby;
-    var profilArray = req.body.profilArray;
+    var profilArray = new Array(req.body.profilArray);
     console.log('프로필업데이트 file', req.files);
     console.log('프로필업데이트 body', req.body);
 
