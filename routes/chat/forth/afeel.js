@@ -52,7 +52,7 @@ router.post('/:memberTo', function(req, res){
                 if (memberCash >= omegi) { //캐쉬가 충분할 경우
                     async.waterfall([
                             function(callback) {
-                                //console.log('첫번째 처리');
+                                console.log('캐시삭감');
                                 global.queryName = 'member';
                                 var queryidname = 'UpdateMemberCash';
                                 var calOmegi = memberCash - omegi;
@@ -91,7 +91,7 @@ router.post('/:memberTo', function(req, res){
                                 //
                                 async.waterfall([
                                         function(callback) {
-                                            //console.log('첫번째 처리');
+                                            console.log('중복 채팅방 체크');
                                             var queryidname = 'checkPrivateChatList'; //중복 채팅방 체크
                                             afeelQuery.afeelQuery(datas, queryidname , 'expeople', function (err, datas) {
                                                 if(err){
@@ -107,7 +107,7 @@ router.post('/:memberTo', function(req, res){
                                             })
                                         },
                                         function(data, callback) {
-                                            console.log('data',data);
+                                            console.log('중복 채팅방 분기');
                                             if( data.cnt > 0) {
                                                 callback('0', data.privateRoomNo);
                                                 //console.log('privateRoomNo',);
@@ -153,7 +153,19 @@ router.post('/:memberTo', function(req, res){
                 }
             }
         ],	function(err, results) {
-            res.json(util.successCode(res, results));
+            if (results == 1 ) { //성공
+                res.json(util.successCode(res, results));
+            } else if(results == 100) {
+                res.json(util.successCode(res, results));
+            } else {
+                res.json({
+                    success : 0,
+                    message : '중복된 채팅방 있음',
+                    result : results
+                });
+            }
+
+
         }
     );
 
