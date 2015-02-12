@@ -34,4 +34,8 @@
     <myquery id="createPrivateChat">
         INSERT INTO PRIVATE_ROOM(memberWNo, memberMNo, privateRoomRegDate) VALUES(?,?,NOW())
     </myquery>
+
+    <myquery id="viewPrivateChat">
+    SELECT messageFrom, messageTo, messageData, messageDate FROM PRIVATE_MESSAGE WHERE privateRoomNo = ?
+    </myquery>
 </query>
