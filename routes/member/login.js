@@ -38,7 +38,7 @@ router.post('/', function(req, res){
                     callback(err);
                     return;
                 }
-
+                console.log('데이터스 ' , datas);
                 if(datas == null || datas == false){
                     res.json({
                         success : 0,
@@ -70,7 +70,7 @@ router.post('/', function(req, res){
                         callback(null, 0);
                         return;
                     }
-
+                    console.log('데이터스222 ' , datas);
                     if(datas == null || datas == false){
                         res.json({
                             success : 0,
