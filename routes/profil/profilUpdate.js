@@ -160,6 +160,7 @@ router.post('/', function(req, res){
                                                     }, // func end
 
                                                     function (countIndex, call) {
+                                                        console.log('들어오나 체크 ', countIndex);
                                                         arr.push(countIndex);
                                                         afeelQuery.afeelQuery(arr, 'insertProfil', 'profil', function (err, datas) {
                                                             if (err) {
