@@ -19,13 +19,12 @@ router.get('/:privateRoomNo', function(req, res){
     var datas = [];
     datas.push(privateRoomNo);
 
-    global.queryName = 'chat';
     var queryidname = 'viewPrivateChat';
 
-    afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
+    afeelQuery.afeelQuery(datas, queryidname ,'chat', function (err, datas) {
         if(err){
             res.json(err);
-
+            return;
         }
         res.json(util.successCode(res, datas));
     });
