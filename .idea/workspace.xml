@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58630c1b-2a67-42bd-a435-8a0ef129b84a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/member/signUp.js" afterPath="$PROJECT_DIR$/routes/member/signUp.js" />
     </list>
     <ignored path="pro.iws" />
@@ -50,8 +49,8 @@
       <file leaf-file-name="signUp.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/member/signUp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.056561" vertical-offset="1296" max-vertical-offset="5652">
-              <caret line="173" column="102" selection-start-line="173" selection-start-column="102" selection-end-line="173" selection-end-column="102" />
+            <state vertical-scroll-proportion="0.41686183" vertical-offset="1804" max-vertical-offset="5652">
+              <caret line="120" column="46" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -1074,8 +1073,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/member/signUp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.056561" vertical-offset="1296" max-vertical-offset="5652">
-          <caret line="173" column="102" selection-start-line="173" selection-start-column="102" selection-end-line="173" selection-end-column="102" />
+        <state vertical-scroll-proportion="0.41686183" vertical-offset="1804" max-vertical-offset="5652">
+          <caret line="120" column="46" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
           <folding />
         </state>
       </provider>
