@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var util = require('../../afeel/util/vo');
+var afeelQuery = require('../../afeel/util/afeelQuery');
 var email = require('emailjs/email');
 
 // 이메일 인증
@@ -11,7 +12,7 @@ router.post('/', function(req, res) {
 
     var server = email.server.connect({
         user: 'afeelco@gmail.com',
-        password: 'afeel123',   //내 비번!!!
+        password: 'afeel12345',
         host: 'smtp.gmail.com',
         ssl: true
     });
@@ -33,14 +34,38 @@ router.post('/', function(req, res) {
         subject : '회원님의 임시 비밀번호 입니다.',
         attachment:
             [
-                {data:"<html><i>임시 비밀번호: </i>"+pwd+"</html>",
+                {data:"<html><i>임시 비밀번호: </i>"+pwd+"<br>꼭! 비밀번호 변경을 하신 후 사용해 주세요.</html>",
                     alternative:true}
             ]
     },
         function(err, message)
         {console.log(err || message);}
     );
-    res.json(util.successCode(res, '[success]'));
+    var datas = [];
+    datas.push(pwd);
+    datas.push(memberEmail);
+
+    global.queryName = 'member';
+    var queryidname = 'editPasswordMemberByEmail';
+    //비밀번호 Update
+    global.pool.getConnection(function (err, conn) {
+        conn.beginTransaction(function (err) {
+            afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, row) {
+                if(err){
+                    res.json(err);
+                    return;
+                }
+                if(row.affectedRows == 1){
+                    res.json(util.successCode(res, '[success]'));
+                } else {
+                    res.json({ success : 0 , message : 'fail', result : null});
+                    return;
+                }
+            });
+        }); // 트랜잭션 종료
+    });
+
+
 
 });
 

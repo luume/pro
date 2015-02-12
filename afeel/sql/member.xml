@@ -40,6 +40,10 @@
         UPDATE MEMBER SET memberPw = ? WHERE memberNo = ?
     </myquery>
 
+    <myquery id = "editPasswordMemberByEmail">
+        UPDATE MEMBER SET memberPw = ? WHERE memberEmail = ?
+    </myquery>
+
     <myquery id = "checkEmailMember">
         SELECT memberEmail from MEMBER WHERE memberEmail = ?
     </myquery>
