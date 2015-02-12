@@ -50,8 +50,10 @@ router.post('/', function(req, res){
 
 
                 if(datas[0].registrationId == 0 || registrationId != datas[0].registrationId){
+                    console.log('모든게 읍다');
                     callback(null, 0)
                 }else{
+                    console.log('모든게 있다.');
                     callback(null, 1)
                 }
 
