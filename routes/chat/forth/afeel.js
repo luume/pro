@@ -161,7 +161,7 @@ router.post('/:memberTo', function(req, res){
                 res.json({
                     success : 0,
                     message : '중복된 채팅방 있음',
-                    result : {'privateRoomNo':results}
+                    result : new Array({'privateRoomNo':results})
                 });
             }
 
