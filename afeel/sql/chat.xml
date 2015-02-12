@@ -36,6 +36,11 @@
     </myquery>
 
     <myquery id="viewPrivateChat">
-    SELECT messageFrom, messageTo, messageData, messageDate FROM PRIVATE_MESSAGE WHERE privateRoomNo = ?
+        select
+        case messageFrom
+        when ? then 0
+        else 1
+        end as isMe, messageFrom, messageTo, messageData, messageDate
+        from PRIVATE_MESSAGE where privateRoomNo = ? order by messageDate asc
     </myquery>
 </query>

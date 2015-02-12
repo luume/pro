@@ -17,6 +17,7 @@ router.get('/:privateRoomNo', function(req, res){
     //}
 
     var datas = [];
+    datas.push(memberNo);
     datas.push(privateRoomNo);
 
     var queryidname = 'viewPrivateChat';
