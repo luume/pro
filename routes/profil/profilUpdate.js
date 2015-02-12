@@ -7,7 +7,7 @@ var async = require('async');
 var del = require('del');
 
 router.post('/', function(req, res){
-/*
+
     var profilOriginalFileName = req.files.profilOriginalFileName;
     var memberAdd = req.body.memberAdd;
     var memberJob = req.body.memberJob;
@@ -32,7 +32,7 @@ router.post('/', function(req, res){
                             return;
                         }
                         var ii = 0;
-                        /*//*arr.push(fArry.originalname);
+                        //*arr.push(fArry.originalname);
                         var profilFileLength =  profilArray.length;
                         var count = 0;
 
@@ -53,6 +53,12 @@ router.post('/', function(req, res){
                                             return;
                                         }
                                         console.log('datas ? ' , datas);
+
+                                        del(['/home/ubuntu/aFeel/pro/public/images/' + fileName], function (err, paths) {
+                                            if(err)console.error('파일 에러 = ', err );
+                                            console.log('파일이 지워졋다', paths);
+                                        });
+
                                         call();
                                     });
                                 }, function (err) {
@@ -98,10 +104,9 @@ router.post('/', function(req, res){
                                             if(ii == 0){
                                                 afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
                                                     if (err) {
-                                                        callback(0, null);
+                                                       calls(err);
                                                         return;
                                                     }
-                                                    calls();
                                                 }); // query end
                                             }else{
                                                 async.waterfall([
@@ -130,10 +135,12 @@ router.post('/', function(req, res){
                                         } // if else end
 
                                         ii++;
-                                        callback(null);
+                                        calls();
 
                                     }, function (err) {
-
+                                        if(err){
+                                            console.log('콜백 지옥 에러야');
+                                        }
                                     }) // eachSerise end
 
 
@@ -143,29 +150,34 @@ router.post('/', function(req, res){
 
                         ], function (err, result) {
                             console.log('마지막이치다');
+
                         }); // warterfall end
 
-                ], function (err, successCode) {
-                    if(err == 0){
-                        conn.rollback(function (err) {
-                            console.log('프로필 업데이트 롤백 중..');
-                            res.json({success:0, message:'프로필 수정에 실패했습니다', result : null});
-                            conn.release();
-                        })
-                    }
+                        //console.log('datas ? ' , datas);
+                        callback(null, 1);
+                    });
+                },
 
-                        if(successCode == 1){
-                        conn.commit(function () {
-                            console.log('프로필 업데이트 커밋 중..');
-                            res.json(util.successCode(res, 'success'));
-                            conn.release();
-                        })
-                    }
-                }
+
+            ], function (err, successCode) {
+                if(err == 0){
+                    conn.rollback(function (err) {
+                        console.log('프로필 업데이트 롤백 중..');
+                        res.json({success:0, message:'프로필 수정에 실패했습니다', result : null});
+                        conn.release();
                     })
+                }
 
+                if(successCode == 1){
+                    conn.commit(function () {
+                        console.log('프로필 업데이트 커밋 중..');
+                        res.json(util.successCode(res, 'success'));
+                        conn.release();
+                    })
+                }
+            });
 
         }); // 트랜잭션 종료
-    });*/
+    });
 });
 module.exports = router;

@@ -12,7 +12,7 @@ router.post('/', function(req, res){
     var memberEmail = req.body.memberEmail;
     var memberPw = req.body.memberPw;
     var registrationId = req.body.registrationId;
-
+                                          registrationId
     var datas = [];
     datas.push(utils.format(memberEmail));
     datas.push(memberPw);
@@ -31,6 +31,7 @@ router.post('/', function(req, res){
         function (callback) {
             afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) {
                 if(err){
+                    console.log('여기서 에러남');
                     callback(err);
                     return;
                 }
