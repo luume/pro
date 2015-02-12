@@ -22,6 +22,7 @@ router.post('/', function(req, res) {
     var memberAdd = req.body.memberAdd;
     var memberJob = req.body.memberJob;
     var profilOriginalFileName = req.files.profilOriginalFileName;
+    var registrationId = req.body.registrationId;
     console.log('profilOriginalFileName의 값 = ', profilOriginalFileName);
     console.log('바디의값 ' , req.body);
     console.log('file의값 ' , req.files);
@@ -45,6 +46,7 @@ router.post('/', function(req, res) {
     datas.push(parseInt(memberHeight));
     datas.push(memberAdd);
     datas.push(memberJob);
+    datas.push(registrationId);
     global.queryName = 'member';
     var queryidname = 'signupMember';
 
