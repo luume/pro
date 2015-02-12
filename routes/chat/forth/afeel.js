@@ -146,6 +146,7 @@ router.post('/:memberTo', function(req, res){
 
                                         },
                                         function(data, callback) {
+                                            console.log('ㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ');
                                             //채팅방 번호 가저오기
                                             var queryidname = 'checkPrivateChatList'; //중복 채팅방 체크
                                             afeelQuery.afeelQuery(datas, queryidname , 'expeople', function (err, datas) {
