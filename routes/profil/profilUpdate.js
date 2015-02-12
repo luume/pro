@@ -54,8 +54,10 @@ router.post('/', function(req, res){
                         async.eachSeries(datas, function (deleteItem, callback) {
                             if(profilArray.indexOf(deleteItem.profilOriginalFileName == -1 )){
                                 //indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
-
-                                deleteFileIndex.push( deleteItem.profilOriginalFileName.split('/')[4]);
+                                console.log(deleteItem.profilOriginalFileName.split('/')[1]);
+                                console.log(deleteItem.profilOriginalFileName.split('/')[2]);
+                                console.log(deleteItem.profilOriginalFileName.split('/')[3]);
+                                deleteFileIndex.push( deleteItem.profilOriginalFileName.split('/')[3]);
                             }
                         })
 
