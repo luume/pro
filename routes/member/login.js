@@ -29,7 +29,7 @@ router.post('/', function(req, res){
     global.queryName = 'member';
     var queryidname = 'loginMember';
     console.log('datas',datas);
-
+var temp;
     async.waterfall([
         function (callback) {
             afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) {
@@ -56,11 +56,9 @@ router.post('/', function(req, res){
                     console.log('모든게 있다.');
                     callback(null, 1)
                 }
-
                 req.session.memberNo  = datas[0].memberNo;
                 //console.log('세션 정보 = > ', req.session);
-
-
+                temp = datas;
             });
         },
 
@@ -97,8 +95,8 @@ router.post('/', function(req, res){
         }
 
         if(result == 1){
-            console.log({ success : 1 , message : 'ok' ,result : datas  });
-            res.json( { success : 1 , message : 'ok' ,result : datas  } );
+            console.log({ success : 1 , message : 'ok' ,result : temp  });
+            res.json( { success : 1 , message : 'ok' ,result : temp  } );
         }else if(result == 0){
             res.json( { success : 0, message : '실패' ,result : null  } );
         }
