@@ -54,7 +54,7 @@ router.post('/', function(req, res){
 
                             function (callback) {
                                 async.eachSeries(deleteFileIndex, function (fileName, call) {
-                                    afeelQuery.afeelQuery([fileName], 'deleteProfilFile', 'profil', function (err, datas) {
+                                    afeelQuery.afeelQuery([fileName], 'deleteProfil', 'profil', function (err, datas) {
                                         if(err){
                                             callback(0, null);
                                             return;
