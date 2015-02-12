@@ -12,12 +12,13 @@ router.post('/', function(req, res){
     var memberEmail = req.body.memberEmail;
     var memberPw = req.body.memberPw;
     var registrationId = req.body.registrationId;
-                                          registrationId
+                                      //    registrationId
     var datas = [];
     datas.push(utils.format(memberEmail));
     datas.push(memberPw);
 
     console.log(req.body);
+    console.log('레그아이디 = ',registrationId);
 
     var varibCheck = function (test ,num) {
         if(test.length > num){
