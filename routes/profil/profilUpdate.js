@@ -48,13 +48,21 @@ router.post('/', function(req, res){
                         //*arr.push(fArry.originalname);
                         var profilFileLength =  profilArray.length;
                         var count = 0;
+                        //var jj =0;
+                        async.eachSeries(datas, function (deleteItem, callback) {
+                            if(profilArray.indexOf(deleteItem == -1 )){
+                                //indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
+                                deleteFileIndex.push(deleteItem);
+                            }
+                        })
 
-                        for(var i = 0 ; i < profilFileLength; i++){
+                        console.log(datas);
+                  /*      for(var i = 0 ; i < profilFileLength; i++){
                             if(profilArray.indexOf(datas[i].profilOriginalFileName == -1 )){
                                 //indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
                                 deleteFileIndex.push(datas[i].profilOriginalFileName);
                             }
-                        }
+                        }*/
 
                         async.waterfall([
 
