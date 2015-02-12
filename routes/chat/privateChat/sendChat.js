@@ -23,7 +23,7 @@ router.post('/', function(req, res){
     var messageTO = req.body.messageTo;
 
 
-    console.log('reqbody',req.body);
+    console.log('1111111111reqbody',req.body);
     console.log('messageData',messageData);
 
 
@@ -43,30 +43,22 @@ router.post('/', function(req, res){
 
             })
 
-        },
-
-        function (successCode, callback) {
-
-            if(successCode == 1){
-                var d = new Date();
-                var tempDate = pad2(d.getFullYear().toString()) + pad2((d.getMonth() + 1).toString()) + pad2(d.getDate().toString()
-                  + pad2(d.getHours().toString()) + pad2(d.getMinutes().toString()));
-                gcmSetting.gcmSend([messageTO], {messageData : messageData, privateChatRegDate : tempDate });
-
-            }
-
         }
 
     ], function (err, result) {
 
+        var d = new Date();
+        var tempDate = pad2(d.getFullYear().toString()) + pad2((d.getMonth() + 1).toString()) + pad2(d.getDate().toString()
+          + pad2(d.getHours().toString()) + pad2(d.getMinutes().toString()));
 
-
+        gcmSetting.gcmSend([messageTO], {messageData : messageData, privateChatRegDate : tempDate });
+        console.log('응?');
     })
 
 
 
 
-    res.json(util.successCode(res, tempDate));
+    //res.json(util.successCode(res, tempDate));
 
 });
 

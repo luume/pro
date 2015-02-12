@@ -194,10 +194,10 @@
         ifnull((select  DATE_FORMAT(messageDate, '%Y-%m-%d %H:%i:%S ') as messageDate from PRIVATE_MESSAGE where privateRoomNo = pr.privateRoomNo order by messageNo desc limit 0,1),"") as messageDate
         FROM PRIVATE_ROOM pr, PROFIL p
         WHERE
-        not ifnull((select messageData from PRIVATE_MESSAGE where privateRoomNo = pr.privateRoomNo order by messageNo desc limit 0,1), "") = ""
-        and p.memberNo = pr.memberMNo AND p.profilMainYn = 1 and pr.memberMNo = ?
+        p.memberNo = pr.memberMNo AND p.profilMainYn = 1 and pr.memberMNo = ?
         order by messageDate desc
     </myquery>
+
     <myquery id="checkPrivateChatList">
         select privateRoomNo, count(privateRoomNo) as cnt from PRIVATE_ROOM where memberWNo = ? and memberMNo = ?;
     </myquery>
