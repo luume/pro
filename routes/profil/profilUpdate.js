@@ -55,7 +55,7 @@ router.post('/', function(req, res){
                             if(profilArray.indexOf(deleteItem.profilOriginalFileName == -1 )){
                                 //indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
 
-                                deleteFileIndex.push( deleteItem.profilOriginalFileName.split('\')[4]);
+                                deleteFileIndex.push( deleteItem.profilOriginalFileName.split('/')[4]);
                             }
                         })
 
