@@ -69,7 +69,9 @@
     <myquery id = "UpdateMemberCash">
         UPDATE MEMBER SET memberCash = ? WHERE memberNo = ?
     </myquery>
-
+    <myquery id = "PlusMemberCash">
+        UPDATE MEMBER set memberCash = memberCash + ? where memberNo = ?
+    </myquery>
 
 
 </query>
