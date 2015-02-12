@@ -39,7 +39,7 @@
     </myquery>
 
     <myquery id="selectIndexThumbnail">
-        SELECT profilThumbnail, profilIndex, memberNo FROM PROFIL WHERE memberNo = ? ORDER BY profilIndex
+        SELECT profilOriginalFileName, profilIndex, memberNo FROM PROFIL WHERE memberNo = ? ORDER BY profilIndex
     </myquery>
 
     <myquery id="selectProfilUpdateTime">

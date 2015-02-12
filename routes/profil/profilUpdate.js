@@ -50,9 +50,9 @@ router.post('/', function(req, res){
                         var count = 0;
                         //var jj =0;
                         async.eachSeries(datas, function (deleteItem, callback) {
-                            if(profilArray.indexOf(deleteItem.profilThumbnail == -1 )){
+                            if(profilArray.indexOf(deleteItem.profilOriginalFileName == -1 )){
                                 //indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
-                                deleteFileIndex.push(deleteItem.profilThumbnail);
+                                deleteFileIndex.push(deleteItem.profilOriginalFileName);
                             }
                         })
 
