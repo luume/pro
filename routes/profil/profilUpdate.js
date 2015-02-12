@@ -70,7 +70,7 @@ router.post('/', function(req, res){
 
                             function (callback) {
                                 async.eachSeries(deleteFileIndex, function (fileName, call) {
-                                    afeelQuery.afeelQuery([fileName], 'deleteProfil', 'profil', function (err, datas) {
+                                    afeelQuery.afeelQuery([req.session.memberNo,fileName], 'deleteProfil', 'profil', function (err, datas) {
                                         if(err){
                                             console.log('딜리트 파일네임 : ', deleteFileIndex);
                                             console.log('이번에 삭제할 파일네임 : ', fileName);
