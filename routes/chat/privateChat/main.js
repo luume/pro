@@ -25,7 +25,7 @@ router.get('/:privateRoomNo', function(req, res){
     afeelQuery.afeelQuery(datas, queryidname , function (err, datas) {
         if(err){
             res.json(err);
-
+            return;
         }
         res.json(util.successCode(res, datas));
     });
