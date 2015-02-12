@@ -51,6 +51,7 @@ router.post('/', function(req, res){
                         var profilFileLength =  profilArray.length;
                         var count = 0;
                         var jj =0;
+                        var tempData = new Array(datas);
                         async.eachSeries(datas, function (deleteItem, callback) {
                           /*  if(profilArray.indexOf(deleteItem.profilOriginalFileName == -1  )){
                                 //indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
@@ -60,7 +61,7 @@ router.post('/', function(req, res){
 
                             if(profilArray.indexOf(deleteItem.profilOriginalFileName != -1  )){
                                 //indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
-                                if(datas[jj].indexOf( profilArray.indexOf(deleteItem.profilOriginalFileName) ) == -1){
+                                if(tempData[jj].indexOf( profilArray.indexOf(deleteItem.profilOriginalFileName) ) == -1){
                                     deleteFileIndex.push( deleteItem.profilOriginalFileName);
                                 }
                             }
