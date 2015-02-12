@@ -69,6 +69,7 @@ router.post('/', function(req, res){
             if(checkCode == 0){
                 afeelQuery.afeelQuery([registrationId, req.session.memberNo], 'updateRegistrationId' , 'member', function (err, datas) {
                     if(err){
+                        console.log('2번쨰 쿼리 에러 ', err);
                         callback(null, 0);
                         return;
                     }
