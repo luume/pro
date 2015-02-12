@@ -15,6 +15,11 @@ router.post('/', function(req, res){
     //    res.json({success:0, message:"Error(빈값이 넘어왔습니다.[messageData])", result:null});
     //    return;
     //}
+
+    console.log('privateRoomNo',privateRoomNo);
+    console.log('messageData',messageData);
+
+
     function pad2(n) {  // always returns a string
         return (n < 10 ? '0' : '') + n;
     }
