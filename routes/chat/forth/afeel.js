@@ -75,6 +75,9 @@ router.post('/:memberTo', function(req, res){
                             function(aa, callback) {
                                 //  console.log('넘어온 멤버 젠더', memberGender);
                                 //   console.log('여자다');
+                                //
+
+                                //
                                 if(memberGender == 'M'){ //현재 사용자가 남자 -> memberMNo = memberNo, memberWNo = memberTo
                                     var datas = [];
                                     datas.push(memberTo);
@@ -85,24 +88,63 @@ router.post('/:memberTo', function(req, res){
                                     datas.push(memberNo);
                                     datas.push(memberTo);
                                 }
-                                global.queryName = 'chat';
-                                var queryidname = 'createPrivateChat';
-                                afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) { //1:1 채팅방 생성
-                                    if(err){
-                                        res.json(err);
-                                        return;
-                                    }
-                                    if(datas.affectedRows == 0){
-                                        res.json(err);
-                                        return;
-                                    }
-                                    console.log('채팅방생성됨');
-                                    callback(null, '1');
-                                });
+                                //
+                                async.waterfall([
+                                        function(callback) {
+                                            //console.log('첫번째 처리');
+                                            var queryidname = 'checkPrivateChatList'; //중복 채팅방 체크
+                                            afeelQuery.afeelQuery(datas, queryidname , 'expeople', function (err, datas) {
+                                                if(err){
+                                                    res.json(err);
+                                                    return;
+                                                }
+                                                if(datas == false){ //select 결과 row 0일때 처리
+                                                    res.json({ success : 0 , message : '데이터 없음', result : null});
+                                                    return;
+                                                }
+                                                //  console.log('첫번째 처리 성공' , datas[0].memberGender);
+                                                callback(null, datas[0]);
+                                            })
+                                        },
+                                        function(data, callback) {
+                                            console.log('data',data);
+                                            if( data.cnt > 0) {
+                                                callback('0', data.privateRoomNo);
+                                                //console.log('privateRoomNo',);
+                                            } else {
+                                                console.log('채팅방생성해야함');
+                                                var queryidname = 'createPrivateChat';
+                                                afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) { //1:1 채팅방 생성
+                                                    if(err){
+                                                        res.json(err);
+                                                        return;
+                                                    }
+                                                    if(datas.affectedRows == 0){
+                                                        res.json(err);
+                                                        return;
+                                                    }
 
+                                                    callback(null, '1');
+                                                });
+                                            }
+
+                                        }
+                                    ],	function(err, results) {
+                                        if (err == 0) {
+                                            callback('0', results);
+                                        } else {
+                                            callback(null, '1');
+                                        }
+
+                                    }
+                                );
                             }
                         ],	function(err, results) {
-                            callback(null, '1');
+                            if (err == 0) {
+                                callback('0', results);
+                            } else {
+                                callback(null, '1');
+                            }
                         }
                     );
                 } else { //캐시가 불충분할경우
