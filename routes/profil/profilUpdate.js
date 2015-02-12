@@ -54,9 +54,11 @@ router.post('/', function(req, res){
                         async.eachSeries(datas, function (deleteItem, callback) {
                             if(profilArray.indexOf(deleteItem.profilOriginalFileName == -1 )){
                                 //indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
-                                console.log(deleteItem.profilOriginalFileName.split('/')[1]);
-                                console.log(deleteItem.profilOriginalFileName.split('/')[2]);
-                                console.log(deleteItem.profilOriginalFileName.split('/')[3]);
+                                console.log('0 = ' , deleteItem.profilOriginalFileName.split('/')[0]);
+                                console.log('1 = ' , deleteItem.profilOriginalFileName.split('/')[1]);
+                                console.log('2 = ' , deleteItem.profilOriginalFileName.split('/')[2]);
+                                console.log('3 = ' , deleteItem.profilOriginalFileName.split('/')[3]);
+                                console.log('4 = ' , deleteItem.profilOriginalFileName.split('/')[4]);
                                 deleteFileIndex.push( deleteItem.profilOriginalFileName.split('/')[3]);
                             }
                         })
