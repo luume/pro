@@ -159,6 +159,7 @@ router.post('/:memberTo', function(req, res){
                                                 }
                                                 //  console.log('첫번째 처리 성공' , datas[0].memberGender);
                                                 callback('1', datas[0].privateRoomNo);
+                                                console.log('룸넘버1',datas[0].privateRoomNo);
                                             })
                                         }
                                     ],	function(err, results) {
@@ -166,6 +167,7 @@ router.post('/:memberTo', function(req, res){
                                             callback('0', results);
                                         } else if(err == 1){
                                             callback('1', results);
+                                            console.log('룸넘버2',results);
                                         }
                                         else {
                                             callback(null, results);
@@ -179,6 +181,7 @@ router.post('/:memberTo', function(req, res){
                                 callback('0', results);
                             } else if(err == 1){
                                 callback('1', results);
+                                console.log('룸넘버3',results);
                             } else {
                                 callback(null, results);
                             }
@@ -191,8 +194,9 @@ router.post('/:memberTo', function(req, res){
             }
         ],	function(err, results) {
             if (err == 1 ) { //성공
+                console.log('룸넘버4',results);
                 res.json({
-                    success : 0,
+                    success : 1,
                     message : '성공',
                     result : new Array({'State':1,'privateRoomNo':results})
                 });
