@@ -34,7 +34,7 @@ router.post('/', function(req, res) {
         subject : '회원님의 임시 비밀번호 입니다.',
         attachment:
             [
-                {data:"<html><i>임시 비밀번호: </i>"+pwd+"</br>꼭! 비밀번호 변경을 하신 후 사용해 주세요.</html>",
+                {data:"<html><i>임시 비밀번호: </i>"+pwd+"<br>꼭! 비밀번호 변경을 하신 후 사용해 주세요.</html>",
                     alternative:true}
             ]
     },
