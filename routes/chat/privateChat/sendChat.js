@@ -16,7 +16,7 @@ router.post('/', function(req, res){
     //    return;
     //}
 
-    console.log('privateRoomNo',privateRoomNo);
+    console.log('reqbody',req.body);
     console.log('messageData',messageData);
 
 
