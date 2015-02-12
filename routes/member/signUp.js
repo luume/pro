@@ -105,7 +105,7 @@ router.post('/', function(req, res) {
                      }
 
                     global.queryName = 'profil';
-                    var k = -1;
+                    var k = 0;
                     var indexCount;
                     async.eachSeries(profilOriginalFileName, function (fArry, callback) {
 
