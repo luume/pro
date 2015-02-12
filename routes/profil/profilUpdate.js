@@ -59,6 +59,10 @@ router.post('/', function(req, res){
                                 console.log('2 = ' , deleteItem.profilOriginalFileName.split('/')[2]);
                                 console.log('3 = ' , deleteItem.profilOriginalFileName.split('/')[3]);
                                 console.log('4 = ' , deleteItem.profilOriginalFileName.split('/')[4]);
+                                console.log('5 = ' , deleteItem.profilOriginalFileName.split('/')[5]);
+                                console.log('6 = ' , deleteItem.profilOriginalFileName.split('/')[6]);
+                                console.log('7 = ' , deleteItem.profilOriginalFileName.split('/')[7]);
+                                console.log('8 = ' , deleteItem.profilOriginalFileName.split('/')[8]);
                                 deleteFileIndex.push( deleteItem.profilOriginalFileName.split('/')[3]);
                             }
                         })
