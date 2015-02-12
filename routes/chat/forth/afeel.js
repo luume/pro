@@ -140,7 +140,7 @@ router.post('/:memberTo', function(req, res){
                                                         return;
                                                     }
 
-                                                    callback('1', '1');
+                                                    callback(null, '1');
                                                 });
                                             }
 
