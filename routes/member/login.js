@@ -97,6 +97,7 @@ router.post('/', function(req, res){
         }
 
         if(result == 1){
+            console.log({ success : 1 , message : 'ok' ,result : datas  });
             res.json( { success : 1 , message : 'ok' ,result : datas  } );
         }else if(result == 0){
             res.json( { success : 0, message : '실패' ,result : null  } );
