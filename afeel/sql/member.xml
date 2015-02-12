@@ -5,7 +5,11 @@
     </myquery>
 
     <myquery id="loginMember">
-        SELECT memberNo, memberGender FROM MEMBER WHERE memberEmail = ? AND memberPw = ? AND memberWithdraw = 0
+        SELECT memberNo, memberGender, IFNULL(registrationId,0) AS registrationId  FROM MEMBER WHERE memberEmail = ? AND memberPw = ? AND memberWithdraw = 0
+    </myquery>
+
+    <myquery id="loginMember">
+        UPDATE MEMBER SET registrationId = ? WHERE memberNo = ?
     </myquery>
 
     <myquery id="facebookLoginMember">
