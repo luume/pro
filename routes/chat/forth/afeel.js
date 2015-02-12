@@ -194,19 +194,19 @@ router.post('/:memberTo', function(req, res){
                 res.json({
                     success : 0,
                     message : '성공',
-                    result : new Array({'State':1},{'privateRoomNo':results})
+                    result : new Array({'State':1,'privateRoomNo':results})
                 });
             } else if(err == 2) {
                 res.json({
                     success : 0,
                     message : '캐시 부족',
-                    result : new Array({'State':100},{'privateRoomNo':null})
+                    result : new Array({'State':100,'privateRoomNo':null})
                 });
             } else {
                 res.json({
                     success : 0,
                     message : '중복된 채팅방 있음',
-                    result : new Array({'State':0},{'privateRoomNo':results})
+                    result : new Array({'State':0,'privateRoomNo':results})
                 });
             }
 
