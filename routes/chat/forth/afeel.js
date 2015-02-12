@@ -107,9 +107,9 @@ router.post('/:memberTo', function(req, res){
                                             })
                                         },
                                         function(data, callback) {
-                                            console.log('data',data);
+                                            //console.log('data',data);
                                             if( data.cnt > 0) {
-                                                //console.log('datas[0].privateRoomNo',data.privateRoomNo);
+                                                console.log('privateRoomNo',data.privateRoomNo);
                                             } else {
                                                 var queryidname = 'createPrivateChat';
                                                 afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) { //1:1 채팅방 생성
