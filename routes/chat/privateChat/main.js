@@ -27,7 +27,6 @@ router.get('/:privateRoomNo', function(req, res){
             res.json(err);
 
         }
-
         res.json(util.successCode(res, datas));
     });
 
