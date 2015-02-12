@@ -112,6 +112,7 @@ router.post('/:memberTo', function(req, res){
                                                 callback('0', data.privateRoomNo);
                                                 //console.log('privateRoomNo',);
                                             } else {
+                                                console.log('채팅방생성해야함');
                                                 var queryidname = 'createPrivateChat';
                                                 afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) { //1:1 채팅방 생성
                                                     if(err){
@@ -122,7 +123,7 @@ router.post('/:memberTo', function(req, res){
                                                         res.json(err);
                                                         return;
                                                     }
-                                                    console.log('채팅방생성됨');
+
                                                     callback(null, '1');
                                                 });
                                             }
