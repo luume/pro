@@ -74,6 +74,7 @@ router.post('/', function(req, res){
                                         if(err){
                                             console.log('딜리트 파일네임 : ', deleteFileIndex);
                                             console.log('이번에 삭제할 파일네임 : ', fileName);
+                                            console.log('이번에 삭제할 회원번호 : ', req.session.memberNo);
                                             console.log('딜리트 프로필 ' , err);
                                             callback(0, null);
                                             return;
