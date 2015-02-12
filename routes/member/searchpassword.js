@@ -40,7 +40,31 @@ router.post('/', function(req, res) {
         function(err, message)
         {console.log(err || message);}
     );
-    res.json(util.successCode(res, '[success]'));
+    var datas = [];
+    datas.push(pwd);
+    datas.push(memberEmail);
+
+    global.queryName = 'member';
+    var queryidname = 'editPasswordMemberByEmail';
+    //비밀번호 Update
+    global.pool.getConnection(function (err, conn) {
+        conn.beginTransaction(function (err) {
+            afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, row) {
+                if(err){
+                    res.json(err);
+                    return;
+                }
+                if(row.affectedRows == 1){
+                    res.json(util.successCode(res, '[success]'));
+                } else {
+                    res.json({ success : 0 , message : 'fail', result : null});
+                    return;
+                }
+            });
+        }); // 트랜잭션 종료
+    });
+
+
 
 });
 
