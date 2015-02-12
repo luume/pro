@@ -14,7 +14,7 @@ exports.gcmSend = function(memberNoArray, data){
     data: data
   });
 
-  var server_access_key = 'AlzaSyAgk159GSpKHuF3QsmXtkkYM2cP6gZenQ';
+  var server_access_key = 'AlzaSyAgk159GSpKHuF3QsmXtkkfYM2cP6gZeNQ';
 
   var sender = new gcm.Sender(server_access_key);
 
