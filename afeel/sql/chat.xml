@@ -38,8 +38,8 @@
     <myquery id="viewPrivateChat">
         select
         case messageFrom
-        when ? then 0
-        else 1
+        when ? then 1
+        else 0
         end as isMe, messageFrom, messageTo, messageData, messageDate
         from PRIVATE_MESSAGE where privateRoomNo = ? order by messageDate asc
     </myquery>
