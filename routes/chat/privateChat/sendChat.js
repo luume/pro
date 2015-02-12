@@ -15,8 +15,12 @@ router.post('/', function(req, res){
     //    res.json({success:0, message:"Error(빈값이 넘어왔습니다.[messageData])", result:null});
     //    return;
     //}
+    function pad2(n) {  // always returns a string
+        return (n < 10 ? '0' : '') + n;
+    }
     var d = new Date();
-    var tempDate = d.getFullYear().toString() + (d.getMonth() + 1).toString() + d.getDate().toString();
+    var tempDate = pad2(d.getFullYear().toString()) + pad2((d.getMonth() + 1).toString()) + pad2(d.getDate().toString()
+        + pad2(d.getHours().toString()) + pad2(d.getMinutes().toString()));
 
     res.json(util.successCode(res, tempDate));
 
