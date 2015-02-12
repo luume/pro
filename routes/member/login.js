@@ -65,7 +65,7 @@ router.post('/', function(req, res){
         },
 
         function (checkCode, callback) {
-
+            console.log('2번쨰 워터폴 레그아이디 ' , registrationId);
             if(checkCode == 0){
                 afeelQuery.afeelQuery([registrationId, req.session.memberNo], 'updateRegistrationId' , 'member', function (err, datas) {
                     if(err){
