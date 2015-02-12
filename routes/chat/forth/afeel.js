@@ -18,6 +18,7 @@ router.post('/:memberTo', function(req, res){
     var memberTo = req.params.memberTo; //어필할 상대
     var memberGender = req.body.memberGender; //현재 사용자 성별
     var omegi = req.body.omegi; //어필할 상대
+    var chatroomNo = req.body.chatroomNo;
 
     //if(memberNo == "" || memberNo == undefined){
     //    res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
@@ -159,7 +160,25 @@ router.post('/:memberTo', function(req, res){
                                                 }
                                                 //  console.log('첫번째 처리 성공' , datas[0].memberGender);
                                                 callback('1', datas[0].privateRoomNo);
-
+                                            })
+                                        },
+                                        function(privateRoomNo, callback) {
+                                            //CHATROOM isHide
+                                            var chatRoomdatas = [];
+                                            chatRoomdatas.push(memberNo);
+                                            chatRoomdatas.push(privateRoomNo);
+                                            var queryidname = 'chatRoomHide'; //중복 채팅방 체크
+                                            afeelQuery.afeelQuery(chatRoomdatas, queryidname , 'chat', function (err, datas) {
+                                                if(err){
+                                                    res.json(err);
+                                                    return;
+                                                }
+                                                if(datas.affectedRows == false){ //select 결과 row 0일때 처리
+                                                    res.json({ success : 0 , message : '데이터 없음', result : null});
+                                                    return;
+                                                }
+                                                //  console.log('첫번째 처리 성공' , datas[0].memberGender);
+                                                callback(null, '1');
                                             })
                                         }
                                     ],	function(err, results) {

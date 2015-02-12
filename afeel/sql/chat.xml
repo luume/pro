@@ -43,4 +43,7 @@
         end as isMe, messageFrom, messageTo, messageData, messageDate
         from PRIVATE_MESSAGE where privateRoomNo = ? order by messageDate asc
     </myquery>
+    <myquery id="chatRoomHide">
+
+    </myquery>
 </query>
