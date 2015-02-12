@@ -24,16 +24,16 @@
         (
         SELECT  croom.chatroomNo AS chatroomNo, croom.chatroomRegDate AS chatroomRegDate, crank.rank AS rank, crank.memberNo AS memberNo,
         IF((select memberGender FROM MEMBER where memberNo = ?) = 'M' , 'W' , 'M') as partnerGender FROM CHAT_RANK crank JOIN CHATROOM croom
-        ON croom.chatroomNo = crank.chatroomNo
+        ON croom.chatroomNo = crank.chatroomNo AND isHide = 0
         )  z JOIN (select c.chatroomNo AS chatroomNo from CHAT_RANK cr JOIN CHATROOM c ON cr.chatroomNo = c.chatroomNo WHERE memberNo = ?) x ON z.chatroomNo = x.chatroomNo
         WHERE z.rank = (IF((select memberGender FROM MEMBER where memberNo = ?) = 'M', 0, 1 )) AND  z.rank = (IF((select memberGender FROM MEMBER where memberNo = ?) = 'M', 0, 2 ))
         ) qq  JOIN
         (
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM1No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?  UNION
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM2No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM3No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
-        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM4No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
-        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberWNo = ? AND rank BETWEEN 0 AND 2 AND memberNo= ?
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM1No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0  UNION
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM2No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?  AND isHide = 0  UNION
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM3No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0   UNION
+        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM4No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0   UNION
+        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberWNo = ? AND rank BETWEEN 0 AND 2 AND memberNo= ? AND isHide = 0
         ) zz ON qq.chatroomNo = zz.chatroomNo
         ) rdata JOIN MEMBER mem ON rdata.memberNo = mem.memberNo
         ) rdata2 JOIN PROFIL pr ON rdata2.memberNo = pr.memberNo  WHERE profilMainYn = 1
@@ -64,16 +64,16 @@
         (
         SELECT  croom.chatroomNo AS chatroomNo, croom.chatroomRegDate AS chatroomRegDate, crank.rank AS rank, crank.memberNo AS memberNo,
         IF((select memberGender FROM MEMBER where memberNo = ?) = 'M' , 'W' , 'M') as partnerGender FROM CHAT_RANK crank JOIN CHATROOM croom
-        ON croom.chatroomNo = crank.chatroomNo
+        ON croom.chatroomNo = crank.chatroomNo AND isHide = 0
         )  z JOIN (select c.chatroomNo AS chatroomNo from CHAT_RANK cr JOIN CHATROOM c ON cr.chatroomNo = c.chatroomNo WHERE memberNo = ?) x ON z.chatroomNo = x.chatroomNo
         WHERE z.rank = (IF((select memberGender FROM MEMBER where memberNo = ?) = 'M', 0, 1 ))
         ) qq  JOIN
         (
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM1No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?  UNION
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM2No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM3No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
-        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM4No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
-        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberWNo = ? AND rank BETWEEN 0 AND 2 AND memberNo= ?
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM1No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0  UNION
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM2No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0   UNION
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM3No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0   UNION
+        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM4No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0   UNION
+        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberWNo = ? AND rank BETWEEN 0 AND 2 AND memberNo= ? AND isHide = 0
         ) zz ON qq.chatroomNo = zz.chatroomNo
         ) rdata JOIN MEMBER mem ON rdata.memberNo = mem.memberNo
         ) rdata2 JOIN PROFIL pr ON rdata2.memberNo = pr.memberNo  WHERE profilMainYn = 1
@@ -104,16 +104,16 @@
         (
         SELECT  croom.chatroomNo AS chatroomNo, croom.chatroomRegDate AS chatroomRegDate, crank.rank AS rank, crank.memberNo AS memberNo,
         IF((select memberGender FROM MEMBER where memberNo = ?) = 'M' , 'W' , 'M') as partnerGender FROM CHAT_RANK crank JOIN CHATROOM croom
-        ON croom.chatroomNo = crank.chatroomNo
+        ON croom.chatroomNo = crank.chatroomNo AND isHide = 0
         )  z JOIN (select c.chatroomNo AS chatroomNo from CHAT_RANK cr JOIN CHATROOM c ON cr.chatroomNo = c.chatroomNo WHERE memberNo = ?) x ON z.chatroomNo = x.chatroomNo
         WHERE z.rank = (IF((select memberGender FROM MEMBER where memberNo = ?) = 'M', 0, 1 )) AND  z.rank = (IF((select memberGender FROM MEMBER where memberNo = ?) = 'M', 0, 2 ))
         ) qq  JOIN
         (
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM1No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?  UNION
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM2No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM3No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
-        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM4No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
-        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberWNo = ? AND rank BETWEEN 0 AND 2 AND memberNo= ?
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM1No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0  UNION
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM2No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0  UNION
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM3No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?  AND isHide = 0  UNION
+        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM4No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?  AND isHide = 0  UNION
+        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberWNo = ? AND rank BETWEEN 0 AND 2 AND memberNo= ? AND isHide = 0
         ) zz ON qq.chatroomNo = zz.chatroomNo
         ) rdata JOIN MEMBER mem ON rdata.memberNo = mem.memberNo
         ) rdata2 JOIN PROFIL pr ON rdata2.memberNo = pr.memberNo  WHERE profilMainYn = 1
@@ -144,16 +144,16 @@
         (
         SELECT  croom.chatroomNo AS chatroomNo, croom.chatroomRegDate AS chatroomRegDate, crank.rank AS rank, crank.memberNo AS memberNo,
         IF((select memberGender FROM MEMBER where memberNo = ?) = 'M' , 'W' , 'M') as partnerGender FROM CHAT_RANK crank JOIN CHATROOM croom
-        ON croom.chatroomNo = crank.chatroomNo
+        ON croom.chatroomNo = crank.chatroomNo AND isHide = 0
         )  z JOIN (select c.chatroomNo AS chatroomNo from CHAT_RANK cr JOIN CHATROOM c ON cr.chatroomNo = c.chatroomNo WHERE memberNo = ?) x ON z.chatroomNo = x.chatroomNo
         WHERE z.rank = (IF((select memberGender FROM MEMBER where memberNo = ?) = 'M', 0, 1 ))
         ) qq  JOIN
         (
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM1No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?  UNION
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM2No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
-        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM3No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
-        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM4No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?   UNION
-        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberWNo = ? AND rank BETWEEN 0 AND 2 AND memberNo= ?
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM1No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0  UNION
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM2No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0   UNION
+        select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM3No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0   UNION
+        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM4No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0   UNION
+        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberWNo = ? AND rank BETWEEN 0 AND 2 AND memberNo= ? AND isHide = 0
         ) zz ON qq.chatroomNo = zz.chatroomNo
         ) rdata JOIN MEMBER mem ON rdata.memberNo = mem.memberNo
         ) rdata2 JOIN PROFIL pr ON rdata2.memberNo = pr.memberNo  WHERE profilMainYn = 1

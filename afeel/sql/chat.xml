@@ -38,4 +38,8 @@
     <myquery id="viewPrivateChat">
     SELECT messageFrom, messageTo, messageData, messageDate FROM PRIVATE_MESSAGE WHERE privateRoomNo = ?
     </myquery>
+
+    <myquery id="insertPrivateMessage">
+        INSERT INTO PRIVATE_MESSAGE(messageNo, privateRoomNo, messageFrom, messageTO, messageData) VALUES(0, ?, ?, ?, ?)
+    </myquery>
 </query>
