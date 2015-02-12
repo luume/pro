@@ -50,36 +50,68 @@ router.post('/:memberTo', function(req, res){
                 datas.push(memberNo);
                 //  console.log('넘어온 멤버 젠더', memberGender);
                 if (memberCash >= omegi) { //캐쉬가 충분할 경우
-                    global.queryName = 'member';
-                    var queryidname = 'UpdateMemberCash';
-                    var calOmegi = memberCash - omegi;
-                    var datas = [];
-                    datas.push(calOmegi);
-                    datas.push(memberNo);
-                    afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) { //오메기떡 차감
-                        if(err){
-                            res.json(err);
-                            return;
+                    async.waterfall([
+                            function(callback) {
+                                //console.log('첫번째 처리');
+                                global.queryName = 'member';
+                                var queryidname = 'UpdateMemberCash';
+                                var calOmegi = memberCash - omegi;
+                                var datas = [];
+                                datas.push(calOmegi);
+                                datas.push(memberNo);
+                                afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) { //오메기떡 차감
+                                    if(err){
+                                        res.json(err);
+                                        return;
+                                    }
+                                    if(datas == false){ //select 결과 row 0일때 처리
+                                        res.json({ success : 0 , message : '데이터 없음', result : null});
+                                        return;
+                                    }
+                                    //  console.log('첫번째 처리 성공' , datas[0].memberGender);
+                                    callback(null, '1');
+                                })
+                            },
+                            function(aa, callback) {
+                                //  console.log('넘어온 멤버 젠더', memberGender);
+                                //   console.log('여자다');
+                                if(memberGender == 'M'){ //현재 사용자가 남자 -> memberMNo = memberNo, memberWNo = memberTo
+                                    var datas = [];
+                                    datas.push(memberTo);
+                                    datas.push(memberNo);
+                                }
+                                else { //현재 사용자가 여자 -> memberMNo = memberTo, memberWNo = memberNo
+                                    var datas = [];
+                                    datas.push(memberNo);
+                                    datas.push(memberTo);
+                                }
+                                global.queryName = 'chat';
+                                var queryidname = 'createPrivateChat';
+                                afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) { //1:1 채팅방 생성
+                                    if(err){
+                                        res.json(err);
+                                        return;
+                                    }
+                                    if(datas.affectedRows == 0){
+                                        res.json(err);
+                                        return;
+                                    }
+                                    console.log('채팅방생성됨');
+                                    callback(null, '1');
+                                });
+
+                            }
+                        ],	function(err, results) {
+                            callback(null, '0');
                         }
-                        if(datas == false){ //select 결과 row 0일때 처리
-                            res.json({ success : 0 , message : '데이터 없음', result : null});
-                            return;
-                        }
-                        //  console.log('첫번째 처리 성공' , datas[0].memberGender);
-                        callback(null, '1');
-                    })
+                    );
                 } else { //캐시가 불충분할경우
                     //   console.log('여자다');
-                    callback(null, '0');
+                    callback(null, '1');
                 }
             }
         ],	function(err, results) {
-            if(results == 1){ //캐시 업데이트 성공
-                //createPrivateChat 이동
-            } else {
-                res.json(util.successCode(res, results));
-            }
-            //res.json(util.successCode(res, results));
+            res.json(util.successCode(res, results));
         }
     );
 
