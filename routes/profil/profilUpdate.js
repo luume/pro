@@ -1,4 +1,3 @@
-/*
 var express = require('express');
 var router = express.Router();
 
@@ -8,7 +7,7 @@ var async = require('async');
 var del = require('del');
 
 router.post('/', function(req, res){
-
+/*
     var profilOriginalFileName = req.files.profilOriginalFileName;
     var memberAdd = req.body.memberAdd;
     var memberJob = req.body.memberJob;
@@ -33,8 +32,7 @@ router.post('/', function(req, res){
                             return;
                         }
                         var ii = 0;
-                        /*/
-/*arr.push(fArry.originalname);
+                        /*//*arr.push(fArry.originalname);
                         var profilFileLength =  profilArray.length;
                         var count = 0;
 
@@ -168,6 +166,6 @@ router.post('/', function(req, res){
 
 
         }); // 트랜잭션 종료
-    });
+    });*/
 });
-module.exports = router;*/
+module.exports = router;
