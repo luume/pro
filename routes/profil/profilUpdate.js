@@ -6,6 +6,8 @@ var afeelQuery = require('../../afeel/util/afeelQuery');
 var async = require('async');
 var del = require('del');
 
+var nodeUtil = require('util');
+
 router.post('/', function(req, res){
 
     var profilOriginalFileName = req.files.profilOriginalFileName;
@@ -52,7 +54,7 @@ router.post('/', function(req, res){
                         async.eachSeries(datas, function (deleteItem, callback) {
                             if(profilArray.indexOf(deleteItem.profilOriginalFileName == -1 )){
                                 //indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
-                                deleteFileIndex.push(deleteItem.profilOriginalFileName);
+                                deleteFileIndex.push(utils.foramt(deleteItem.profilOriginalFileName));
                             }
                         })
 
