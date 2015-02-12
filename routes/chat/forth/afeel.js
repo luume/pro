@@ -124,16 +124,35 @@ router.post('/:memberTo', function(req, res){
                                                         return;
                                                     }
 
-                                                    callback(null, '1');
+                                                    callback('1', '1');
                                                 });
                                             }
 
+                                        },
+                                        function(data, callback) {
+                                            //채팅방 번호 가저오기
+                                            var queryidname = 'checkPrivateChatList'; //중복 채팅방 체크
+                                            afeelQuery.afeelQuery(datas, queryidname , 'expeople', function (err, datas) {
+                                                if(err){
+                                                    res.json(err);
+                                                    return;
+                                                }
+                                                if(datas == false){ //select 결과 row 0일때 처리
+                                                    res.json({ success : 0 , message : '데이터 없음', result : null});
+                                                    return;
+                                                }
+                                                //  console.log('첫번째 처리 성공' , datas[0].memberGender);
+                                                callback('1', datas[0].privateRoomNo);
+                                            })
                                         }
                                     ],	function(err, results) {
                                         if (err == 0) {
                                             callback('0', results);
-                                        } else {
-                                            callback(null, '1');
+                                        } else if(err == 1){
+                                            callback('1', results);
+                                        }
+                                        else {
+                                            callback(null, results);
                                         }
 
                                     }
@@ -142,21 +161,27 @@ router.post('/:memberTo', function(req, res){
                         ],	function(err, results) {
                             if (err == 0) {
                                 callback('0', results);
+                            } else if(err == 1){
+                                callback('1', results);
                             } else {
-                                callback(null, '1');
+                                callback(null, results);
                             }
                         }
                     );
                 } else { //캐시가 불충분할경우
                     console.log('캐시부족');
-                    callback(null, '100');
+                    callback('2', '100');
                 }
             }
         ],	function(err, results) {
-            if (results == 1 ) { //성공
+            if (err == 1 ) { //성공
                 res.json(util.successCode(res, results));
-            } else if(results == 100) {
-                res.json(util.successCode(res, results));
+            } else if(err == 2) {
+                res.json({
+                    success : 0,
+                    message : '캐시 부족',
+                    result : 100
+                });
             } else {
                 res.json({
                     success : 0,
