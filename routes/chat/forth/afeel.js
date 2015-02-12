@@ -107,7 +107,7 @@ router.post('/:memberTo', function(req, res){
                                             })
                                         },
                                         function(data, callback) {
-                                            //console.log('data',data);
+                                            console.log('data',data);
                                             if( data.cnt > 0) {
                                                 callback('0', data.privateRoomNo);
                                                 //console.log('privateRoomNo',);
