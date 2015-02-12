@@ -102,12 +102,12 @@ router.post('/:memberTo', function(req, res){
 
                             }
                         ],	function(err, results) {
-                            callback(null, '0');
+                            callback(null, '1');
                         }
                     );
                 } else { //캐시가 불충분할경우
                     //   console.log('여자다');
-                    callback(null, '1');
+                    callback(null, '0');
                 }
             }
         ],	function(err, results) {
