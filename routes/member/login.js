@@ -17,6 +17,8 @@ router.post('/', function(req, res){
     datas.push(utils.format(memberEmail));
     datas.push(memberPw);
 
+    console.log(req.body);
+
     var varibCheck = function (test ,num) {
         if(test.length > num){
 
