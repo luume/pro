@@ -56,6 +56,7 @@ router.post('/', function(req, res){
                                 async.eachSeries(deleteFileIndex, function (fileName, call) {
                                     afeelQuery.afeelQuery([fileName], 'deleteProfil', 'profil', function (err, datas) {
                                         if(err){
+                                            console.log('딜리트 프로필 ' , err);
                                             callback(0, null);
                                             return;
                                         }
@@ -78,6 +79,7 @@ router.post('/', function(req, res){
                                 if(succesCode == 1){
                                     afeelQuery.afeelQuery([req.session.memberNo], 'selectIndexThumbnail', 'profil', function (err, datas) {
                                     if (err) {
+                                        console.log('셀렉트 인덱스 섬네일 ' , err);
                                         callback(0, null);
                                         return;
                                     }
@@ -111,6 +113,7 @@ router.post('/', function(req, res){
                                             if(ii == 0){
                                                 afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
                                                     if (err) {
+                                                        console.log('인서트 프로필 메인 에러' , err);
                                                        calls(err);
                                                         return;
                                                     }
@@ -128,6 +131,7 @@ router.post('/', function(req, res){
                                                         arr.push(countIndex);
                                                         afeelQuery.afeelQuery(arr, 'insertProfil', 'profil', function (err, datas) {
                                                             if (err) {
+                                                                console.log('인서트 프로필 에러' , err);
                                                                 callback(0, null);
                                                                 return;
                                                             }
