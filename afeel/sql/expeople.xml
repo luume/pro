@@ -199,7 +199,7 @@
         order by messageDate desc
     </myquery>
     <myquery id="checkPrivateChatList">
-    select count(privateRoomNo) as cnt from PRIVATE_ROOM where memberWNo = ? and memberMNo = ?;
+        select privateRoomNo, count(privateRoomNo) as cnt from PRIVATE_ROOM where memberWNo = ? and memberMNo = ?;
     </myquery>
     <myquery id="insertFiltering">
         INSERT INTO FILTERING() VALUES(0, ?, ?, ?)

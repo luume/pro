@@ -93,7 +93,7 @@ router.post('/:memberTo', function(req, res){
                                         function(callback) {
                                             //console.log('첫번째 처리');
                                             var queryidname = 'checkPrivateChatList'; //중복 채팅방 체크
-                                            afeelQuery.afeelQuery([req.session.memberNo], queryidname , 'expeople', function (err, datas) {
+                                            afeelQuery.afeelQuery(datas, queryidname , 'expeople', function (err, datas) {
                                                 if(err){
                                                     res.json(err);
                                                     return;
