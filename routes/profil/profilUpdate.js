@@ -167,7 +167,7 @@ router.post('/', function(req, res){
                                                                 callback(0, null);
                                                                 return;
                                                             }
-                                                            console.log('인서트가 되고있따' , datas)l;
+                                                            console.log('인서트가 되고있따' , datas);
                                                             call(null, 1);
                                                         }); // query end
                                                     } // func end
