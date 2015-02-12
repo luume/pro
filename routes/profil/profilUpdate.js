@@ -50,13 +50,24 @@ router.post('/', function(req, res){
                         //*arr.push(fArry.originalname);
                         var profilFileLength =  profilArray.length;
                         var count = 0;
-                        //var jj =0;
+                        var jj =0;
                         async.eachSeries(datas, function (deleteItem, callback) {
-                            if(profilArray.indexOf(deleteItem.profilOriginalFileName == -1 )){
+                          /*  if(profilArray.indexOf(deleteItem.profilOriginalFileName == -1  )){
                                 //indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
+
                                 deleteFileIndex.push( deleteItem.profilOriginalFileName.split('/')[8]);
+                            }*/
+
+                            if(profilArray.indexOf(deleteItem.profilOriginalFileName != -1  )){
+                                //indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
+                                if(datas[jj].indexOf( profilArray.indexOf(deleteItem.profilOriginalFileName) ) == -1){
+                                    deleteFileIndex.push( deleteItem.profilOriginalFileName);
+                                }
                             }
-                        })
+                            jj++;
+                        }, function (err) {
+                            console.log('딜리트 축출 마지막');
+                        });
 
                         console.log(datas);
                   /*      for(var i = 0 ; i < profilFileLength; i++){
