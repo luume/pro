@@ -23,17 +23,15 @@ router.post('/', function(req, res){
         conn.beginTransaction(function (err) {
 
             async.waterfall([
-/*
+
                 function (callback) {
-                    afeelQuery.afeelQuery(datas, 'selectProfilUpdateTime', 'profil', function (err, datas) {
+                    afeelQuery.afeelQuery(datas, 'selectIndexThumbnail', 'profil', function (err, datas) {
                         if(err){
                             callback(0, null);
                             return;
                         }
                         var ii = 0;
-                        *//*arr.push(fArry.originalname);
-                        arr.push(fArry.name);
-                        arr.push(fArry.name.split('.')[0] + '-thumbnail.' +  '.jpg');*//*
+                        //*arr.push(fArry.originalname);
                         var profilFileLength =  profilArray.length;
                         var count = 0;
 
@@ -42,7 +40,7 @@ router.post('/', function(req, res){
                                 indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
                             }
                         }
-
+  
 
                         async.eachSeries(profilArray, function (index, call) {
                             if(ii == tem)
@@ -63,7 +61,7 @@ router.post('/', function(req, res){
                         console.log('datas ? ' , datas);
                         callback(null, 1);
                     });
-                }*/
+                },
 
 
                 function (callback) {
