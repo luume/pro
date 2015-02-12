@@ -113,7 +113,7 @@ router.post('/:memberTo', function(req, res){
                                             Cashdatas.push(memberNo);
                                             var queryidname = 'PlusMemberCash';
                                             if( data.cnt > 0) {
-                                                afeelQuery.afeelQuery(Cashdatas, queryidname , 'expeople', function (err, datas) {
+                                                afeelQuery.afeelQuery(Cashdatas, queryidname , 'member', function (err, datas) {
                                                     if(err){
                                                         res.json(err);
                                                         return;
@@ -124,7 +124,7 @@ router.post('/:memberTo', function(req, res){
                                                     }
                                                     //  console.log('첫번째 처리 성공' , datas[0].memberGender);
                                                     callback('0', data.privateRoomNo);
-                                                });
+                                                })
                                                 //callback('0', data.privateRoomNo);
                                                 //console.log('privateRoomNo',);
                                             } else {
