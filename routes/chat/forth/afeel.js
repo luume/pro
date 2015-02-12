@@ -109,7 +109,8 @@ router.post('/:memberTo', function(req, res){
                                         function(data, callback) {
                                             //console.log('data',data);
                                             if( data.cnt > 0) {
-                                                console.log('privateRoomNo',data.privateRoomNo);
+                                                callback('0', data.privateRoomNo);
+                                                //console.log('privateRoomNo',);
                                             } else {
                                                 var queryidname = 'createPrivateChat';
                                                 afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) { //1:1 채팅방 생성
@@ -128,12 +129,21 @@ router.post('/:memberTo', function(req, res){
 
                                         }
                                     ],	function(err, results) {
-                                        callback(null, '1');
+                                        if (err == 0) {
+                                            callback('0', results);
+                                        } else {
+                                            callback(null, '1');
+                                        }
+
                                     }
                                 );
                             }
                         ],	function(err, results) {
-                            callback(null, '1');
+                            if (err == 0) {
+                                callback('0', results);
+                            } else {
+                                callback(null, '1');
+                            }
                         }
                     );
                 } else { //캐시가 불충분할경우
