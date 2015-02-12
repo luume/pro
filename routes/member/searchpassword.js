@@ -12,7 +12,7 @@ router.post('/', function(req, res) {
 
     var server = email.server.connect({
         user: 'afeelco@gmail.com',
-        password: 'afeel1234',   //내 비번!!!
+        password: 'afeel12345',   //내 비번!!!
         host: 'smtp.gmail.com',
         ssl: true
     });
