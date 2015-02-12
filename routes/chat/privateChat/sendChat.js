@@ -16,7 +16,7 @@ router.post('/', function(req, res){
     //    return;
     //}
     var d = new Date();
-    var tempDate = d.getFullYear() + (d.getMonth() + 1) + d.getDate();
+    var tempDate = d.getFullYear().toString() + (d.getMonth() + 1).toString() + d.getDate().toString();
 
     res.json(util.successCode(res, tempDate));
 
