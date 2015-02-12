@@ -31,7 +31,7 @@
     </myquery>
 
     <myquery id="deleteProfil">
-        DELETE FROM PROFIL WHERE memberNo = ? AND profilOriginalFileName = ''
+        DELETE FROM PROFIL WHERE memberNo = ? AND profilOriginalFileName = ?
     </myquery>
 
     <myquery id="selectAllThumbnail">
