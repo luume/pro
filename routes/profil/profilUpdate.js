@@ -13,6 +13,12 @@ router.post('/', function(req, res){
     var memberJob = req.body.memberJob;
     var memberHobby = req.body.memberHobby;
     var profilArray = req.body.profilArray;
+
+    if( profilOriginalFileName.constructor == Object){
+        console.log('오브젝트여서 배열에 담기전', profilOriginalFileName);
+        profilOriginalFileName = new Array(profilOriginalFileName);
+        console.log('오브젝트여서 배열에 담음', profilOriginalFileName);
+    }
     console.log('프로필업데이트 file', req.files);
     console.log('프로필업데이트 body', req.body);
 
