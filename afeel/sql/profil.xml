@@ -38,6 +38,10 @@
         SELECT profilThumbnail FROM PROFIL WHERE memberNo = ?
     </myquery>
 
+    <myquery id="selectIndexThumbnail">
+        SELECT profilThumbnail, profilIndex FROM PROFIL WHERE memberNo = ?
+    </myquery>
+
     <myquery id="selectProfilUpdateTime">
         SELECT profilThumbnail, profilRegDate FROM PROFIL WHERE memberNo = ?
     </myquery>
