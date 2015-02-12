@@ -170,13 +170,13 @@ router.post('/:memberTo', function(req, res){
                     );
                 } else { //캐시가 불충분할경우
                     console.log('캐시부족');
-                    callback(null, '100');
+                    callback('2', '100');
                 }
             }
         ],	function(err, results) {
             if (err == 1 ) { //성공
                 res.json(util.successCode(res, results));
-            } else if(err == 0) {
+            } else if(err == 2) {
                 res.json({
                     success : 0,
                     message : '캐시 부족',
