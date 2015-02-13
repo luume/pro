@@ -24,6 +24,8 @@ exports.gcmSend = function(memberNoArray, data){
   //var registration_id = '안드로이드 registration_id 값';
   async.each(memberNoArray, function (sendId, callback) {
     afeel.afeelQuery([sendId], 'selectRegId', 'gcm', function (err, datas) {
+      console.log('gcm regid = ', datas[0].registrationId);
+      console.log('gcm Data = ', data);
       registrationIds.push(datas);
     });
   })
