@@ -22,6 +22,8 @@ router.get('/:privateRoomNo', function(req, res){
 
     var queryidname = 'viewPrivateChat';
 
+    console.log(req.body);
+
     afeelQuery.afeelQuery(datas, queryidname ,'chat', function (err, datas) {
         if(err){
             res.json(err);
