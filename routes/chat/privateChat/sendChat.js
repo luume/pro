@@ -49,7 +49,7 @@ router.post('/', function(req, res){
 
         var d = new Date();
         var tempDate = pad2(d.getFullYear().toString()) +'-'+ pad2((d.getMonth() + 1).toString()) +'-'+ pad2(d.getDate().toString()
-          +'-'+ pad2(d.getHours().toString()) +':'+ pad2(d.getMinutes().toString()));
+          +' '+ pad2(d.getHours().toString()) +':'+ pad2(d.getMinutes().toString()) +':'+ pad2(d.getSeconds().toString()));
         //console.log('날짜형식', tempDate);
         gcmSetting.gcmSend([messageTO], {messageData : messageData, privateChatRegDate : tempDate, privateRoomNo : privateRoomNo, memberName : memberName });
         //console.log('응?');
