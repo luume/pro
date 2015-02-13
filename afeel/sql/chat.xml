@@ -36,10 +36,10 @@
     </myquery>
 
     <myquery id="viewPrivateChat">
-        SELECT isMe, messageFrom, messageTo, messageData, messageDate, (IF(isMe=0 , (select memberName FROM MEMBER WHERE memberNo = 30) , (select memberName FROM MEMBER WHERE memberNo = 4))) AS memberName FROM (
+        SELECT isMe, messageFrom, messageTo, messageData, messageDate, (IF(isMe=0 , (select memberName FROM MEMBER WHERE memberNo = ?) , (select memberName FROM MEMBER WHERE memberNo = 4))) AS memberName FROM (
         select
         case messageFrom
-        when 4 then 1
+        when ? then 1
         else 0
         end as isMe, messageFrom, messageTo, messageData, messageDate
         from PRIVATE_MESSAGE where privateRoomNo = 1 order by messageDate asc )a
