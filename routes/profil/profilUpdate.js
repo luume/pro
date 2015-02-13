@@ -43,7 +43,7 @@ router.post('/', function(req, res){
                 function (callback) {
                     afeelQuery.afeelQuery([req.session.memberNo], 'selectIndexThumbnail', 'profil', function (err, datas) {
                         if(err){
-                            callback(0, null);
+                            //callback();
                             return;
                         }
                         var ii = 0;
@@ -92,10 +92,9 @@ router.post('/', function(req, res){
                                 async.eachSeries(deleteFileIndex, function (fileName, call) {
                                     afeelQuery.afeelQuery([req.session.memberNo,nodeUtil.format(fileName)], 'deleteProfil', 'profil', function (err, datas) {
                                         if(err){
-
                                             //이번에 삭제할 파일네임 :  http://54.92.4.84:3000/images/temp_14237231861423723203883.jpg
                                             console.log('딜리트 프로필 ' , err);
-                                              callback(0, null);
+                                           //  callback(0, null);
                                             return;
                                         }
                                         console.log('딜리트 파일네임 : ', deleteFileIndex);
@@ -120,7 +119,7 @@ router.post('/', function(req, res){
                                     afeelQuery.afeelQuery([req.session.memberNo], 'selectIndexThumbnail', 'profil', function (err, datas) {
                                     if (err) {
                                         console.log('셀렉트 인덱스 섬네일 ' , err);
-                                        callback(0, null);
+                                    //    callback(0, null);
                                         return;
                                     }
 
@@ -155,8 +154,8 @@ router.post('/', function(req, res){
                                                 afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
                                                     if (err) {
                                                         console.log('인서트 프로필 메인 에러' , err);
-                                                       calls(err);
-                                                        return;
+                                                     //  calls(err);
+                                                     //   return;
                                                     }
                                                 }); // query end
                                             }else{
@@ -164,7 +163,7 @@ router.post('/', function(req, res){
                                                     function (call) {
                                                         afeelQuery.afeelQuery([req.session.memberNo], 'countIndex' , 'profil', function (err, rowCount) {
                                                             console.log('로우카운트인덱스 ', rowCount.length);
-                                                            calls(null, rowCount.length); // 아래 err fun으로 호출
+                                                            call(null, rowCount.length); // 아래 err fun으로 호출
                                                         }); // query end
                                                     }, // func end
 
