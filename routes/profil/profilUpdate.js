@@ -57,8 +57,12 @@ router.post('/', function(req, res){
                         } else {
                             tempData = datas;
                         }
+
+                        if(tempData == undefined){
+                            tempData = [];
+                        }
                         console.log('템프데이터 어레이', tempData);
-                        async.eachSeries(datas, function (deleteItem, call) {
+                        async.eachSeries(tempData, function (deleteItem, call) {
                             /*  if(profilArray.indexOf(deleteItem.profilOriginalFileName == -1  )){
                              //indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
 
