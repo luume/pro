@@ -67,6 +67,7 @@ router.post('/', function(req, res){
                                 }
                             }
                             jj++;
+                            callback();
                         }, function (err) {
                             console.log('딜리트 축출 마지막');
                         });
