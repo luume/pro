@@ -64,9 +64,9 @@ router.post('/', function(req, res){
                                 if(tempData[jj].indexOf( profilArray.indexOf(deleteItem.profilOriginalFileName) ) == -1){
                                     console.log('딜리트 인덱스에 푸시되는 파일 ', deleteItem.profilOriginalFileName);
                                     deleteFileIndex.push( deleteItem.profilOriginalFileName);
+                                    jj++;
                                 }
                             }
-                            jj++;
                             callback();
                         }, function (err) {
                             console.log('딜리트 축출 마지막');
