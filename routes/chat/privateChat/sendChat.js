@@ -53,6 +53,7 @@ router.post('/', function(req, res){
         console.log('날짜형식', tempDate);
         gcmSetting.gcmSend([messageTO], {messageData : messageData, privateChatRegDate : tempDate });
         console.log('응?');
+        res.json({success:1, message:'ok', result:'success'});
     })
 
 
