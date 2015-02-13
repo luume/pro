@@ -24,7 +24,7 @@ router.post('/', function(req, res){
 
     var memberName = req.body.memberName;
     console.log('1111111111reqbody',req.body);
-    console.log('messageData',messageData);
+    console.log('messageTO',messageTO);
 
 
     async.waterfall([
