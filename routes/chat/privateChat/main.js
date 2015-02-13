@@ -10,6 +10,7 @@ router.get('/:privateRoomNo', function(req, res){
     //    res.json({success:0, message:"Error(빈값이 넘어왔습니다.[privateRoomNo])", result:null});
     //    return;
     //}
+    var memberTo = req.body.memberTo;
     var memberNo = req.session.memberNo;
     //if(memberNo == "" || memberNo == undefined){
     //    res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
@@ -17,6 +18,8 @@ router.get('/:privateRoomNo', function(req, res){
     //}
 
     var datas = [];
+    datas.push(memberTo);
+    datas.push(memberNo);
     datas.push(memberNo);
     datas.push(privateRoomNo);
 
