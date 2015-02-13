@@ -45,7 +45,7 @@
         from PRIVATE_MESSAGE where privateRoomNo = ? order by messageDate asc )a
     </myquery>
     <myquery id="chatRoomHide">
-
+        update CHATROOM set isHide=isHide+1 WHERE chatroomNo=?
     </myquery>
 
     <myquery id="insertPrivateMessage">
