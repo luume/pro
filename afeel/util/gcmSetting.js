@@ -18,17 +18,40 @@ exports.gcmSend = function(memberNoArray, data){
 
   var sender = new gcm.Sender(server_access_key);
 
+
+
   var registrationIds = [];
-
-
   //var registration_id = '안드로이드 registration_id 값';
-  async.each(memberNoArray, function (sendId, callback) {
-    afeel.afeelQuery([sendId], 'selectRegId', 'gcm', function (err, datas) {
-      console.log('gcm regid = ', datas[0].registrationId);
-      console.log('gcm Data = ', data);
-      registrationIds.push(datas);
-    });
-  })
+  async.waterfall([
+    function (callback) {
+      async.each(memberNoArray, function (sendId, call) {
+        afeel.afeelQuery([sendId], 'selectRegId', 'gcm', function (err, datas) {
+          console.log('gcm regid = ', datas[0].registrationId);
+          console.log('gcm Data = ', data);
+          registrationIds.push(datas);
+          call();
+        });
+      }, function (err) {
+        callback(null)
+      })
+    },
+
+    function (callback) {
+      sender.send(message, registrationIds, 4, function (err, result) {
+        console.log('RegId 체크 = ' , registrationIds);
+        if(err) console.error('err = ' , err);
+
+        console.log('리절트 = ', result);
+        callback(null, 1);
+      });
+
+    }
+  ], function (err, result) {
+      if(result == 1){
+        console.log('발신 성공');
+      }
+  });
+
 
 
 // At least one required
@@ -44,14 +67,7 @@ exports.gcmSend = function(memberNoArray, data){
 
    **/
 
-  sender.send(message, registrationIds, 4, function (err, result) {
-    console.log('RegId 체크 = ' , registrationIds);
-    if(err) console.error('err = ' , err);
 
-    console.log('리절트 = ', result);
-
-  });
-  
 
 
 }
