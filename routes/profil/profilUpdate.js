@@ -42,10 +42,10 @@ router.post('/', function(req, res){
 
                 function (callback) {
                     afeelQuery.afeelQuery([req.session.memberNo], 'selectIndexThumbnail', 'profil', function (err, datas) {
-                        if(err){
+              /*          if(err){
                             //callback();
                             return;
-                        }
+                        }*/
                         var ii = 0;
                         //*arr.push(fArry.originalname);
                         var profilFileLength =  profilArray.length;
@@ -117,11 +117,11 @@ router.post('/', function(req, res){
                             function (succesCode, callback) {
                                 if(succesCode == 1){
                                     afeelQuery.afeelQuery([req.session.memberNo], 'selectIndexThumbnail', 'profil', function (err, datas) {
-                                    if (err) {
+                                 /*   if (err) {
                                         console.log('셀렉트 인덱스 섬네일 ' , err);
                                     //    callback(0, null);
                                         return;
-                                    }
+                                    }*/
 
                                     callback(null, datas);
 
