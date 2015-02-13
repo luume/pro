@@ -52,6 +52,7 @@ router.post('/', function(req, res){
                         var count = 0;
                         var jj =0;
                         var tempData = new Array(datas);
+                        console.log('템프데이터 어레이' , tempData);
                         async.eachSeries(datas, function (deleteItem, callback) {
                           /*  if(profilArray.indexOf(deleteItem.profilOriginalFileName == -1  )){
                                 //indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
