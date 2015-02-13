@@ -51,7 +51,12 @@ router.post('/', function(req, res){
                         var profilFileLength =  profilArray.length;
                         var count = 0;
                         var jj =0;
-                        var tempData = new Array(datas);
+                        var tempData;
+                        if( profilOriginalFileName.constructor == Object){
+                            tempData = new Array(datas);
+                        }else{
+                            tempData = datas;
+                        }
                         console.log('템프데이터 어레이' , tempData);
                         async.eachSeries(datas, function (deleteItem, callback) {
                           /*  if(profilArray.indexOf(deleteItem.profilOriginalFileName == -1  )){
