@@ -134,6 +134,7 @@ router.post('/', function(req, res){
                                 }
                                 if(rows != false || rows != undefined){
                                     var ii = 0;
+                                    console.log('프로필어레이 랭스' , profilArray.length);
                                     async.eachSeries(profilArray, function (item, calls) {
                                         if(rowTemp.indexOf(item) != -1){
 
