@@ -51,4 +51,15 @@
     <myquery id="insertPrivateMessage">
         INSERT INTO PRIVATE_MESSAGE(messageNo, privateRoomNo, messageFrom, messageTO, messageData) VALUES(0, ?, ?, ?, ?)
     </myquery>
+
+    <myquery id="firstChatView">
+        SELECT memberNo, profilThumbnail
+        FROM PROFIL
+        WHERE memberNo IN (
+        (select memberM1No from CHATROOM where chatroomNo = ?),
+        (select memberM2No from CHATROOM where chatroomNo = ?),
+        (select memberM3No from CHATROOM where chatroomNo = ?),
+        (select memberM4No from CHATROOM where chatroomNo = ?)
+        ) and PROFIL.profilMainYn
+    </myquery>
 </query>
