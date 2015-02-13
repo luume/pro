@@ -30,8 +30,8 @@ router.post('/', function(req, res){
     async.waterfall([
         // messageNo, privateRoomNo, messageFrom, messageTO, messageData
         function (callback) {
-
-            afeelQuery.afeelQuery([privateRoomNo, req.session.memberNo, messageTO, messageData], 'insertPrivateMessage', 'chat', function (err, datas) {
+            //INSERT INTO PRIVATE_MESSAGE(messageNo, privateRoomNo, messageFrom, messageTO, messageData) VALUES(0, ?, ?, ?, ?)
+            afeelQuery.afeelQuery([privateRoomNo, req.session.memberNo,  messageTO, messageData], 'insertPrivateMessage', 'chat', function (err, datas) {
 
                 if(err){
                     console.log('채팅 메세지 삽입 실패', err);
