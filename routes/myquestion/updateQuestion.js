@@ -28,7 +28,6 @@ router.post('/', function(req, res){
         datas.push(questionNo);
 
         if(questionNo == undefined || questionNo == '' ){
-
             res.json({success:0, message:'질문번호가 없습니다', result:null});
             return;
         }
@@ -39,7 +38,8 @@ router.post('/', function(req, res){
         afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
             console.log('333333333333333333333', datas);
             if(err){
-                res.json(err);
+                res.json({success:0, message:'질문번호가 없습니다', result:null});
+                return;
             }
             if(datas.affectedRows == 1) {
 
