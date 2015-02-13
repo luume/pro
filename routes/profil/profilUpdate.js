@@ -62,7 +62,7 @@ router.post('/', function(req, res){
 
                             if(profilArray.indexOf(deleteItem.profilOriginalFileName != -1  )){
                                 //indexCheck.push(profilArray.indexOf(datas[i].profilOriginalFileName));
-                                if(tempData[jj].indexOf( profilArray.indexOf(deleteItem.profilOriginalFileName) ) == -1){
+                                if(tempData[jj].profilOriginalFileName.indexOf( profilArray.indexOf(deleteItem.profilOriginalFileName) ) == -1){
                                     console.log('딜리트 인덱스에 푸시되는 파일 ', deleteItem.profilOriginalFileName);
                                     deleteFileIndex.push( deleteItem.profilOriginalFileName);
                                     jj++;
