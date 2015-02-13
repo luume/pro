@@ -45,10 +45,13 @@ exports.gcmSend = function(memberNoArray, data){
    **/
 
   sender.send(message, registrationIds, 4, function (err, result) {
+    console.log('RegId 체크 = ' , registrationIds);
     if(err) console.error('err = ' , err);
 
     console.log('리절트 = ', result);
 
   });
+  
+
 
 }
