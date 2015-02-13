@@ -55,6 +55,16 @@ router.post('/', function(req, res) {
         bindData.push(sum);
       }
 
+      /*SELECT * FROM CHATROOM WHERE memberWNo=4 AND memberM1No IN (55) UNION
+      SELECT * FROM CHATROOM WHERE memberWNo=4 AND memberM2No IN (55) UNION
+      SELECT * FROM CHATROOM WHERE memberWNo=4 AND memberM3No IN (55) UNION
+      SELECT * FROM CHATROOM WHERE memberWNo=4 AND memberM4No  IN (55)
+
+      SELECT * FROM CHATROOM WHERE memberM1No = 10 AND memberWNo IN (4)  UNION
+      SELECT * FROM CHATROOM WHERE memberM1No = 10 AND memberWNo IN (4) UNION
+      SELECT * FROM CHATROOM WHERE memberM1No = 10 AND memberWNo IN (4) UNION
+      SELECT * FROM CHATROOM WHERE memberM1No = 10 AND memberWNo IN (4)*/
+
       if(memberGender == 'W'){
         afeelQuery.afeelQuery(bindData, 'clearSpaceCheckWomen', 'chat', function (err, datas) {
           if(datas == false){
