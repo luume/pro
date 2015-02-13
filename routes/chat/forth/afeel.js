@@ -163,10 +163,10 @@ router.post('/:memberTo', function(req, res){
                                             })
                                         },
                                         function(privateRoomNo, callback) {
-                                            //CHATROOM isHide
+                                            //CHATROOM isHide, isHide가 2면 엔드매치리스트에서 사라짐
                                             var chatRoomdatas = [];
-                                            chatRoomdatas.push(memberNo);
-                                            chatRoomdatas.push(privateRoomNo);
+                                            //chatRoomdatas.push(memberNo);
+                                            chatRoomdatas.push(chatroomNo); //
                                             var queryidname = 'chatRoomHide'; //중복 채팅방 체크
                                             afeelQuery.afeelQuery(chatRoomdatas, queryidname , 'chat', function (err, datas) {
                                                 if(err){
