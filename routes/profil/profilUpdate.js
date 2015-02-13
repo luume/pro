@@ -135,9 +135,9 @@ router.post('/', function(req, res){
 
                                 var rowTemp = [];
                                 var memberNoArray = [];
-                                for(var i = 0 ; i < rows.length; i++){
+                                for(var i = 0 ; i < rows == false || rows == undefined ? 0 : rows.length ; i++){
                                     rowTemp.push(rows[i].profilThumbnail);
-                                    memberNoArray.push(rows[i].memberNo);
+                                   // memberNoArray.push(rows[i].memberNo);
                                 }
                                 if(rows != false || rows != undefined){
                                     var ii = 0;
@@ -147,7 +147,7 @@ router.post('/', function(req, res){
 
                                         }else{
                                             var arr = [];
-                                            arr.push(memberNoArray[ii]);
+                                            arr.push(req.session.memberNo);
                                             arr.push('http://54.92.4.84:3000/images/' + item + Date.now() +  '.jpg');
                                             arr.push('http://54.92.4.84:3000/images/' + item + Date.now() +  '.jpg');
                                             arr.push('http://54.92.4.84:3000/images/' + item + Date.now() +  '.jpg');
