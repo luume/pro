@@ -43,15 +43,31 @@ router.post('/', function(req, res){
 
             })
 
+        },
+
+        function (successCode, callback) {
+            if(successCode == 1) {
+                afeelQuery.afeelQuery([req.session.memberNo], 'selectGcmThumbnail', 'profil', function (err, datas) {
+
+                    if (err) {
+                        console.log('채팅 메세지 삽입 실패', err);
+                        callback(0);
+                        return;
+                    }
+
+                    callback(null, datas[0].profilThumbnail);
+
+                })
+            }
         }
 
-    ], function (err, result) {
+    ], function (err, profilThumbnail) {
 
         var d = new Date();
         var tempDate = pad2(d.getFullYear().toString()) +'-'+ pad2((d.getMonth() + 1).toString()) +'-'+ pad2(d.getDate().toString()
           +' '+ pad2(d.getHours().toString()) +':'+ pad2(d.getMinutes().toString()) +':'+ pad2(d.getSeconds().toString()));
         console.log('날짜형식', tempDate);
-        gcmSetting.gcmSend([messageTO], {messageData : messageData, privateChatRegDate : tempDate, privateRoomNo : privateRoomNo, memberName : memberName });
+        gcmSetting.gcmSend([messageTO], {messageData : messageData, privateChatRegDate : tempDate, privateRoomNo : privateRoomNo, memberName : memberName, profilThumbnail:profilThumbnail });
         //console.log('응?');
         res.json(util.successCode(res, tempDate));
         //res.json({success:1, message:'ok', result:tempDate});

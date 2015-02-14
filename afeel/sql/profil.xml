@@ -38,6 +38,10 @@
         SELECT profilThumbnail FROM PROFIL WHERE memberNo = ?
     </myquery>
 
+    <myquery id="selectGcmThumbnail">
+        SELECT profilThumbnail FROM PROFIL WHERE memberNo = ? AND profilMainYn = 1
+    </myquery>
+
     <myquery id="selectIndexThumbnail">
         SELECT profilOriginalFileName, profilIndex, memberNo FROM PROFIL WHERE memberNo = ? ORDER BY profilIndex
     </myquery>
