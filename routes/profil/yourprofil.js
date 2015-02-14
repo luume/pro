@@ -13,6 +13,8 @@ router.get('/:memberTo', function(req, res){
     datas.push(memberNo);
     datas.push(memberTo);
 
+    console.log('yourProifil body ' , req.body);
+
     async.waterfall([
             function(callback) {
                 global.queryName = 'member';
