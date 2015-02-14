@@ -69,7 +69,7 @@ router.post('/', function(req, res){
         console.log('날짜형식', tempDate);
         console.log('사진파일', profilThumbnail);
         gcmSetting.gcmSend([messageTO], {messageData : messageData, privateChatRegDate : tempDate,
-            privateRoomNo : privateRoomNo, memberName : memberName});
+            privateRoomNo : privateRoomNo, memberName : memberName, profilThumbnail:profilThumbnail});
         //console.log('응?');
         res.json(util.successCode(res, tempDate));
         //res.json({success:1, message:'ok', result:tempDate});
