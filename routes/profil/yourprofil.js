@@ -56,8 +56,9 @@ router.get('/:memberTo', function(req, res){
                 global.queryName = 'profil';
                 var queryidname = 'profilYour';
 
-                afeelQuery.afeelQuery(datas, queryidname , 'profil', function (err, datas) {
+                afeelQuery.afeelQuery([memberTo], queryidname , 'profil', function (err, datas) {
                     if(err){
+                        console.log('의심1');
                         res.json(err);
                         return;
                     }
@@ -70,7 +71,11 @@ router.get('/:memberTo', function(req, res){
                     var profilThumbnail = [];
                     var temp;
                     afeelQuery.afeelQuery([memberTo], 'profilFileSelect', 'profil', function (err, profilName) {
-                        if(err){res.json(err);}
+                        if(err){
+                            console.log('의심2');
+                            res.json(err);
+                            return;
+                        }
 
                         var arr = [];
                         var a = 0;
