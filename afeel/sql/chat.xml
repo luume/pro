@@ -36,7 +36,7 @@
     </myquery>
 
     <myquery id="viewPrivateChat">
-        SELECT isMe, messageFrom, messageTo, messageData, messageDate, (IF(isMe=0 , (select memberName FROM MEMBER WHERE memberNo = ?) , (select memberName FROM MEMBER WHERE memberNo = ?))) AS memberName FROM (
+        SELECT isMe, messageFrom, messageTo, messageData, DATE_FORMAT(messageDate, '%Y-%m-%d %H:%i:%S ') as messageDate, (IF(isMe=0 , (select memberName FROM MEMBER WHERE memberNo = ?) , (select memberName FROM MEMBER WHERE memberNo = ?))) AS memberName FROM (
         select
         case messageFrom
         when ? then 1
