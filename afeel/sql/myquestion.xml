@@ -9,8 +9,11 @@
     </myquery>
 
     <myquery id="myquestionDelete">
-        SET foreign_key_checks = 0
         DELETE FROM QUESTION WHERE questionNo = ?
+    </myquery>
+
+    <myquery id="myquestionDeleteSet">
+        SET foreign_key_checks = 0
     </myquery>
 
     <myquery id="myquestionRandom">
