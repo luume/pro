@@ -70,6 +70,7 @@ router.post('/', function(req, res){
         console.log('사진파일', profilThumbnail);
         gcmSetting.gcmSend([messageTO], {messageData : messageData, privateChatRegDate : tempDate,
             privateRoomNo : privateRoomNo, memberName : memberName, profilThumbnail:profilThumbnail, messageTo:req.session.memberNo});
+
         //console.log('응?');
         res.json(util.successCode(res, tempDate));
         //res.json({success:1, message:'ok', result:tempDate});
