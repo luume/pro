@@ -34,12 +34,12 @@ router.post('/', function(req, res){
     //        }
     //    });
     //}
-
+    var questionNo = req.body.questionNo;
+    var datas = [];
+    datas.push(questionNo);
     async.waterfall([
             function(callback) {
-                var questionNo = req.body.questionNo;
-                var datas = [];
-                datas.push(questionNo);
+
                 var queryidname = 'myquestionDeleteSet';
                 afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
                     if (err) {
@@ -52,15 +52,16 @@ router.post('/', function(req, res){
                     //}else {
                     //    res.json({success: 0, result: {message: '삭제에 실패하였습니다.(잘못된 질문번호 입력)'}});
                     //}
-                    //console.log('첫번째 처리 성공' , datas[0]);
+                    console.log('첫번째 처리 성공');
                 })
             },
             function(aa, callback) {
                 //console.log('answerData', answerData);
                 //   console.log('여자다');
-                var questionNo = req.body.questionNo;
-                var datas = [];
-                datas.push(questionNo);
+                //var questionNo = req.body.questionNo;
+                //var datas = [];
+                //datas.push(questionNo);
+                console.log('두번째 처리 시작');
                 var queryidname = 'myquestionDelete';
                 afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
                     if (err) {
@@ -79,7 +80,7 @@ router.post('/', function(req, res){
 
             }
         ],	function(err, results) {
-            // console.log('최종 처리');
+             console.log('최종 처리');
             // console.log('results' , results); // result <- done
             //var arr = [];
             //arr.push(datas);
