@@ -21,6 +21,12 @@ router.post('/', function(req, res){
         profilOriginalFileName = new Array(profilOriginalFileName);
         console.log('오브젝트여서 배열에 담음', profilOriginalFileName);
     }
+
+    if( profilArray.constructor == Object){
+        console.log('오브젝트여서 배열에 담기전', profilArray);
+        profilArray = new Array(profilArray);
+        console.log('오브젝트여서 배열에 담음', profilArray);
+    }
     console.log('프로필업데이트 file', req.files);
     console.log('프로필업데이트 body', req.body);
 
@@ -173,6 +179,9 @@ router.post('/', function(req, res){
                         var ii = 0;
                         console.log('프로필어레이 랭스' , profilArray.length);
                         console.log('프로필어레이 ' , profilArray);
+
+                        if(profilArray)
+
                         async.eachSeries(profilArray, function (item, calls) {
                             if(rowTemp.indexOf(item) != -1){
 
