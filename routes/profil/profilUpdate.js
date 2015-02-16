@@ -22,7 +22,7 @@ router.post('/', function(req, res){
         console.log('오브젝트여서 배열에 담음', profilOriginalFileName);
     }
     console.log('원본 프로필어레이 ' , profilArray);
-    if( profilArray.constructor == Object){
+    if( profilArray.constructor == String){
         console.log('P오브젝트여서 배열에 담기전', profilArray);
         profilArray = new Array(profilArray);
         console.log('P오브젝트여서 배열에 담음', profilArray);
