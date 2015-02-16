@@ -68,7 +68,7 @@ router.post('/', function(req, res){
           +' '+ pad2(d.getHours().toString()) +':'+ pad2(d.getMinutes().toString()) +':'+ pad2(d.getSeconds().toString()));
         console.log('날짜형식', tempDate);
         console.log('사진파일', profilThumbnail);
-        gcmSetting.gcmSend([messageTO], {messageData : messageData, privateChatRegDate : tempDate,
+        gcmSetting.gcmSend([messageTO], {gcmType : 'PM' ,messageData : messageData, privateChatRegDate : tempDate,
             privateRoomNo : privateRoomNo, memberName : memberName, profilThumbnail:profilThumbnail, messageTo:req.session.memberNo});
 
         //console.log('응?');
