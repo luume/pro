@@ -122,7 +122,9 @@ router.post('/', function(req, res) {
             // 여자빼고 남자4명이 차있으면 알림을 보내준다.(풀방이 되었으므로)
             if(rows[0].count == 4){
               gcmSetting.gcmSend([req.session.memberNo, rows[0].memberM1No, rows[0].memberM2No,rows[0].memberM3No,rows[0].memberM4No],
-                {chatroomNo : rows[0].chatroomNo , profilThumbnail : [ rows[0].Man1Thumbnail, rows[0].Man2Thumbnail, rows[0].Man3Thumbnail , rows[0].Man4Thumbnail  ],
+                {
+                  gcmType : 'CHAT1WOMEN',
+                  chatroomNo : rows[0].chatroomNo , profilThumbnail : [ rows[0].Man1Thumbnail, rows[0].Man2Thumbnail, rows[0].Man3Thumbnail , rows[0].Man4Thumbnail  ],
                   matchCount : rows[0].matchCount , memberNo : [rows[0].memberM1No, rows[0].memberM2No,rows[0].memberM3No,rows[0].memberM4No]
                });
             }
@@ -146,7 +148,9 @@ router.post('/', function(req, res) {
               매칭성공횟수, 투표를 많이받은 호감도타입*/
             if(rows[0].memberWNo != 0 && rows[0].count == 3){
               gcmSetting.gcmSend([ rows[0].memberWNo,rows[0].memberM1No, rows[0].memberM2No,rows[0].memberM3No,rows[0].memberM4No ],
-                {memberName : rows[0].memberName, memberNick : rows[0].memberNick,
+                {
+                  gcmType : 'CHAT1MAN',
+                  memberName : rows[0].memberName, memberNick : rows[0].memberNick,
                 memberJob : rows[0].memberJob, memberAge : rows[0].memberAge, memberHeight:rows[0].memberHeight, memberAdd:rows[0].memberAdd, memberHobby : rows[0].memberHobby,
                 feelingCode : [rows[0].feelingCode1, rows[0].feelingCode2, rows[0].feelingCode3]
                 });
