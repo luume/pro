@@ -44,16 +44,15 @@ router.post('/', function(req, res){
                 afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
                     if (err) {
                         res.json(err);
+                        return;
                     }
                     //if (datas.affectedRows == 1) {
                         //res.json(util.successCode(res, 'success'));
                     callback(null, 'success');
-
                     //}else {
                     //    res.json({success: 0, result: {message: '삭제에 실패하였습니다.(잘못된 질문번호 입력)'}});
                     //}
                     //console.log('첫번째 처리 성공' , datas[0]);
-
                 })
             },
             function(aa, callback) {
@@ -66,6 +65,7 @@ router.post('/', function(req, res){
                 afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
                     if (err) {
                         res.json(err);
+                        return;
                     }
                     if (datas.affectedRows == 1) {
                         //res.json(util.successCode(res, 'success'));
@@ -73,9 +73,8 @@ router.post('/', function(req, res){
 
                     }else {
                         res.json({success: 0, result: {message: '삭제에 실패하였습니다.(잘못된 질문번호 입력)'}});
-                    }
-                    //console.log('첫번째 처리 성공' , datas[0]);
-
+                        return;
+                    }//console.log('첫번째 처리 성공' , datas[0]);
                 })
 
             }
