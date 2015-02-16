@@ -96,12 +96,12 @@ router.post('/', function(req, res){
                 function (callback) {
                     async.eachSeries(deleteFileIndex, function (fileName, call) {
                         afeelQuery.afeelQuery([req.session.memberNo,nodeUtil.format(fileName)], 'deleteProfil', 'profil', function (err, datas) {
-                            if(err){
+                        /*    if(err){
                                 //이번에 삭제할 파일네임 :  http://54.92.4.84:3000/images/temp_14237231861423723203883.jpg
                                 console.log('딜리트 프로필 ' , err);
                                 //  callback(0, null);
                                 return;
-                            }
+                            }*/
                             console.log('딜리트 파일네임 : ', deleteFileIndex);
                             console.log(fileName);
                             console.log(req.session.memberNo);
@@ -138,12 +138,12 @@ router.post('/', function(req, res){
                 function (rows, callback) {
                     async.eachSeries(deleteFileIndex, function (fileName, call) {
                         afeelQuery.afeelQuery([req.session.memberNo,nodeUtil.format(fileName)], 'deleteProfil', 'profil', function (err, datas) {
-                            if(err){
+                            /*if(err){
                                 //이번에 삭제할 파일네임 :  http://54.92.4.84:3000/images/temp_14237231861423723203883.jpg
                                 console.log('딜리트 프로필 ' , err);
                                 //  callback(0, null);
                                 return;
-                            }
+                            }*/
                             console.log('딜리트 파일네임 : ', deleteFileIndex);
                             console.log(fileName);
                             console.log(req.session.memberNo);
@@ -164,6 +164,7 @@ router.post('/', function(req, res){
 
                     var rowTemp = [];
                     var memberNoArray = [];
+                    console.log('로우즈는 : ' , rows == false || rows == undefined ? 0 : rows.length);
                     for(var i = 0 ; i < rows == false || rows == undefined ? 0 : rows.length ; i++){
                         rowTemp.push(rows[i].profilThumbnail);
                         // memberNoArray.push(rows[i].memberNo);
@@ -182,11 +183,11 @@ router.post('/', function(req, res){
                                 arr.push('http://54.92.4.84:3000/images/' + item + Date.now() + '.jpg');
                                 if (ii == 0) {
                                     afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
-                                        if (err) {
+                           /*             if (err) {
                                             console.log('인서트 프로필 메인 에러', err);
                                             //  calls(err);
                                             //   return;
-                                        }
+                                        }*/
                                     }); // query end
                                 } else {
                                     async.waterfall([
@@ -201,11 +202,11 @@ router.post('/', function(req, res){
                                             console.log('들어오나 체크 ', countIndex);
                                             arr.push(countIndex);
                                             afeelQuery.afeelQuery(arr, 'insertProfil', 'profil', function (err, datas) {
-                                                if (err) {
+                               /*                 if (err) {
                                                     console.log('인서트 프로필 에러', err);
                                                     callback(0, null);
                                                     return;
-                                                }
+                                                }*/
                                                 console.log('인서트가 되고있따', datas);
                                                 call(null, 1);
                                             }); // query end
