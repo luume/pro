@@ -9,7 +9,7 @@
     </myquery>
 
     <myquery id="myquestionDelete">
-        SET foreign_key_checks = 0;
+        SET foreign_key_checks = 0
         DELETE FROM QUESTION WHERE questionNo = ?
     </myquery>
 
