@@ -30,7 +30,7 @@ router.post('/', function(req, res){
       memberAdd: '경기',
       profilArray: '/storage/emulated/0/temp_1423724729' }
 */
-
+    var kk = 0;
     var temp;
     var indexCheck = [];
     var deleteFileIndex = [];
@@ -193,6 +193,7 @@ router.post('/', function(req, res){
                                     async.waterfall([
                                         function (call) {
                                             afeelQuery.afeelQuery([req.session.memberNo], 'countIndex', 'profil', function (err, rowCount) {
+                                                console.log("반복 체크 횟수 ", kk++);
                                                 console.log('로우카운트인덱스 ', rowCount.length);
                                                 call(null, rowCount.length); // 아래 err fun으로 호출
                                             }); // query end
