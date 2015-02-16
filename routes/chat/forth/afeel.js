@@ -154,24 +154,9 @@ router.post('/:memberTo', function(req, res){
                                             }
 
                                         },
-                                        function(data, callback) {
-                                            //채팅방 번호 가저오기
-                                            var queryidname = 'checkPrivateChatList'; //중복 채팅방 체크
-                                            afeelQuery.afeelQuery(datas, queryidname , 'expeople', function (err, datas) {
-                                                if(err){
-                                                    res.json(err);
-                                                    return;
-                                                }
-                                                if(datas == false){ //select 결과 row 0일때 처리
-                                                    res.json({ success : 0 , message : '데이터 없음', result : null});
-                                                    return;
-                                                }
-                                                //  console.log('첫번째 처리 성공' , datas[0].memberGender);
-                                                callback('1', datas[0].privateRoomNo);
-                                            })
-                                        },
                                         function(privateRoomNo, callback) {
                                             //CHATROOM isHide, isHide가 2면 엔드매치리스트에서 사라짐
+                                            console.log('isHide쿼리임!!!!!!!!!!!!!!!!!!!!!!!!!');
                                             var chatRoomdatas = [];
                                             chatRoomdatas.push(memberNo);
                                             chatRoomdatas.push(chatroomNo); //
@@ -188,7 +173,24 @@ router.post('/:memberTo', function(req, res){
                                                 //  console.log('첫번째 처리 성공' , datas[0].memberGender);
                                                 callback(null, '1');
                                             })
+                                        },
+                                        function(data, callback) {
+                                            //채팅방 번호 가저오기
+                                            var queryidname = 'checkPrivateChatList'; //중복 채팅방 체크
+                                            afeelQuery.afeelQuery(datas, queryidname , 'expeople', function (err, datas) {
+                                                if(err){
+                                                    res.json(err);
+                                                    return;
+                                                }
+                                                if(datas == false){ //select 결과 row 0일때 처리
+                                                    res.json({ success : 0 , message : '데이터 없음', result : null});
+                                                    return;
+                                                }
+                                                //  console.log('첫번째 처리 성공' , datas[0].memberGender);
+                                                callback('1', datas[0].privateRoomNo);
+                                            })
                                         }
+
                                     ],	function(err, results) {
                                         if (err == 0) {
                                             callback('0', results);
