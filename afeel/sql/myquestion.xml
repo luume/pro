@@ -29,5 +29,10 @@
         TEXT_ANSWER on QUESTION.questionNo = TEXT_ANSWER.questionNo where TEXT_ANSWER.chatroomNo = ?
     </myquery>
 
+    <myquery id="selectVoiceAnswer">
+        SELECT VOICE_ANSWER.memberNo, VOICE_ANSWER.voiceAnswerOriginalFileName from QUESTION inner join
+        VOICE_ANSWER on QUESTION.questionNo = VOICE_ANSWER.questionNo where VOICE_ANSWER.chatroomNo = ?;
+    </myquery>
+
 
 </query>
