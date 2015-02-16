@@ -4,7 +4,7 @@ var router = express.Router();
 var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
 var async = require('async');
-var gcmSetting = require('../../../afeel/util/gcmSetting');
+var gcmSetting = require('../../afeel/util/gcmSetting');
 
 // 랜덤 소개 받기
 router.post('/', function(req, res) {
