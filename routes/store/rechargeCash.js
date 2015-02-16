@@ -18,11 +18,13 @@ router.post('/', function(req, res){
     afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) {
         if (err) {
             res.json(err);
+            return;
         }
         if (datas.affectedRows == 1) {
             res.json(util.successCode(res, 'success'));
         }else {
             res.json({success: 0, result: {message: '캐쉬정보 업데이트에 실패하였습니다.'}});
+            return;
         }
     });
 
