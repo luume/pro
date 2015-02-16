@@ -32,7 +32,7 @@ router.get('/:chatroomNo', function(req, res){
                 })
             },
             function(questionData, callback) {
-                  console.log('answerData', answerData);
+                  //console.log('answerData', answerData);
                 //   console.log('여자다');
                 var datas = [];
                 datas.push(chatroomNo);
