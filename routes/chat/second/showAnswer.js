@@ -51,16 +51,27 @@ router.get('/:chatroomNo', function(req, res){
                     var arr = [];
                     arr.push(questionData);
                     arr.push(datas);
-                    callback(null, arr);
+                    callback(null, questionData, datas);
                     //res.json(util.successCode(res, datas));
                 });
 
             }
-        ],	function(err, results) {
+        ],	function(err, questionData, datas) {
             // console.log('최종 처리');
             // console.log('results' , results); // result <- done
-
-            res.json(util.successCode(res, results));
+            var arr = [];
+            arr.push(datas);
+            res.json({
+                success : 1,
+                message : 'OK',
+                result : {
+                    questionData: questionData.questionData,
+                    questionGuideData: questionData.questionGuideData,
+                    textAnswer : arr
+                }
+            });
+            res.json({success:1, message:'ok', result:datas[0]});
+            //res.json(util.successCode(res, results));
         }
     );
 
