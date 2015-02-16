@@ -31,13 +31,13 @@ router.get('/:chatroomNo', function(req, res){
                     callback(null, datas[0]);
                 })
             },
-            function(answerData, callback) {
+            function(questionData, callback) {
                   console.log('answerData', answerData);
                 //   console.log('여자다');
                 var datas = [];
                 datas.push(chatroomNo);
                 var queryidname = 'selectAnswer';
-                afeelQuery.afeelQuery(datas, queryidname , 'expeople', function (err, datas) {
+                afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
                     if(err){
                         res.json(err);
                         return;
@@ -49,7 +49,7 @@ router.get('/:chatroomNo', function(req, res){
                     // console.log('여자인 데이터 잘가져옴');
                     console.log('두번째처리',datas);
                     var arr = [];
-                    arr.push(answerData);
+                    arr.push(questionData);
                     arr.push(datas);
                     callback(null, arr);
                     //res.json(util.successCode(res, datas));
