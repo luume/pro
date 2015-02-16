@@ -8,7 +8,7 @@ var gcmSetting = require('../../afeel/util/gcmSetting');
 
 // 랜덤 소개 받기
 router.post('/', function(req, res) {
-/*
+
   var memberGender = req.body.memberGender;
 
   var sum;
@@ -142,8 +142,8 @@ router.post('/', function(req, res) {
           afeelQuery.afeelQuery(bindData, 'modifyChatRoomMan', 'chat', function (err, datas) {
 
 
-            *//*이름 , 닉네임, 직업 , 나이 , 키 , 지역 , 취미,
-              매칭성공횟수, 투표를 많이받은 호감도타입*//*
+            /*이름 , 닉네임, 직업 , 나이 , 키 , 지역 , 취미,
+              매칭성공횟수, 투표를 많이받은 호감도타입*/
             if(rows[0].memberWNo != 0 && rows[0].count == 3){
               gcmSetting.gcmSend([ rows[0].memberWNo,rows[0].memberM1No, rows[0].memberM2No,rows[0].memberM3No,rows[0].memberM4No ],
                 {memberName : rows[0].memberName, memberNick : rows[0].memberNick,
@@ -173,7 +173,7 @@ router.post('/', function(req, res) {
 
 
 
-  res.json(util.successCode(res, 'success'));*/
+  res.json(util.successCode(res, 'success'));
 
 });
 
