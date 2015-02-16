@@ -34,6 +34,8 @@ router.get('/:chatroomNo', function(req, res){
             function(answerData, callback) {
                 //  console.log('넘어온 멤버 젠더', memberGender);
                 //   console.log('여자다');
+                var datas = [];
+                datas.push(chatroomNo);
                 var queryidname = 'selectAnswer';
                 afeelQuery.afeelQuery(datas, queryidname , 'expeople', function (err, datas) {
                     if(err){
