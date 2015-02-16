@@ -27,7 +27,7 @@ router.get('/:chatroomNo', function(req, res){
                         res.json({ success : 0 , message : '데이터 없음', result : null});
                         return;
                     }
-                    //  console.log('첫번째 처리 성공' , datas[0].memberGender);
+                    console.log('첫번째 처리 성공' , datas[0]);
                     callback(null, datas[0]);
                 })
             },
@@ -47,7 +47,7 @@ router.get('/:chatroomNo', function(req, res){
                         return;
                     }
                     // console.log('여자인 데이터 잘가져옴');
-                    //console.log('data',datas);
+                    console.log('두번째처리',datas);
                     var arr = [];
                     arr.push(answerData);
                     arr.push(datas);
