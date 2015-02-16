@@ -25,7 +25,7 @@ router.post('/:memberTo', function(req, res){
     //}else if(rank == 2){
     //    omegi = 10;
     //}
-    var omegi = req.body.omegi; //어필할 상대
+    var omegi = 5; //어필할 상대
     var chatroomNo = req.body.chatroomNo;
 
     //if(memberNo == "" || memberNo == undefined){
