@@ -43,7 +43,7 @@ var afeelPool = require('./afeel/util/afeelConnectionPool');
 app.use(multer({
     dest: './public/images/',
     rename: function (fieldname, filename) {
-        return filename.splite('.')[0] + Date.now() + '.jpg'
+        return filename.split('.')[0] + Date.now() + '.jpg'
     }
 }));
 
