@@ -48,9 +48,7 @@ router.get('/:chatroomNo', function(req, res){
                     }
                     // console.log('여자인 데이터 잘가져옴');
                     //console.log('두번째처리',datas);
-                    var arr = [];
-                    arr.push(questionData);
-                    arr.push(datas);
+
                     callback(null, questionData, datas);
                     //res.json(util.successCode(res, datas));
                 });

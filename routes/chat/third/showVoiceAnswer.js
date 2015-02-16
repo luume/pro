@@ -47,19 +47,29 @@ router.get('/:chatroomNo', function(req, res){
                     }
                     // console.log('여자인 데이터 잘가져옴');
                     //console.log('두번째처리',datas);
-                    var arr = [];
-                    arr.push(questionData);
-                    arr.push(datas);
-                    callback(null, arr);
+                    //var arr = [];
+                    //arr.push(questionData);
+                    //arr.push(datas);
+                    callback(null, questionData, datas);
                     //res.json(util.successCode(res, datas));
                 });
 
             }
-        ],	function(err, results) {
+        ],	function(err, questionData, datas) {
             // console.log('최종 처리');
             // console.log('results' , results); // result <- done
-
-            res.json(util.successCode(res, results));
+            var arr = [];
+            arr.push(datas);
+            res.json({
+                success : 1,
+                message : 'OK',
+                result : {
+                    questionData: questionData.questionData,
+                    questionGuideData: questionData.questionGuideData,
+                    textAnswer : datas
+                }
+            });
+            //res.json(util.successCode(res, results));
         }
     );
 
