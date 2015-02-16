@@ -70,7 +70,7 @@ router.post('/', function(req, res){
                     if (datas.affectedRows == 1) {
                         //res.json(util.successCode(res, 'success'));
                         callback(null, 'success');
-
+                        console.log('affff', datas.affectedRows);
                     }else {
                         res.json({success: 0, result: {message: '삭제에 실패하였습니다.(잘못된 질문번호 입력)'}});
                         return;
