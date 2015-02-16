@@ -226,8 +226,10 @@ router.post('/', function(req, res){
                         }) // eachSerise end
 
 
-                    } // if end
+                    }else{ // if end
+                        console.log('아아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅇㅇㅇㅇㅏ');
 
+                    }
                     callback(null, 1);
                 } // func end
             ], function(err, result){
