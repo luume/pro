@@ -91,10 +91,7 @@
         (SELECT memberName FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0)) AS memberName,
         (SELECT memberNick FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0))  AS memberNick,
         (SELECT memberJob FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0))  AS memberJob,
-        (SELECT (YEAR(CURDATE())-YEAR(memberBirth)) - (RIGHT(CURDATE(),5)
-        <![CDATA[
-        <
-        ]]>
+      
         RIGHT(memberBirth,5)) FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0))  AS memberAge,
         (SELECT memberHeight FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0))  AS memberHeight,
         (SELECT memberAdd FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0))  AS memberAdd,
