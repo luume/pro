@@ -18,4 +18,16 @@
     <myquery id="regMyquestion">
         INSERT INTO QUESTION(memberNo, questionData, questionGuideData, questionType, questionRegDate) values (?,?,?,?,NOW())
     </myquery>
+
+    <myquery id="selectQuestion">
+        select questionData, questionGuideData from QUESTION
+        where questionNo = (select questionNo from CHATROOM where chatroomNo = ?)
+    </myquery>
+
+    <myquery id="selectAnswer">
+        SELECT TEXT_ANSWER.memberNo, TEXT_ANSWER.textAnswerData from QUESTION inner join
+        TEXT_ANSWER on QUESTION.questionNo = TEXT_ANSWER.questionNo where TEXT_ANSWER.chatroomNo = ?
+    </myquery>
+
+
 </query>
