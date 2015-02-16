@@ -18,10 +18,11 @@ router.post('/:memberTo', function(req, res){
     var memberTo = req.params.memberTo; //어필할 상대
     var memberGender = req.body.memberGender; //현재 사용자 성별
     var rank = req.body.rank;
+    var omegi = 0;
     if(rank == 0 || rank == 1){
-        var omegi = 5;
+        omegi = 5;
     }else if(rank == 2){
-        var omegi = 10;
+        omegi = 10;
     }
     //var omegi = req.body.omegi; //어필할 상대
     var chatroomNo = req.body.chatroomNo;
