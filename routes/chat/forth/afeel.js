@@ -17,15 +17,15 @@ router.post('/:memberTo', function(req, res){
     var memberNo = req.session.memberNo; //자기 자신
     var memberTo = req.params.memberTo; //어필할 상대
     var memberGender = req.body.memberGender; //현재 사용자 성별
-    //var rank = req.body.rank == undefined ? -1: req.body.rank;
-    //console.log('rank',rank);
-    //var omegi = 0;
-    //if(rank == 0 || rank == 1){
-    //    omegi = 5;
-    //}else if(rank == 2){
-    //    omegi = 10;
-    //}
-    var omegi = 5; //어필할 상대
+    var rank = req.body.rank == undefined ? -1: req.body.rank;
+    console.log('rank',rank);
+    var omegi = 0;
+    if(rank == 0 || rank == 1){
+        omegi = 5;
+    }else if(rank == 2){
+        omegi = 10;
+    }
+    //var omegi = req.body.omegi; //어필할 상대
     var chatroomNo = req.body.chatroomNo;
 
     //if(memberNo == "" || memberNo == undefined){
@@ -173,7 +173,7 @@ router.post('/:memberTo', function(req, res){
                                         function(privateRoomNo, callback) {
                                             //CHATROOM isHide, isHide가 2면 엔드매치리스트에서 사라짐
                                             var chatRoomdatas = [];
-                                            //chatRoomdatas.push(memberNo);
+                                            chatRoomdatas.push(memberNo);
                                             chatRoomdatas.push(chatroomNo); //
                                             var queryidname = 'chatRoomHide'; //중복 채팅방 체크
                                             afeelQuery.afeelQuery(chatRoomdatas, queryidname , 'chat', function (err, datas) {

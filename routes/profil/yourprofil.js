@@ -7,6 +7,14 @@ var async = require('async');
 router.get('/:memberTo', function(req, res){
     var memberNo = req.session.memberNo; //현재 사용자
     var memberTo = req.params.memberTo; //프로필을 볼 사용자
+    //var rank = req.body.rank == undefined ? -1: req.body.rank;
+    //console.log('rank',rank);
+    //var omegi = 0;
+    //if(rank == 0 || rank == 1){
+    //    omegi = 5;
+    //}else if(rank == 2){
+    //    omegi = 10;
+    //}
     console.log('유어프로필 현재사용자', memberNo);
     console.log('유어프로필 볼 사용자', memberTo);
     var datas = [];
