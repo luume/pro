@@ -172,6 +172,7 @@ router.post('/:memberTo', function(req, res){
                                         },
                                         function(privateRoomNo, callback) {
                                             //CHATROOM isHide, isHide가 2면 엔드매치리스트에서 사라짐
+                                            console.log('isHide쿼리임!!!!!!!!!!!!!!!!!!!!!!!!!');
                                             var chatRoomdatas = [];
                                             chatRoomdatas.push(memberNo);
                                             chatRoomdatas.push(chatroomNo); //
