@@ -91,7 +91,10 @@
         (SELECT memberName FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0)) AS memberName,
         (SELECT memberNick FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0))  AS memberNick,
         (SELECT memberJob FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0))  AS memberJob,
-      
+        (SELECT (YEAR(CURDATE())-YEAR(memberBirth)) - (RIGHT(CURDATE(),5)
+        <![CDATA[
+        <
+        ]]>
         RIGHT(memberBirth,5)) FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0))  AS memberAge,
         (SELECT memberHeight FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0))  AS memberHeight,
         (SELECT memberAdd FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0))  AS memberAdd,
@@ -104,7 +107,11 @@
         SELECT chatroomNo,memberWNo,memberM1No, memberM2No, memberM3No, memberM4No, chatAdd FROM CHATROOM WHERE IFNULL(memberWNo,0) not in (4)
         ) a WHERE chatAdd = (SELECT memberAdd FROM MEMBER WHERE memberNo = 10) AND ifnull(memberM1No,0) not in (10) AND ifnull(memberM2No,0) not in (10) AND
         ifnull(memberM3No,0) not in (10) AND ifnull(memberM4No,0) not in (10)
-        AND IF(memberM1No is null, 0,1) + IF(memberM2No is null, 0,1) + IF(memberM3No is null, 0,1) + IF(memberM4No is null, 0,1) < 4
+        AND IF(memberM1No is null, 0,1) + IF(memberM2No is null, 0,1) + IF(memberM3No is null, 0,1) + IF(memberM4No is null, 0,1)
+        <![CDATA[
+        <
+        ]]>
+        4
         ORDER BY IF(memberM1No is null, 0,1) + IF(memberM2No is null, 0,1) + IF(memberM3No is null, 0,1) + IF(memberM4No is null, 0,1) DESC LIMIT 1
 
 
