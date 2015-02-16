@@ -70,7 +70,7 @@ router.get('/:chatroomNo', function(req, res){
                     textAnswer : arr
                 }
             });
-            res.json({success:1, message:'ok', result:datas[0]});
+            //res.json({success:1, message:'ok', result:datas[0]});
             //res.json(util.successCode(res, results));
         }
     );
