@@ -17,7 +17,7 @@ router.post('/:memberTo', function(req, res){
     var memberNo = req.session.memberNo; //자기 자신
     var memberTo = req.params.memberTo; //어필할 상대
     var memberGender = req.body.memberGender; //현재 사용자 성별
-    var rank = req.body.rank;
+    var rank = req.body.rank == undefined ? -1: req.body.rank;
     var omegi = 0;
     if(rank == 0 || rank == 1){
         omegi = 5;
