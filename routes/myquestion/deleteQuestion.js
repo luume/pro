@@ -42,10 +42,10 @@ router.post('/', function(req, res){
 
                 var queryidname = 'myquestionDeleteSet';
                 afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
-                    if (err) {
-                        res.json(err);
-                        return;
-                    }
+                    //if (err) {
+                    //    res.json(err);
+                    //    return;
+                    //}
                     //if (datas.affectedRows == 1) {
                         //res.json(util.successCode(res, 'success'));
                     callback(null, 'success');
