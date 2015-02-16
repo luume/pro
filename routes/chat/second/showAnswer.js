@@ -67,7 +67,7 @@ router.get('/:chatroomNo', function(req, res){
                 result : {
                     questionData: questionData.questionData,
                     questionGuideData: questionData.questionGuideData,
-                    textAnswer : arr
+                    textAnswer : datas
                 }
             });
             //res.json({success:1, message:'ok', result:datas[0]});
