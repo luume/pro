@@ -7,6 +7,9 @@
     <myquery id="myquestionUpdate">
         UPDATE QUESTION SET questionData = ?, questionGuideData = ?, questionRegDate = now() WHERE questionNo = ?
     </myquery>
+    <myquery id="myquestionDeleteSet">
+        SET foreign_key_checks = 0
+    </myquery>
     <myquery id="myquestionDelete">
         DELETE FROM QUESTION WHERE questionNo = ?
     </myquery>
