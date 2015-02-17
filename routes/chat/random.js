@@ -257,10 +257,7 @@ router.post('/', function(req, res) {
                       ,rows[0].memberM4No == undefined ? req.session.memberNo :  rows[0].memberM4No
                     ],
                     {
-                      gcmType : 'CHAT1MAN',
-                      memberName : rows[0].memberName, memberNick : rows[0].memberNick,
-                      memberJob : rows[0].memberJob, memberAge : rows[0].memberAge, memberHeight:rows[0].memberHeight, memberAdd:rows[0].memberAdd, memberHobby : rows[0].memberHobby,
-                      feelingCode : [rows[0].feelingCode1, rows[0].feelingCode2, rows[0].feelingCode3]
+                      chatroomNo : rows[0].chatroomNo
                     });
                 }
 
