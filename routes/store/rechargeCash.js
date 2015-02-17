@@ -10,6 +10,8 @@ router.post('/', function(req, res){
     var memberNo = req.session.memberNo;
     var omegi = req.body.omegi;
 
+    console.log('omegi!!!!!!!!!!!!!!!!!!!!',omegi);
+
     var datas = [];
     datas.push(omegi);
     datas.push(memberNo);
