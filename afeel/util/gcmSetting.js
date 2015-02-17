@@ -25,6 +25,7 @@ exports.gcmSend = function(memberNoArray, data){
   async.waterfall([
     function (callback) {
       async.each(memberNoArray, function (sendId, call) {
+        console.log('gcmSend ID : ', sendId);
         afeel.afeelQuery([sendId], 'selectRegId', 'gcm', function (err, datas) {
           //console.log('gcm regid = ', datas[0].registrationId);
           //console.log('gcm Data = ', data);
