@@ -181,4 +181,17 @@
     <myquery id="Killman">
         insert into CHAT_RANK(memberNo, chatroomNo, rank) VALUES(?,?,?)
     </myquery>
+
+    <myquery id="chatFirstWoman">
+        SELECT
+        (
+        SELECT COUNT(privateRoomRegDate)
+        FROM PRIVATE_ROOM
+        WHERE privateRoomRegDate > DATE_ADD(NOW(), INTERVAL -1 DAY)) AS matchCount,
+        memberNo, profilThumbnail from PROFIL where profilMainYn=1 and memberNo in(
+        (select memberM1No from CHATROOM where memberWNo =? and chatroomNo =?),
+        (select memberM2No from CHATROOM where memberWNo =? and chatroomNo =?),
+        (select memberM3No from CHATROOM where memberWNo =? and chatroomNo =?),
+        (select memberM4No from CHATROOM where memberWNo =? and chatroomNo =?))
+    </myquery>
 </query>
