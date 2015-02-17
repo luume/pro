@@ -146,6 +146,9 @@ router.post('/', function(req, res) {
               return;
             }
             console.log('채팅방생성 여자', datas);
+            if(datas == undefined){
+              console.log('채팅방 생성 여자 언디파인드');
+            }
             callback(null, 1);
           });
         }else if(memberGender == 'M'){
