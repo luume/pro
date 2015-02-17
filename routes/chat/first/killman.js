@@ -2,13 +2,40 @@ var express = require('express');
 var router = express.Router();
 
 var util = require('../../../afeel/util/vo');
+var afeelQuery = require('../../../afeel/util/afeelQuery');
 
 // 소개 받기//////////
 router.post('/', function(req, res) {
 
+    var memberNo = req.body.memberNo;
+    var chatroomNo = req.body.chatroomNo;
+    var rank = 4;
+
+    var datas = [];
+    datas.push(memberNo);
+    datas.push(chatroomNo);
+    datas.push(rank);
+
+    var queryidname = 'killman';
+    afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
+        if (err) {
+            res.json(err);
+            return;
+        }
+        if (datas.affectedRows == 1) {
+            res.json(util.successCode(res, 'success'));
+        }else {
+            res.json({success: 0, result: {message: '4등 탈락자 선정에 실패'}});
+            return;
+        }
+    });
+
+    //CHAT_RANK에 선택된놈 4등 insert
+
     var m = util.createValueObject('Member');
     var f = util.createValueObject('Feeling');
     var p = util.createValueObject('Profil');
+
 
     res.json(util.successCode(res,
         {
