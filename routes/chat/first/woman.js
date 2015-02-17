@@ -5,7 +5,7 @@ var util = require('../../../afeel/util/vo');
 var afeelQuery = require('../../../afeel/util/afeelQuery');
 
 // 소개 받기//////////
-router.post('/', function(req, res) {
+router.get('/', function(req, res) {
 
     var memberNo = req.session.memberNo;
     var chatroomNo = req.body.chatroomNo;
