@@ -28,7 +28,7 @@ exports.gcmSend = function(memberNoArray, data){
         console.log('gcmSend ID : ', sendId);
         afeel.afeelQuery([sendId], 'selectRegId', 'gcm', function (err, datas) {
           //console.log('gcm regid = ', datas[0].registrationId);
-          //console.log('gcm Data = ', data);
+          console.log('gcm Data = ', data);
 
 
           async.eachSeries(datas, function (sendId, callback) {
