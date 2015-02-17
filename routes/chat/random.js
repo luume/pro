@@ -216,19 +216,19 @@ router.post('/', function(req, res) {
                 bindData.push(null);
                 bindData.push(null);
               }else if(row[0].memberM2No == 0){
-                bindData.push(null);
+                bindData.push(row[0].memberM1No);
                 bindData.push(req.session.memberNo);
                 bindData.push(null);
                 bindData.push(null);
               }else if(row[0].memberM3No == 0){
-                bindData.push(null);
-                bindData.push(null);
+                bindData.push(row[0].memberM1No);
+                bindData.push(row[0].memberM2No);
                 bindData.push(req.session.memberNo);
                 bindData.push(null);
               }else if(row[0].memberM4No == 0){
-                bindData.push(req.null.memberNo);
-                bindData.push(null);
-                bindData.push(null);
+                bindData.push(row[0].memberM1No);
+                bindData.push(row[0].memberM2No);
+                bindData.push(row[0].memberM3No);
                 bindData.push(req.session.memberNo);
               }
 
