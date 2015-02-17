@@ -60,6 +60,9 @@ router.post('/', function(req, res) {
         sum = '()';
       }
 
+
+      console.log('sum 최종값 : ' , sum);
+
       var bindData = [];
       if(memberGender == 'W'){
         bindData.push(sum);
