@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <query>
-    <myquery id="">
-
+    <myquery id="updateCash">
+        update MEMBER set memberCash = memberCash + ? where memberNo = ?
     </myquery>
 </query>
