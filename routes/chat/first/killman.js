@@ -9,10 +9,12 @@ router.post('/', function(req, res) {
 
     var memberNo = req.body.memberNo;
     var chatroomNo = req.body.chatroomNo;
+    var rank = 4;
 
     var datas = [];
     datas.push(memberNo);
     datas.push(chatroomNo);
+    datas.push(rank);
 
     var queryidname = 'killman';
     afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
