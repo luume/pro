@@ -12,6 +12,9 @@ router.post('/', function(req, res) {
   var memberGender = req.body.memberGender;
 
   var sum;
+
+  console.log('소개받기 body ', req.body);
+
   async.waterfall([
 
     // 이전에 매칭된 이성 검색
@@ -61,6 +64,7 @@ router.post('/', function(req, res) {
         bindData.push(req.session.memberNo);
         bindData.push(req.session.memberNo);
         afeelQuery.afeelQuery(bindData, 'clearSpaceCheckWomen', 'chat', function (err, datas) {
+          console.log('채팅방 공간 체크' , datas);
           if(datas == false){
             callback(null, 0);
           }else{
@@ -98,6 +102,7 @@ router.post('/', function(req, res) {
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           afeelQuery.afeelQuery(bindData, 'createChatRoomWomen', 'chat', function (err, datas) {
+            console.log('채팅방생성 여자');
             callback(null, 1);
           });
         }else if(memberGender == 'M'){
@@ -167,6 +172,7 @@ router.post('/', function(req, res) {
   ], function (err, result) {
 
     if(result == 1){
+      console.log('소개받기 성공');
       res.json( { success:1 , message:'ok', result:'success'} );
     }else{
       console.log('발송 실패');
