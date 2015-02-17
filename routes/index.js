@@ -25,7 +25,9 @@ var select = require('./chat/select');
 var custom = require('./chat/custom');
 var firstMan = require('./chat/first/man');
 var firstWoman = require('./chat/first/woman');
+var firstKillman = require('./chat/first/killman');
 var firstMain = require('./chat/first/main');
+
 var secondMain = require('./chat/second/main');
 var secondSendAnswer = require('./chat/second/sendAnswer');
 var secondShowAnswer = require('./chat/second/showAnswer');
@@ -96,6 +98,7 @@ router.use('/chat/select', select);
 router.use('/chat/custom', custom);
 router.use('/chat/man', firstMan);
 router.use('/chat/woman', firstWoman);
+router.use('/chat/killman', firstKillman);
 router.use('/chat/first', firstMain);
 router.use('/chat/second', secondMain);
 router.use('/chat/second/sendanswer', secondSendAnswer);
