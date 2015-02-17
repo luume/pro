@@ -167,7 +167,7 @@ router.post('/', function(req, res){
                 }, // func end 정상
 
                 function (rows, callback) {
-
+                    var kk = 0;
                     var rowTemp = [];
                     var memberNoArray = [];
                     console.log('로우즈는 : ' , rows == false || rows == undefined ? 0 : rows.length);
@@ -188,9 +188,9 @@ router.post('/', function(req, res){
                             }else {
                                 var arr = [];
                                 arr.push(req.session.memberNo);
-                                arr.push( 'http://54.92.4.84:3000/mmm/' + item.name);
-                                arr.push( 'http://54.92.4.84:3000/mmm/' + item.name);
-                                arr.push( 'http://54.92.4.84:3000/mmm/' + item.name);
+                                arr.push( 'http://54.92.4.84:3000/mmm/' + profilOriginalFileName[kk].name);
+                                arr.push( 'http://54.92.4.84:3000/mmm/' + profilOriginalFileName[kk].name);
+                                arr.push( 'http://54.92.4.84:3000/mmm/' + profilOriginalFileName[kk].name);
                                 if (ii == 0) {
                                     afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
                            /*             if (err) {
