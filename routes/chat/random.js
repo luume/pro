@@ -154,14 +154,15 @@ router.post('/', function(req, res) {
         }
 
       }else if(successCode == 1){
-        bindData.push(req.session.memberNo);
-        bindData.push(test);
-        bindData.push(test);
-        bindData.push(test);
-        bindData.push(test);
-        bindData.push(req.session.memberNo);
-        bindData.push(req.session.memberNo);
+
         if(memberGender == 'W'){
+          bindData.push(req.session.memberNo);
+          bindData.push(test);
+          bindData.push(test);
+          bindData.push(test);
+          bindData.push(test);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
           afeelQuery.afeelQuery(bindData, 'modifyChatRoomWomenQuestionRandom', 'chat', function (err, datas) {
 //
             // 여자빼고 남자4명이 차있으면 알림을 보내준다.(풀방이 되었으므로)
