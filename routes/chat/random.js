@@ -183,7 +183,7 @@ router.post('/', function(req, res) {
     } // 3번째 워터폴
 
   ], function (err, result) {
-
+    console.log('마지막왓는데 ' , result);
     if(result == 1){
       console.log('소개받기 성공');
       res.json( { success:1 , message:'ok', result:'success'} );
