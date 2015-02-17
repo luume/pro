@@ -99,7 +99,7 @@ router.post('/', function(req, res) {
           }*/
 
           if(datas == false || datas == undefined){
-            callback(null, 0);
+            callback(null, 0, []);
           }else{
             callback(null, 1, datas);
           }
@@ -116,7 +116,7 @@ router.post('/', function(req, res) {
         bindData.push(  req.session.memberNo  );
         afeelQuery.afeelQuery(bindData, 'clearSpaceCheckMan', 'chat', function (err, datas) {
           if(datas == false || datas == undefined){
-            callback(null, 0);
+            callback(null, 0, []);
           }else{
             callback(null, 1, datas);
           }
@@ -342,6 +342,9 @@ router.post('/', function(req, res) {
     } // 3번째 워터폴
 
   ], function (err, result) {
+
+    if(err)console.error(err);
+
     console.log('마지막왓는데 ' , result);
     if(result == 1){
       console.log('소개받기 성공');
