@@ -177,4 +177,8 @@
         AND IF(memberM1No is null, 0,1) + IF(memberM2No is null, 0,1) + IF(memberM3No is null, 0,1) + IF(memberM4No is null, 0,1) &lt; 4
         ORDER BY IF(memberM1No is null, 0,1) + IF(memberM2No is null, 0,1) + IF(memberM3No is null, 0,1) + IF(memberM4No is null, 0,1) DESC LIMIT 1)
     </myquery>
+
+    <myquery id="Killman">
+        insert into CHAT_RANK(memberNo, chatroomNo, rank) values(?,?,4)
+    </myquery>
 </query>
