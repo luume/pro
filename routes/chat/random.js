@@ -55,6 +55,11 @@ router.post('/', function(req, res) {
         sum += tempRows[i].memberNo + ',';
       }
 
+
+      if(sum == '('){
+        sum = '()';
+      }
+
       var bindData = [];
       if(memberGender == 'W'){
         bindData.push(sum);
@@ -96,6 +101,7 @@ router.post('/', function(req, res) {
     // successCode : 1 (UPDATE)
     function (successCode, rows, callback) {
       var bindData = [];
+      console.log('3번째 워터폴 성공코드 : ', successCode);
       if(successCode == 0){
 // 지금은 관리자 질문이없어서 xml에 강제로 4번의 질문을 랜덤하게 뿌려준다.
         if(memberGender == 'W'){
