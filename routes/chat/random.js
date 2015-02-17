@@ -58,8 +58,8 @@ router.post('/', function(req, res) {
       }*/
 
       sum = [];
-
-      for(var i = 0 ; i < tempRows.length; i++){
+      var tempRowsLength = tempRows == undefined ? 0 : tempRows.length;
+      for(var i = 0 ; i < tempRowsLength; i++){
         sum.push(parseInt(tempRows[i].memberNo,10));
       }
 
