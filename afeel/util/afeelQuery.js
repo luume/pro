@@ -99,8 +99,13 @@ exports.afeelQuery = function(bindQuery , queryId, queryname, callback) {
               return;
             }
             ;
-            console.log('row :: ' , row);
-            if (row.affectedRows == 0 || row == null || row == undefined || row == false) {
+            //console.log('row :: ' , row);
+            if(row == undefined){
+              console.log('row is undefinded');
+              callback('undefinded');
+              return;
+            }
+            if (row.affectedRows == 0 || row == null || row == false) {
               //global.afeelCon .release();
               console.log('0행입니다.', queryId);
               global.isQuerySuccess = false;
