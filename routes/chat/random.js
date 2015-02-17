@@ -83,6 +83,7 @@ router.post('/', function(req, res) {
         bindData.push(test);
         bindData.push(req.session.memberNo);
         bindData.push(req.session.memberNo);
+        console.log('join결과:' ,test);
         afeelQuery.afeelQuery(bindData, 'clearSpaceCheckWomen', 'chat', function (err, datas) {
           if(err){
             console.error('sum 에러 : ' , err);
