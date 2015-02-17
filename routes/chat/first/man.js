@@ -26,7 +26,12 @@ router.get('/:chatroomNo', function(req, res) {
             res.json({ success : 0 , message : '데이터 없음', result : null});
             return;
         }
-        res.json(util.successCode(res, datas));
+        res.json({
+            success : 1,
+            message : 'OK',
+            result : datas
+        });
+        //res.json(util.successCode(res, ));
 
     });
 

@@ -30,6 +30,7 @@ router.get('/:chatroomNo', function(req, res) {
             res.json({ success : 0 , message : '데이터 없음', result : null});
             return;
         }
+
         res.json(util.successCode(res, datas));
 
     });
