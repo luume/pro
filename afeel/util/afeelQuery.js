@@ -85,7 +85,7 @@ exports.afeelQuery = function(bindQuery , queryId, queryname, callback) {
           //  global.afeelCon.beginTransaction(function(err) {
           conn.query(result, bindQuery, function (err, row) {
 
-            if(queryId == 'clearSpaceCheckWomen'){
+            if(queryId == 'modifyChatRoomMan'){
               console.log(queryId + ' : ' + result);
               console.log('bindId : ' , bindQuery);
               console.log('소개받기 row : ' , row);
