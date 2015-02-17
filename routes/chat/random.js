@@ -178,7 +178,7 @@ router.post('/', function(req, res) {
             callback(null, 1);
           });
         }else if(memberGender == 'M'){
-          bindData.push(req.session.memberNo);
+       /*   bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
@@ -187,23 +187,77 @@ router.post('/', function(req, res) {
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
-          afeelQuery.afeelQuery(bindData, 'modifyChatRoomMan', 'chat', function (err, datas) {
 
-            console.log('3번쨰 워터폴 남자 업데이트 값 ' , datas);
-            /*이름 , 닉네임, 직업 , 나이 , 키 , 지역 , 취미,
-              매칭성공횟수, 투표를 많이받은 호감도타입*/
-            if(rows[0].memberWNo != 0 && rows[0].count == 3){
-              gcmSetting.gcmSend([ rows[0].memberWNo,rows[0].memberM1No, rows[0].memberM2No,rows[0].memberM3No,rows[0].memberM4No ],
-                {
-                  gcmType : 'CHAT1MAN',
-                  memberName : rows[0].memberName, memberNick : rows[0].memberNick,
-                memberJob : rows[0].memberJob, memberAge : rows[0].memberAge, memberHeight:rows[0].memberHeight, memberAdd:rows[0].memberAdd, memberHobby : rows[0].memberHobby,
-                feelingCode : [rows[0].feelingCode1, rows[0].feelingCode2, rows[0].feelingCode3]
-                });
+
+*/
+          async.waterfall([
+
+            function (calls) {
+              bindData = [];
+              bindData.push(test);
+              bindData.push(req.session.memberNo);
+              bindData.push(req.session.memberNo);
+              bindData.push(req.session.memberNo);
+              bindData.push(req.session.memberNo);
+              afeelQuery.afeelQuery(bindData, 'selectChatRoomIndexMan', 'chat', function (err, datas) {
+                calls(null, datas);
+              });
+            },
+
+            function (row, calls) {
+              bindData = [];
+
+              if(row[0].memberM1No == 0){
+                bindData.push(req.session.memberNo);
+                bindData.push(null);
+                bindData.push(null);
+                bindData.push(null);
+              }else if(row[0].memberM2No == 0){
+                bindData.push(null);
+                bindData.push(req.session.memberNo);
+                bindData.push(null);
+                bindData.push(null);
+              }else if(row[0].memberM3No == 0){
+                bindData.push(null);
+                bindData.push(null);
+                bindData.push(req.session.memberNo);
+                bindData.push(null);
+              }else if(row[0].memberM4No == 0){
+                bindData.push(req.null.memberNo);
+                bindData.push(null);
+                bindData.push(null);
+                bindData.push(req.session.memberNo);
+              }
+
+              bindData.push(test);
+              bindData.push(req.session.memberNo);
+              bindData.push(req.session.memberNo);
+              bindData.push(req.session.memberNo);
+              bindData.push(req.session.memberNo);
+
+              afeelQuery.afeelQuery(bindData, 'modifyChatRoomMan', 'chat', function (err, datas) {
+
+                console.log('3번쨰 워터폴 남자 업데이트 값 ' , datas);
+                /*이름 , 닉네임, 직업 , 나이 , 키 , 지역 , 취미,
+                 매칭성공횟수, 투표를 많이받은 호감도타입*/
+                if(rows[0].memberWNo != 0 && rows[0].count == 3){
+                  gcmSetting.gcmSend([ rows[0].memberWNo,rows[0].memberM1No, rows[0].memberM2No,rows[0].memberM3No,rows[0].memberM4No ],
+                    {
+                      gcmType : 'CHAT1MAN',
+                      memberName : rows[0].memberName, memberNick : rows[0].memberNick,
+                      memberJob : rows[0].memberJob, memberAge : rows[0].memberAge, memberHeight:rows[0].memberHeight, memberAdd:rows[0].memberAdd, memberHobby : rows[0].memberHobby,
+                      feelingCode : [rows[0].feelingCode1, rows[0].feelingCode2, rows[0].feelingCode3]
+                    });
+                }
+
+                callback(null, 1);
+              });
             }
 
-            callback(null, 1);
-          });
+          ]);
+
+
+
         }  // else if 종료
 
       }

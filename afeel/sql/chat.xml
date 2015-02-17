@@ -100,9 +100,9 @@
         (SELECT feelingCode3 FROM (SELECT IFNULL(feelingCode1,0) AS feelingCode3,memberNo FROM FEELING WHERE memberNo = ? GROUP BY feelingCode1 ORDER BY count(feelingCode1) DESC LIMIT 2,1)  c) AS feelingCode3,
         (SELECT count(privateRoomRegDate) FROM PRIVATE_ROOM WHERE privateRoomRegDate &gt; DATE_ADD(now(), INTERVAL -1 day)) AS matchCount
         FROM (
-        SELECT chatroomNo,memberWNo,memberM1No, memberM2No, memberM3No, memberM4No, chatAdd FROM CHATROOM WHERE IFNULL(memberWNo,0) not in (4)
-        ) a WHERE chatAdd = (SELECT memberAdd FROM MEMBER WHERE memberNo = 10) AND ifnull(memberM1No,0) not in (10) AND ifnull(memberM2No,0) not in (10) AND
-        ifnull(memberM3No,0) not in (10) AND ifnull(memberM4No,0) not in (10)
+        SELECT chatroomNo,memberWNo,memberM1No, memberM2No, memberM3No, memberM4No, chatAdd FROM CHATROOM WHERE IFNULL(memberWNo,0) not in (?)
+        ) a WHERE chatAdd = (SELECT memberAdd FROM MEMBER WHERE memberNo = ?) AND ifnull(memberM1No,0) not in (?) AND ifnull(memberM2No,0) not in (?) AND
+        ifnull(memberM3No,0) not in (?) AND ifnull(memberM4No,0) not in (?)
         AND IF(memberM1No is null, 0,1) + IF(memberM2No is null, 0,1) + IF(memberM3No is null, 0,1) + IF(memberM4No is null, 0,1) &lt; 4
         ORDER BY IF(memberM1No is null, 0,1) + IF(memberM2No is null, 0,1) + IF(memberM3No is null, 0,1) + IF(memberM4No is null, 0,1) DESC LIMIT 1
 
@@ -142,8 +142,8 @@
     </myquery>
 
     <myquery id="modifyChatRoomMan">
-        UPDATE CHATROOM SET memberM1No = (IF(memberM1No is null, ?, memberM1No)) , memberM2No = (IF(memberM2No is null, ?, memberM2No))
-        , memberM2No = (IF(memberM3No is null, ?, memberM3No)) , memberM2No = (IF(memberM4No is null, ?, memberM4No))
+        UPDATE CHATROOM SET memberM1No = ? , memberM2No = ?
+        , memberM3No = ? , memberM4No = ?
         WHERE chatroomNo = (
         SELECT chatroomNo
         FROM (
@@ -164,5 +164,16 @@
 
     <myquery id="selectFeelingCode">
         SELECT feelingCode1, count(feelingCode1)AS count, memberNo FROM FEELING GROUP BY feelingCode1 HAVING memberNo=4 ORDER BY count DESC LIMIT 3
+    </myquery>
+
+
+    <myquery id="selectChatRoomIndexMan">
+        SELECT IFNULL(memberM1No,0) memberM1No, IFNULL(memberM2No,0) memberM2No, IFNULL(memberM3No,0) memberM3No, IFNULL(memberM4No,0) memberM4No FROM  CHATROOM WHERE chatroomNo = (
+        SELECT chatroomNo
+        FROM (
+        SELECT chatroomNo,memberWNo,memberM1No, memberM2No, memberM3No, memberM4No, chatAdd FROM CHATROOM WHERE IFNULL(memberWNo,0) not in (?)
+        ) a WHERE ifnull(memberM1No,0) not in (?) AND ifnull(memberM2No,0) not in (?) AND ifnull(memberM3No,0) not in (?) AND ifnull(memberM4No,0) not in (?)
+        AND IF(memberM1No is null, 0,1) + IF(memberM2No is null, 0,1) + IF(memberM3No is null, 0,1) + IF(memberM4No is null, 0,1) &lt; 4
+        ORDER BY IF(memberM1No is null, 0,1) + IF(memberM2No is null, 0,1) + IF(memberM3No is null, 0,1) + IF(memberM4No is null, 0,1) DESC LIMIT 1)
     </myquery>
 </query>
