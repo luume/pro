@@ -249,8 +249,8 @@ router.post('/', function(req, res) {
                     ,rows[0].memberM2No == undefined ? req.session.memberNo :  rows[0].memberM2No
                     ,rows[0].memberM3No == undefined ? req.session.memberNo :  rows[0].memberM3No
                     ,rows[0].memberM4No == undefined ? req.session.memberNo :  rows[0].memberM4No ]);
-                  gcmSetting.gcmSend([
-                      rows[0].memberWNo
+                /*  gcmSetting.gcmSend([
+                       rows[0].memberWNo
                       ,rows[0].memberM1No == undefined ? req.session.memberNo :  rows[0].memberM1No
                       ,rows[0].memberM2No == undefined ? req.session.memberNo :  rows[0].memberM2No
                       ,rows[0].memberM3No == undefined ? req.session.memberNo :  rows[0].memberM3No
@@ -258,12 +258,58 @@ router.post('/', function(req, res) {
                     ],
                     {
                       chatroomNo : rows[0].chatroomNo
+                    });*/
+
+                  gcmSetting.gcmSend([
+                      rows[0].memberWNo
+                    ],
+                    {
+                      gcmType     : 'CHAT1WOMEN'
+                      chatroomNo : rows[0].chatroomNo
+                    });
+
+                  gcmSetting.gcmSend([
+                      rows[0].memberM1No
+                    ],
+                    {
+                      gcmType     : 'CHAT1MAN'
+                      chatroomNo : rows[0].chatroomNo
+                    });
+
+                  gcmSetting.gcmSend([
+                      rows[0].memberM2No
+                    ],
+                    {
+                      gcmType     : 'CHAT1MAN'
+                      chatroomNo : rows[0].chatroomNo
+                    });
+
+                  gcmSetting.gcmSend([
+                      rows[0].memberM3No
+                    ],
+                    {
+                      gcmType     : 'CHAT1MAN'
+                      chatroomNo : rows[0].chatroomNo
+                    });
+
+                  gcmSetting.gcmSend([
+                      rows[0].memberM4No
+                    ],
+                    {
+                      gcmType     : 'CHAT1MAN'
+                      chatroomNo : rows[0].chatroomNo
                     });
                 }
-
+                //calls(null);
                 callback(null, 1);
               });
-            }
+            } // 2번째 워터폴
+
+         /*   function (calls) {
+              afeelQuery.afeelQuery(bindData, 'modifyChatRoomMan', 'chat', function (err, datas) {
+
+              });
+            } // 3번째 워터폴*/
 
           ]);
 
