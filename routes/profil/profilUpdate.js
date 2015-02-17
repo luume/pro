@@ -32,15 +32,15 @@ router.post('/', function(req, res){
 
 
     /*프로필업데이트 body { memberJob: 'ㅡㅡㅡ',
-      memberHobby: '쇼핑',
-      memberAdd: '경기',
-      profilArray: '/storage/emulated/0/temp_1423724729' }
-*/
+     memberHobby: '쇼핑',
+     memberAdd: '경기',
+     profilArray: '/storage/emulated/0/temp_1423724729' }
+     */
     var kk = 0;
     var temp;
     var indexCheck = [];
     var deleteFileIndex = [];
-   global.pool.getConnection(function (err, conn) {
+    global.pool.getConnection(function (err, conn) {
 
         conn.beginTransaction(function (err) {
 
@@ -102,12 +102,12 @@ router.post('/', function(req, res){
                 function (callback) {
                     async.eachSeries(deleteFileIndex, function (fileName, call) {
                         afeelQuery.afeelQuery([req.session.memberNo,nodeUtil.format(fileName)], 'deleteProfil', 'profil', function (err, datas) {
-                        /*    if(err){
-                                //이번에 삭제할 파일네임 :  http://54.92.4.84:3000/images/temp_14237231861423723203883.jpg
-                                console.log('딜리트 프로필 ' , err);
-                                //  callback(0, null);
-                                return;
-                            }*/
+                            /*    if(err){
+                             //이번에 삭제할 파일네임 :  http://54.92.4.84:3000/images/temp_14237231861423723203883.jpg
+                             console.log('딜리트 프로필 ' , err);
+                             //  callback(0, null);
+                             return;
+                             }*/
                             console.log('딜리트 파일네임 : ', deleteFileIndex);
                             console.log(fileName);
                             console.log(req.session.memberNo);
@@ -145,11 +145,11 @@ router.post('/', function(req, res){
                     async.eachSeries(deleteFileIndex, function (fileName, call) {
                         afeelQuery.afeelQuery([req.session.memberNo,nodeUtil.format(fileName)], 'deleteProfil', 'profil', function (err, datas) {
                             /*if(err){
-                                //이번에 삭제할 파일네임 :  http://54.92.4.84:3000/images/temp_14237231861423723203883.jpg
-                                console.log('딜리트 프로필 ' , err);
-                                //  callback(0, null);
-                                return;
-                            }*/
+                             //이번에 삭제할 파일네임 :  http://54.92.4.84:3000/images/temp_14237231861423723203883.jpg
+                             console.log('딜리트 프로필 ' , err);
+                             //  callback(0, null);
+                             return;
+                             }*/
                             console.log('딜리트 파일네임 : ', deleteFileIndex);
                             console.log(fileName);
                             console.log(req.session.memberNo);
@@ -182,59 +182,60 @@ router.post('/', function(req, res){
 
                         if(profilArray)
 
-                        async.eachSeries(profilArray, function (item, calls) {
-                            if(rowTemp.indexOf(item) != -1){
+                            async.eachSeries(profilArray, function (item, calls) {
+                                if(rowTemp.indexOf(item) != -1){
 
-                            }else {
-                                var arr = [];
-                                arr.push(req.session.memberNo);
-                                arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[kk].name);
-                                arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[kk].name);
-                                arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[kk].name);
-                                if (ii == 0) {
-                                    afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
-                           /*             if (err) {
-                                            console.log('인서트 프로필 메인 에러', err);
-                                            //  calls(err);
-                                            //   return;
-                                        }*/
-                                    }); // query end
-                                } else {
-                                    async.waterfall([
-                                        function (call) {
-                                            afeelQuery.afeelQuery([req.session.memberNo], 'countIndex', 'profil', function (err, rowCount) {
-                                                console.log("반복 체크 횟수 ", kk++);
-                                                console.log('로우카운트인덱스 ', rowCount.length);
-                                                call(null, rowCount.length); // 아래 err fun으로 호출
-                                            }); // query end
-                                        }, // func end
+                                }else {
+                                    var arr = [];
+                                    arr.push(req.session.memberNo);
+                                    arr.push( 'http://54.92.4.84:3000/mmm/' + profilOriginalFileName[kk].name);
+                                    arr.push( 'http://54.92.4.84:3000/mmm/' + profilOriginalFileName[kk].name);
+                                    arr.push( 'http://54.92.4.84:3000/mmm/' + profilOriginalFileName[kk].name);
+                                    if (ii == 0) {
+                                        afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
+                                            /*             if (err) {
+                                             console.log('인서트 프로필 메인 에러', err);
+                                             //  calls(err);
+                                             //   return;
+                                             }*/
+                                        }); // query end
+                                    } else {
+                                        async.waterfall([
+                                            function (call) {
+                                                afeelQuery.afeelQuery([req.session.memberNo], 'countIndex', 'profil', function (err, rowCount) {
+                                                    console.log("반복 체크 횟수 ", kk++);
+                                                    console.log('로우카운트인덱스 ', rowCount.length);
+                                                    call(null, rowCount.length); // 아래 err fun으로 호출
+                                                }); // query end
+                                            }, // func end
 
-                                        function (countIndex, call) {
-                                            console.log('들어오나 체크 ', countIndex);
-                                            arr.push(countIndex);
-                                            afeelQuery.afeelQuery(arr, 'insertProfil', 'profil', function (err, datas) {
-                               /*                 if (err) {
-                                                    console.log('인서트 프로필 에러', err);
-                                                    callback(0, null);
-                                                    return;
-                                                }*/
-                                                console.log('인서트가 되고있따', datas);
-                                                call(null, 1);
-                                            }); // query end
-                                        } // func end
-                                    ], function (err, result) {
-                                        //  calls();
-                                        console.log('엘즈 리절트문');
-                                    }) // warterfall end
-                                } // else end
-                                ii++;
-                                calls();
-                            } // 상위 else end
-                        }, function (err) {
-                            if(err){
-                                console.log('콜백 지옥 에러야');
-                            }
-                        }) // eachSerise end
+                                            function (countIndex, call) {
+                                                console.log('들어오나 체크 ', countIndex);
+                                                arr.push(countIndex);
+                                                afeelQuery.afeelQuery(arr, 'insertProfil', 'profil', function (err, datas) {
+                                                    /*                 if (err) {
+                                                     console.log('인서트 프로필 에러', err);
+                                                     callback(0, null);
+                                                     return;
+                                                     }*/
+                                                    console.log('인서트가 되고있따', datas);
+                                                    call(null, 1);
+                                                }); // query end
+                                            } // func end
+                                        ], function (err, result) {
+                                            //  calls();
+                                            console.log('엘즈 리절트문');
+                                        }) // warterfall end
+                                    } // else end
+                                    ii++;
+                                    kk++;
+                                    calls();
+                                } // 상위 else end
+                            }, function (err) {
+                                if(err){
+                                    console.log('콜백 지옥 에러야');
+                                }
+                            }) // eachSerise end
 
 
                     }else{ // if end
@@ -261,8 +262,8 @@ router.post('/', function(req, res){
                 }
             })
 
-            }); // 커넥션
-        }); // 트랜젝션
-   }) // get 종료
+        }); // 커넥션
+    }); // 트랜젝션
+}) // get 종료
 /*});*/
 module.exports = router;
