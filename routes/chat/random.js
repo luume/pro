@@ -170,12 +170,51 @@ router.post('/', function(req, res) {
 //
             // 여자빼고 남자4명이 차있으면 알림을 보내준다.(풀방이 되었으므로)
             if(rows[0].count == 4){
-              gcmSetting.gcmSend([req.session.memberNo, rows[0].memberM1No, rows[0].memberM2No,rows[0].memberM3No,rows[0].memberM4No],
+           /*   gcmSetting.gcmSend([req.session.memberNo, rows[0].memberM1No, rows[0].memberM2No,rows[0].memberM3No,rows[0].memberM4No],
                 {
                   gcmType : 'CHAT1WOMEN',
                   chatroomNo : rows[0].chatroomNo , profilThumbnail : [ rows[0].Man1Thumbnail, rows[0].Man2Thumbnail, rows[0].Man3Thumbnail , rows[0].Man4Thumbnail  ],
                   matchCount : rows[0].matchCount , memberNo : [rows[0].memberM1No, rows[0].memberM2No,rows[0].memberM3No,rows[0].memberM4No]
-               });
+               });*/
+              gcmSetting.gcmSend([
+                  req.session.memberNo
+                ],
+                {
+                  gcmType     : 'CHAT1WOMEN',
+                  chatroomNo : rows[0].chatroomNo
+                });
+
+              gcmSetting.gcmSend([
+                  rows[0].memberM1No
+                ],
+                {
+                  gcmType     : 'CHAT1MAN',
+                  chatroomNo : rows[0].chatroomNo
+                });
+
+              gcmSetting.gcmSend([
+                  rows[0].memberM2No
+                ],
+                {
+                  gcmType     : 'CHAT1MAN',
+                  chatroomNo : rows[0].chatroomNo
+                });
+
+              gcmSetting.gcmSend([
+                  rows[0].memberM3No
+                ],
+                {
+                  gcmType     : 'CHAT1MAN',
+                  chatroomNo : rows[0].chatroomNo
+                });
+
+              gcmSetting.gcmSend([
+                  rows[0].memberM4No
+                ],
+                {
+                  gcmType     : 'CHAT1MAN',
+                  chatroomNo : rows[0].chatroomNo
+                });
             }
 
             callback(null, 1);
@@ -249,17 +288,6 @@ router.post('/', function(req, res) {
                     ,rows[0].memberM2No == undefined ? req.session.memberNo :  rows[0].memberM2No
                     ,rows[0].memberM3No == undefined ? req.session.memberNo :  rows[0].memberM3No
                     ,rows[0].memberM4No == undefined ? req.session.memberNo :  rows[0].memberM4No ]);
-                /*  gcmSetting.gcmSend([
-                       rows[0].memberWNo
-                      ,rows[0].memberM1No == undefined ? req.session.memberNo :  rows[0].memberM1No
-                      ,rows[0].memberM2No == undefined ? req.session.memberNo :  rows[0].memberM2No
-                      ,rows[0].memberM3No == undefined ? req.session.memberNo :  rows[0].memberM3No
-                      ,rows[0].memberM4No == undefined ? req.session.memberNo :  rows[0].memberM4No
-                    ],
-                    {
-                      chatroomNo : rows[0].chatroomNo
-                    });*/
-
                   gcmSetting.gcmSend([
                       rows[0].memberWNo
                     ],
@@ -269,7 +297,7 @@ router.post('/', function(req, res) {
                     });
 
                   gcmSetting.gcmSend([
-                      rows[0].memberM1No
+                      rows[0].memberM1No == undefined ? req.session.memberNo :  rows[0].memberM1No
                     ],
                     {
                       gcmType     : 'CHAT1MAN',
@@ -277,7 +305,7 @@ router.post('/', function(req, res) {
                     });
 
                   gcmSetting.gcmSend([
-                      rows[0].memberM2No
+                      rows[0].memberM2No == undefined ? req.session.memberNo :  rows[0].memberM2No
                     ],
                     {
                       gcmType     : 'CHAT1MAN',
@@ -285,7 +313,7 @@ router.post('/', function(req, res) {
                     });
 
                   gcmSetting.gcmSend([
-                      rows[0].memberM3No
+                      rows[0].memberM3No == undefined ? req.session.memberNo :  rows[0].memberM3No
                     ],
                     {
                       gcmType     : 'CHAT1MAN',
@@ -293,7 +321,7 @@ router.post('/', function(req, res) {
                     });
 
                   gcmSetting.gcmSend([
-                      rows[0].memberM4No
+                      rows[0].memberM4No == undefined ? req.session.memberNo :  rows[0].memberM4No
                     ],
                     {
                       gcmType     : 'CHAT1MAN',
