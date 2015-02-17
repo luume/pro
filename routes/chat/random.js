@@ -40,7 +40,7 @@ router.post('/', function(req, res) {
 
     // 채팅방에 빈 공간이 있는지 검색
     function (rows, callback) {
-
+      console.log('rows :: ' , rows);
       var tempRows = rows;
       if(tempRows.constructor == Object){
         tempRows = new Array(tempRows);
