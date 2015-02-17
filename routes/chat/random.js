@@ -264,7 +264,7 @@ router.post('/', function(req, res) {
                       rows[0].memberWNo
                     ],
                     {
-                      gcmType     : 'CHAT1WOMEN'
+                      gcmType     : 'CHAT1WOMEN',
                       chatroomNo : rows[0].chatroomNo
                     });
 
@@ -272,7 +272,7 @@ router.post('/', function(req, res) {
                       rows[0].memberM1No
                     ],
                     {
-                      gcmType     : 'CHAT1MAN'
+                      gcmType     : 'CHAT1MAN',
                       chatroomNo : rows[0].chatroomNo
                     });
 
@@ -280,7 +280,7 @@ router.post('/', function(req, res) {
                       rows[0].memberM2No
                     ],
                     {
-                      gcmType     : 'CHAT1MAN'
+                      gcmType     : 'CHAT1MAN',
                       chatroomNo : rows[0].chatroomNo
                     });
 
@@ -288,7 +288,7 @@ router.post('/', function(req, res) {
                       rows[0].memberM3No
                     ],
                     {
-                      gcmType     : 'CHAT1MAN'
+                      gcmType     : 'CHAT1MAN',
                       chatroomNo : rows[0].chatroomNo
                     });
 
@@ -296,7 +296,7 @@ router.post('/', function(req, res) {
                       rows[0].memberM4No
                     ],
                     {
-                      gcmType     : 'CHAT1MAN'
+                      gcmType     : 'CHAT1MAN',
                       chatroomNo : rows[0].chatroomNo
                     });
                 }
