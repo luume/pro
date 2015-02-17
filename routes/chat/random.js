@@ -244,7 +244,11 @@ router.post('/', function(req, res) {
                 /*이름 , 닉네임, 직업 , 나이 , 키 , 지역 , 취미,
                  매칭성공횟수, 투표를 많이받은 호감도타입*/
                 if(rows[0].memberWNo != 0 && rows[0].count == 3){
-                  console.log('회원 배열값 : ', [ rows[0].memberWNo,rows[0].memberM1No, rows[0].memberM2No,rows[0].memberM3No,rows[0].memberM4No ]);
+                  console.log('회원 배열값 : ', [ rows[0].memberWNo
+                    ,rows[0].memberM1No == undefined ? req.session.memberNo :  rows[0].memberM1No
+                    ,rows[0].memberM2No == undefined ? req.session.memberNo :  rows[0].memberM2No
+                    ,rows[0].memberM3No == undefined ? req.session.memberNo :  rows[0].memberM3No
+                    ,rows[0].memberM4No == undefined ? req.session.memberNo :  rows[0].memberM4No ]);
                   gcmSetting.gcmSend([ rows[0].memberWNo,rows[0].memberM1No, rows[0].memberM2No,rows[0].memberM3No,rows[0].memberM4No ],
                     {
                       gcmType : 'CHAT1MAN',
