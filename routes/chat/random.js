@@ -73,7 +73,11 @@ router.post('/', function(req, res) {
         bindData.push(req.session.memberNo);
         afeelQuery.afeelQuery(bindData, 'clearSpaceCheckWomen', 'chat', function (err, datas) {
           console.log('채팅방 공간 체크' , datas);
-          if(datas == false || datas == undefined){
+          if( datas == undefined){
+            callback(new Error('undeifend'), 0);
+          }
+
+          if(datas == false ){
             callback(null, 0);
           }else{
             callback(null, 1, datas);
