@@ -88,7 +88,7 @@ router.post('/', function(req, res) {
           if( datas == undefined){
             callback(new Error('undeifend'), 0);
           }
-
+          console.log('섬  쿼리 : ' , datas);
           if(datas == false ){
             callback(null, 0);
           }else{
