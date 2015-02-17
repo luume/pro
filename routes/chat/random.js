@@ -90,12 +90,12 @@ router.post('/', function(req, res) {
             return;
           }
           console.log('채팅방 공간 체크' , datas);
-          if( datas == undefined){
+     /*     if( datas == undefined){
             callback(new Error('undeifend'), 0);
             return;
-          }
+          }*/
 
-          if(datas == false ){
+          if(datas == false || datas == undefined){
             callback(null, 0);
           }else{
             callback(null, 1, datas);
