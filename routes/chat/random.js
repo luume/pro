@@ -42,7 +42,7 @@ router.post('/', function(req, res) {
     function (rows, callback) {
       console.log('rows :: ' , rows);
       var tempRows = rows;
-      if(tempRows.constructor == Object){
+      if(tempRows.constructor == Object && tempRows != undefined){
         tempRows = new Array(tempRows);
       }
 
