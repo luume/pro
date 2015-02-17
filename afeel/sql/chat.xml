@@ -87,7 +87,8 @@
 
     <myquery id="clearSpaceCheckMan">
         SELECT chatroomNo,IFNULL(memberWNo,0) AS memberWNo,memberM1No, memberM2No, memberM3No, memberM4No , chatAdd,
-        (IF(memberM1No is null, 0,1) + IF(memberM2No is null, 0,1) + IF(memberM3No is null, 0,1) + IF(memberM4No is null, 0,1)) AS count,
+        (IF(memberM1No is null, 0,1) + IF(memberM2No is null, 0,1) + IF(memberM3No is
+        null, 0,1) + IF(memberM4No is null, 0,1)) AS count,
         (SELECT memberName FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0)) AS memberName,
         (SELECT memberNick FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0))  AS memberNick,
         (SELECT memberJob FROM MEMBER WHERE memberNo = IFNULL(memberWNo,0))  AS memberJob,

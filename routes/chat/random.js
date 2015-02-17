@@ -105,6 +105,9 @@ router.post('/', function(req, res) {
           }
         });
       }else if(memberGender == 'M'){
+        bindData.push( req.session.memberNo  );
+        bindData.push(  req.session.memberNo  );
+        bindData.push(  req.session.memberNo  );
         bindData.push(test);
         bindData.push( req.session.memberNo  );
         bindData.push(  req.session.memberNo  );
