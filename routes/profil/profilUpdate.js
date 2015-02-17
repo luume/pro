@@ -171,6 +171,7 @@ router.post('/', function(req, res){
                     var rowTemp = [];
                     var memberNoArray = [];
                     console.log('로우즈는 : ' , rows == false || rows == undefined ? 0 : rows.length);
+                    console.log('프로필 파일 체크 : ' , profilOriginalFileName);
                     for(var i = 0 ; i < rows == false || rows == undefined ? 0 : rows.length ; i++){
                         rowTemp.push(rows[i].profilThumbnail);
                         // memberNoArray.push(rows[i].memberNo);
@@ -188,9 +189,9 @@ router.post('/', function(req, res){
                                 }else {
                                     var arr = [];
                                     arr.push(req.session.memberNo);
-                                    arr.push( 'http://54.92.4.84:3000/mmm/' + profilOriginalFileName[kk].name);
-                                    arr.push( 'http://54.92.4.84:3000/mmm/' + profilOriginalFileName[kk].name);
-                                    arr.push( 'http://54.92.4.84:3000/mmm/' + profilOriginalFileName[kk].name);
+                                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[kk].name);
+                                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[kk].name);
+                                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[kk].name);
                                     if (ii == 0) {
                                         afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
                                             /*             if (err) {
