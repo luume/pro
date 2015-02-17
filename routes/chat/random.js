@@ -46,19 +46,19 @@ router.post('/', function(req, res) {
         tempRows = new Array(tempRows);
       }
 
-      var sum = '(';
+      var sum = '"(';
       for(var  i = 0; i < tempRows.length; i++){
         if(i == tempRows.length - 1 ){
-          sum += tempRows[i].memberNo + ')';
+          sum += tempRows[i].memberNo + ')"';
           break;
         }
         sum += tempRows[i].memberNo + ',';
       }
 
 
-      if(sum == '('){
+      /*if(sum == '('){
         sum = '()';
-      }
+      }*/
 
 
       console.log('sum 최종값 : ' , sum);
