@@ -112,7 +112,10 @@ router.post('/', function(req, res) {
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           afeelQuery.afeelQuery(bindData, 'createChatRoomWomen', 'chat', function (err, datas) {
-            console.log('채팅방생성 여자', datas.affectedRows);
+            if(err){
+              console.error("에러원인 : " , err);
+            }
+            console.log('채팅방생성 여자', datas);
             callback(null, 1);
           });
         }else if(memberGender == 'M'){
