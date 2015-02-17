@@ -140,11 +140,11 @@ router.post('/', function(req, res) {
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           afeelQuery.afeelQuery(bindData, 'createChatRoomWomen', 'chat', function (err, datas) {
-        /*    if(err){
+            if(err){
               console.error("에러원인 : " , err);
               callback(err, 0);
               return;
-            }*/
+            }
             console.log('채팅방생성 여자', datas);
             callback(null, 1);
           });
