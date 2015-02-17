@@ -73,7 +73,11 @@
         (SELECT profilThumbnail FROM PROFIL WHERE memberNo = IF(memberM2No is null, 0,memberM2No) AND profilMainYn=1) AS Man2Thumbnail,
         (SELECT profilThumbnail FROM PROFIL WHERE memberNo = IF(memberM3No is null, 0,memberM3No) AND profilMainYn=1) AS Man3Thumbnail,
         (SELECT profilThumbnail FROM PROFIL WHERE memberNo = IF(memberM4No is null, 0,memberM4No) AND profilMainYn=1) AS Man4Thumbnail,
-        (SELECT count(privateRoomRegDate) FROM PRIVATE_ROOM WHERE privateRoomRegDate &gt; DATE_ADD(now(), INTERVAL -1 day)) AS matchCount
+        (SELECT count(privateRoomRegDate) FROM PRIVATE_ROOM WHERE privateRoomRegDate
+        <![CDATA[
+         >
+        ]]>
+        DATE_ADD(now(), INTERVAL -1 day)) AS matchCount
         FROM (
         SELECT chatroomNo,memberWNo,memberM1No, memberM2No, memberM3No, memberM4No, chatroomRegDate,chatAdd FROM CHATROOM
         WHERE (IF(memberM1No is null, memberM1No is null, ifnull(memberM1No,0) NOT IN (?)  ))
