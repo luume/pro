@@ -76,10 +76,10 @@
         (SELECT count(privateRoomRegDate) FROM PRIVATE_ROOM WHERE privateRoomRegDate &gt; DATE_ADD(now(), INTERVAL -1 day)) AS matchCount
         FROM (
         SELECT chatroomNo,memberWNo,memberM1No, memberM2No, memberM3No, memberM4No, chatroomRegDate,chatAdd FROM CHATROOM
-        WHERE (IF(memberM1No is null, memberM1No is null, ifnull(memberM1No,0) NOT IN ?  ))
-        AND (IF(memberM2No is null, memberM2No is null, ifnull(memberM2No,0) NOT IN ?  ))
-        AND (IF(memberM3No is null, memberM3No is null, ifnull(memberM3No,0) NOT IN ?  ))
-        AND (IF(memberM4No is null, memberM4No is null, ifnull(memberM4No,0) NOT IN ?  ))
+        WHERE (IF(memberM1No is null, memberM1No is null, ifnull(memberM1No,0) NOT IN (?)  ))
+        AND (IF(memberM2No is null, memberM2No is null, ifnull(memberM2No,0) NOT IN (?)  ))
+        AND (IF(memberM3No is null, memberM3No is null, ifnull(memberM3No,0) NOT IN (?)  ))
+        AND (IF(memberM4No is null, memberM4No is null, ifnull(memberM4No,0) NOT IN (?)  ))
         ORDER BY chatroomRegDate ASC
         ) a WHERE chatAdd = (SELECT memberAdd FROM MEMBER WHERE memberNo = ?) AND chatroomNo IS NULL AND
         ifnull(memberWNo,0) not in (?) ORDER BY (IF(memberM1No is null, 0,1) + IF(memberM2No is null, 0,1) + IF(memberM3No is null, 0,1) + IF(memberM4No is null, 0,1)) DESC LIMIT 0,1
