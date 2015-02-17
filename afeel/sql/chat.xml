@@ -205,11 +205,7 @@
     FROM PRIVATE_ROOM
     WHERE privateRoomRegDate &lt; DATE_ADD(NOW(), INTERVAL -1 DAY)) AS matchCount,
     (SELECT feelingCode1 FROM (SELECT IFNULL(feelingCode1,0) AS feelingCode1,memberNo FROM FEELING WHERE memberNo = (select memberWNo from CHATROOM WHERE chatroomNo=?)
-    GROUP BY feelingCode1 ORDER BY count(feelingCode1) DESC LIMIT 1)  z) AS feelingCode1,
-    (SELECT feelingCode2 FROM (SELECT IFNULL(feelingCode1,0) AS feelingCode2,memberNo FROM FEELING WHERE memberNo = (select memberWNo from CHATROOM WHERE chatroomNo=?)
-    GROUP BY feelingCode1  ORDER BY count(feelingCode1) DESC LIMIT 1,1) x) AS feelingCode2,
-    (SELECT feelingCode3 FROM (SELECT IFNULL(feelingCode1,0) AS feelingCode3,memberNo FROM FEELING WHERE memberNo = (select memberWNo from CHATROOM WHERE chatroomNo=?)
-    GROUP BY feelingCode1 ORDER BY count(feelingCode1) DESC LIMIT 2,1)  c) AS feelingCode3
+    GROUP BY feelingCode1 ORDER BY count(feelingCode1) DESC LIMIT 1)  z) AS feelingCode1
     from MEMBER where
     memberNo = (select memberWNo from CHATROOM WHERE chatroomNo=?)
     </myquery>
