@@ -87,6 +87,8 @@ exports.afeelQuery = function(bindQuery , queryId, queryname, callback) {
 
             if(queryId == 'clearSpaceCheckWomen'){
               console.log(queryId + ' : ' + result);
+              console.log('bindId : ' , bindQuery);
+              console.log('소개받기 row : ' , row);
             }
 
 
