@@ -12,7 +12,7 @@ router.post('/', function(req, res) {
   var memberGender = req.body.memberGender;
 
   var sum;
-
+  var test;
   console.log('소개받기 body ', req.body);
 
   async.waterfall([
@@ -55,13 +55,13 @@ router.post('/', function(req, res) {
         sum += tempRows[i].memberNo + ',';
       }*/
 
-      var sum = [];
+      sum = [];
 
       for(var i = 0 ; i < tempRows.length; i++){
         sum.push(parseInt(tempRows[i].memberNo,10));
       }
 
-      var test = sum.join(',');
+      test = sum.join(',');
 
 /*
       if(sum == '('){
@@ -153,10 +153,10 @@ router.post('/', function(req, res) {
 
       }else if(successCode == 1){
         bindData.push(req.session.memberNo);
-        bindData.push(sum);
-        bindData.push(sum);
-        bindData.push(sum);
-        bindData.push(sum);
+        bindData.push(test);
+        bindData.push(test);
+        bindData.push(test);
+        bindData.push(test);
         bindData.push(req.session.memberNo);
         bindData.push(req.session.memberNo);
         if(memberGender == 'W'){
