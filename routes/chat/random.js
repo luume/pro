@@ -87,8 +87,9 @@ router.post('/', function(req, res) {
           console.log('채팅방 공간 체크' , datas);
           if( datas == undefined){
             callback(new Error('undeifend'), 0);
+            return;
           }
-          console.log('섬  쿼리 : ' , datas);
+
           if(datas == false ){
             callback(null, 0);
           }else{
