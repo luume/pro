@@ -188,9 +188,9 @@ router.post('/', function(req, res){
                             }else {
                                 var arr = [];
                                 arr.push(req.session.memberNo);
-                                arr.push( item);
-                                arr.push( item);
-                                arr.push( item);
+                                arr.push( 'http://54.92.4.84:3000/images/' + item.splice('/')[8]);
+                                arr.push( 'http://54.92.4.84:3000/images/' + item.splice('/')[8]);
+                                arr.push( 'http://54.92.4.84:3000/images/' + item.splice('/')[8]);
                                 if (ii == 0) {
                                     afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
                            /*             if (err) {
