@@ -188,7 +188,7 @@ router.post('/', function(req, res) {
           bindData.push(req.session.memberNo);
           afeelQuery.afeelQuery(bindData, 'modifyChatRoomMan', 'chat', function (err, datas) {
 
-
+            console.log('3번쨰 워터폴 남자 업데이트 값 ' , datas);
             /*이름 , 닉네임, 직업 , 나이 , 키 , 지역 , 취미,
               매칭성공횟수, 투표를 많이받은 호감도타입*/
             if(rows[0].memberWNo != 0 && rows[0].count == 3){
