@@ -85,7 +85,7 @@
         AND (IF(memberM3No is null, memberM3No is null, ifnull(memberM3No,0) NOT IN ?))
         AND (IF(memberM4No is null, memberM4No is null, ifnull(memberM4No,0) NOT IN ?))
         ORDER BY chatroomRegDate ASC
-        ) a WHERE chatAdd = (SELECT memberAdd FROM MEMBER WHERE memberNo = ?) AND
+        ) a WHERE chatAdd = (SELECT memberAdd FROM MEMBER WHERE memberNo = ?) AND chatroomNo IS NULL AND
         ifnull(memberWNo,0) not in (?) ORDER BY (IF(memberM1No is null, 0,1) + IF(memberM2No is null, 0,1) + IF(memberM3No is null, 0,1) + IF(memberM4No is null, 0,1)) DESC LIMIT 0,1
     </myquery>
 
