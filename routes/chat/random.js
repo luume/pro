@@ -65,10 +65,10 @@ router.post('/', function(req, res) {
 
       test = sum.join(',');
 
-/*
-      if(sum == '('){
-        sum = '()';
-      }*/
+
+      if(sum ==  false){
+        sum[0] == 0;
+      }
 
 
       console.log('sum 최종값 : ' , sum);
