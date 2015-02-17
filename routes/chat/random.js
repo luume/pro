@@ -46,19 +46,19 @@ router.post('/', function(req, res) {
         tempRows = new Array(tempRows);
       }
 
-      sum = '(';
+      sum = '';
       for(var  i = 0; i < tempRows.length; i++){
         if(i == tempRows.length - 1 ){
-          sum += tempRows[i].memberNo + ')';
+          sum += tempRows[i].memberNo;
           break;
         }
         sum += tempRows[i].memberNo + ',';
       }
 
 
-      if(sum == '('){
+      /*if(sum == ''){
         sum = '()';
-      }
+      }*/
 
 
       console.log('sum 최종값 : ' , sum);
@@ -73,7 +73,7 @@ router.post('/', function(req, res) {
         bindData.push(req.session.memberNo);
         afeelQuery.afeelQuery(bindData, 'clearSpaceCheckWomen', 'chat', function (err, datas) {
           console.log('채팅방 공간 체크' , datas);
-          if(datas == false){
+          if(datas == false || datas == undefined){
             callback(null, 0);
           }else{
             callback(null, 1, datas);
@@ -87,7 +87,7 @@ router.post('/', function(req, res) {
         bindData.push('(' +  req.session.memberNo + ')' );
         bindData.push('(' +  req.session.memberNo + ')' );
         afeelQuery.afeelQuery(bindData, 'clearSpaceCheckMan', 'chat', function (err, datas) {
-          if(datas == false){
+          if(datas == false || datas == undefined){
             callback(null, 0);
           }else{
             callback(null, 1, datas);
