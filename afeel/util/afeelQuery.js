@@ -85,6 +85,11 @@ exports.afeelQuery = function(bindQuery , queryId, queryname, callback) {
           //  global.afeelCon.beginTransaction(function(err) {
           conn.query(result, bindQuery, function (err, row) {
 
+            if(queryId == 'clearSpaceCheckWomen'){
+              console.log(queryId + ' : ' + result);
+            }
+
+
             if (err) {
               //global.afeelCon.release();
               console.log(queryId + ' =  ' + err);
