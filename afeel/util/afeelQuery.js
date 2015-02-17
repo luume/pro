@@ -131,9 +131,10 @@ exports.afeelQuery = function(bindQuery , queryId, queryname, callback) {
             //} // if end
             //  console.log('쿼리결과', row);
             global.isQuerySuccess = true;
-            conn.release();
+
             //conn.release();
             callback(null, row);
+            conn.release();
           }); // 쿼리 문 종료
 
         });
