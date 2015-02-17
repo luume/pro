@@ -114,6 +114,8 @@ router.post('/', function(req, res) {
           afeelQuery.afeelQuery(bindData, 'createChatRoomWomen', 'chat', function (err, datas) {
             if(err){
               console.error("에러원인 : " , err);
+              callback(err, 0);
+              return;
             }
             console.log('채팅방생성 여자', datas);
             callback(null, 1);
@@ -176,7 +178,7 @@ router.post('/', function(req, res) {
 
             callback(null, 1);
           });
-        }
+        }  // else if 종료
 
       }
 //      callback(null, 1)
