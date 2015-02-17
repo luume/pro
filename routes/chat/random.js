@@ -103,7 +103,7 @@ router.post('/', function(req, res) {
           }
         });
       }else if(memberGender == 'M'){
-        bindData.push(sum);
+        bindData.push(test);
         bindData.push('(' +  req.session.memberNo + ')' );
         bindData.push('(' +  req.session.memberNo + ')' );
         bindData.push('(' +  req.session.memberNo + ')' );
@@ -179,7 +179,7 @@ router.post('/', function(req, res) {
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
-          bindData.push(sum);
+          bindData.push(test);
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
@@ -221,7 +221,7 @@ router.post('/', function(req, res) {
 
 
 
-  res.json(util.successCode(res, 'success'));
+  //res.json(util.successCode(res, 'success'));
 
 });
 
