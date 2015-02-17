@@ -87,11 +87,11 @@ router.post('/', function(req, res) {
         bindData.push(req.session.memberNo);
         console.log('join결과:' ,test);
         afeelQuery.afeelQuery(bindData, 'clearSpaceCheckWomen', 'chat', function (err, datas) {
-          if(err){
+    /*      if(err){
             console.error('sum 에러 : ' , err);
             callback(new Error('undeifend'), 0);
             return;
-          }
+          }*/
           console.log('채팅방 공간 체크' , datas);
      /*     if( datas == undefined){
             callback(new Error('undeifend'), 0);
@@ -140,11 +140,11 @@ router.post('/', function(req, res) {
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           afeelQuery.afeelQuery(bindData, 'createChatRoomWomen', 'chat', function (err, datas) {
-            if(err){
+        /*    if(err){
               console.error("에러원인 : " , err);
               callback(err, 0);
               return;
-            }
+            }*/
             console.log('채팅방생성 여자', datas);
             callback(null, 1);
           });
@@ -220,18 +220,7 @@ router.post('/', function(req, res) {
             callback(null, 1);
           });
         }else if(memberGender == 'M'){
-       /*   bindData.push(req.session.memberNo);
-          bindData.push(req.session.memberNo);
-          bindData.push(req.session.memberNo);
-          bindData.push(req.session.memberNo);
-          bindData.push(test);
-          bindData.push(req.session.memberNo);
-          bindData.push(req.session.memberNo);
-          bindData.push(req.session.memberNo);
-          bindData.push(req.session.memberNo);
 
-
-*/
           async.waterfall([
 
             function (calls) {
