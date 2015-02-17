@@ -58,7 +58,7 @@ router.post('/', function(req, res) {
       var sum = [];
 
       for(var i = 0 ; i < tempRows.length; i++){
-        sum.push(tempRows[i].memberNo);
+        sum.push(parseInt(tempRows[i].memberNo,10));
       }
 
       var test = sum.join(',');
