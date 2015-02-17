@@ -249,7 +249,13 @@ router.post('/', function(req, res) {
                     ,rows[0].memberM2No == undefined ? req.session.memberNo :  rows[0].memberM2No
                     ,rows[0].memberM3No == undefined ? req.session.memberNo :  rows[0].memberM3No
                     ,rows[0].memberM4No == undefined ? req.session.memberNo :  rows[0].memberM4No ]);
-                  gcmSetting.gcmSend([ rows[0].memberWNo,rows[0].memberM1No, rows[0].memberM2No,rows[0].memberM3No,rows[0].memberM4No ],
+                  gcmSetting.gcmSend([
+                      rows[0].memberWNo
+                      ,rows[0].memberM1No == undefined ? req.session.memberNo :  rows[0].memberM1No
+                      ,rows[0].memberM2No == undefined ? req.session.memberNo :  rows[0].memberM2No
+                      ,rows[0].memberM3No == undefined ? req.session.memberNo :  rows[0].memberM3No
+                      ,rows[0].memberM4No == undefined ? req.session.memberNo :  rows[0].memberM4No
+                    ],
                     {
                       gcmType : 'CHAT1MAN',
                       memberName : rows[0].memberName, memberNick : rows[0].memberNick,
