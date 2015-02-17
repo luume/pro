@@ -123,7 +123,7 @@
 
     <myquery id="createChatRoomWomen">
         INSERT INTO CHATROOM(chatroomNo, memberWNo, memberM1No, memberM2No, memberM3No, memberM4No, chatroomRegDate, questionNo, chatAdd)
-        VALUES(0, 4, null,null,null,null, now(),
+        VALUES(0, ?, null,null,null,null, now(),
         (SELECT questionNo FROM QUESTION WHERE memberNo = ? order by rand() limit 1)
         ,
         (select memberAdd FROM MEMBER WHERE memberNo = ?)
