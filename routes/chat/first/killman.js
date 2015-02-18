@@ -7,8 +7,8 @@ var afeelQuery = require('../../../afeel/util/afeelQuery');
 // 소개 받기//////////
 router.post('/', function(req, res) {
 
-    var memberNo = req.body.memberNo;
-    var chatroomNo = req.body.chatroomNo;
+    var memberNo = req.body.memberNo; //죽일 남성 번호
+    var chatroomNo = req.body.chatroomNo; //해당 채팅방 번호
     var rank = 4;
 
     var datas = [];

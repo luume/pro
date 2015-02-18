@@ -179,7 +179,7 @@
     </myquery>
 
     <myquery id="Killman">
-        insert into CHAT_RANK(memberNo, chatroomNo, rank) VALUES(?,?,?)
+        INSERT INTO CHAT_RANK(memberNo, chatroomNo, rank) VALUES(?,?,?)
     </myquery>
 
     <myquery id="chatFirstWoman">
