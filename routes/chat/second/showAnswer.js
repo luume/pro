@@ -13,65 +13,69 @@ router.get('/:chatroomNo', function(req, res){
     //}
     var memberNo = req.session.memberNo;
 
-    async.waterfall([
-            function(callback) {
-                var datas = [];
-                datas.push(chatroomNo);
-                var queryidname = 'selectQuestion';
-                afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
-                    if(err){
-                        res.json(err);
-                        return;
-                    }
-                    if(datas == false){ //select 결과 row 0일때 처리
-                        res.json({ success : 0 , message : '데이터 없음', result : null});
-                        return;
-                    }
-                    //console.log('첫번째 처리 성공' , datas[0]);
-                    callback(null, datas[0]);
-                })
-            },
-            function(questionData, callback) {
-                  //console.log('answerData', answerData);
-                //   console.log('여자다');
-                var datas = [];
-                datas.push(chatroomNo);
-                var queryidname = 'selectAnswer';
-                afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
-                    if(err){
-                        res.json(err);
-                        return;
-                    }
-                    if(datas == false){
-                        res.json({ success : 0 , message : '데이터 없음', result : null});
-                        return;
-                    }
-                    // console.log('여자인 데이터 잘가져옴');
-                    //console.log('두번째처리',datas);
-
-                    callback(null, questionData, datas);
-                    //res.json(util.successCode(res, datas));
-                });
-
-            }
-        ],	function(err, questionData, datas) {
-            // console.log('최종 처리');
-            // console.log('results' , results); // result <- done
-            var arr = [];
-            arr.push(datas);
-            res.json({
-                success : 1,
-                message : 'OK',
-                result : {
-                    questionData: questionData.questionData,
-                    questionGuideData: questionData.questionGuideData,
-                    textAnswer : datas
-                }
-            });
-            //res.json({success:1, message:'ok', result:datas[0]});
-            //res.json(util.successCode(res, results));
+    var datas = [];
+    datas.push(chatroomNo);
+    datas.push(chatroomNo);
+    var queryidname = 'selectAnswer';
+    afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
+        if(err){
+            res.json(err);
+            return;
         }
-    );
+        if(datas == false){
+            res.json({ success : 0 , message : '데이터 없음', result : null});
+            return;
+        }
+        // console.log('여자인 데이터 잘가져옴');
+        //console.log('두번째처리',datas);
+        res.json(util.successCode(res, datas));
+        //res.json({
+        //    success : 1,
+        //    message : 'OK',
+        //    result : {
+        //        questionData: questionData.questionData,
+        //        questionGuideData: questionData.questionGuideData,
+        //        textAnswer : datas
+        //    }
+        //});
+        //callback(null, questionData, datas);
+        //res.json(util.successCode(res, datas));
+    });
+
+    //async.waterfall([
+    //        function(callback) {
+    //            var datas = [];
+    //            datas.push(chatroomNo);
+    //            var queryidname = 'selectQuestion';
+    //            afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
+    //                if(err){
+    //                    res.json(err);
+    //                    return;
+    //                }
+    //                if(datas == false){ //select 결과 row 0일때 처리
+    //                    res.json({ success : 0 , message : '데이터 없음', result : null});
+    //                    return;
+    //                }
+    //                //console.log('첫번째 처리 성공' , datas[0]);
+    //                callback(null, datas[0]);
+    //            })
+    //        },
+    //        function(questionData, callback) {
+    //              //console.log('answerData', answerData);
+    //            //   console.log('여자다');
+    //
+    //
+    //        }
+    //    ],	function(err, questionData, datas) {
+    //        // console.log('최종 처리');
+    //        // console.log('results' , results); // result <- done
+    //        var arr = [];
+    //        arr.push(datas);
+    //
+    //        //res.json({success:1, message:'ok', result:datas[0]});
+    //        //res.json(util.successCode(res, results));
+    //    }
+    //);
 
     /* 질문 가져오기
     select questionData, questionGuideData from QUESTION
