@@ -233,4 +233,17 @@
         INSERT INTO VOICE_ANSWER(voiceAnswerOriginalFileName, chatroomNo, voiceAnswerRegDate, memberNo, questionNo)
         VALUES (?,?,NOW(),?,?)
     </myquery>
+
+    <myquery id="forthMan">
+        select memberNo, memberGender, memberNick, memberJob, memberHobby, memberAdd,
+        memberBirth, memberHeight, memberEmailYn, memberSNSYn from MEMBER
+        WHERE memberNo in(select memberNo from CHAT_RANK where chatroomNo = ? and rank in(0))
+    </myquery>
+
+    <myquery id="forthWoman">
+        select memberNo, memberGender, memberNick, memberJob, memberHobby, memberAdd,
+        memberBirth, memberHeight, memberEmailYn, memberSNSYn
+        FROM MEMBER inner join CHAT_RANK on MEMBER.memberNo = CHAT_RANK.memberNo
+        WHERE memberNo in(select memberNo from CHAT_RANK where chatroomNo = ? and rank in(1,2))
+    </myquery>
 </query>

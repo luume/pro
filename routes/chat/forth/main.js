@@ -91,4 +91,14 @@ router.get('/:chatroomNo', function(req, res){
     //}));
 });
 
+
+//router.get('/man/:chatroomNo', function(req, res){
+//    var chatroomNo = req.params.chatroomNo;
+//});
+//
+//router.get('/woman/:chatroomNo', function(req, res){
+//
+//});
+
+
 module.exports = router;
