@@ -6,7 +6,7 @@ var afeelQuery = require('../../../afeel/util/afeelQuery');
 
 router.post('/', function(req, res){
     var chatroomNo = req.body.chatroomNo;
-    var memberNo = req.body.memberNo; //현재 회원번호 밑에서 memberTo에 들어감
+    var memberNo = req.session.memberNo; //현재 회원번호 밑에서 memberTo에 들어감
     var memberTo = req.body.memberTo; //평가할 회원번호 memberNo에 들어감
     var feelingCode = req.body.feelingCode;
     var feelingRate = req.body.feelingRate;
