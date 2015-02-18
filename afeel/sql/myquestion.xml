@@ -29,11 +29,16 @@
         where questionNo = (select questionNo from CHATROOM where chatroomNo = ?)
     </myquery>
 
-    <myquery id="selectAnswer">
+    <myquery id="showAnswer">
         SELECT TEXT_ANSWER.memberNo, TEXT_ANSWER.textAnswerData from QUESTION inner join
         TEXT_ANSWER on QUESTION.questionNo = TEXT_ANSWER.questionNo where TEXT_ANSWER.chatroomNo = ?
         and TEXT_ANSWER.memberNo not in(select memberWNo from CHATROOM where chatroomNo = ?)
+    </myquery>
 
+    <myquery id="showAnswerAlive">
+        SELECT
+        MEMBER.memberGender, TEXT_ANSWER.memberNo ,MEMBER.memberNick, TEXT_ANSWER.textAnswerData from TEXT_ANSWER inner join
+        MEMBER on TEXT_ANSWER.memberNo = MEMBER.memberNo where TEXT_ANSWER.chatroomNo = ? order by memberGender desc
     </myquery>
 
     <myquery id="selectVoiceAnswer">
