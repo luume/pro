@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 var util = require('../../../afeel/util/vo');
+var afeelQuery = require('../../../afeel/util/afeelQuery');
+
 
 router.post('/', function(req, res){
     var chatroomNo = req.body.chatroomNo;
