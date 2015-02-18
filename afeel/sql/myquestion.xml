@@ -47,9 +47,9 @@
     </myquery>
 
     <myquery id="showVoiceAnswer">
-        SELECT TEXT_ANSWER.memberNo, TEXT_ANSWER.textAnswerData from QUESTION inner join
-        TEXT_ANSWER on QUESTION.questionNo = TEXT_ANSWER.questionNo where TEXT_ANSWER.chatroomNo = ?
-        and TEXT_ANSWER.memberNo not in(select memberWNo from CHATROOM where chatroomNo = ?)
+        SELECT VOICE_ANSWER.memberNo, VOICE_ANSWER.voiceAnswerOriginalFilename from QUESTION inner join
+        VOICE_ANSWER on QUESTION.questionNo = VOICE_ANSWER.questionNo where VOICE_ANSWER.chatroomNo = ?
+        and VOICE_ANSWER.memberNo not in(select memberWNo from CHATROOM where chatroomNo = ?)
     </myquery>
 
 
