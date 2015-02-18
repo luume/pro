@@ -228,4 +228,9 @@
         select questionNo, questionData, questionGuideData FROM QUESTION where questionNo =
         (select questionVoiceNo FROM CHATROOM where chatroomNo = ?)
     </myquery>
+
+    <myquery id="sendVoiceAnswer">
+        INSERT INTO VOICE_ANSWER(voiceAnswerOriginalFileName, chatroomNo, voiceAnswerRegDate, memberNo, questionNo)
+        VALUES (?,?,NOW(),?,?)
+    </myquery>
 </query>
