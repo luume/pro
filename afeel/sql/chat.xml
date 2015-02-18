@@ -244,6 +244,10 @@
         select memberNo, memberGender, memberNick, memberJob, memberHobby, memberAdd,
         memberBirth, memberHeight, memberEmailYn, memberSNSYn
         FROM MEMBER
-        WHERE memberNo in(select memberNo from CHAT_RANK where chatroomNo = 44 and rank in(1,2))
+        WHERE memberNo in(select memberNo from CHAT_RANK where chatroomNo = ? and rank in(1,2))
+    </myquery>
+
+    <myquery id="insertFeeling">
+        INSERT INTO FEELING (memberNo, feelingCode1, memberTo, memberRate) values(?,?,?,?)
     </myquery>
 </query>
