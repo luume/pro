@@ -111,9 +111,11 @@
     </myquery>
 
     <myquery id="createChatRoomWomen">
-        INSERT INTO CHATROOM(chatroomNo, memberWNo, memberM1No, memberM2No, memberM3No, memberM4No, chatroomRegDate, questionNo, chatAdd)
+        INSERT INTO CHATROOM(chatroomNo, memberWNo, memberM1No, memberM2No, memberM3No, memberM4No, chatroomRegDate, questionNo, questionVoiceNo, chatAdd)
         VALUES(0, ?, null,null,null,null, now(),
-        (SELECT questionNo FROM QUESTION WHERE memberNo = ? order by rand() limit 1)
+        (SELECT questionNo FROM QUESTION WHERE memberNo = ? and questionType = 0 order by rand() limit 1)
+        ,
+        (SELECT questionNo FROM QUESTION WHERE memberNo = ? and questionType = 1 order by rand() limit 1)
         ,
         (select memberAdd FROM MEMBER WHERE memberNo = ?)
         )
@@ -129,7 +131,9 @@
     </myquery>
 
     <myquery id="modifyChatRoomWomenQuestionRandom">
-        UPDATE CHATROOM SET memberWNo = ? ,  questionNo = (SELECT questionNo FROM QUESTION ORDER BY RAND() LIMIT 1)  WHERE chatroomNo =
+        UPDATE CHATROOM SET memberWNo = ? ,  questionNo = (SELECT questionNo FROM QUESTION WHERE questionType = 0 ORDER BY RAND() LIMIT 1) ,
+        questionVoiceNo = (SELECT questionNo FROM QUESTION WHERE questionType = 1 ORDER BY RAND() LIMIT 1)
+        WHERE chatroomNo =
         (SELECT chatroomNo
         FROM (
         SELECT chatroomNo,memberWNo,memberM1No, memberM2No, memberM3No, memberM4No, chatroomRegDate ,chatAdd FROM CHATROOM
@@ -218,5 +222,10 @@
     <myquery id="sendTextAnswer">
     INSERT INTO TEXT_ANSWER(textAnswerData, chatroomNo, textAnswerRegDate, memberNo, questionNo)
     VALUES (?,?,NOW(),?,?)
+    </myquery>
+
+    <myquery id="showVoiceQuestion">
+        select questionNo, questionData, questionGuideData FROM QUESTION where questionNo =
+        (select questionVoiceNo FROM CHATROOM where chatroomNo = ?)
     </myquery>
 </query>

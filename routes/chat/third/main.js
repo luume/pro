@@ -7,28 +7,30 @@ var afeelQuery = require('../../../afeel/util/afeelQuery');
 router.get('/:chatroomNo', function(req, res){
 
     var chatroomNo = req.params.chatroomNo;
-    if(chatroomNo == "" || chatroomNo == undefined){
-        res.json({success:0, message:"Error(빈값이 넘어왔습니다.[chatroomNo])", result:null});
-        return;
-    }
+    //if(chatroomNo == "" || chatroomNo == undefined){
+    //    res.json({success:0, message:"Error(빈값이 넘어왔습니다.[chatroomNo])", result:null});
+    //    return;
+    //}
     var memberNo = req.session.memberNo;
-    if(memberNo == "" || memberNo == undefined){
-        res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNosss])", result:null});
-        return;
-    }
+    //if(memberNo == "" || memberNo == undefined){
+    //    res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNosss])", result:null});
+    //    return;
+    //}
     var datas = [];
-    var questionType = '1'; //음성 질문 코드
-    datas.push(memberNo);
-    datas.push(questionType);
+    datas.push(chatroomNo);
 
-    global.queryName = 'myquestion';
-    var queryidname = 'myquestionRandom';
+    var queryidname = 'showVoiceQuestion';
 
-    afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
+    afeelQuery.afeelQuery(datas, queryidname ,'chat', function (err, datas) {
         if(err){
             res.json(err);
+            return;
         }
-        //console.log('ddd',datas[0].qCount);
+        if(datas == false){
+            res.json({ success : 0 , message : '데이터 없음', result : null});
+
+            return;
+        }
         res.json(util.successCode(res, datas));
     });
 
