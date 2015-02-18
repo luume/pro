@@ -13,8 +13,7 @@ router.get('/:chatroomNo', function(req, res){
 
     var datas = [];
     datas.push(chatroomNo);
-    datas.push(chatroomNo);
-    var queryidname = 'showVoiceAnswer';
+    var queryidname = 'showVoiceAnswerAlive';
     afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
         if(err){
             res.json(err);

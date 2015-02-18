@@ -52,5 +52,10 @@
         and VOICE_ANSWER.memberNo not in(select memberWNo from CHATROOM where chatroomNo = ?)
     </myquery>
 
+    <myquery id="showVoiceAnswerAlive">
+    SELECT
+    MEMBER.memberGender, VOICE_ANSWER.memberNo ,MEMBER.memberNick, VOICE_ANSWER.voiceAnswerOriginalFilename from VOICE_ANSWER inner join
+    MEMBER on VOICE_ANSWER.memberNo = MEMBER.memberNo where VOICE_ANSWER.chatroomNo = ? order by memberGender desc
+    </myquery>
 
 </query>
