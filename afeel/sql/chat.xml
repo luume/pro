@@ -178,7 +178,7 @@
         ORDER BY IF(memberM1No is null, 0,1) + IF(memberM2No is null, 0,1) + IF(memberM3No is null, 0,1) + IF(memberM4No is null, 0,1) DESC LIMIT 1)
     </myquery>
 
-    <myquery id="Killman">
+    <myquery id="killMan">
         INSERT INTO CHAT_RANK(memberNo, chatroomNo, rank) VALUES(?,?,?)
     </myquery>
 

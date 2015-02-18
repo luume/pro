@@ -16,7 +16,7 @@ router.post('/', function(req, res) {
     datas.push(chatroomNo);
     datas.push(rank);
 
-    var queryidname = 'killman';
+    var queryidname = 'killMan';
     afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
         if (err) {
             res.json(err);
