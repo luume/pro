@@ -209,4 +209,9 @@
     from MEMBER where
     memberNo = (select memberWNo from CHATROOM WHERE chatroomNo=?)
     </myquery>
+
+    <myquery id="showTextQuestion">
+        select questionNo, questionData, questionGuideData FROM QUESTION where questionNo =
+        (select questionNo FROM CHATROOM where chatroomNo = ?)
+    </myquery>
 </query>
