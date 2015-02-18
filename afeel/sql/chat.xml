@@ -214,4 +214,9 @@
         select questionNo, questionData, questionGuideData FROM QUESTION where questionNo =
         (select questionNo FROM CHATROOM where chatroomNo = ?)
     </myquery>
+
+    <myquery id="sendTextAnswer">
+    INSERT INTO TEXT_ANSWER(textAnswerData, chatroomNo, textAnswerRegDate, memberNo, questionNo)
+    VALUES (?,?,NOW(),?,?)
+    </myquery>
 </query>
