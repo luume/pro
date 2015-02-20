@@ -36,7 +36,7 @@ router.post('/', function(req, res){
 
 
         function (memberGender , callback) {
-            afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
+            afeelQuery.afeelQuery(datas, 'sendTextAnswer' , 'chat', function (err, datas) {
 
                 callback(null, 1, memberGender)
 
