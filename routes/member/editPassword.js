@@ -40,6 +40,7 @@ var async = require('async');
 router.post('/', function(req, res){
 
     var memberNo = req.session.memberNo;
+    var memberPw = req.body.memberPw
     var memberNewPw  = req.body.memberNewPw;
     var datas = [];
     datas.push(memberNo);
@@ -55,7 +56,7 @@ router.post('/', function(req, res){
                         res.json(err);
                         return;
                     }
-                    if(datas == false){ //select 결과 row 0일때 처리
+                    if(datas.memberPw != memberPw){ //select 결과 row 0일때 처리
                         res.json({ success : 0 , message : '데이터 없음', result : null});
                         return;
                     }
