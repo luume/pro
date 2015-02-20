@@ -50,22 +50,29 @@ router.get('/:chatroomNo', function(req, res){
                         res.json({ success : 0 , message : '데이터 없음', result : null});
                         return;
                     }
-                    callback(null, datas, memberdata);
+                    var arr = [];
+                    async.each(datas, function (row, callback) {
+                        arr.push(row.profilThumbnail);
+
+                        callback();
+
+                    }, function(err){
+                        profilThumbnail = arr;
+                        temp = datas;
+                        datas[0].profilThumbnail = arr;
+                        temp.aaa = arr;
+
+                        callback(null, datas[0]);
+                        //res.json({success:1, message:'ok', result:});
+                    });
+
                 });
 
             }
-        ],	function(err, profil, memberdata) {
+        ],	function(err, results) {
             //console.log('최종 처리');
-            var arr = [];
-            for(i=0; i<profil.length; i++){
-                arr.push(profil[i]);
-            }
-            res.json({success:1,message:'ok',result:{
-                arr:arr,
-                memberdata:memberdata
-            }
-            });
-            //res.json(util.successCode(res, results));
+
+            res.json(util.successCode(res, results));
         }
     );
 
