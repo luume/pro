@@ -59,18 +59,27 @@ router.get('/:chatroomNo', function(req, res){
                     }, function(err){
                         profilThumbnail = arr;
                         temp = memberdata;
-                        datas[0].profilThumbnail = arr;
+                        datas[0].memberName = memberdata.memberName;
                         datas[0].memberGender = memberdata.memberGender;
+                        datas[0].memberNick = memberdata.memberNick;
+                        datas[0].memberJob = memberdata.memberJob;
+                        datas[0].memberHobby = memberdata.memberHobby;
+                        datas[0].memberAdd = memberdata.memberAdd;
+                        datas[0].memberBirth = memberdata.memberBirth;
+                        datas[0].memberHeight = memberdata.memberHeight;
+                        datas[0].memberEmailYn = memberdata.memberEmailYn;
+                        datas[0].memberSNSYn = memberdata.memberSNSYn;
+                        datas[0].profilThumbnail = arr;
                         temp = arr;
 
-                        callback(null, datas[0], memberdata);
+                        callback(null, datas[0]);
                         //res.json({success:1, message:'ok', result:});
                     });
 
                 });
 
             }
-        ],	function(err, results, memberdata) {
+        ],	function(err, results) {
             //console.log('최종 처리');
             //res.json({success:1,message:'ok',result:{results}});
 
