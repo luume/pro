@@ -60,17 +60,19 @@ router.get('/:chatroomNo', function(req, res){
                         profilThumbnail = arr;
                         temp = memberdata;
                         datas[0].profilThumbnail = arr;
+                        datas[0].memberGender = memberdata.memberGender;
                         temp = arr;
 
-                        callback(null, datas[0]);
+                        callback(null, datas[0], memberdata);
                         //res.json({success:1, message:'ok', result:});
                     });
 
                 });
 
             }
-        ],	function(err, results) {
+        ],	function(err, results, memberdata) {
             //console.log('최종 처리');
+            //res.json({success:1,message:'ok',result:{results}});
 
             res.json(util.successCode(res, results));
         }
