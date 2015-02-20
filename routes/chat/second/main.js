@@ -24,6 +24,7 @@ router.get('/:chatroomNo', function(req, res){
 
             return;
         }
+
         res.json(util.successCode(res, datas));
 
     });

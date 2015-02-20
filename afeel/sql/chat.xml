@@ -190,6 +190,10 @@
         INSERT INTO CHAT_RANK(memberNo, chatroomNo, rank) VALUES(?,?,?)
     </myquery>
 
+    <myquery id="selectChatMember">
+        SELECT memberWNo, memberM1No, memberM2No, memberM3No, memberM4No FROM CHATROOM WHERE chatroomNo = ?
+    </myquery>
+
     <myquery id="chatFirstWoman">
         SELECT
         (
