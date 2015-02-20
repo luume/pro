@@ -64,7 +64,7 @@ router.get('/:chatroomNo', function(req, res){
                 //datas.push(memberdata.feelingCode3);
                 datas.push(memberdata.memberNo);
                 var queryidname = 'showProfilThumbnail';
-                console.log('rankData',rankData);
+                console.log('rankData',rankData.rank);
                 afeelQuery.afeelQuery(datas, queryidname , 'profil', function (err, datas) {
                     if(err){
                         res.json(err);
