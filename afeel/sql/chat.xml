@@ -130,6 +130,10 @@
         )
     </myquery>
 
+    <myquery id="womanRankInsert">
+        INSERT INTO CHAT_RANK(chatroomNo, memberNo, rank) VALUES(?,?,0)
+    </myquery>
+
     <myquery id="modifyChatRoomWomenQuestionRandom">
         UPDATE CHATROOM SET memberWNo = ? ,  questionNo = (SELECT questionNo FROM QUESTION WHERE questionType = 0 ORDER BY RAND() LIMIT 1) ,
         questionVoiceNo = (SELECT questionNo FROM QUESTION WHERE questionType = 1 ORDER BY RAND() LIMIT 1)
