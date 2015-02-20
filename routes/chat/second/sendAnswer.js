@@ -19,10 +19,7 @@ router.post('/', function(req, res){
     var questionNo = req.body.questionNo;
 
     var datas = [];
-    datas.push(textAnswerData);
-    datas.push(chatroomNo);
-    datas.push(memberNo);
-    datas.push(questionNo);
+
 
     async.waterfall([
 
@@ -38,6 +35,11 @@ router.post('/', function(req, res){
 
 
         function (memberGender , callback) {
+            datas.push(textAnswerData);
+            datas.push(chatroomNo);
+            datas.push(memberNo);
+            datas.push(questionNo);
+            console.log(datas);
             afeelQuery.afeelQuery(datas, 'sendTextAnswer' , 'chat', function (err, datas) {
                 if(err)console.error(err);
                 callback(null, 1, memberGender)
