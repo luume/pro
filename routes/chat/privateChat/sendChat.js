@@ -23,8 +23,10 @@ router.post('/', function(req, res){
     var messageTO = req.body.messageTo;
 
     var memberName = req.body.memberName;
-    //console.log('1111111111reqbody',req.body);
+    console.log('1111111111reqbody',req.body);
     //console.log('messageTO',messageTO);
+
+
 
 
     async.waterfall([
