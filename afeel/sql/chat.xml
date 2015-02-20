@@ -269,4 +269,8 @@
     <myquery id="showRank">
         select rank from CHAT_RANK where memberNo = ? and chatroomNo = ?
     </myquery>
+
+    <myquery id="insertCount">
+        select count(*) AS insertCount FROM TEXT_ANSWER WHERE chatroomNo = 9
+    </myquery>
 </query>
