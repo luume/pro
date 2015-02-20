@@ -3,6 +3,7 @@ var router = express.Router();
 
 var util = require('../../../afeel/util/vo');
 var afeelQuery = require('../../../afeel/util/afeelQuery');
+
 var async = require('async');
 
 router.get('/:chatroomNo', function(req, res){
