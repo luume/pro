@@ -59,7 +59,7 @@ router.get('/:chatroomNo', function(req, res){
                     }, function(err){
                         profilThumbnail = arr;
                         temp = memberdata;
-                        memberdata[0].profilThumbnail = arr;
+                        datas[0].profilThumbnail = arr;
                         temp.aaa = arr;
 
                         callback(null, memberdata[0]);
