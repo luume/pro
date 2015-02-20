@@ -83,13 +83,14 @@ router.get('/:chatroomNo', function(req, res){
                     }, function(err){
                         profilThumbnail = arr;
                         //temp = memberdata;
+                        datas[0].memberNo = memberdata.memberNo;
                         datas[0].memberName = memberdata.memberName;
                         datas[0].memberGender = memberdata.memberGender;
                         datas[0].memberNick = memberdata.memberNick;
                         datas[0].memberJob = memberdata.memberJob;
                         datas[0].memberHobby = memberdata.memberHobby;
                         datas[0].memberAdd = memberdata.memberAdd;
-                        datas[0].memberBirth = memberdata.memberBirth;
+                        datas[0].memberAge = memberdata.memberBirth;
                         datas[0].memberHeight = memberdata.memberHeight;
                         datas[0].memberEmailYn = memberdata.memberEmailYn;
                         datas[0].memberSNSYn = memberdata.memberSNSYn;
