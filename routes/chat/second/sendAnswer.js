@@ -50,10 +50,11 @@ router.post('/', function(req, res){
 
         function (successCode, memberGender, callback) {
             if(successCode == 1){
+                console.log('성공 진입');
                 afeelQuery.afeelQuery([chatroomNo], 'insertCount' , 'chat', function (err, datas) {
                     if(err)console.error(err);
                     callback(null, datas[0].insertCount, memberGender)
-
+                    console.log('성공22 진입');
                 });
             } // if end
         }
