@@ -3,26 +3,74 @@ var router = express.Router();
 
 var util = require('../../../afeel/util/vo');
 var afeelQuery = require('../../../afeel/util/afeelQuery');
+var async = require('async');
+
+var chatroomNo = req.params.chatroomNo;
+var memberNo = req.session.memberNo;
 
 router.get('/:chatroomNo', function(req, res){
-    var chatroomNo = req.params.chatroomNo;
-    var memberNo = req.session.memberNo;
-    var datas = [];
-    datas.push(chatroomNo);
-    var queryidname = 'forthWoman';
-    afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
-        if(err){
-            res.json(err);
-            return;
+
+    async.waterfall([
+            function(callback) {
+                var datas = [];
+                datas.push(chatroomNo);
+                var queryidname = 'forthWoman';
+                //feeling code 및 feeling rate 가져옴
+                afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
+                    if(err){
+                        res.json(err);
+                        return;
+                    }
+                    console.log('1워터폴 유어프로필', datas);
+                    if(datas == false){ //select 결과 row 0일때 처리
+                        res.json({ success : 0 , message : '데이터 없음', result : null});
+                        return;
+                    }
+                    //console.log('첫번째 처리 성공' , datas[0]);
+                    callback(null, datas[0]);
+                })
+
+            },
+            function(memberdata, callback) {
+                //console.log('memberdata.feelingCode1' , memberdata.feelingCode1);
+                var datas = [];
+                //datas.push(memberdata.feelingCode1);
+                //datas.push(memberdata.feelingCode2);
+                //datas.push(memberdata.feelingCode3);
+                datas.push(memberdata.memberNo);
+                var queryidname = 'showProfilThumbnail';
+
+                afeelQuery.afeelQuery(datas, queryidname , 'profil', function (err, datas) {
+                    if(err){
+                        res.json(err);
+                        return;
+                    }
+                    if(datas == false){
+                        res.json({ success : 0 , message : '데이터 없음', result : null});
+                        return;
+                    }
+                    callback(null, datas, memberdata);
+                });
+
+            }
+        ],	function(err, profil, memberdata) {
+            //console.log('최종 처리');
+            var arr = [];
+            for(i=0; i<profil.length; i++){
+                arr.push(profil[i]);
+            }
+            res.json({success:1,message:'ok',result:{
+                arr:arr,
+                memberdata:memberdata
+            }
+            });
+            //res.json(util.successCode(res, results));
         }
-        if(datas == false){
-            res.json({ success : 0 , message : '데이터 없음', result : null});
-            return;
-        }
-        res.json(util.successCode(res, datas));
-    });
+    );
 
 });
+
+
 
 
 

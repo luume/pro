@@ -49,4 +49,8 @@
     <myquery id="selectProfilUpdateTime">
         SELECT profilThumbnail, profilRegDate FROM PROFIL WHERE memberNo = ?
     </myquery>
+
+    <myquery id = "showProfilThumbnail">
+        select profilThumbnail from PROFIL where memberNo = ? order by profilMainYn desc
+    </myquery>
 </query>

@@ -244,7 +244,7 @@
         select memberNo, memberGender, memberNick, memberJob, memberHobby, memberAdd,
         memberBirth, memberHeight, memberEmailYn, memberSNSYn
         FROM MEMBER
-        WHERE memberNo in(select memberNo from CHAT_RANK where chatroomNo = ? and rank in(1,2))
+        WHERE memberNo in(select memberNo from CHAT_RANK where chatroomNo = ? and rank in(1))
     </myquery>
 
     <myquery id="insertFeeling">
