@@ -51,18 +51,18 @@ router.get('/:chatroomNo', function(req, res){
                         res.json({ success : 0 , message : '데이터 없음', result : null});
                         return;
                     }
-                    callback(null, memberTo, datas[0]);
+                    callback(null, memberdata, datas[0]);
                 });
 
             },
             //dd
-            function(memberTo, rankData, callback) {
+            function(memberdata, rankData, callback) {
                 //console.log('memberdata.feelingCode1' , memberdata.feelingCode1);
                 var datas = [];
                 //datas.push(memberdata.feelingCode1);
                 //datas.push(memberdata.feelingCode2);
                 //datas.push(memberdata.feelingCode3);
-                datas.push(memberTo);
+                datas.push(memberdata.memberNo);
                 var queryidname = 'showProfilThumbnail';
 
                 afeelQuery.afeelQuery(datas, queryidname , 'profil', function (err, datas) {
