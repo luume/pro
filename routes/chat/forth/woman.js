@@ -5,10 +5,11 @@ var util = require('../../../afeel/util/vo');
 var afeelQuery = require('../../../afeel/util/afeelQuery');
 var async = require('async');
 
-var chatroomNo = req.params.chatroomNo;
-var memberNo = req.session.memberNo;
+
 
 router.get('/:chatroomNo', function(req, res){
+    var chatroomNo = req.params.chatroomNo;
+    var memberNo = req.session.memberNo;
 
     async.waterfall([
             function(callback) {
