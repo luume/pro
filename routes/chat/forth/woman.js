@@ -82,7 +82,7 @@ router.get('/:chatroomNo', function(req, res){
 
                     }, function(err){
                         profilThumbnail = arr;
-                        temp = memberdata;
+                        //temp = memberdata;
                         datas[0].memberName = memberdata.memberName;
                         datas[0].memberGender = memberdata.memberGender;
                         datas[0].memberNick = memberdata.memberNick;
@@ -95,7 +95,7 @@ router.get('/:chatroomNo', function(req, res){
                         datas[0].memberSNSYn = memberdata.memberSNSYn;
                         datas[0].memberRank = rankData;
                         datas[0].profilThumbnail = arr;
-                        temp = arr;
+                        //temp = arr;
 
                         callback(null, datas[0]);
                         //res.json({success:1, message:'ok', result:});
