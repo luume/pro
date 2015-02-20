@@ -30,16 +30,6 @@ router.post('/', function(req, res) {
                 }
 
                 callback(null, datas);
-
-                if (datas.affectedRows == 1) {
-                    gcmSetting.gcmSend([memberNo], {gcmType 	: 'CHAT1MANFAIL',
-                        chatroomNo 	: chatroomNo
-                    });
-
-                }else {
-                    res.json({success: 0, result: {message: '4등 탈락자 선정에 실패'}});
-                    return;
-                }
             });
         }, // 첫번쨰 워터폴 종료
 
@@ -90,34 +80,6 @@ router.post('/', function(req, res) {
         }
 
     });
-
-
-    //CHAT_RANK에 선택된놈 4등 insert
-
-    var m = util.createValueObject('Member');
-    var f = util.createValueObject('Feeling');
-    var p = util.createValueObject('Profil');
-
-
-    //res.json(util.successCode(res,
-    //    {
-    //        memberName : m.Member().memberName,
-    //        memberBirth : m.Member().memberBirth,
-    //        memberGender  : m.Member().memberGender ,
-    //        memberHobby  : m.Member().memberHobby ,
-    //        memberAdd  : m.Member().memberAdd ,
-    //        memberHeight  : m.Member().memberHeight ,
-    //        memberJob  : m.Member().memberJob ,
-    //        memberSnsYn  : m.Member().memberSnsYn ,
-    //        memberHPYn  : m.Member().memberHPYn ,
-    //        memberEmailYn  : m.Member().memberEmailYn ,
-    //        memberStMeeting  : m.Member().memberStMeeting ,
-    //        feelingCode1  : m.Member().feelingCode1 ,
-    //        feelingCode2  : m.Member().feelingCode2 ,
-    //        feelingCode3  : m.Member().feelingCode3 ,
-    //        profilSaveFileName   : p.Member().profilSaveFileName
-    //    }
-    //));
 
 });
 
