@@ -10,9 +10,15 @@ router.get('/:chatroomNo', function(req, res){
         res.json({success:0, message:"Error(빈값이 넘어왔습니다.[chatroomNo])", result:null});
         return;
     }
+    var memberNo = req.body.chatroomNo;
+    if(memberNo == "" || memberNo == undefined){
+        res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
+        return;
+    }
 
     var datas = [];
     datas.push(chatroomNo);
+    datas.push(memberNo);
 
     global.queryName = 'chat';
     var queryidname = 'showVoiceAnswerList';
