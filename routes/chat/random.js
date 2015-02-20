@@ -149,7 +149,7 @@ router.post('/', function(req, res) {
             if(datas == undefined){
               console.log('채팅방 생성 여자 언디파인드');
             }
-            callback(null, 1);
+            callback(null, 1, 'womanInsert', [datas[0].insertId, req.session.memberNo]);
           });
         }else if(memberGender == 'M'){
           bindData.push(req.session.memberNo);
@@ -220,7 +220,7 @@ router.post('/', function(req, res) {
                 });
             }
 
-            callback(null, 1);
+            callback(null, 1, 'womanInsert');
           });
         }else if(memberGender == 'M'){
 
@@ -341,9 +341,15 @@ router.post('/', function(req, res) {
 //      callback(null, 1)
     } // 3번째 워터폴
 
-  ], function (err, result) {
+  ], function (err, result, code, queryArgument) {
 
     if(err)console.error(err);
+
+    if(result == 1 && code == 'womanInsert'){
+      afeelQuery.afeelQuery(queryArgument, 'womanRankInsert', 'chat', function (err, datas) {
+        if(err)console.error(err);
+      });
+    }
 
     console.log('마지막왓는데 ' , result);
     if(result == 1){
