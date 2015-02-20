@@ -93,7 +93,7 @@ router.get('/:chatroomNo', function(req, res){
                         datas[0].memberHeight = memberdata.memberHeight;
                         datas[0].memberEmailYn = memberdata.memberEmailYn;
                         datas[0].memberSNSYn = memberdata.memberSNSYn;
-                        //datas[0].memberRank = rankData.rank;
+                        datas[0].memberRank = rankData.rank;
                         datas[0].profilThumbnail = arr;
                         //temp = arr;
 
