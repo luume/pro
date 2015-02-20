@@ -58,11 +58,11 @@ router.get('/:chatroomNo', function(req, res){
 
                     }, function(err){
                         profilThumbnail = arr;
-                        temp = memberdata[0];
+                        temp = memberdata;
                         datas[0].profilThumbnail = arr;
                         temp = arr;
 
-                        callback(null, arr);
+                        callback(null, datas[0]);
                         //res.json({success:1, message:'ok', result:});
                     });
 
