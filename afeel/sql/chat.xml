@@ -253,4 +253,8 @@
     <myquery id="insertFeeling">
         INSERT INTO FEELING (memberNo, feelingCode1, memberTo, memberRate) values(?,?,?,?)
     </myquery>
+
+    <myquery id="showRank">
+        select rank from CHAT_RANK where memberNo = ? and chatroomNo = ?
+    </myquery>
 </query>

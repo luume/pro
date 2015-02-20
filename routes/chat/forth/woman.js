@@ -5,8 +5,6 @@ var util = require('../../../afeel/util/vo');
 var afeelQuery = require('../../../afeel/util/afeelQuery');
 var async = require('async');
 
-
-
 router.get('/:chatroomNo', function(req, res){
     var chatroomNo = req.params.chatroomNo;
     var memberNo = req.session.memberNo;
@@ -32,13 +30,39 @@ router.get('/:chatroomNo', function(req, res){
                 })
 
             },
+            //dd
             function(memberdata, callback) {
+                //console.log('memberdata.feelingCode1' , memberdata.feelingCode1);
+                var memberTo = memberdata.memberNo; //상대 회원번호
+                var datas = [];
+                //datas.push(memberdata.feelingCode1);
+                //datas.push(memberdata.feelingCode2);
+                //datas.push(memberdata.feelingCode3);
+                datas.push(memberTo);
+                datas.push(chatroomNo);
+                var queryidname = 'showRank';
+
+                afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
+                    if(err){
+                        res.json(err);
+                        return;
+                    }
+                    if(datas == false){
+                        res.json({ success : 0 , message : '데이터 없음', result : null});
+                        return;
+                    }
+                    callback(null, memberTo, datas[0]);
+                });
+
+            },
+            //dd
+            function(memberTo, rankData, callback) {
                 //console.log('memberdata.feelingCode1' , memberdata.feelingCode1);
                 var datas = [];
                 //datas.push(memberdata.feelingCode1);
                 //datas.push(memberdata.feelingCode2);
                 //datas.push(memberdata.feelingCode3);
-                datas.push(memberdata.memberNo);
+                datas.push(memberTo);
                 var queryidname = 'showProfilThumbnail';
 
                 afeelQuery.afeelQuery(datas, queryidname , 'profil', function (err, datas) {
@@ -69,6 +93,7 @@ router.get('/:chatroomNo', function(req, res){
                         datas[0].memberHeight = memberdata.memberHeight;
                         datas[0].memberEmailYn = memberdata.memberEmailYn;
                         datas[0].memberSNSYn = memberdata.memberSNSYn;
+                        datas[0].memberRank = rankData;
                         datas[0].profilThumbnail = arr;
                         temp = arr;
 
