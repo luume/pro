@@ -10,7 +10,7 @@ router.get('/:chatroomNo', function(req, res){
         res.json({success:0, message:"Error(빈값이 넘어왔습니다.[chatroomNo])", result:null});
         return;
     }
-    var memberNo = req.body.chatroomNo;
+    var memberNo = req.params.memberNo;
     if(memberNo == "" || memberNo == undefined){
         res.json({success:0, message:"Error(빈값이 넘어왔습니다.[memberNo])", result:null});
         return;
