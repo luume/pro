@@ -8,13 +8,13 @@
     </myquery>
 
     <myquery id="showVoiceAnswerList">
-    SELECT VOICE_ANSWER.voiceAnswerOriginalFileName, QUESTION.questionData from QUESTION inner join
-    VOICE_ANSWER on QUESTION.questionNo = VOICE_ANSWER.questionNo where VOICE_ANSWER.chatroomNo = ?
+        SELECT VOICE_ANSWER.voiceAnswerOriginalFileName, QUESTION.questionData from QUESTION inner join
+        VOICE_ANSWER on QUESTION.questionNo = VOICE_ANSWER.questionNo where VOICE_ANSWER.chatroomNo = ? and VOICE_ANSWER.memberNo = ?
     </myquery>
 
     <myquery id="showTextAnswerList">
         SELECT TEXT_ANSWER.textAnswerData, QUESTION.questionData from QUESTION inner join
-        TEXT_ANSWER on QUESTION.questionNo = TEXT_ANSWER.questionNo where TEXT_ANSWER.chatroomNo = ?
+        TEXT_ANSWER on QUESTION.questionNo = TEXT_ANSWER.questionNo where TEXT_ANSWER.chatroomNo = ? and TEXT_ANSWER.memberNo = ?
     </myquery>
 
     <myquery id="chatForthList">
