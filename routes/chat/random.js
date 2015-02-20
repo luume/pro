@@ -150,7 +150,7 @@ router.post('/', function(req, res) {
             if(datas == undefined){
               console.log('채팅방 생성 여자 언디파인드');
             }
-            callback(null, 1, 'womanInsert', [datas[0].insertId, req.session.memberNo]);
+            callback(null, 1, 'womanInsert', [datas.insertId, req.session.memberNo]);
           });
         }else if(memberGender == 'M'){
           bindData.push(req.session.memberNo);
