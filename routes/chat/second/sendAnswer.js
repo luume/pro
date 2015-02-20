@@ -29,6 +29,8 @@ router.post('/', function(req, res){
         function (callback) {
             afeelQuery.afeelQuery([req.session.memberNo], 'genderMember' , 'member', function (err, datas) {
 
+                if(err)console.error(err);
+
                 callback(null, datas[0].memberGender)
 
             });
@@ -37,7 +39,7 @@ router.post('/', function(req, res){
 
         function (memberGender , callback) {
             afeelQuery.afeelQuery(datas, 'sendTextAnswer' , 'chat', function (err, datas) {
-
+                if(err)console.error(err);
                 callback(null, 1, memberGender)
 
             });
@@ -47,7 +49,7 @@ router.post('/', function(req, res){
         function (successCode, memberGender, callback) {
             if(successCode == 1){
                 afeelQuery.afeelQuery([chatroomNo], 'insertCount' , 'chat', function (err, datas) {
-
+                    if(err)console.error(err);
                     callback(null, datas[0].insertCount, memberGender)
 
                 });
