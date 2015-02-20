@@ -50,6 +50,7 @@ router.post('/', function(req, res){
                 var queryidname = 'editPasswordList';
                 //현재 비밀번호 유효성 체크
                 afeelQuery.afeelQuery(datas, queryidname , 'member' ,function (err, datas) {
+                    console.log('비번데이터',datas);
                     if(err){
                         res.json(err);
                         return;
