@@ -239,14 +239,17 @@
     </myquery>
 
     <myquery id="forthMan">
-        select memberNo, memberGender, memberNick, memberJob, memberHobby, memberAdd,
-        memberBirth, memberHeight, memberEmailYn, memberSNSYn from MEMBER
+        select memberName, memberNo, memberGender, memberNick, memberJob, memberHobby, memberAdd,
+        ((YEAR(CURDATE())- YEAR(memberBirth)) - (RIGHT(CURDATE(),5) >RIGHT(memberBirth,5))) as memberBirth,
+        memberHeight, memberEmailYn, memberSNSYn
+        FROM MEMBER
         WHERE memberNo in(select memberNo from CHAT_RANK where chatroomNo = ? and rank in(0))
     </myquery>
 
     <myquery id="forthWoman">
-        select memberNo, memberGender, memberNick, memberJob, memberHobby, memberAdd,
-        memberBirth, memberHeight, memberEmailYn, memberSNSYn
+        select memberName, memberNo, memberGender, memberNick, memberJob, memberHobby, memberAdd,
+        ((YEAR(CURDATE())- YEAR(memberBirth)) - (RIGHT(CURDATE(),5) >RIGHT(memberBirth,5))) as memberBirth,
+        memberHeight, memberEmailYn, memberSNSYn
         FROM MEMBER
         WHERE memberNo in(select memberNo from CHAT_RANK where chatroomNo = ? and rank in(1))
     </myquery>
