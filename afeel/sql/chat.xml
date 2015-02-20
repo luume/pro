@@ -194,6 +194,10 @@
         SELECT memberWNo, memberM1No, memberM2No, memberM3No, memberM4No FROM CHATROOM WHERE chatroomNo = ?
     </myquery>
 
+    <myquery id="selectSecondChatMember">
+        SELECT memberNo, memberWNo FROM CHATROOM a JOIN CHAT_RANK b ON a.chatroomNo = b.chatroomNo WHERE a.chatroomNo = ? AND rank &gt; 0 AND rank &lt; 3
+    </myquery>
+
     <myquery id="chatFirstWoman">
         SELECT
         (

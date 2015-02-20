@@ -5,6 +5,8 @@ var util = require('../../../afeel/util/vo');
 var afeelQuery = require('../../../afeel/util/afeelQuery');
 var gcmSetting = require('../../../afeel/util/gcmSetting');
 
+var async = require('async');
+
 router.post('/', function(req, res){
     var chatroomNo = req.body.chatroomNo;
     var memberNo = req.session.memberNo;
@@ -21,6 +23,56 @@ router.post('/', function(req, res){
     datas.push(chatroomNo);
     datas.push(memberNo);
     datas.push(questionNo);
+
+    async.waterfall([
+
+        function (callback) {
+            afeelQuery.afeelQuery([req.session.memberNo], 'genderMember' , 'member', function (err, datas) {
+
+                callback(null, datas[0].memberGender)
+
+            });
+        }, // 첫번째 워터폴
+
+
+        function (memberGender , callback) {
+            afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
+
+                callback(null, 1, memberGender)
+
+            });
+        }, // 2번째 워터폴
+
+
+        function (successCode, memberGender, callback) {
+            if(successCode == 1){
+                afeelQuery.afeelQuery([chatroomNo], 'insertCount' , 'chat', function (err, datas) {
+
+                    callback(null, datas[0].insertCount, memberGender)
+
+                });
+            } // if end
+        }
+    ], function (err, result, memberGender) {
+
+        if(err) console.error(err);
+
+        if(memberGender == 'W'){
+            gcmSetting.gcmSend([req.session.memberNo], { gcmType : 'CHAT2MANWAIT', chatroomNo : chatroomNo } );
+            res.json(util.successCode(res, 'success'));
+        }else if(memberGender == 'M' && result == 3){
+            afeelQuery.afeelQuery([memberNo], 'selectChatMember' , 'chat', function (err, datas) {
+
+                gcmSetting.gcmSend([datas[0].memberWNo], { gcmType : 'CHAT2WOMANSELECT', chatroomNo : chatroomNo } );
+                res.json(util.successCode(res, 'success'));
+            });
+
+        }
+
+
+
+    });
+/*
 
     var queryidname = 'sendTextAnswer';
     afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
@@ -41,6 +93,7 @@ router.post('/', function(req, res){
     //}
 
     //res.json(util.successCode(res, 'success'));
+*/
 
 });
 

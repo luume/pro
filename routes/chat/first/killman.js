@@ -35,7 +35,7 @@ router.post('/', function(req, res) {
 
         function (row, callback) {
             if (row.affectedRows == 1) {
-                afeelQuery.afeelQuery([memberNo], 'selectChatMember' , 'chat', function (err, datas) {
+                afeelQuery.afeelQuery([chatroomNo], 'selectChatMember' , 'chat', function (err, datas) {
                     var pushNoArray = [];
                     if(memberNo != datas[0].memberM1No){
                         pushNoArray.push(datas[0].memberM1No);
