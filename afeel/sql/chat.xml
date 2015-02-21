@@ -294,6 +294,6 @@
     </myquery>
 
     <myquery id="insertCount">
-        select count(*) AS insertCount FROM TEXT_ANSWER WHERE chatroomNo = 9
+        select count(*) AS insertCount FROM TEXT_ANSWER WHERE chatroomNo = ?
     </myquery>
 </query>
