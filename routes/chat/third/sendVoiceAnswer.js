@@ -33,7 +33,8 @@ router.post('/', function(req, res){
     datas.push(questionNo);
 
     var queryidname = 'sendVoiceAnswer';
-
+    console.log('뉴어레이한값 ㅣ: ' , voiceAnswerData);
+console.log('샌드보이스앤서', datas);
 
     async.waterfall([
 
