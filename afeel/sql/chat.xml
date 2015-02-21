@@ -203,7 +203,7 @@
     </myquery>
 
     <myquery id="selectSecondChatMember1">
-        SELECT * FROM CHATROOM WHERE a.chatroomNo = ?
+        SELECT * FROM CHATROOM WHERE chatroomNo = ?
     </myquery>
 
     <myquery id="chatFirstWoman">
