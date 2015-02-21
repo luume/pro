@@ -99,11 +99,11 @@ router.get('/:memberTo', function(req, res){
                             temp = datas;
                             datas[0].memberRate = memberdata.memberRate;
                             datas[0].profilThumbnail = arr;
-                            datas[0].feelingCode1 = memberdata.feelingCode1;
+                            datas[0].fType = memberdata.feelingCode1;
                             temp.aaa = arr;
                             temp.fType = codeSum;
                             //res.json({success:1, message:'ok', result:});
-                            callback(null, datas[0]);
+                            callback(null, datas[0]);//
                         });
                     });
                 });
