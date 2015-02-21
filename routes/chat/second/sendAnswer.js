@@ -105,7 +105,7 @@ router.post('/', function(req, res){
                 gcmSetting.gcmSend([datas[0].memberWNo], { gcmType : 'CHAT2WOMANSELECT', chatroomNo : chatroomNo } );
                 res.json(util.successCode(res, 'success'));
             });
-*//*
+*//* 
         }else{
             res.json(util.successCode(res, 'success'));
         }*/
