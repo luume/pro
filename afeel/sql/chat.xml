@@ -198,6 +198,10 @@
         SELECT memberNo, memberWNo FROM CHATROOM a JOIN CHAT_RANK b ON a.chatroomNo = b.chatroomNo WHERE a.chatroomNo = ?
     </myquery>
 
+    <myquery id="selectSecondAllChatMember">
+        SELECT* FROM CHATROOM WHERE chatroomNo = ?
+    </myquery>
+
     <myquery id="selectSecondChatMember1">
         SELECT * FROM CHATROOM WHERE a.chatroomNo = ?
     </myquery>

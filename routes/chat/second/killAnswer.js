@@ -53,7 +53,7 @@ router.post('/', function(req, res){
                     },
 
                     function (rows, callback) {
-                        afeelQuery.afeelQuery([chatroomNo], 'selectSecondChatMember' , 'chat', function (err, datas) {
+                        afeelQuery.afeelQuery([chatroomNo], 'selectSecondAllChatMember' , 'chat', function (err, datas) {
 
 
                             var temps = [];
