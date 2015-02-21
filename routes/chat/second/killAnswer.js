@@ -8,6 +8,13 @@ var gcmSetting = require('../../../afeel/util/gcmSetting');
 
 var async =require('async');
 
+
+Array.prototype.removeElement = function(index)
+{
+    this.splice(index,1);
+    return this;
+};
+
 router.post('/', function(req, res){
 
     var memberNo = req.body.memberNo; //죽일 남성 번호
@@ -40,60 +47,54 @@ router.post('/', function(req, res){
                 async.waterfall([
 
                     function (callback) {
-                        afeelQuery.afeelQuery([chatroomNo], 'selectSecondChatMember' , 'chat', function (err, datas) {
+                        afeelQuery.afeelQuery([chatroomNo], 'selectSecondChatMember1' , 'chat', function (err, datas) {
                             callback(null, datas);
                         });
                     },
 
                     function (rows, callback) {
-                        afeelQuery.afeelQuery([chatroomNo], 'selectChatMember' , 'chat', function (err, datas) {
+                        afeelQuery.afeelQuery([chatroomNo], 'selectSecondChatMember' , 'chat', function (err, datas) {
 
-                            async.each(rows, function (item, call) {
 
-                                /*if(datas[0].memberM1No == item.memberNo){
+                            var temps = [];
+                            temps.push(datas[0].memberM1No);
+                            temps.push(datas[0].memberM2No);
+                            temps.push(datas[0].memberM3No);
+                            temps.push(datas[0].memberM4No);
 
-                                }else if(datas[0].memberM2No == item.memberNo){
-                                    pushNoArray.push(item.memberNo);
-                                }
-                                */
+                            var killIndex1 = temps.indexOf(datas[0]);
 
-                                call();
-                            }, function (err) {
-                                /*pushNoArray.push(datas[0].memberWNo);*/
-                            });
+                            temps.removeElement(killIndex1);
 
-                            callback(null, datas);
+                            var killIndex2 = temps.indexOf(datas[1]);
+                            temps.removeElement(killIndex2);
+                            temps.push(datas[0].memberWNo);
+
+                            callback(null, temps);
                         });
+                    },
+
+                    function (temp , callback) {
+                        gcmSetting.gcmSend([temp[0], temp[1]], {gcmType 	: 'CHAT3MAN',
+                            chatroomNo 	: chatroomNo
+                        });
+
+                        gcmSetting.gcmSend([temp[2].memberWNo], {gcmType 	: 'CHAT3WOMAN',
+                            chatroomNo 	: chatroomNo
+                        });
+
+                        gcmSetting.gcmSend([memberNo], {gcmType 	: 'CHAT2MANFAIL',
+                            chatroomNo 	: chatroomNo
+                        });
+
+                        callback(null, 1);
                     }
 
-                ]);
-
-                afeelQuery.afeelQuery([chatroomNo], 'selectSecondChatMember' , 'chat', function (err, datas) {
-
-                    var pushNoArray = [];
-                    async.each(datas, function (item, call) {
-
-                        pushNoArray.push(item.memberNo);
-                        call();
-                    }, function (err) {
-                        /*pushNoArray.push(datas[0].memberWNo);*/
-                    });
-
-                    gcmSetting.gcmSend(pushNoArray, {gcmType 	: 'CHAT3MAN',
-                        chatroomNo 	: chatroomNo
-                    });
-
-                    gcmSetting.gcmSend([datas[0].memberWNo], {gcmType 	: 'CHAT3WOMAN',
-                        chatroomNo 	: chatroomNo
-                    });
-
-                    gcmSetting.gcmSend([memberNo], {gcmType 	: 'CHAT2MANFAIL',
-                        chatroomNo 	: chatroomNo
-                    });
-
-                    callback(null, 1);
+                ], function (err, result) {
+                    callback(null,1);
                 });
-            }
+
+            } // 1if end
 
         } // 2번째 워터폴
     ], function (err, result) {

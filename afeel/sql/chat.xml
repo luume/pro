@@ -195,7 +195,11 @@
     </myquery>
 
     <myquery id="selectSecondChatMember">
-        SELECT memberNo, memberWNo FROM CHATROOM a JOIN CHAT_RANK b ON a.chatroomNo = b.chatroomNo WHERE a.chatroomNo = ? AND rank &gt; 0 AND rank &lt; 3
+        SELECT memberNo, memberWNo FROM CHATROOM a JOIN CHAT_RANK b ON a.chatroomNo = b.chatroomNo WHERE a.chatroomNo = ?
+    </myquery>
+
+    <myquery id="selectSecondChatMember1">
+        SELECT * FROM CHATROOM WHERE a.chatroomNo = ?
     </myquery>
 
     <myquery id="chatFirstWoman">
