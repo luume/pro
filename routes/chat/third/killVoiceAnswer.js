@@ -69,9 +69,10 @@ router.post('/', function(req, res){
                         gcmType   : 'CHAT3MANFAIL',
                         chatroomNo: chatroomNo
                     });
+
+                    res.json({success: 1, message:'ok' , result: 'success'});
                 }
             });
-
 
         }else {
             res.json({success: 0, result: {message: '2등 선정에 실패'}});
