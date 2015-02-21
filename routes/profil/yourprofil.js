@@ -56,12 +56,12 @@ router.get('/:memberTo', function(req, res){
                 if(memberdata.feelingCode1 != 0){
                     codeSum += memberdata.feelingCode1;
                 }
-                if(memberdata.feelingCode2 != 0 ){
-                    codeSum += ',' + memberdata.feelingCode2;
-                }
-                if(memberdata.feelingCode3 != 0){
-                    codeSum += ',' + memberdata.feelingCode3;
-                }
+                //if(memberdata.feelingCode2 != 0 ){
+                //    codeSum += ',' + memberdata.feelingCode2;
+                //}
+                //if(memberdata.feelingCode3 != 0){
+                //    codeSum += ',' + memberdata.feelingCode3;
+                //}
 
                 global.queryName = 'profil';
                 var queryidname = 'profilYour';
