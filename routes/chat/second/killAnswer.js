@@ -35,6 +35,39 @@ router.post('/', function(req, res){
 
         function (row, callback) {
             if (row.affectedRows == 1) {
+
+                var pushNoArray = [];
+                async.waterfall([
+
+                    function (callback) {
+                        afeelQuery.afeelQuery([chatroomNo], 'selectSecondChatMember' , 'chat', function (err, datas) {
+                            callback(null, datas);
+                        });
+                    },
+
+                    function (rows, callback) {
+                        afeelQuery.afeelQuery([chatroomNo], 'selectChatMember' , 'chat', function (err, datas) {
+
+                            async.each(rows, function (item, call) {
+
+                                /*if(datas[0].memberM1No == item.memberNo){
+
+                                }else if(datas[0].memberM2No == item.memberNo){
+                                    pushNoArray.push(item.memberNo);
+                                }
+                                */
+
+                                call();
+                            }, function (err) {
+                                /*pushNoArray.push(datas[0].memberWNo);*/
+                            });
+
+                            callback(null, datas);
+                        });
+                    }
+
+                ]);
+
                 afeelQuery.afeelQuery([chatroomNo], 'selectSecondChatMember' , 'chat', function (err, datas) {
 
                     var pushNoArray = [];
