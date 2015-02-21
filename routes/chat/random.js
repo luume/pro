@@ -138,8 +138,8 @@ router.post('/', function(req, res) {
         if(memberGender == 'W'){
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
-          bindData.push(req.session.memberNo);
-          bindData.push(req.session.memberNo);
+          //bindData.push(req.session.memberNo);
+          //bindData.push(req.session.memberNo);
           afeelQuery.afeelQuery(bindData, 'createChatRoomWomen', 'chat', function (err, datas) {
             if(err){
               console.error("에러원인 : " , err);
