@@ -27,7 +27,7 @@ router.post('/', function(req, res){
     var questionNo = req.body.questionNo;
 
     var datas = [];
-    datas.push(voiceAnswerData.name);
+    datas.push(voiceAnswerData[0].name.split('.')[0] + voiceAnswerData[0].name.split('.')[1]);
     datas.push(chatroomNo);
     datas.push(memberNo);
     datas.push(questionNo);
