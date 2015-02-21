@@ -83,7 +83,7 @@ router.post('/', function(req, res){
                             chatroomNo 	: chatroomNo
                         });
 
-                        gcmSetting.gcmSend([temp[2].memberWNo], {gcmType 	: 'CHAT3WOMAN',
+                        gcmSetting.gcmSend([temp[2]], {gcmType 	: 'CHAT3WOMAN',
                             chatroomNo 	: chatroomNo
                         });
 
