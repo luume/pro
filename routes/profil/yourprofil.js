@@ -53,9 +53,9 @@ router.get('/:memberTo', function(req, res){
                 datas.push(memberTo);
                 var codeSum = '';
 
-                if(memberdata.feelingCode1 != 0){
-                    codeSum += memberdata.feelingCode1;
-                }
+                //if(memberdata.feelingCode1 != 0){
+                //    codeSum += memberdata.feelingCode1;
+                //}
                 //if(memberdata.feelingCode2 != 0 ){
                 //    codeSum += ',' + memberdata.feelingCode2;
                 //}
@@ -99,7 +99,7 @@ router.get('/:memberTo', function(req, res){
                             temp = datas;
                             datas[0].memberRate = memberdata.memberRate;
                             datas[0].profilThumbnail = arr;
-                            datas[0].fType = codeSum;
+                            datas[0].feelingCode1 = memberdata.feelingCode1;
                             temp.aaa = arr;
                             temp.fType = codeSum;
                             //res.json({success:1, message:'ok', result:});
