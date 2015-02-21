@@ -109,12 +109,12 @@ router.post('/', function(req, res){
         }else{
             res.json(util.successCode(res, 'success'));
         }*/
-
-        var aTemp = temp;
-        aTemp.pop();
-        gcmSetting.gcmSend(aTemp, { gcmType : 'CHAT2WOMANSELECT', chatroomNo : chatroomNo } );
-        gcmSetting.gcmSend([temp[3]], { gcmType : 'CHAT2MANWAIT', chatroomNo : chatroomNo } );
-
+        if(result == 4) {
+            var aTemp = temp;
+            aTemp.pop();
+            gcmSetting.gcmSend(aTemp, {gcmType: 'CHAT2WOMANSELECT', chatroomNo: chatroomNo});
+            gcmSetting.gcmSend([temp[3]], {gcmType: 'CHAT2MANWAIT', chatroomNo: chatroomNo});
+        }
     });
 /*
 
