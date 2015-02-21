@@ -110,7 +110,7 @@ router.post('/', function(req, res){
             res.json(util.successCode(res, 'success'));
         }*/
         if(result == 4) {
-            console.log('복사엵밧 : " + temp);
+            console.log('복사열값 : ' + temp);
             var aTemp = temp;
             aTemp.pop();
             gcmSetting.gcmSend(aTemp, {gcmType: 'CHAT2WOMANSELECT', chatroomNo: chatroomNo});
