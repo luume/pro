@@ -38,18 +38,41 @@ router.post('/', function(req, res){
             windatas.push(chatroomNo);
             windatas.push(rank);
 
-            afeelQuery.afeelQuery(windatas, queryidname , 'chat', function (err, datas) {
-                if (err) {
-                    res.json(err);
-                    return;
+
+            async.waterfall([
+
+                function (callback) {
+                    afeelQuery.afeelQuery(windatas, queryidname , 'chat', function (err, datas) {
+                        callback(null, 1);
+                    });
+                }, // 1번쨰
+
+                function (successCode, callback) {
+                    if(successCode == 1) {
+                        afeelQuery.afeelQuery([chatroomNo], 'selectChatMember', 'chat', function (err, datas) {
+                            callback(null, 1, datas[0].memberWNo);
+                        });
+                    } // if end
                 }
-                if (datas.affectedRows == 1) {
-                    res.json(util.successCode(res, 'success'));
-                }else {
-                    res.json({success: 0, result: {message: '1등 선정에 실패'}});
-                    return;
+
+            ], function (err, result, memberWNo) {
+                if(result==1) {
+                    gcmSetting.gcmSend([winMemberNo], {
+                        gcmType   : 'CHAT4MAN',
+                        chatroomNo: chatroomNo
+                    });
+                    gcmSetting.gcmSend([memberWNo], {
+                        gcmType   : 'CHAT4WOMAN',
+                        chatroomNo: chatroomNo
+                    });
+                    gcmSetting.gcmSend([memberNo], {
+                        gcmType   : 'CHAT3MANFAIL',
+                        chatroomNo: chatroomNo
+                    });
                 }
             });
+
+
         }else {
             res.json({success: 0, result: {message: '2등 선정에 실패'}});
             return;
