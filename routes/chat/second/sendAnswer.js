@@ -110,13 +110,14 @@ router.post('/', function(req, res){
             res.json(util.successCode(res, 'success'));
         }*/
         if(result == 4) {
+            console.log('복사엵밧 : " + temp);
             var aTemp = temp;
             aTemp.pop();
             gcmSetting.gcmSend(aTemp, {gcmType: 'CHAT2WOMANSELECT', chatroomNo: chatroomNo});
             gcmSetting.gcmSend([temp[3]], {gcmType: 'CHAT2MANWAIT', chatroomNo: chatroomNo});
             res.json(util.successCode(res, 'success'));
         }else{
-            res.json(util.successCode(res, 'success')); 
+            res.json(util.successCode(res, 'success'));
         }
     });
 /*
