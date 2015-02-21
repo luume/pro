@@ -19,7 +19,7 @@ router.post('/', function(req, res){
     //    return;
     //}
 
-    var voiceAnswerData = req.body.voiceAnswerData;
+    var voiceAnswerData = new Array(req.files.voiceAnswerData);
     //if(textAnwerData == "" || textAnwerData == undefined){
     //    res.json({success:0, message:"Error(빈값이 넘어왔습니다.[textAnwerData])", result:null});
     //    return;
@@ -27,7 +27,7 @@ router.post('/', function(req, res){
     var questionNo = req.body.questionNo;
 
     var datas = [];
-    datas.push(voiceAnswerData);
+    datas.push(voiceAnswerData.name);
     datas.push(chatroomNo);
     datas.push(memberNo);
     datas.push(questionNo);
