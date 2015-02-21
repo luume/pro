@@ -75,6 +75,7 @@ router.post('/', function(req, res){
                     },
 
                     function (temp , callback) {
+                        console.log('전송값 temp : ' , temp);
                         gcmSetting.gcmSend([temp[0], temp[1]], {gcmType 	: 'CHAT3MAN',
                             chatroomNo 	: chatroomNo
                         });
