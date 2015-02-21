@@ -6,6 +6,11 @@ var afeelQuery = require('../../../afeel/util/afeelQuery');
 var gcmSetting = require('../../../afeel/util/gcmSetting');
 
 var async = require('async');
+Array.prototype.removeElement = function(index)
+{
+    this.splice(index,1);
+    return this;
+};
 
 router.post('/', function(req, res){
     var chatroomNo = req.body.chatroomNo;
@@ -54,21 +59,52 @@ router.post('/', function(req, res){
                     callback(null, datas[0].insertCount, memberGender)
                 });
             } // if end
-        }
-    ], function (err, result, memberGender) {
+        },
+
+        function (count, gender, callback) {
+            afeelQuery.afeelQuery([chatroomNo], 'selectSecondChatMember' , 'chat', function (err, datas) {
+                callback(null, count, gender, datas);
+            });
+        },
+
+        function (count, gender, rows, callback) {
+            afeelQuery.afeelQuery([chatroomNo], 'selectSecondAllChatMember' , 'chat', function (err, datas) {
+
+                console.log(datas[0].memberM1No + ', ' + datas[0].memberM2No + ' , ' + datas[0].memberM3No + ' , ' + datas[0].memberM4No);
+                var temps = [];
+                temps.push(datas[0].memberM1No);
+                temps.push(datas[0].memberM2No);
+                temps.push(datas[0].memberM3No);
+                temps.push(datas[0].memberM4No);
+
+                var killIndex1 = temps.indexOf(rows[0].memberNo);
+
+                temps.removeElement(killIndex1);
+
+                temps.push(datas[0].memberWNo);
+
+                callback(null, count, gender, temps);
+            });
+        },
+
+    ], function (err, result, memberGender, temp) {
 
         if(err) console.error(err);
 
         if(memberGender == 'W'){
-            gcmSetting.gcmSend([req.session.memberNo], { gcmType : 'CHAT2MANWAIT', chatroomNo : chatroomNo } );
+            var aTemp = temp;
+            aTemp.pop();
+            gcmSetting.gcmSend(aTemp, { gcmType : 'CHAT2WOMANSELECT', chatroomNo : chatroomNo } );
             res.json(util.successCode(res, 'success'));
         }else if(memberGender == 'M' && result == 3){
-            afeelQuery.afeelQuery([memberNo], 'selectChatMember' , 'chat', function (err, datas) {
+            gcmSetting.gcmSend([temp[3]], { gcmType : 'CHAT2MANWAIT', chatroomNo : chatroomNo } );
+            res.json(util.successCode(res, 'success'));
+            /*afeelQuery.afeelQuery([memberNo], 'selectChatMember' , 'chat', function (err, datas) {
 
                 gcmSetting.gcmSend([datas[0].memberWNo], { gcmType : 'CHAT2WOMANSELECT', chatroomNo : chatroomNo } );
                 res.json(util.successCode(res, 'success'));
             });
-
+*/
         }
 
 

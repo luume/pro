@@ -3,6 +3,13 @@ var router = express.Router();
 
 var util = require('../../../afeel/util/vo');
 var afeelQuery = require('../../../afeel/util/afeelQuery');
+var async = require('async');
+var gcmSetting = require('../../../afeel/util/gcmSetting');
+Array.prototype.removeElement = function(index)
+{
+    this.splice(index,1);
+    return this;
+};
 
 router.post('/', function(req, res){
     var chatroomNo = req.body.chatroomNo;
@@ -26,20 +33,75 @@ router.post('/', function(req, res){
     datas.push(questionNo);
 
     var queryidname = 'sendVoiceAnswer';
-    afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
-        if (err) {
-            res.json(err);
-            return;
-        }
-        if (datas.affectedRows == 1) {
+
+
+    async.waterfall([
+
+        function (callback) {
+            afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
+              callback(null);
+            });
+        },
+
+
+        function (callback) {
+            afeelQuery.afeelQuery([chatroomNo, req.session.memberNo], 'sendVoiceAnswerCount' , 'chat', function (err, datas) {
+
+                var vCount = datas[0].voiceCount;
+                callback(null, vCount);
+            });
+        },
+
+        function (count, callback) {
+            afeelQuery.afeelQuery([req.session.memberNo], 'genderMember' , 'member', function (err, datas) {
+
+                callback(null, count , datas[0].memberGender);
+            });
+        },
+
+        function (count, gender , callback) {
+            afeelQuery.afeelQuery([chatroomNo], 'selectSecondChatMember' , 'chat', function (err, datas) {
+                callback(null, count, gender, datas);
+            });
+        },
+
+        function (count , gender, rows, callback) {
+            afeelQuery.afeelQuery([chatroomNo], 'selectSecondAllChatMember' , 'chat', function (err, datas) {
+
+                console.log(datas[0].memberM1No + ', ' + datas[0].memberM2No + ' , ' + datas[0].memberM3No + ' , ' + datas[0].memberM4No);
+                var temps = [];
+                temps.push(datas[0].memberM1No);
+                temps.push(datas[0].memberM2No);
+                temps.push(datas[0].memberM3No);
+                temps.push(datas[0].memberM4No);
+
+                var killIndex1 = temps.indexOf(rows[0].memberNo);
+
+                temps.removeElement(killIndex1);
+
+                var killIndex2 = temps.indexOf(rows[1].memberNo);
+                temps.removeElement(killIndex2);
+                temps.push(datas[0].memberWNo);
+
+                callback(null, count, gender, temps);
+            });
+        },
+
+    ], function (err, count, gender, temp) {
+        if(err)console.error(err);
+
+        if(count == 2 && gender == 'M'){
+            gcmSetting.gcmSend([temp[2]], {gcmType 	: 'CHAT3MANWAIT',
+                chatroomNo 	: chatroomNo
+            });
             res.json(util.successCode(res, 'success'));
-        }else {
-            res.json({success: 0, result: {message: '음성 답변 전송에 실패'}});
-            return;
+        }else if(gender == 'W'){
+            gcmSetting.gcmSend([temp[0], temp[1]], {gcmType 	: 'CHAT3WOMANSELECT',
+                chatroomNo 	: chatroomNo
+            });
+            res.json(util.successCode(res, 'success'));
         }
     });
-
-    //res.json(util.successCode(res, 'success'));
 
 });
 

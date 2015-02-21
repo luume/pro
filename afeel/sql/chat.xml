@@ -254,6 +254,10 @@
         VALUES (?,?,NOW(),?,?)
     </myquery>
 
+    <myquery id="sendVoiceAnswerCount">
+        select COUNT(*) AS voiceCount FROM VOICE_ANSWER WHERE chatroomNo = ? AND memberNo &lt;&gt; ?
+    </myquery>
+
     <myquery id="forthMan">
         select memberName, memberNo, memberGender, memberNick, memberJob, memberHobby, memberAdd,
         ((YEAR(CURDATE())- YEAR(memberBirth)) - (RIGHT(CURDATE(),5) >RIGHT(memberBirth,5))) as memberBirth,
