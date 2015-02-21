@@ -47,7 +47,7 @@ router.post('/', function(req, res){
                 async.waterfall([
 
                     function (callback) {
-                        afeelQuery.afeelQuery([chatroomNo], 'selectSecondChatMember1' , 'chat', function (err, datas) {
+                        afeelQuery.afeelQuery([chatroomNo], 'selectSecondChatMember' , 'chat', function (err, datas) {
                             callback(null, datas);
                         });
                     },
@@ -62,11 +62,11 @@ router.post('/', function(req, res){
                             temps.push(datas[0].memberM3No);
                             temps.push(datas[0].memberM4No);
 
-                            var killIndex1 = temps.indexOf(datas[0]);
+                            var killIndex1 = temps.indexOf(rows[0].memberNo);
 
                             temps.removeElement(killIndex1);
 
-                            var killIndex2 = temps.indexOf(datas[1]);
+                            var killIndex2 = temps.indexOf(rows[1].memberNo);
                             temps.removeElement(killIndex2);
                             temps.push(datas[0].memberWNo);
 
