@@ -91,23 +91,29 @@ router.post('/', function(req, res){
 
         if(err) console.error(err);
 
-        if(memberGender == 'W' && result == 4){
+/*        if(memberGender == 'W' && result == 4){
             var aTemp = temp;
             aTemp.pop();
             gcmSetting.gcmSend(aTemp, { gcmType : 'CHAT2WOMANSELECT', chatroomNo : chatroomNo } );
             res.json(util.successCode(res, 'success'));
         }else if(memberGender == 'M' && result == 4){
             gcmSetting.gcmSend([temp[3]], { gcmType : 'CHAT2MANWAIT', chatroomNo : chatroomNo } );
+            gcmSetting.gcmSend([temp[3]], { gcmType : 'CHAT2MANWAIT', chatroomNo : chatroomNo } );
             res.json(util.successCode(res, 'success'));
-            /*afeelQuery.afeelQuery([memberNo], 'selectChatMember' , 'chat', function (err, datas) {
+            *//*afeelQuery.afeelQuery([memberNo], 'selectChatMember' , 'chat', function (err, datas) {
 
                 gcmSetting.gcmSend([datas[0].memberWNo], { gcmType : 'CHAT2WOMANSELECT', chatroomNo : chatroomNo } );
                 res.json(util.successCode(res, 'success'));
             });
-*/
-        }
+*//*
+        }else{
+            res.json(util.successCode(res, 'success'));
+        }*/
 
-
+        var aTemp = temp;
+        aTemp.pop();
+        gcmSetting.gcmSend(aTemp, { gcmType : 'CHAT2WOMANSELECT', chatroomNo : chatroomNo } );
+        gcmSetting.gcmSend([temp[3]], { gcmType : 'CHAT2MANWAIT', chatroomNo : chatroomNo } );
 
     });
 /*
