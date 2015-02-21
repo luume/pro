@@ -117,8 +117,8 @@ router.post('/', function(req, res){
             console.log('템프4',bTemp);
             aTemp.pop();
             //284, 8 , 283 , 280
-            gcmSetting.gcmSend(aTemp, {gcmType: 'CHAT2WOMANSELECT', chatroomNo: chatroomNo});
-            gcmSetting.gcmSend(bTemp, {gcmType: 'CHAT2MANWAIT', chatroomNo: chatroomNo});
+            gcmSetting.gcmSend(bTemp, {gcmType: 'CHAT2WOMANSELECT', chatroomNo: chatroomNo});
+            gcmSetting.gcmSend(aTemp, {gcmType: 'CHAT2MANWAIT', chatroomNo: chatroomNo});
             res.json(util.successCode(res, 'success'));
         }else{
             res.json(util.successCode(res, 'success'));
