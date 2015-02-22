@@ -71,7 +71,7 @@ router.post('/', function(req, res){
                     function (temp, callback) {
                         var temps = [];
                         temps = temp;
-                        if(temps.constructor === "Array"){
+                        if(temps.constructor == Array){
                             console.log('복사값은 배열이다');
                         }else{
                             console.log('not array');
