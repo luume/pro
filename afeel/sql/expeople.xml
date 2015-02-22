@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <query>
     <myquery id="endMatchListMFilter">
-        SELECT aaa.memberNo AS memberNo, aaa.memberName AS memberName, aaa.memberBirth AS memberBirth, aaa.memberAdd AS memberAdd,
+        SELECT aaa.memberNo AS memberNo, aaa.memberName AS memberName,
+        ((YEAR(CURDATE())- YEAR(aaa.memberBirth)) - (RIGHT(CURDATE(),5) >RIGHT(aaa.memberBirth,5))) AS memberBirth, aaa.memberAdd AS memberAdd,
         aaa.memberHeight AS memberHeight , aaa.memberJob AS memberJob , aaa.memberSnsYn AS memberSnsYn, aaa.memberHPYn AS memberHPYn,
         aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail
         FROM
@@ -41,7 +42,9 @@
     </myquery>
 
     <myquery id="endMatchListWFilter">
-        SELECT aaa.memberNo AS memberNo, aaa.memberName AS memberName, aaa.memberBirth AS memberBirth, aaa.memberAdd AS memberAdd,
+        SELECT aaa.memberNo AS memberNo, aaa.memberName AS memberName,
+        ((YEAR(CURDATE())- YEAR(aaa.memberBirth)) - (RIGHT(CURDATE(),5) >RIGHT(aaa.memberBirth,5))) AS memberBirth
+        , aaa.memberAdd AS memberAdd,
         aaa.memberHeight AS memberHeight , aaa.memberJob AS memberJob , aaa.memberSnsYn AS memberSnsYn, aaa.memberHPYn AS memberHPYn,
         aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail
         FROM
@@ -81,7 +84,9 @@
     </myquery>
 
     <myquery id="endMatchListM">
-        SELECT aaa.memberNo AS memberNo, aaa.memberName AS memberName, aaa.memberBirth AS memberBirth, aaa.memberAdd AS memberAdd,
+        SELECT aaa.memberNo AS memberNo, aaa.memberName AS memberName,
+        ((YEAR(CURDATE())- YEAR(aaa.memberBirth)) - (RIGHT(CURDATE(),5) >RIGHT(aaa.memberBirth,5))) AS memberBirth
+        , aaa.memberAdd AS memberAdd,
         aaa.memberHeight AS memberHeight , aaa.memberJob AS memberJob , aaa.memberSnsYn AS memberSnsYn, aaa.memberHPYn AS memberHPYn,
         aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail
         FROM
@@ -121,7 +126,9 @@
     </myquery>
 
     <myquery id="endMatchListW">
-        SELECT aaa.memberNo AS memberNo, aaa.memberName AS memberName, aaa.memberBirth AS memberBirth, aaa.memberAdd AS memberAdd,
+        SELECT aaa.memberNo AS memberNo, aaa.memberName AS memberName,
+        ((YEAR(CURDATE())- YEAR(aaa.memberBirth)) - (RIGHT(CURDATE(),5) >RIGHT(aaa.memberBirth,5))) AS memberBirth
+        , aaa.memberAdd AS memberAdd,
         aaa.memberHeight AS memberHeight , aaa.memberJob AS memberJob , aaa.memberSnsYn AS memberSnsYn, aaa.memberHPYn AS memberHPYn,
         aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail
         FROM
