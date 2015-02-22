@@ -65,10 +65,11 @@ router.post('/', function(req, res) {
 
       test = sum.join(',');
 
-
+/*
       if(sum ==  false){
-        test.push(0);
-      }
+        sum[0] = 0;
+        test = sum;
+      }*/
 
 
       console.log('sum 최종값 : ' , sum);
@@ -79,13 +80,20 @@ router.post('/', function(req, res) {
         bindData.push(sum);
         bindData.push(sum);
         bindData.push(sum);*/
-        bindData.push(test);
-        bindData.push(test);
-        bindData.push(test);
-        bindData.push(test);
+        if(sum==false){
+          bindData.push(0);
+          bindData.push(0);
+          bindData.push(0);
+          bindData.push(0);
+        }else {
+          bindData.push(test);
+          bindData.push(test);
+          bindData.push(test);
+          bindData.push(test);
+        }
         bindData.push(req.session.memberNo);
         bindData.push(req.session.memberNo);
-        console.log('join결과:' ,test);
+        console.log('join결과:' ,bindData);
         afeelQuery.afeelQuery(bindData, 'clearSpaceCheckWomen', 'chat', function (err, datas) {
     /*      if(err){
             console.error('sum 에러 : ' , err);
