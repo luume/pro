@@ -67,7 +67,7 @@ router.get('/:chatroomNo', function(req, res){
                             res.json({ success : 0 , message : '데이터 없음', result : null});
                             return;
                         }
-                        callback(null, memberdata, datas[0], myrank);
+                        callback(null, memberdata, datas[0], myrank[0]);
                     });
                 });
 
