@@ -14,9 +14,9 @@ router.post('/', function(req, res){
 
 
     var datas = [];
-    datas.push(memberTo);
-    datas.push(feelingCode);
     datas.push(memberNo);
+    datas.push(feelingCode);
+    datas.push(memberTo);
     datas.push(feelingRate);
 
     var queryidname = 'insertFeeling';
