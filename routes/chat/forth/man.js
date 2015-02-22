@@ -38,6 +38,8 @@ router.get('/:chatroomNo', function(req, res){
                 //datas.push(memberdata.feelingCode1);
                 //datas.push(memberdata.feelingCode2);
                 //datas.push(memberdata.feelingCode3);
+
+                console.log('memberTo',memberTo);
                 datas.push(memberTo);
                 datas.push(chatroomNo);
                 var queryidname = 'showRank';
