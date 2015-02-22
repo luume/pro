@@ -256,10 +256,10 @@ router.post('/', function(req, res) {
                   chatroomNo : rows[0].chatroomNo
                 });
             }
-            
-            setTimeout(function (){
+                var dddd = typeof  callback === 'function';
+              console.log('타입체크', dddd);
               callback(null, 1, 'womanInsert', [rows[0].chatroomNo, req.session.memberNo]);
-            },500);
+
 
           });
         }else if(memberGender == 'M'){
