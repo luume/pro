@@ -254,11 +254,14 @@
     </myquery>
 
     <myquery id="selectSecondChatMember">
-        SELECT memberNo, memberWNo FROM CHATROOM a JOIN CHAT_RANK b ON a.chatroomNo = b.chatroomNo WHERE a.chatroomNo = ?
+        SELECT memberNo, memberWNo FROM CHATROOM a JOIN CHAT_RANK b ON a.chatroomNo = b.chatroomNo WHERE a.chatroomNo = ? AND b.rank &lt;&gt;4  AND b.rank &lt;&gt; 0
     </myquery>
 
     <myquery id="selectSecondAllChatMember">
-        SELECT* FROM CHATROOM WHERE chaSELECT* FROM CHATROOM a JOIN CHAT_RANK b WHERE a.chatroomNo = ? AND b.rank &lt;&gt; 4 AND b.rank &lt;&gt; 0
+        SELECT* FROM CHATROOM WHERE chatroomNo = ?
+    </myquery>
+    <myquery id="selectKillMember">
+        SELECT * FROM CHAT_RANK WHERE chatroomNo = ? AND rank = 4
     </myquery>
 
     <myquery id="selectSecondChatMember1">
