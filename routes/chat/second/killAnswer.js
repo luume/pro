@@ -69,8 +69,13 @@ router.post('/', function(req, res){
                     },
 
                     function (temp, callback) {
-                        var temps;
-                        temps = new Array(temp);
+                        var temps = [];
+                        temps = temp;
+                        if(temps.constructor === "Array"){
+                            console.log('복사값은 배열이다');
+                        }else{
+                            console.log('not array');
+                        }
                         var killIndex1 = temps.indexOf(memberNo);
                         console.log('지울 인덱스 번호11 : ' , killIndex1);
                         console.log('리무브 전 배열 : ' + temps);
