@@ -253,7 +253,10 @@ router.post('/', function(req, res) {
                   chatroomNo : rows[0].chatroomNo
                 });
             }
-            console.log('에러 여자 : ', rows);
+            
+            setTimeout(function (){
+              
+            },500);
             callback(null, 1, 'womanInsert', [rows[0].chatroomNo, req.session.memberNo]);
           });
         }else if(memberGender == 'M'){
