@@ -40,12 +40,12 @@ var session = require('express-session');
 var afeelPool = require('./afeel/util/afeelConnectionPool');
 
 
-app.use(multer({
+/*app.use(multer({
     dest: './public/images/',
     rename: function (fieldname, filename) {
         return filename + Date.now() + '.jpg'
     }
-}));
+}));*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
