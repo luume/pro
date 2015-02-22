@@ -200,7 +200,10 @@ router.post('/', function(req, res) {
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           afeelQuery.afeelQuery(bindData, 'modifyChatRoomWomenQuestionRandom', 'chat', function (err, datas) {
-            if(err)console.error(err);
+            if(err){
+              console.error(err)
+              callback(err, 0);
+            };
 //
             if(datas==undefined){
               console.log('아시발 여자 언디파인드');
