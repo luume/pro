@@ -157,7 +157,7 @@ router.post('/', function(req, res) {
 
 
     // 채팅방에 공간이 있으면 UPDATE 아니면 INSERT
-    // successCode : 0 (INSERT)
+    // successCode : 0 (INSERT)  
     // successCode : 1 (UPDATE)
     function (successCode, rows, newbie, callbackq) {
       var bindData = [];
