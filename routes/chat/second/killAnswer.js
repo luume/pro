@@ -63,15 +63,23 @@ router.post('/', function(req, res){
                             temps.push(datas[0].memberM3No);
                             temps.push(datas[0].memberM4No);
 
-                            if(temps.constructor == Array){
+                            if(temps.constructor === Array){
                                 console.log('복사는 배열');
                             }
                             var ii =0;
                             var delIndex = -1;
+
+                           /* for(int i = 0 ; i < temps.length; i++){
+                                if(temps(i) == memberNo){
+                                    delindex =i;
+                                }
+                            }*/
+
                             async.each(temps, function (index, call) {
                                 if(temps[ii] == memberNo){
                                     delIndex = ii;
                                 }
+                                ii++;
                                 call();
                             }, function (err) {
                                 callback(null, temps, delIndex, datas[0].memberWNo);
@@ -81,7 +89,8 @@ router.post('/', function(req, res){
                     },
 
                     function (temp,delIndex,memberWNo, callback) {
-                        var temps = temp;
+                        var temps = new Array(temp);
+
                         //var killIndex1 = temps.indexOf(memberNo);
                         console.log('지울 인덱스 번호11 : ' , delIndex);
                         console.log('리무브 전 배열 : ' + temps);
