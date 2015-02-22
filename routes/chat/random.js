@@ -67,8 +67,7 @@ router.post('/', function(req, res) {
 
 
       if(sum ==  false){
-        sum[0] == 0;
-        test = sum;
+        test.push(0);
       }
 
 
