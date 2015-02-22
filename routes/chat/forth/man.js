@@ -51,12 +51,29 @@ router.get('/:chatroomNo', function(req, res){
                         res.json({ success : 0 , message : '데이터 없음', result : null});
                         return;
                     }
-                    callback(null, memberdata, datas[0]);
+                    var myrankdatas = [];
+                    //datas.push(memberdata.feelingCode1);
+                    //datas.push(memberdata.feelingCode2);
+                    //datas.push(memberdata.feelingCode3);
+                    myrankdatas.push(memberNo);
+                    myrankdatas.push(chatroomNo);
+                    var queryidname = 'showRank';
+                    afeelQuery.afeelQuery(myrankdatas, queryidname , 'chat', function (err, myrank) {
+                        if(err){
+                            res.json(err);
+                            return;
+                        }
+                        if(datas == false){
+                            res.json({ success : 0 , message : '데이터 없음', result : null});
+                            return;
+                        }
+                        callback(null, memberdata, datas[0], myrank);
+                    });
                 });
 
             },
             //dd
-            function(memberdata, rankData, callback) {
+            function(memberdata, rankData, myrank, callback) {
                 //console.log('memberdata.feelingCode1' , memberdata.feelingCode1);
                 var datas = [];
                 //datas.push(memberdata.feelingCode1);
@@ -95,6 +112,7 @@ router.get('/:chatroomNo', function(req, res){
                         datas[0].memberEmailYn = memberdata.memberEmailYn;
                         datas[0].memberSNSYn = memberdata.memberSNSYn;
                         datas[0].memberRank = rankData.rank;
+                        datas[0].memberMyRank = myrank.rank;
                         datas[0].profilThumbnail = arr;
                         //temp = arr;
 

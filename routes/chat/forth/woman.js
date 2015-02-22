@@ -56,6 +56,33 @@ router.get('/:chatroomNo', function(req, res){
 
             },
             //dd
+
+            //ee
+            function(memberdata, callback) {
+                //console.log('memberdata.feelingCode1' , memberdata.feelingCode1);
+                var memberTo = memberdata.memberNo; //상대 회원번호
+                var datas = [];
+                //datas.push(memberdata.feelingCode1);
+                //datas.push(memberdata.feelingCode2);
+                //datas.push(memberdata.feelingCode3);
+                datas.push(memberTo);
+                datas.push(chatroomNo);
+                var queryidname = 'showRank';
+
+                afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
+                    if(err){
+                        res.json(err);
+                        return;
+                    }
+                    if(datas == false){
+                        res.json({ success : 0 , message : '데이터 없음', result : null});
+                        return;
+                    }
+                    callback(null, memberdata, datas[0]);
+                });
+
+            },
+            //ee
             function(memberdata, rankData, callback) {
                 //console.log('memberdata.feelingCode1' , memberdata.feelingCode1);
                 var datas = [];
