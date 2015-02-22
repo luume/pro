@@ -161,8 +161,6 @@ router.post('/', function(req, res) {
     // successCode : 1 (UPDATE)
     function (successCode, rows, newbie, callbackq) {
       var bindData = [];
-        var womanInsert = '';
-        var insertBind = [];
       console.log('3번째 워터폴 성공코드 : ', successCode);
       if(successCode == 0){
 // 지금은 관리자 질문이없어서 xml에 강제로 4번의 질문을 랜덤하게 뿌려준다.( 다시 ? 로 바인딩햇음)
@@ -181,16 +179,13 @@ router.post('/', function(req, res) {
             if(datas == undefined){
               console.log('채팅방 생성 여자 언디파인드');
             }
-             // callbackq(null, 1, 'womanInsert', [datas.insertId, req.session.memberNo]);
-              womanInsert = 'womanInsert';
-              insertBind.push(datas.insertId);
-              insertBind.push(req.session.memberNo);
+              callbackq(null, 1, 'womanInsert', [datas.insertId, req.session.memberNo]);
           });
         }else if(memberGender == 'M'){
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           afeelQuery.afeelQuery(bindData, 'createChatRoomMan', 'chat', function (err, datas) {
-              //callbackq(null, 1);
+              callbackq(null, 1);
           });
         }
 
@@ -210,9 +205,7 @@ router.post('/', function(req, res) {
                 callbackq(err, 0);
             };
 //
-            if(datas==undefined){
-              console.log('아시발 여자 언디파인드');
-            }
+
             // 여자빼고 남자4명이 차있으면 알림을 보내준다.(풀방이 되었으므로)
             if(rows[0].count == 4){
            /*   gcmSetting.gcmSend([req.session.memberNo, rows[0].memberM1No, rows[0].memberM2No,rows[0].memberM3No,rows[0].memberM4No],
@@ -263,10 +256,11 @@ router.post('/', function(req, res) {
             }
                 var dddd = typeof  callbackq === 'function';
               console.log('타입체크', dddd);
-           //   callbackq(null, 1);
+
 
 
           });
+            callbackq(null, 1);
         }else if(memberGender == 'M'){
 
           async.waterfall([
@@ -380,7 +374,7 @@ router.post('/', function(req, res) {
                         });
                   }
                   //calls(null,1);
-                //    callbackq(null, 1);
+                    callbackq(null, 1);
                 });
               }else if(newbie=='newbie'){
                 bindData.push(req.session.memberNo);
@@ -440,7 +434,7 @@ router.post('/', function(req, res) {
                         });
                   }
                   //calls(null,1);
-              //      callbackq(null, 1);
+                    callbackq(null, 1);
                 });
               }
             } // 2번째 워터폴
@@ -456,8 +450,6 @@ router.post('/', function(req, res) {
 
 
         }  // else if 종료
-          console.log('언제실행대나');
-          callbackq(null, 1,womanInsert,  insertBind);
 
       }
 //      callback(null, 1)
