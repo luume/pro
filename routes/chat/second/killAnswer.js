@@ -27,6 +27,7 @@ router.post('/', function(req, res){
     datas.push(rank);
 
     var queryidname = 'killMan';
+    console.log('2단계 죽일 남성 번호 : ' , memberNo);
 
     async.waterfall([
         function (callback) {
