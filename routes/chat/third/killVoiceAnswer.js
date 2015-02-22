@@ -34,16 +34,18 @@ router.post('/', function(req, res){
         }
         if (datas.affectedRows == 1) {
 
-            rank = 1;
-            var windatas = [];
-            windatas.push(winMemberNo);
-            windatas.push(chatroomNo);
-            windatas.push(rank);
+
 
 
             async.waterfall([
 
                 function (callback) {
+                    rank = 1;
+                    var windatas = [];
+                    windatas.push(winMemberNo);
+                    windatas.push(chatroomNo);
+                    windatas.push(rank);
+                    
                     afeelQuery.afeelQuery(windatas, queryidname , 'chat', function (err, datas) {
                         callback(null, 1);
                     });
