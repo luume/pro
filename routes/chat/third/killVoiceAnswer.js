@@ -14,6 +14,7 @@ Array.prototype.removeElement = function(index)
 };
 
 router.post('/', function(req, res){
+
     var chatroomNo = req.body.chatroomNo;
     var memberNo = req.body.memberNo; //버릴 회원 번호
     var winMemberNo = req.body.winMemberNo; //이긴 회원 번호
@@ -24,6 +25,7 @@ router.post('/', function(req, res){
     datas.push(chatroomNo);
     datas.push(rank);
 
+    console.log('req.body', req.body);
     var queryidname = 'killMan';
     afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
         if (err) {
