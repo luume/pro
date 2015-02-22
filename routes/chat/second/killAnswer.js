@@ -69,16 +69,17 @@ router.post('/', function(req, res){
                     },
 
                     function (temp, callback) {
-                        var temps = [];
-                        temps = temp;
+                        var temps;
+                        temps = new Array(temp);
                         var killIndex1 = temps.indexOf(memberNo);
                         console.log('지울 인덱스 번호11 : ' , killIndex1);
                         console.log('리무브 전 배열 : ' + temps);
 
-                        temps.removeElement(killIndex1 + 1);
+                        temps.removeElement(killIndex1);
                         console.log('리무브 후 배열 : ' + temps);
                         temps.push(datas[0].memberWNo);
                         console.log('리무브 후 여자 넣은 후 배열 : ' + temps);
+                        callback(null, temps);
                     },
 
                     function (temp, callback) {
