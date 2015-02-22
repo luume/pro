@@ -179,6 +179,8 @@ router.post('/', function(req, res) {
             if(datas == undefined){
               console.log('채팅방 생성 여자 언디파인드');
             }
+              var dddd = typeof  callbackq === 'function';
+              console.log('타입체크', dddd);
               callbackq(null, 1, 'womanInsert', [datas.insertId, req.session.memberNo]);
           });
         }else if(memberGender == 'M'){
@@ -256,11 +258,11 @@ router.post('/', function(req, res) {
             }
                 var dddd = typeof  callbackq === 'function';
               console.log('타입체크', dddd);
-
+              callbackq(null, 1);
 
 
           });
-            callbackq(null, 1);
+
         }else if(memberGender == 'M'){
 
           async.waterfall([
