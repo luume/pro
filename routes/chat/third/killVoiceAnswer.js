@@ -39,7 +39,7 @@ router.post('/', function(req, res){
 
             async.waterfall([
 
-                function () {
+                function (callback) {
                     afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
                         if (err) {
                             res.json(err);
