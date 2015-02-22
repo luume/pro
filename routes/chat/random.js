@@ -161,7 +161,7 @@ router.post('/', function(req, res) {
     // successCode : 1 (UPDATE)
     function (successCode, rows, newbie, callbackq) {
       var bindData = [];
-        var womanInsert = wimanInsert;
+        var womanInsert = '';
         var insertBind = [];
       console.log('3번째 워터폴 성공코드 : ', successCode);
       if(successCode == 0){
