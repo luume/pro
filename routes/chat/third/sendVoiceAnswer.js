@@ -107,6 +107,8 @@ console.log('샌드보이스앤서', datas);
                 chatroomNo 	: chatroomNo
             });
             res.json(util.successCode(res, 'success'));
+        }else{
+            res.json(util.successCode(res, 'success'));
         }
         /*if(count == 2 && gender == 'M'){
             gcmSetting.gcmSend([temp[2]], {gcmType 	: 'CHAT3WOMANSELECT',
