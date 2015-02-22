@@ -457,7 +457,7 @@ router.post('/', function(req, res) {
 
         }  // else if 종료
           console.log('언제실행대나');
-          callbackq(1,null,womanInsert,  insertBind);
+          callbackq(null, 1,womanInsert,  insertBind);
 
       }
 //      callback(null, 1)
