@@ -107,6 +107,8 @@ router.post('/', function(req, res) {
           }*/
 
           if(datas == false || datas == undefined){
+              var dddd = typeof  callback === 'function';
+              console.log('타입체크', dddd);
             callback(null, 0, []);
           }else{
             callback(null, 1, datas);
