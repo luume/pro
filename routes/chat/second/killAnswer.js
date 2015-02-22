@@ -62,17 +62,27 @@ router.post('/', function(req, res){
                             temps.push(datas[0].memberM3No);
                             temps.push(datas[0].memberM4No);
 
-                            var killIndex1 = temps.indexOf(rows[0].memberNo);
+                            var killIndex1 = temps.indexOf(memberNo);
 
                             temps.removeElement(killIndex1);
 
-                            var killIndex2 = temps.indexOf(rows[1].memberNo);
-                            temps.removeElement(killIndex2);
                             temps.push(datas[0].memberWNo);
 
                             callback(null, temps);
                         });
                     },
+
+                    function (temp, callback) {
+                        afeelQuery.afeelQuery([chatroomNo], 'selectKillMember' , 'chat', function (err, datas) {
+
+                            var killIndex = temp.indexOf(datas[0].memberNo);
+                            var temps = [];
+                            temps = temp;
+                            temps.removeElement(killIndex);
+                            callback(null, temps);
+
+                        });
+                    }
 
                     function (temp , callback) {
 
