@@ -253,8 +253,8 @@ router.post('/', function(req, res) {
                   chatroomNo : rows[0].chatroomNo
                 });
             }
-            console.log('모디피 여자 : ' ,datas);
-            callback(null, 1, 'womanInsert');
+
+            callback(null, 1, 'womanInsert', [rows[0].chatroomNo, req.session.memberNo]);
           });
         }else if(memberGender == 'M'){
 
