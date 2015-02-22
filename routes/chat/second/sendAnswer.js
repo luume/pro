@@ -87,9 +87,9 @@ router.post('/', function(req, res){
             });
         },
 
-        function (result, memberGender, tmep, callback) {
+        function (result, memberGender, temp, callback) {
             afeelQuery.afeelQuery([chatroomNo], 'selectKillMember' , 'chat', function (err, datas) {
-
+             
                 var killIndex = temp.indexOf(datas[0].memberNo);
                 var temps = [];
                 temps = temp;

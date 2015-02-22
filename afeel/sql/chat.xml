@@ -254,7 +254,7 @@
     </myquery>
 
     <myquery id="selectSecondChatMember">
-        SELECT memberNo, memberWNo FROM CHATROOM a JOIN CHAT_RANK b ON a.chatroomNo = b.chatroomNo WHERE a.chatroomNo = ? 
+        SELECT memberNo, memberWNo FROM CHATROOM a JOIN CHAT_RANK b ON a.chatroomNo = b.chatroomNo WHERE a.chatroomNo = ?
     </myquery>
 
     <myquery id="selectSecondAllChatMember">
