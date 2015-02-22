@@ -65,11 +65,11 @@ router.post('/', function(req, res) {
 
       test = sum.join(',');
 
-/*
+
       if(sum ==  false){
-        sum[0] = 0;
-        test = sum;
-      }*/
+        sum.push(0);
+          test = sum;
+      }
 
 
       console.log('sum 최종값 : ' , sum);
@@ -80,17 +80,17 @@ router.post('/', function(req, res) {
         bindData.push(sum);
         bindData.push(sum);
         bindData.push(sum);*/
-        if(sum==false){
+        i/*f(sum==false){
           bindData.push(0);
           bindData.push(0);
           bindData.push(0);
           bindData.push(0);
-        }else {
+        }else {*/
           bindData.push(test);
           bindData.push(test);
           bindData.push(test);
           bindData.push(test);
-        }
+   //     }
         bindData.push(req.session.memberNo);
         bindData.push(req.session.memberNo);
         console.log('join결과:' ,bindData);
@@ -157,7 +157,7 @@ router.post('/', function(req, res) {
 
 
     // 채팅방에 공간이 있으면 UPDATE 아니면 INSERT
-    // successCode : 0 (INSERT)  
+    // successCode : 0 (INSERT)
     // successCode : 1 (UPDATE)
     function (successCode, rows, newbie, callbackq) {
       var bindData = [];
