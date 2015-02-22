@@ -63,12 +63,15 @@ router.post('/', function(req, res){
                             temps.push(datas[0].memberM3No);
                             temps.push(datas[0].memberM4No);
 
+
                             var killIndex1 = temps.indexOf(memberNo);
+                            console.log('지울 인덱스 번호11 : ' , killIndex1);
+                            console.log('리무브 전 배열 : ' + temps);
 
                             temps.removeElement(killIndex1);
-
+                            console.log('리무브 후 배열 : ' + temps);
                             temps.push(datas[0].memberWNo);
-
+                            console.log('리무브 후 여자 넣은 후 배열 : ' + temps);
                             callback(null, temps);
                         });
                     },
@@ -77,16 +80,18 @@ router.post('/', function(req, res){
                         afeelQuery.afeelQuery([chatroomNo], 'selectKillMember' , 'chat', function (err, datas) {
 
                             var killIndex = temp.indexOf(datas[0].memberNo);
+                            console.log('지울 인덱스 번호222 : ' , killIndex);
                             var temps = [];
                             temps = temp;
                             temps.removeElement(killIndex);
+                            console.log('2번째 리무브 후 배열 : ' + temps);
                             callback(null, temps);
 
                         });
                     },
 
                     function (temp , callback) {
-                    console.log('킬앤서 배열값 : ',  temp);
+                        console.log('킬앤서 배열값 : ',  temp);
                         gcmSetting.gcmSend([temp[0], temp[1]], {gcmType 	: 'CHAT3MAN',
                             chatroomNo 	: chatroomNo
                         });
