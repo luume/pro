@@ -198,6 +198,7 @@ router.post('/', function(req, res){
                                     ii++;
                                 }else {
                                     var arr = [];
+                                    console.log('몇번쨰냐 인덱스 : ' + ii);
                                     arr.push(req.session.memberNo);
                                     arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[ii].name);
                                     arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[ii].name);
