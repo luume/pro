@@ -9,6 +9,15 @@ var easyimg = require('easyimage');
 
 var path = require('path');
 
+
+var multer  = require('multer');
+router.use(multer({
+    dest: './public/images/',
+    rename: function (fieldname, filename) {
+        return filename + Date.now() + '.jpg'
+    }
+}));
+
 // 회원가입
 router.post('/', function(req, res) {
     var memberEmail = req.body.memberEmail;

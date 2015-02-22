@@ -8,6 +8,14 @@ var del = require('del');
 
 var nodeUtil = require('util');
 
+var multer  = require('multer');
+router.use(multer({
+    dest: './public/images/',
+    rename: function (fieldname, filename) {
+        return filename + Date.now() + '.jpg'
+    }
+}));
+
 router.post('/', function(req, res){
 
     var profilOriginalFileName = req.files.profilOriginalFileName;
