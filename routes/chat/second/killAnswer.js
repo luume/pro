@@ -82,7 +82,7 @@ router.post('/', function(req, res){
                             callback(null, temps);
 
                         });
-                    }
+                    },
 
                     function (temp , callback) {
 
