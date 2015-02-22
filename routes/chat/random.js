@@ -111,6 +111,8 @@ router.post('/', function(req, res) {
               console.log('타입체크', dddd);
             callback(null, 0, []);
           }else{
+              var dddd = typeof  callback === 'function';
+              console.log('타입체크', dddd);
             callback(null, 1, datas);
           }
         });
