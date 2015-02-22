@@ -200,6 +200,7 @@ router.post('/', function(req, res) {
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           afeelQuery.afeelQuery(bindData, 'modifyChatRoomWomenQuestionRandom', 'chat', function (err, datas) {
+            if(err)console.error(err);
 //
             // 여자빼고 남자4명이 차있으면 알림을 보내준다.(풀방이 되었으므로)
             if(rows[0].count == 4){
