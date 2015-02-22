@@ -11,6 +11,14 @@ Array.prototype.removeElement = function(index)
     return this;
 };
 
+var multer  = require('multer');
+router.use(multer({
+    dest: './public/rec/',
+    rename: function (fieldname, filename) {
+        return filename + Date.now() + '.jpg'
+    }
+}));
+
 router.post('/', function(req, res){
     var chatroomNo = req.body.chatroomNo;
     var memberNo = req.session.memberNo;
@@ -27,7 +35,7 @@ router.post('/', function(req, res){
     var questionNo = req.body.questionNo;
 
     var datas = [];
-    datas.push('http://54.92.4.84:3000/images/' + voiceAnswerData[0].name.split('.')[0] + '.' + voiceAnswerData[0].name.split('.')[1]);
+    datas.push('http://54.92.4.84:3000/rec/' + voiceAnswerData[0].name.split('.')[0] + '.mp4');
     datas.push(chatroomNo);
     datas.push(memberNo);
     datas.push(questionNo);
@@ -97,10 +105,10 @@ console.log('샌드보이스앤서', datas);
             });
             res.json(util.successCode(res, 'success'));
         }else if(gender == 'W'){
+            res.json(util.successCode(res, 'success'));
             gcmSetting.gcmSend([temp[0], temp[1]], {gcmType 	: 'CHAT3MANWAIT',
                 chatroomNo 	: chatroomNo
             });
-            res.json(util.successCode(res, 'success'));
         }
     });
 
