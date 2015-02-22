@@ -258,9 +258,9 @@ router.post('/', function(req, res) {
             }
             
             setTimeout(function (){
-              
+              callback(null, 1, 'womanInsert', [rows[0].chatroomNo, req.session.memberNo]);
             },500);
-            callback(null, 1, 'womanInsert', [rows[0].chatroomNo, req.session.memberNo]);
+
           });
         }else if(memberGender == 'M'){
 
