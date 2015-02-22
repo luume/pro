@@ -181,18 +181,19 @@ router.post('/', function(req, res){
                         var ii = 0;
                         console.log('프로필어레이 랭스' , profilArray.length);
                         console.log('프로필어레이 ' , profilArray);
-
+                        console.log('템프 값 : ' , rowTemp);
                         if(profilArray)
 
                             async.eachSeries(profilArray, function (item, calls) {
                                 if(rowTemp.indexOf(item) != -1){
-
+                                    console.log('이치문 if 이미 존재하는 파일이면');
+                                    ii++;
                                 }else {
                                     var arr = [];
                                     arr.push(req.session.memberNo);
-                                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[kk].name);
-                                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[kk].name);
-                                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[kk].name);
+                                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[ii].name);
+                                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[ii].name);
+                                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[ii].name);
                                     if (ii == 0) {
                                         afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
                                             /*             if (err) {
