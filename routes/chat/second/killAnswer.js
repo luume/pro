@@ -68,13 +68,6 @@ router.post('/', function(req, res){
                             }
                             var ii =0;
                             var delIndex = -1;
-
-                           /* for(int i = 0 ; i < temps.length; i++){
-                                if(temps(i) == memberNo){
-                                    delindex =i;
-                                }
-                            }*/
-
                             async.each(temps, function (index, call) {
                                 if(temps[ii] == memberNo){
                                     delIndex = ii;
@@ -89,7 +82,7 @@ router.post('/', function(req, res){
                     },
 
                     function (temp,delIndex,memberWNo, callback) {
-                        var temps = new Array(temp);
+                        var temps = temp;
 
                         //var killIndex1 = temps.indexOf(memberNo);
                         console.log('지울 인덱스 번호11 : ' , delIndex);
@@ -104,16 +97,27 @@ router.post('/', function(req, res){
 
                     function (temp, callback) {
                         afeelQuery.afeelQuery([chatroomNo], 'selectKillMember' , 'chat', function (err, datas) {
+                            var ii =0;
+                            var delIndex = -1;
+                            async.each(temp, function (index, call) {
+                                if(temp[ii] == datas[0].memberNo){
+                                    delIndex = ii;
+                                }
+                                ii++;
+                                call();
+                            }, function (err) {
+                                callback(null, temp, delIndex);
+                            });
 
-                            var killIndex = temp.indexOf(datas[0].memberNo);
-                            console.log('지울 인덱스 번호222 : ' , killIndex);
-                            var temps = [];
-                            temps = temp;
-                            temps.removeElement(killIndex);
-                            console.log('2번째 리무브 후 배열 : ' + temps);
-                            callback(null, temps);
 
                         });
+                    },
+
+                    function (temp, delIndex, callback) {
+                        var temps = temp;
+                        temps.removeElement(delIndex);
+                        console.log('2번째 리무브 후 배열 : ' + temps);
+                        callback(null, temps);
                     },
 
                     function (temp , callback) {
