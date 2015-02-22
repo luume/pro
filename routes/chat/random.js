@@ -159,7 +159,7 @@ router.post('/', function(req, res) {
     // 채팅방에 공간이 있으면 UPDATE 아니면 INSERT
     // successCode : 0 (INSERT)
     // successCode : 1 (UPDATE)
-    function (successCode, rows,newbie, callback) {
+    function (successCode, rows, newbie, callbackq) {
       var bindData = [];
       console.log('3번째 워터폴 성공코드 : ', successCode);
       if(successCode == 0){
@@ -172,20 +172,20 @@ router.post('/', function(req, res) {
           afeelQuery.afeelQuery(bindData, 'createChatRoomWomen', 'chat', function (err, datas) {
             if(err){
               console.error("에러원인 : " , err);
-              callback(err, 0);
+                callbackq(err, 0);
               return;
             }
             console.log('채팅방생성 여자', datas);
             if(datas == undefined){
               console.log('채팅방 생성 여자 언디파인드');
             }
-            callback(null, 1, 'womanInsert', [datas.insertId, req.session.memberNo]);
+              callbackq(null, 1, 'womanInsert', [datas.insertId, req.session.memberNo]);
           });
         }else if(memberGender == 'M'){
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           afeelQuery.afeelQuery(bindData, 'createChatRoomMan', 'chat', function (err, datas) {
-            callback(null, 1);
+              callbackq(null, 1);
           });
         }
 
@@ -202,7 +202,7 @@ router.post('/', function(req, res) {
           afeelQuery.afeelQuery(bindData, 'modifyChatRoomWomenQuestionRandom', 'chat', function (err, datas) {
             if(err){
               console.error(err)
-              callback(err, 0);
+                callbackq(err, 0);
             };
 //
             if(datas==undefined){
@@ -256,9 +256,9 @@ router.post('/', function(req, res) {
                   chatroomNo : rows[0].chatroomNo
                 });
             }
-                var dddd = typeof  callback === 'function';
+                var dddd = typeof  callbackq === 'function';
               console.log('타입체크', dddd);
-              callback(null, 1);
+              callbackq(null, 1);
 
 
           });
@@ -375,7 +375,7 @@ router.post('/', function(req, res) {
                         });
                   }
                   //calls(null,1);
-                  callback(null, 1);
+                    callbackq(null, 1);
                 });
               }else if(newbie=='newbie'){
                 bindData.push(req.session.memberNo);
@@ -435,7 +435,7 @@ router.post('/', function(req, res) {
                         });
                   }
                   //calls(null,1);
-                  callback(null, 1);
+                    callbackq(null, 1);
                 });
               }
             } // 2번째 워터폴
