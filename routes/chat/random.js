@@ -107,9 +107,9 @@ router.post('/', function(req, res) {
           }*/
 
           if(datas == false || datas == undefined){
-            callback(null, 0, []);
+            callback(null, 0, [], '');
           }else{
-            callback(null, 1, datas);
+            callback(null, 1, datas, '');
           }
         });
       }else if(memberGender == 'M'){
@@ -139,7 +139,7 @@ router.post('/', function(req, res) {
 
               if(datas == false || datas == undefined) {
                 console.log('언디파인드 남자 에요22', datas);
-                callback(null, 0, []);
+                callback(null, 0, [], '');
               }else{
                 console.log('처음 뉴비에요', datas);
                 callback(null, 1, datas, 'newbie');
@@ -147,7 +147,7 @@ router.post('/', function(req, res) {
             });
 
           }else{
-            callback(null, 1, datas);
+            callback(null, 1, datas, '');
           }
 
         });
@@ -262,6 +262,7 @@ router.post('/', function(req, res) {
                   callback(err,1);
                   return;
               }
+              callback
               callback(null, 1);
 
 
