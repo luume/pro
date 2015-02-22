@@ -202,6 +202,9 @@ router.post('/', function(req, res) {
           afeelQuery.afeelQuery(bindData, 'modifyChatRoomWomenQuestionRandom', 'chat', function (err, datas) {
             if(err)console.error(err);
 //
+            if(datas==undefined){
+              console.log('아시발 여자 언디파인드');
+            }
             // 여자빼고 남자4명이 차있으면 알림을 보내준다.(풀방이 되었으므로)
             if(rows[0].count == 4){
            /*   gcmSetting.gcmSend([req.session.memberNo, rows[0].memberM1No, rows[0].memberM2No,rows[0].memberM3No,rows[0].memberM4No],
