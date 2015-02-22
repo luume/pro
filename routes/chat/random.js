@@ -68,6 +68,7 @@ router.post('/', function(req, res) {
 
       if(sum ==  false){
         sum[0] == 0;
+        test = sum;
       }
 
 
@@ -241,7 +242,7 @@ router.post('/', function(req, res) {
                   chatroomNo : rows[0].chatroomNo
                 });
             }
-
+            console.log('모디피 여자 : ' ,datas);
             callback(null, 1, 'womanInsert');
           });
         }else if(memberGender == 'M'){
