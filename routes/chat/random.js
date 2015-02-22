@@ -116,6 +116,7 @@ router.post('/', function(req, res) {
         bindData.push(  req.session.memberNo  );
         afeelQuery.afeelQuery(bindData, 'clearSpaceCheckMan', 'chat', function (err, datas) {
           if(datas == false || datas == undefined){
+            console.log('언디파인드 남자 에요', datas);
             callback(null, 0, []);
           }else{
             callback(null, 1, datas);
@@ -134,7 +135,7 @@ router.post('/', function(req, res) {
       var bindData = [];
       console.log('3번째 워터폴 성공코드 : ', successCode);
       if(successCode == 0){
-// 지금은 관리자 질문이없어서 xml에 강제로 4번의 질문을 랜덤하게 뿌려준다.
+// 지금은 관리자 질문이없어서 xml에 강제로 4번의 질문을 랜덤하게 뿌려준다.( 다시 ? 로 바인딩햇음)
         if(memberGender == 'W'){
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
@@ -321,7 +322,7 @@ router.post('/', function(req, res) {
                       chatroomNo : rows[0].chatroomNo
                     });
                 }
-                //calls(null);
+                //calls(null,1);
                 callback(null, 1);
               });
             } // 2번째 워터폴
