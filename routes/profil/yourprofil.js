@@ -18,8 +18,9 @@ router.get('/:memberTo', function(req, res){
     console.log('유어프로필 현재사용자', memberNo);
     console.log('유어프로필 볼 사용자', memberTo);
     var datas = [];
-    datas.push(memberNo);
+
     datas.push(memberTo);
+    datas.push(memberNo);
 
     console.log('yourProifil body ' , req.body);
 
