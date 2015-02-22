@@ -172,6 +172,7 @@ router.post('/', function(req, res){
                     var memberNoArray = [];
                     console.log('로우즈는 : ' , rows == false || rows == undefined ? 0 : rows.length);
                     console.log('프로필 파일 체크 : ' , profilOriginalFileName);
+                    console.log('프로필 파일0번쨰 네임 체크 : ' , profilOriginalFileName[0].name);
                     for(var i = 0 ; i < rows == false || rows == undefined ? 0 : rows.length ; i++){
                         rowTemp.push(rows[i].profilThumbnail);
                         // memberNoArray.push(rows[i].memberNo);
