@@ -161,7 +161,7 @@
     </myquery>
 
     <myquery id="myRate1">
-        select memberRate FROM FEELING WHERE memberNo = ?
+        select memberRate FROM FEELING WHERE memberNo = ? AND memberTo = ?
     </myquery>
 
     <myquery id="myRate2">

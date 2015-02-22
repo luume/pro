@@ -177,7 +177,7 @@ router.get('/', function(req, res) {
                 temp = datarow;
                 async.eachSeries(ar, function (memberNoArray, callback) {
 
-                    afeelQuery.afeelQuery([memberNoArray], 'myRate1' , 'expeople', function (err, data) {
+                    afeelQuery.afeelQuery([ req.session.memberNo,memberNoArray], 'myRate1' , 'expeople', function (err, data) {
                         if(err){
                             res.json(err);
 
