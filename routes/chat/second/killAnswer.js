@@ -70,7 +70,7 @@ router.post('/', function(req, res){
 
                     function (temp, callback) {
                         var temps = [];
-                        temps = temp;
+                        temps = temp;       
                         if(temps.constructor == Array){
                             console.log('복사값은 배열이다');
                         }else{
