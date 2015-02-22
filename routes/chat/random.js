@@ -266,12 +266,13 @@ router.post('/', function(req, res) {
                 bindData.push(req.session.memberNo);
                 bindData.push(req.session.memberNo);
                 afeelQuery.afeelQuery(bindData, 'selectChatRoomIndexMan2', 'chat', function (err, datas) {
-                  calls(null, datas);
+                  console.log('정확한 뉴비 데이터');
+                  calls(null, datas, 'newbie');
                 });
               }
             },
 
-            function (row, calls) {
+            function (row,newbie, calls) {
               bindData = [];
 
               if(row[0].memberM1No == 0){
@@ -296,66 +297,129 @@ router.post('/', function(req, res) {
                 bindData.push(req.session.memberNo);
               }
 
-              bindData.push(test);
-              bindData.push(req.session.memberNo);
-              bindData.push(req.session.memberNo);
-              bindData.push(req.session.memberNo);
-              bindData.push(req.session.memberNo);
 
-              afeelQuery.afeelQuery(bindData, 'modifyChatRoomMan', 'chat', function (err, datas) {
+              if(newbie != 'newbie') {
+                bindData.push(test);
+                bindData.push(req.session.memberNo);
+                bindData.push(req.session.memberNo);
+                bindData.push(req.session.memberNo);
+                bindData.push(req.session.memberNo);
 
-                console.log('3번쨰 워터폴 남자 업데이트 값 ' , datas);
-                /*이름 , 닉네임, 직업 , 나이 , 키 , 지역 , 취미,
-                 매칭성공횟수, 투표를 많이받은 호감도타입*/
-                if(rows[0].memberWNo != 0 && rows[0].count == 3){
-                  console.log('회원 배열값 : ', [ rows[0].memberWNo
-                    ,rows[0].memberM1No == undefined ? req.session.memberNo :  rows[0].memberM1No
-                    ,rows[0].memberM2No == undefined ? req.session.memberNo :  rows[0].memberM2No
-                    ,rows[0].memberM3No == undefined ? req.session.memberNo :  rows[0].memberM3No
-                    ,rows[0].memberM4No == undefined ? req.session.memberNo :  rows[0].memberM4No ]);
-                  gcmSetting.gcmSend([
-                      rows[0].memberWNo
-                    ],
-                    {
-                      gcmType     : 'CHAT1WOMEN',
-                      chatroomNo : rows[0].chatroomNo
-                    });
+                afeelQuery.afeelQuery(bindData, 'modifyChatRoomMan', 'chat', function (err, datas) {
 
-                  gcmSetting.gcmSend([
-                      rows[0].memberM1No == undefined ? req.session.memberNo :  rows[0].memberM1No
-                    ],
-                    {
-                      gcmType     : 'CHAT1MAN',
-                      chatroomNo : rows[0].chatroomNo
-                    });
+                  console.log('3번쨰 워터폴 남자 업데이트 값 ', datas);
+                  /*이름 , 닉네임, 직업 , 나이 , 키 , 지역 , 취미,
+                   매칭성공횟수, 투표를 많이받은 호감도타입*/
+                  if (rows[0].memberWNo != 0 && rows[0].count == 3) {
+                    console.log('회원 배열값 : ', [rows[0].memberWNo
+                      , rows[0].memberM1No == undefined ? req.session.memberNo : rows[0].memberM1No
+                      , rows[0].memberM2No == undefined ? req.session.memberNo : rows[0].memberM2No
+                      , rows[0].memberM3No == undefined ? req.session.memberNo : rows[0].memberM3No
+                      , rows[0].memberM4No == undefined ? req.session.memberNo : rows[0].memberM4No]);
+                    gcmSetting.gcmSend([
+                          rows[0].memberWNo
+                        ],
+                        {
+                          gcmType: 'CHAT1WOMEN',
+                          chatroomNo: rows[0].chatroomNo
+                        });
 
-                  gcmSetting.gcmSend([
-                      rows[0].memberM2No == undefined ? req.session.memberNo :  rows[0].memberM2No
-                    ],
-                    {
-                      gcmType     : 'CHAT1MAN',
-                      chatroomNo : rows[0].chatroomNo
-                    });
+                    gcmSetting.gcmSend([
+                          rows[0].memberM1No == undefined ? req.session.memberNo : rows[0].memberM1No
+                        ],
+                        {
+                          gcmType: 'CHAT1MAN',
+                          chatroomNo: rows[0].chatroomNo
+                        });
 
-                  gcmSetting.gcmSend([
-                      rows[0].memberM3No == undefined ? req.session.memberNo :  rows[0].memberM3No
-                    ],
-                    {
-                      gcmType     : 'CHAT1MAN',
-                      chatroomNo : rows[0].chatroomNo
-                    });
+                    gcmSetting.gcmSend([
+                          rows[0].memberM2No == undefined ? req.session.memberNo : rows[0].memberM2No
+                        ],
+                        {
+                          gcmType: 'CHAT1MAN',
+                          chatroomNo: rows[0].chatroomNo
+                        });
 
-                  gcmSetting.gcmSend([
-                      rows[0].memberM4No == undefined ? req.session.memberNo :  rows[0].memberM4No
-                    ],
-                    {
-                      gcmType     : 'CHAT1MAN',
-                      chatroomNo : rows[0].chatroomNo
-                    });
-                }
-                //calls(null,1);
-                callback(null, 1);
-              });
+                    gcmSetting.gcmSend([
+                          rows[0].memberM3No == undefined ? req.session.memberNo : rows[0].memberM3No
+                        ],
+                        {
+                          gcmType: 'CHAT1MAN',
+                          chatroomNo: rows[0].chatroomNo
+                        });
+
+                    gcmSetting.gcmSend([
+                          rows[0].memberM4No == undefined ? req.session.memberNo : rows[0].memberM4No
+                        ],
+                        {
+                          gcmType: 'CHAT1MAN',
+                          chatroomNo: rows[0].chatroomNo
+                        });
+                  }
+                  //calls(null,1);
+                  callback(null, 1);
+                });
+              }else if(newbie=='newbie'){
+                bindData.push(req.session.memberNo);
+                bindData.push(req.session.memberNo);
+                bindData.push(req.session.memberNo);
+                bindData.push(req.session.memberNo);
+
+                afeelQuery.afeelQuery(bindData, 'modifyChatRoomMan2', 'chat', function (err, datas) {
+
+                  console.log('3번쨰 워터폴 남자 업데이트 값 ', datas);
+                  /*이름 , 닉네임, 직업 , 나이 , 키 , 지역 , 취미,
+                   매칭성공횟수, 투표를 많이받은 호감도타입*/
+                  if (rows[0].memberWNo != 0 && rows[0].count == 3) {
+                    console.log('회원 배열값 : ', [rows[0].memberWNo
+                      , rows[0].memberM1No == undefined ? req.session.memberNo : rows[0].memberM1No
+                      , rows[0].memberM2No == undefined ? req.session.memberNo : rows[0].memberM2No
+                      , rows[0].memberM3No == undefined ? req.session.memberNo : rows[0].memberM3No
+                      , rows[0].memberM4No == undefined ? req.session.memberNo : rows[0].memberM4No]);
+                    gcmSetting.gcmSend([
+                          rows[0].memberWNo
+                        ],
+                        {
+                          gcmType: 'CHAT1WOMEN',
+                          chatroomNo: rows[0].chatroomNo
+                        });
+
+                    gcmSetting.gcmSend([
+                          rows[0].memberM1No == undefined ? req.session.memberNo : rows[0].memberM1No
+                        ],
+                        {
+                          gcmType: 'CHAT1MAN',
+                          chatroomNo: rows[0].chatroomNo
+                        });
+
+                    gcmSetting.gcmSend([
+                          rows[0].memberM2No == undefined ? req.session.memberNo : rows[0].memberM2No
+                        ],
+                        {
+                          gcmType: 'CHAT1MAN',
+                          chatroomNo: rows[0].chatroomNo
+                        });
+
+                    gcmSetting.gcmSend([
+                          rows[0].memberM3No == undefined ? req.session.memberNo : rows[0].memberM3No
+                        ],
+                        {
+                          gcmType: 'CHAT1MAN',
+                          chatroomNo: rows[0].chatroomNo
+                        });
+
+                    gcmSetting.gcmSend([
+                          rows[0].memberM4No == undefined ? req.session.memberNo : rows[0].memberM4No
+                        ],
+                        {
+                          gcmType: 'CHAT1MAN',
+                          chatroomNo: rows[0].chatroomNo
+                        });
+                  }
+                  //calls(null,1);
+                  callback(null, 1);
+                });
+              }
             } // 2번째 워터폴
 
          /*   function (calls) {
