@@ -54,7 +54,7 @@ console.log('샌드보이스앤서', datas);
 
 
         function (callback) {
-            afeelQuery.afeelQuery([chatroomNo, req.session.memberNo], 'sendVoiceAnswerCount' , 'chat', function (err, datas) {
+            afeelQuery.afeelQuery([chatroomNo], 'sendVoiceAnswerCount' , 'chat', function (err, datas) {
 
                 var vCount = datas[0].voiceCount;
                 callback(null, vCount);
@@ -99,7 +99,16 @@ console.log('샌드보이스앤서', datas);
     ], function (err, count, gender, temp) {
         if(err)console.error(err);
 
-        if(count == 2 && gender == 'M'){
+        if(count == 3){
+            gcmSetting.gcmSend([temp[2]], {gcmType 	: 'CHAT3WOMANSELECT',
+                chatroomNo 	: chatroomNo
+            });
+            gcmSetting.gcmSend([temp[0], temp[1]], {gcmType 	: 'CHAT3MANWAIT',
+                chatroomNo 	: chatroomNo
+            });
+            res.json(util.successCode(res, 'success'));
+        }
+        /*if(count == 2 && gender == 'M'){
             gcmSetting.gcmSend([temp[2]], {gcmType 	: 'CHAT3WOMANSELECT',
                 chatroomNo 	: chatroomNo
             });
@@ -109,7 +118,7 @@ console.log('샌드보이스앤서', datas);
             gcmSetting.gcmSend([temp[0], temp[1]], {gcmType 	: 'CHAT3MANWAIT',
                 chatroomNo 	: chatroomNo
             });
-        }
+        }*/
     });
 
 });

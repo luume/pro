@@ -314,7 +314,7 @@
     </myquery>
 
     <myquery id="sendVoiceAnswerCount">
-        select COUNT(*) AS voiceCount FROM VOICE_ANSWER WHERE chatroomNo = ? AND memberNo &lt;&gt; ?
+        select COUNT(*) AS voiceCount FROM VOICE_ANSWER WHERE chatroomNo = ?
     </myquery>
 
     <myquery id="forthMan">
