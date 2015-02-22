@@ -27,17 +27,27 @@ router.post('/', function(req, res){
 
     console.log('req.body', req.body);
     var queryidname = 'killMan';
-    afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
+   /* afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
         if (err) {
             res.json(err);
             return;
         }
         if (datas.affectedRows == 1) {
-
+*/
 
 
 
             async.waterfall([
+
+                function () {
+                    afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) {
+                        if (err) {
+                            res.json(err);
+                            return;
+                        }
+                        callback(null);
+                    });
+                },
 
                 function (callback) {
                     rank = 1;
@@ -78,11 +88,11 @@ router.post('/', function(req, res){
                 }
             });
 
-        }else {
+       /* }else {
             res.json({success: 0, result: {message: '2등 선정에 실패'}});
             return;
         }
-    });
+    });*/
 });
 
 module.exports = router;
