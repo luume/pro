@@ -172,7 +172,7 @@ router.post('/', function(req, res){
                     }, function (err) {
                         callback(null, rows)
                     });
-                }, // func end 정상
+                }, // func end 정상r
 
                 function (rows, callback) {
                     var kk = 0;

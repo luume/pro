@@ -262,8 +262,8 @@ router.post('/', function(req, res) {
                   callback(err,1);
                   return;
               }
-              callback
-              callback(null, 1);
+            //  callback
+              callback(null, 1, 'womanInsert', [rows[0].chatroomNo, req.session.memberNo]);
 
 
           });
