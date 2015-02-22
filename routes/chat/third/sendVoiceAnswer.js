@@ -15,7 +15,7 @@ var multer  = require('multer');
 router.use(multer({
     dest: './public/rec/',
     rename: function (fieldname, filename) {
-        return filename + Date.now() + '.jpg'
+        return filename + Date.now() + '.mp4'
     }
 }));
 
