@@ -85,7 +85,7 @@ router.post('/', function(req, res){
 
                 callback(null, count, gender, temps);
             });
-        },
+        }/*,
 
         function (result, memberGender, temp, callback) {
             afeelQuery.afeelQuery([chatroomNo], 'selectKillMember' , 'chat', function (err, datas) {
@@ -97,7 +97,7 @@ router.post('/', function(req, res){
                 callback(null, result, memberGender, temps);
 
             });
-        }
+        }*/
 
     ], function (err, result, memberGender, temp) {
 
@@ -124,7 +124,7 @@ router.post('/', function(req, res){
         if(result == 4) {
             console.log('복사열값 : ' + temp);
             var aTemp = temp;
-            var bTemp = temp[2];
+            var bTemp = temp[3];
             console.log('템프3',temp[2]);
             console.log('템프4',bTemp);
             aTemp.pop();

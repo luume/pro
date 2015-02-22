@@ -85,7 +85,7 @@ router.post('/', function(req, res){
                     },
 
                     function (temp , callback) {
-
+                    console.log('킬앤서 배열값 : ',  temp);
                         gcmSetting.gcmSend([temp[0], temp[1]], {gcmType 	: 'CHAT3MAN',
                             chatroomNo 	: chatroomNo
                         });
