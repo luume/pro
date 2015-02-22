@@ -73,18 +73,24 @@ router.post('/', function(req, res){
                                     delIndex = ii;
                                 }
                                 call();
+                            }, function (err) {
+                                callback(null, temps, delIndex);
                             });
 
-                            var killIndex1 = temps.indexOf(memberNo);
-                            console.log('지울 인덱스 번호11 : ' , delIndex);
-                            console.log('리무브 전 배열 : ' + temps);
-
-                            temps.removeElement(delIndex);
-                            console.log('리무브 후 배열 : ' + temps);
-                            temps.push(datas[0].memberWNo);
-                            console.log('리무브 후 여자 넣은 후 배열 : ' + temps);
-                            callback(null, temps);
                         });
+                    },
+
+                    function (temp,delIndex, callback) {
+                        var temps = temp;
+                        //var killIndex1 = temps.indexOf(memberNo);
+                        console.log('지울 인덱스 번호11 : ' , delIndex);
+                        console.log('리무브 전 배열 : ' + temps);
+
+                        temps.removeElement(delIndex);
+                        console.log('리무브 후 배열 : ' + temps);
+                        temps.push(datas[0].memberWNo);
+                        console.log('리무브 후 여자 넣은 후 배열 : ' + temps);
+                        callback(null, temps);
                     },
 
                     function (temp, callback) {
