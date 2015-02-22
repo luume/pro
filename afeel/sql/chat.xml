@@ -283,7 +283,7 @@
     <myquery id="chatFirstMan">
     SELECT
     memberName, memberNick, memberJob,
-    ((YEAR(CURDATE())- YEAR(memberBirth)) - (RIGHT(CURDATE(),5) >RIGHT(memberBirth,5))) as memberAge,
+    ((YEAR(CURDATE())- YEAR(memberBirth)) - (RIGHT(CURDATE(),5) > RIGHT(memberBirth,5))) as memberAge,
     memberHeight,
     memberAdd, memberHobby,
     (
