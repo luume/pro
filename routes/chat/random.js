@@ -116,8 +116,28 @@ router.post('/', function(req, res) {
         bindData.push(  req.session.memberNo  );
         afeelQuery.afeelQuery(bindData, 'clearSpaceCheckMan', 'chat', function (err, datas) {
           if(datas == false || datas == undefined){
+
             console.log('언디파인드 남자 에요', datas);
-            callback(null, 0, []);
+            var newbieBind = [];
+            newbieBind.push( req.session.memberNo  );
+            newbieBind.push(  req.session.memberNo  );
+            newbieBind.push(  req.session.memberNo  );
+            newbieBind.push( req.session.memberNo  );
+            newbieBind.push(  req.session.memberNo  );
+            newbieBind.push(  req.session.memberNo  );
+            newbieBind.push(  req.session.memberNo  );
+            newbieBind.push(  req.session.memberNo  );
+            afeelQuery.afeelQuery(newbieBind, 'clearSpaceCheckMan2', 'chat', function (err, datas) {
+
+              if(datas == false || datas == undefined) {
+                console.log('언디파인드 남자 에요22', datas);
+                callback(null, 0, []);
+              }else{
+                console.log('처음 뉴비에요', datas);
+                callback(null, 1, datas, 'newbie');
+              }
+            });
+
           }else{
             callback(null, 1, datas);
           }
@@ -131,7 +151,7 @@ router.post('/', function(req, res) {
     // 채팅방에 공간이 있으면 UPDATE 아니면 INSERT
     // successCode : 0 (INSERT)
     // successCode : 1 (UPDATE)
-    function (successCode, rows, callback) {
+    function (successCode, rows,newbie, callback) {
       var bindData = [];
       console.log('3번째 워터폴 성공코드 : ', successCode);
       if(successCode == 0){
@@ -229,15 +249,26 @@ router.post('/', function(req, res) {
           async.waterfall([
 
             function (calls) {
-              bindData = [];
-              bindData.push(test);
-              bindData.push(req.session.memberNo);
-              bindData.push(req.session.memberNo);
-              bindData.push(req.session.memberNo);
-              bindData.push(req.session.memberNo);
-              afeelQuery.afeelQuery(bindData, 'selectChatRoomIndexMan', 'chat', function (err, datas) {
-                calls(null, datas);
-              });
+              if(newbie != 'newbie') {
+                bindData = [];
+                bindData.push(test);
+                bindData.push(req.session.memberNo);
+                bindData.push(req.session.memberNo);
+                bindData.push(req.session.memberNo);
+                bindData.push(req.session.memberNo);
+                afeelQuery.afeelQuery(bindData, 'selectChatRoomIndexMan', 'chat', function (err, datas) {
+                  calls(null, datas);
+                });
+              }else{
+                bindData = [];
+                bindData.push(req.session.memberNo);
+                bindData.push(req.session.memberNo);
+                bindData.push(req.session.memberNo);
+                bindData.push(req.session.memberNo);
+                afeelQuery.afeelQuery(bindData, 'selectChatRoomIndexMan2', 'chat', function (err, datas) {
+                  calls(null, datas);
+                });
+              }
             },
 
             function (row, calls) {
