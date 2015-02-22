@@ -92,12 +92,12 @@ console.log('샌드보이스앤서', datas);
         if(err)console.error(err);
 
         if(count == 2 && gender == 'M'){
-            gcmSetting.gcmSend([temp[2]], {gcmType 	: 'CHAT3MANWAIT',
+            gcmSetting.gcmSend([temp[2]], {gcmType 	: 'CHAT3WOMANSELECT',
                 chatroomNo 	: chatroomNo
             });
             res.json(util.successCode(res, 'success'));
         }else if(gender == 'W'){
-            gcmSetting.gcmSend([temp[0], temp[1]], {gcmType 	: 'CHAT3WOMANSELECT',
+            gcmSetting.gcmSend([temp[0], temp[1]], {gcmType 	: 'CHAT3MANWAIT',
                 chatroomNo 	: chatroomNo
             });
             res.json(util.successCode(res, 'success'));
