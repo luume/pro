@@ -138,7 +138,7 @@
     <myquery id="createChatRoomWomen">
         INSERT INTO CHATROOM(chatroomNo, memberWNo, memberM1No, memberM2No, memberM3No, memberM4No, chatroomRegDate, questionNo, questionVoiceNo, chatAdd)
         VALUES(0, ?, null,null,null,null, now(),
-        (SELECT questionNo FROM QUESTION WHERE questionType = 0 order by rand() limit 1)
+        (SELECT questionNo FROM QUESTION WHERE questionType = 0 AND memberNo = 1 order by rand() limit 1)
         ,
         (SELECT questionNo FROM QUESTION WHERE questionType = 1 order by rand() limit 1)
         ,
