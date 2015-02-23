@@ -28,10 +28,15 @@ router.get('/:privateRoomNo', function(req, res){
     console.log(req.body);
 
     afeelQuery.afeelQuery(datas, queryidname ,'chat', function (err, datas) {
-        if(err){
+        /*if(err){
             res.json(err);
             return;
+        }*/
+
+        if(datas == false || datas == undefined){
+            res.json(util.successCode(res, [{ isMe : 1 , messageFrom :  null , messageTo : memberTo ,  messageData : null , messageDate : null , memberName : null}]));
         }
+
         res.json(util.successCode(res, datas));
     });
 
