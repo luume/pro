@@ -73,5 +73,9 @@
         UPDATE MEMBER set memberCash = memberCash + ? where memberNo = ?
     </myquery>
 
+    <myquery id = "updateMemberProfil">
+        UPDATE MEMBER SET memberJob = ? AND memberHobby = ? AND memberAdd =? WHERE memberNo = ?
+    </myquery>
+
 
 </query>

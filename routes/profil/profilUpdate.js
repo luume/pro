@@ -352,9 +352,18 @@ router.post('/', function(req, res){
                     arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[0].name);
                     arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[0].name);
                     afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
-                       callback(null, 1);
+                       callback(null);
                     });
 
+                },
+
+                function (callback) {
+                    /*memberJob: 'ㅡ',
+                      memberHobby: '음악듣기',
+                      memberAdd: '서울',*/
+                    afeelQuery.afeelQuery([memberJob, memberHobby, memberAdd, req.session.memberNo], 'updateMemberProfil', 'member', function (err, datas) {
+                        callback(null,1);
+                    });
                 }
 
             ], function(err, result){
