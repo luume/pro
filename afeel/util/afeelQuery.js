@@ -89,7 +89,7 @@ exports.afeelQuery = function(bindQuery , queryId, queryname, callback) {
               callback('undefinded');
               return;
             }
-            if (row.affectedRows == 0 || row == null || row == false) {
+        /*    if (row.affectedRows == 0 || row == null || row == false) {
               console.log('0행입니다.', queryId);
               global.isQuerySuccess = false;
               conn.release();
@@ -104,7 +104,7 @@ exports.afeelQuery = function(bindQuery , queryId, queryname, callback) {
                 }
               );
               return;
-            }
+            }*/
 
             global.isQuerySuccess = true;
 
