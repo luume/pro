@@ -81,11 +81,11 @@ router.get('/', function(req, res) {
                 console.log('워터폴 인자로 넘어온 count 값 = ' , count);
                 global.queryName = 'member';
                 afeelQuery.afeelQuery([req.session.memberNo], 'genderMember', 'member', function (err, gender) {
-                    if(err){
+                   /* if(err){
                      //   console.log('에러',err);
                         res.json(err);
                         return;
-                    }
+                    }*/
                   //  console.log('0번쨰 워터폴 함수', gender);
                     call(null, gender[0].memberGender, count);
                 });
