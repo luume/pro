@@ -87,7 +87,7 @@ router.get('/', function(req, res) {
                         res.json(err);
                         return;
                     }*/
-                  //  console.log('0번쨰 워터폴 함수', gender);
+                    console.log('2번쨰 워터폴 함수', gender);
                     call(null, gender[0].memberGender, count);
                 });
             },
