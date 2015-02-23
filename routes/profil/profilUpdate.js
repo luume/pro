@@ -269,10 +269,10 @@ router.post('/', function(req, res){
                     var arr = [];
                     async.eachSeries(profilArray, function (item, call) {
 
-                        console.log('이치 ii : ' + ii + ' ,  jj : ' + jj);
+
 
                         var index = temps.indexOf(item);
-
+                        console.log('이치 ii : ' + ii + ' , index : ' + index  + ' ,  jj : ' + jj );
 
                         if( index == -1 && ii == 0) {
                             arr = [];
