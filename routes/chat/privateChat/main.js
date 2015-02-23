@@ -45,11 +45,11 @@ console.log('모야');
             if(gender == 'W'){
                 console.log('여기22222222');
                 afeelQuery.afeelQuery([privateRoomNo, req.session.memberNo], 'otherW' ,'chat', function (err, datas) {
-                    callback(null, datas[0].memberWNo );
+                    callback(null, datas[0].memberMNo );
                 });
             }else if(gender == 'M'){
                 afeelQuery.afeelQuery([privateRoomNo, req.session.memberNo], 'otherM' ,'chat', function (err, datas) {
-                    callback(null, datas[0].memberMNo );
+                    callback(null, datas[0].memberWNo );
                 });
             }
 
