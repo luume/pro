@@ -197,7 +197,7 @@ router.post('/:memberTo', function(req, res){
                                             callback('0', results);
                                         } else if(err == 1){
                                             //E(messageNo, privateRoomNo, messageFrom, messageTo, messageData, messageDate)
-                                            afeelQuery.afeelQuery([results, memberTo, memberNo, memberNo], 'insertOneLine' , 'expeople', function (err, datas) {
+                                            afeelQuery.afeelQuery([results, memberNo, memberTo, memberNo], 'insertOneLine' , 'expeople', function (err, datas) {
                                                 console.log('1행 강제 삽입 채팅방');
                                             });
                                             callback('1', results);
