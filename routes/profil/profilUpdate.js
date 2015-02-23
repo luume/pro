@@ -18,11 +18,11 @@ router.use(multer({
 
 router.post('/', function(req, res){
     console.log('ㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹ');
-    var profilOriginalFileName = req.files.profilOriginalFileName;
+    var profilOriginalFileName = req.files.profilOriginalFileName == undefined ? [] : req.files.profilOriginalFileName;
     var memberAdd = req.body.memberAdd;
     var memberJob = req.body.memberJob;
     var memberHobby = req.body.memberHobby;
-    var profilArray = req.body.profilArray;
+    var profilArray = req.body.profilArray  == undefined ? [] : req.body.profilArray;;
 
     if( profilOriginalFileName.constructor == Object){
         console.log('오브젝트여서 배열에 담기전', profilOriginalFileName);
