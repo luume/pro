@@ -35,6 +35,7 @@ router.get('/:privateRoomNo', function(req, res){
 
         if(datas == false || datas == undefined){
             res.json(util.successCode(res, [{ isMe : 1 , messageFrom :  null , messageTo : memberTo ,  messageData : null , messageDate : null , memberName : null}]));
+            return;
         }
 
         res.json(util.successCode(res, datas));
