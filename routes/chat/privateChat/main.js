@@ -57,6 +57,7 @@ console.log('모야');
             datas.push(memberNo);
             datas.push(memberNo);
             datas.push(privateRoomNo);
+            console.log('데이터스 : ' + datas);
             afeelQuery.afeelQuery(datas, queryidname ,'chat', function (err, datas) {
                 console.log('여기333333333');
                /* if(datas == false || datas == undefined){
