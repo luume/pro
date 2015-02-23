@@ -267,6 +267,7 @@ router.post('/', function(req, res){
                     console.log('프로필 파일 최종 : ' + profilOriginalFileName);
                     console.log('프로필 파일 0번째 : ' + profilOriginalFileName[0]);
                     console.log('프로필 어레이 랭스 : ' + profilOriginalFileName.length);
+                    var a = [];
                     async.each(temps, function (item, call) {
                         a.push(item.profilOriginalFileName);
                         call();
