@@ -264,6 +264,7 @@ router.post('/', function(req, res){
 
                     console.log( tempData.constructor === Array ? '어레이' : '어레이가 아니다');
                     console.log('템프 : ' + temps);
+                    console.log('프로필 파일 최종 : ' + profilOriginalFileName);
                     var a = [];
                     async.each(temps, function (item, call) {
                         a.push(item.profilOriginalFileName);
