@@ -271,7 +271,7 @@ router.post('/', function(req, res){
 
 
 
-                        var index = temps.indexOf(item);
+                        var index = temps[ii].profilOriginalFileName.indexOf(item);
                         console.log('이치 ii : ' + ii + ' , index : ' + index  + ' ,  jj : ' + jj  + ' , 비교값 : ' + item);
 
                         if( index == -1 && ii == 0) {
