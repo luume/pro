@@ -265,11 +265,15 @@ router.post('/', function(req, res){
                     console.log( tempData.constructor === Array ? '어레이' : '어레이가 아니다');
                     console.log('템프 : ' + temps);
                     console.log('프로필 파일 최종 : ' + profilOriginalFileName);
-                    var a = [];
+                    console.log('프로필 파일 0번째 : ' + profilOriginalFileName[0]);
+                    console.log('프로필 어레이 랭스 : ' + profilOriginalFileName.length);
                     async.each(temps, function (item, call) {
                         a.push(item.profilOriginalFileName);
                         call();
                     });
+
+
+
                     console.log('a의 값 : ' + a);
                     var ii = 0;
                     var jj = 0;
