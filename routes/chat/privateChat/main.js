@@ -34,6 +34,7 @@ router.get('/:privateRoomNo', function(req, res){
         function (callback) {
 
             afeelQuery.afeelQuery([req.session.memberNo], 'genderMember' ,'chat', function (err, datas) {
+                console.log('여기111111');
                 callback(null, datas[0].memberGender );
             });
 
@@ -41,6 +42,7 @@ router.get('/:privateRoomNo', function(req, res){
 
         function (gender, callback) {
             if(gender == 'W'){
+                console.log('여기22222222');
                 afeelQuery.afeelQuery([privateRoomNo, req.session.memberNo], 'otherW' ,'chat', function (err, datas) {
                     callback(null, datas[0].memberWNo );
                 });
@@ -54,6 +56,7 @@ router.get('/:privateRoomNo', function(req, res){
 
         function (otherNo, callback) {
             afeelQuery.afeelQuery(datas, queryidname ,'chat', function (err, datas) {
+                console.log('여기333333333');
                 if(datas == false || datas == undefined){
                     console.log('여기들어온다아..');
                     res.json({success : '1' , message : 'OK', result : [{ isMe : 1 , messageFrom :  memberNo , messageTo : otherNo ,  messageData : '' , messageDate : '' , memberName : ''}] });
