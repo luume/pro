@@ -263,7 +263,7 @@ router.post('/', function(req, res){
                     var temps = tempData;
 
                     console.log( tempData.constructor === Array ? '어레이' : '어레이가 아니다');
-
+                    console.log('템프 : ' + temps);
                     var ii = 0;
                     var jj = 0;
                     var arr = [];
@@ -272,7 +272,7 @@ router.post('/', function(req, res){
 
 
                         var index = temps.indexOf(item);
-                        console.log('이치 ii : ' + ii + ' , index : ' + index  + ' ,  jj : ' + jj );
+                        console.log('이치 ii : ' + ii + ' , index : ' + index  + ' ,  jj : ' + jj  + ' , 비교값 : ' + item);
 
                         if( index == -1 && ii == 0) {
                             arr = [];
