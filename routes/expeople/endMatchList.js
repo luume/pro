@@ -220,10 +220,15 @@ router.get('/', function(req, res) {
            // console.log('마지막 temp ', temp);
             if(result==1){
                 console.log('성공코드 : ' + temp);
+              if(temp == false){
+                res.json({success:1 , message:'ok', result : null});
+              }else{
                 res.json({success:1 , message:'ok', result : temp});
+              }
+
             }else{
               //  console.log('망햇어요 ㅡㅡ');
-                res.json({success:0 , message:'ok', result : null});
+                res.json({success:1 , message:'ok', result : temp});
                /* afeelQuery.afeelQuery([req.session.memberNo], 'myRate2' , function (err, data) {
                     if(err){
                         res.json(err);
