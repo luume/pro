@@ -348,6 +348,7 @@ router.post('/', function(req, res){
 
                 function (row, callback) {
                   console.log('워터폴3333333333333333');
+                  console.log('프로필 : ' + profilOriginalFileName);
                     if(profilOriginalFileName != undefined || profilOriginalFileName != null  || profilOriginalFileName != false || profilOriginalFileName != []) {
                       var arr = [];
                       arr.push(req.session.memberNo);
