@@ -217,6 +217,7 @@ router.get('/', function(req, res) {
         function (err, result) {
            // console.log('마지막 temp ', temp);
             if(result==1){
+                console.log('성공코드 : ' + temp);
                 res.json({success:1 , message:'ok', result : temp});
             }else{
               //  console.log('망햇어요 ㅡㅡ');
