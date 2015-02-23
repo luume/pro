@@ -56,6 +56,7 @@ router.post('/', function(req, res){
             async.waterfall([
 
                 function (callback) {
+                  console.log('워터폴1111111111111111');
                     afeelQuery.afeelQuery([req.session.memberNo], 'selectIndexThumbnail', 'profil', function (err, datas) {
                         /*          if(err){
                          //callback();
@@ -109,6 +110,7 @@ router.post('/', function(req, res){
                 }, // 정상
 
                 function (callback) {
+                  console.log('워터폴2222222222222222');
                     async.eachSeries(deleteFileIndex, function (fileName, call) {
                         afeelQuery.afeelQuery([req.session.memberNo,nodeUtil.format(fileName)], 'deleteProfil', 'profil', function (err, datas) {
                             /*    if(err){
@@ -345,6 +347,7 @@ router.post('/', function(req, res){
                 }*/
 
                 function (row, callback) {
+                  console.log('워터폴3333333333333333');
                     if(profilOriginalFileName != undefined || profilOriginalFileName != null ) {
                       var arr = [];
                       arr.push(req.session.memberNo);
@@ -361,6 +364,7 @@ router.post('/', function(req, res){
                 },
 
                 function (callback) {
+                  console.log('워터폴4444444444444');
                     /*memberJob: 'ㅡ',
                       memberHobby: '음악듣기',
                       memberAdd: '서울',*/
