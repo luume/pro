@@ -280,6 +280,7 @@ router.post('/', function(req, res){
                             arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[jj].name);
                             afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
                                 jj++;
+                                call();
                             });
                         }else if( index != -1 && ii == 0){
                             arr = [];
@@ -289,6 +290,7 @@ router.post('/', function(req, res){
                             arr.push( item);
                             afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
                                 ii++;
+                                call();
                             });
                         }else if( index == -1 && ii != 0){
                             arr = [];
@@ -299,6 +301,7 @@ router.post('/', function(req, res){
                             arr.push( jj);
                             afeelQuery.afeelQuery(arr, 'insertProfil', 'profil', function (err, datas) {
                                 jj++;
+                                call();
                             });
                         }else if( index != -1 && ii != 0){
                             arr = [];
@@ -309,11 +312,14 @@ router.post('/', function(req, res){
                             arr.push( ii);
                             afeelQuery.afeelQuery(arr, 'insertProfil', 'profil', function (err, datas) {
                                 ii++;
+                                call();
                             });
                         }
 
                          // if end
 
+                    }, function (err) {
+                        callback(null, 1);
                     });
 
                 }
