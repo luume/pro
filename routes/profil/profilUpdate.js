@@ -135,14 +135,14 @@ router.post('/', function(req, res){
 
 
 
-                function (succesCode, callback) {
+         /*       function (succesCode, callback) {
                     if(succesCode == 1){
                         afeelQuery.afeelQuery([req.session.memberNo], 'selectIndexThumbnail', 'profil', function (err, datas) {
-                               if (err) {
+                            *//*   if (err) {
                              console.log('셀렉트 인덱스 섬네일 ' , err);
                              //    callback(0, null);
                              return;
-                             }
+                             }*//*
 
                             callback(null, datas);
 
@@ -153,12 +153,12 @@ router.post('/', function(req, res){
                 function (rows, callback) {
                     async.eachSeries(deleteFileIndex, function (fileName, call) {
                         afeelQuery.afeelQuery([req.session.memberNo,nodeUtil.format(fileName)], 'deleteProfil', 'profil', function (err, datas) {
-                            if(err){
+                            *//*if(err){
                              //이번에 삭제할 파일네임 :  http://54.92.4.84:3000/images/temp_14237231861423723203883.jpg
                              console.log('딜리트 프로필 ' , err);
                              //  callback(0, null);
                              return;
-                             }
+                             }*//*
                             console.log('딜리트 파일네임 : ', deleteFileIndex);
                             console.log(fileName);
                             console.log(req.session.memberNo);
@@ -206,11 +206,11 @@ router.post('/', function(req, res){
                                     arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[ii].name);
                                     if (ii == 0) {
                                         afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
-                                                         if (err) {
+                                            *//*             if (err) {
                                              console.log('인서트 프로필 메인 에러', err);
                                              //  calls(err);
                                              //   return;
-                                             }
+                                             }*//*
                                         }); // query end
                                     } else {
                                         async.waterfall([
@@ -226,11 +226,11 @@ router.post('/', function(req, res){
                                                 console.log('들어오나 체크 ', countIndex);
                                                 arr.push(countIndex);
                                                 afeelQuery.afeelQuery(arr, 'insertProfil', 'profil', function (err, datas) {
-                                                                     if (err) {
+                                                    *//*                 if (err) {
                                                      console.log('인서트 프로필 에러', err);
                                                      callback(0, null);
                                                      return;
-                                                     }
+                                                     }*//*
                                                     console.log('인서트가 되고있따', datas);
                                                     call(null, 1);
                                                 }); // query end
@@ -257,8 +257,9 @@ router.post('/', function(req, res){
                     }
                     callback(null, 1);
                 } // func end
+              */
 
-                /*function (row, callback) {
+               /* function (row, callback) {
                     var temps = tempData;
 
                     console.log( tempData.constructor === Array ? '어레이' : '어레이가 아니다');
@@ -342,6 +343,19 @@ router.post('/', function(req, res){
                     });
 
                 }*/
+
+                function (row, callback) {
+
+                    var arr = [];
+                    arr.push(req.session.memberNo);
+                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[0].name);
+                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[0].name);
+                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[0].name);
+                    afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
+                       callback(null, 1);
+                    });
+
+                }
 
             ], function(err, result){
                 if(err == 0){
