@@ -135,7 +135,7 @@ router.post('/', function(req, res){
 
 
 
-         /*       function (succesCode, callback) {
+                function (succesCode, callback) {
                     if(succesCode == 1){
                         afeelQuery.afeelQuery([req.session.memberNo], 'selectIndexThumbnail', 'profil', function (err, datas) {
                             *//*   if (err) {
@@ -257,9 +257,9 @@ router.post('/', function(req, res){
                     }
                     callback(null, 1);
                 } // func end
-              */
 
-                function (row, callback) {
+
+                /*function (row, callback) {
                     var temps = tempData;
 
                     console.log( tempData.constructor === Array ? '어레이' : '어레이가 아니다');
@@ -342,7 +342,7 @@ router.post('/', function(req, res){
                         callback(null, 1);
                     });
 
-                }
+                }*/
 
             ], function(err, result){
                 if(err == 0){
