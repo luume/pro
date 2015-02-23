@@ -31,6 +31,7 @@ router.post('/', function(req, res){
 
     async.waterfall([
         // messageNo, privateRoomNo, messageFrom, messageTO, messageData
+
         function (callback) {
             //INSERT INTO PRIVATE_MESSAGE(messageNo, privateRoomNo, messageFrom, messageTO, messageData) VALUES(0, ?, ?, ?, ?)
             afeelQuery.afeelQuery([privateRoomNo, req.session.memberNo,  messageTO, messageData], 'insertPrivateMessage', 'chat', function (err, datas) {
