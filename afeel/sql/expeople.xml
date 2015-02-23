@@ -216,6 +216,11 @@
         DELETE FROM PRIVATE_ROOM WHERE privateRoomNo = ?
     </myquery>
 
+    <myquery id="insertOneLine">
+        INSERT INTO PRIVATE_MESSAGE(messageNo, privateRoomNo, messageFrom, messageTo, messageData, messageDate) VALUES(0, ?, ? , ?,
+        CONCAT((select memberName FROM MEMBER WHERE memberNo = ?),'님이 어필을 신청했습니다.') , now())
+    </myquery>
+
 </query>
 
 

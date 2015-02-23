@@ -139,6 +139,7 @@ router.post('/:memberTo', function(req, res){
                                             } else {
                                                 console.log('채팅방생성해야함');
                                                 var queryidname = 'createPrivateChat';
+
                                                 afeelQuery.afeelQuery(datas, queryidname , 'chat', function (err, datas) { //1:1 채팅방 생성
                                                     if(err){
                                                         res.json(err);
@@ -195,6 +196,10 @@ router.post('/:memberTo', function(req, res){
                                         if (err == 0) {
                                             callback('0', results);
                                         } else if(err == 1){
+                                            //E(messageNo, privateRoomNo, messageFrom, messageTo, messageData, messageDate)
+                                            afeelQuery.afeelQuery([results, memberNo, memberTo, memberNo], 'insertOneLine' , 'expeople', function (err, datas) {
+                                                console.log('1행 강제 삽입 채팅방');
+                                            });
                                             callback('1', results);
 
                                         }

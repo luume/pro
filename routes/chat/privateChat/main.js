@@ -61,9 +61,9 @@ console.log('모야');
                 if(datas == false || datas == undefined){
                     console.log('여기들어온다아..');
                     var d = new Date();
-                    var tempDate = pad2(d.getFullYear().toString()) +'-'+ pad2((d.getMonth() + 1).toString()) +'-'+ pad2(d.getDate().toString()
+                    /*var tempDate = pad2(d.getFullYear().toString()) +'-'+ pad2((d.getMonth() + 1).toString()) +'-'+ pad2(d.getDate().toString()
                       +' '+ pad2(d.getHours().toString()) +':'+ pad2(d.getMinutes().toString()) +':'+ pad2(d.getSeconds().toString()));
-                    res.json({success : '1' , message : 'OK', result : [{ isMe : 1 , messageFrom :  memberNo , messageTo : otherNo ,  messageData : '' , messageDate : tempDate , memberName : ''}] });
+                    res.json({success : '1' , message : 'OK', result : [{ isMe : 1 , messageFrom :  memberNo , messageTo : otherNo ,  messageData : '' , messageDate : tempDate , memberName : ''}] });*/
                     return;
                 }
 
