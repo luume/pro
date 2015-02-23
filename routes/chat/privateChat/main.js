@@ -4,6 +4,8 @@ var router = express.Router();
 var util = require('../../../afeel/util/vo');
 var afeelQuery = require('../../../afeel/util/afeelQuery');
 
+var async = require('async');
+
 router.get('/:privateRoomNo', function(req, res){
     var privateRoomNo = req.params.privateRoomNo;
     //if(privateRoomNo == "" || privateRoomNo == undefined){
@@ -27,20 +29,44 @@ router.get('/:privateRoomNo', function(req, res){
 
     console.log(req.body);
 
-    afeelQuery.afeelQuery(datas, queryidname ,'chat', function (err, datas) {
-        /*if(err){
-            res.json(err);
-            return;
-        }*/
+    async.waterfall([
 
-        if(datas == false || datas == undefined){
-            console.log('여기들어온다아..');
-            res.json({success : '1' , message : 'OK', result : [{ isMe : 1 , messageFrom :  memberNo , messageTo : memberTo ,  messageData : '' , messageDate : '' , memberName : ''}] });
-            return;
+        function (callback) {
+
+            afeelQuery.afeelQuery([req.session.memberNo], 'genderMember' ,'chat', function (err, datas) {
+                callback(null, datas[0].memberGender );
+            });
+
+        },
+
+        function (gender, callback) {
+            if(gender == 'W'){
+                afeelQuery.afeelQuery([privateRoomNo, req.session.memberNo], 'otherW' ,'chat', function (err, datas) {
+                    callback(null, datas[0].memberWNo );
+                });
+            }else if(gender == 'M'){
+                afeelQuery.afeelQuery([privateRoomNo, req.session.memberNo], 'otherM' ,'chat', function (err, datas) {
+                    callback(null, datas[0].memberMNo );
+                });
+            }
+
+        },
+
+        function (otherNo, callback) {
+            afeelQuery.afeelQuery(datas, queryidname ,'chat', function (err, datas) {
+                if(datas == false || datas == undefined){
+                    console.log('여기들어온다아..');
+                    res.json({success : '1' , message : 'OK', result : [{ isMe : 1 , messageFrom :  memberNo , messageTo : otherNo ,  messageData : '' , messageDate : '' , memberName : ''}] });
+                    return;
+                }
+
+                res.json(util.successCode(res, datas));
+            });
         }
 
-        res.json(util.successCode(res, datas));
-    });
+    ]);
+
+
 
 
 

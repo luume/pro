@@ -347,4 +347,12 @@
     <myquery id="insertCount">
         select count(*) AS insertCount FROM TEXT_ANSWER WHERE chatroomNo = ?
     </myquery>
+
+    <myquery id="otherW">
+        SELECT * FROM PRIVATE_ROOM WHERE privateRoomNo = ? AND memberWNo = ?
+    </myquery>
+
+    <myquery id="otherM">
+        SELECT * FROM PRIVATE_ROOM WHERE privateRoomNo = ? AND memberMNo = ?
+    </myquery>
 </query>
