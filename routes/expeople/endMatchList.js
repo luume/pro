@@ -60,6 +60,7 @@ router.get('/', function(req, res) {
                         call(null);
                         return;
                     }*/
+                  console.log('엔드매치 세션값 : ' , req.session.memberNo);
                     console.log('첫번째 쿼리 memberNo결과값 = ',memberNo);
                     //  console.log('0번쨰 워터폴 함수', gender);
                     //call(null, gender[0].memberGender);
@@ -121,7 +122,7 @@ router.get('/', function(req, res) {
                                 res.json(err);
                                 return;
                             }
-                           // console.log('첫번쨰 워터폴 함수', datarow);
+                           console.log('남자인데 카운트 = 0', datarow);
                             call(null, datarow)
                         });
                     }else if(count == 1){
@@ -132,6 +133,7 @@ router.get('/', function(req, res) {
                                 return;
                             }
                             // console.log('첫번쨰 워터폴 함수', datarow);
+                          console.log('남자인데 카운트 != 0', datarow);
                             call(null, datarow)
                         });
                     }else{
