@@ -37,7 +37,7 @@ router.post('/', function(req, res){
     }
     console.log('프로필업데이트 file', req.files);
     console.log('프로필업데이트 body', req.body);
-
+  console.log('빈 배열에 담음', profilOriginalFileName);
 
     /*프로필업데이트 body { memberJob: 'ㅡㅡㅡ',
      memberHobby: '쇼핑',
@@ -348,7 +348,7 @@ router.post('/', function(req, res){
 
                 function (row, callback) {
                   console.log('워터폴3333333333333333');
-                    if(profilOriginalFileName != undefined || profilOriginalFileName != null  || profilOriginalFileName != false) {
+                    if(profilOriginalFileName != undefined || profilOriginalFileName != null  || profilOriginalFileName != false || profilOriginalFileName != []) {
                       var arr = [];
                       arr.push(req.session.memberNo);
                       arr.push('http://54.92.4.84:3000/images/' + profilOriginalFileName[0].name);
