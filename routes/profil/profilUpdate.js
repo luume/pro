@@ -264,19 +264,20 @@ router.post('/', function(req, res){
 
                     console.log( tempData.constructor === Array ? '어레이' : '어레이가 아니다');
                     console.log('템프 : ' + temps);
-
+                    var a = [];
                     async.each(temps, function (item, call) {
+                        a.push(item.profilOriginalFileName);
                         call();
                     });
-
+                    console.log('a의 값 : ' + a);
                     var ii = 0;
                     var jj = 0;
                     var arr = [];
                     async.eachSeries(profilArray, function (item, call) {
 
 
-
-                        var index = temps[ii].profilOriginalFileName.indexOf(item);
+                        var index = a.indexOf(item);
+                        //var index = temps[ii].profilOriginalFileName.indexOf(item);
                         console.log('이치 ii : ' + ii + ' , index : ' + index  + ' ,  jj : ' + jj  + ' , 비교값 : ' + item);
 
                         if( index == -1 && ii == 0) {
