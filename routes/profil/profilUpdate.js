@@ -262,6 +262,8 @@ router.post('/', function(req, res){
                 function (row, callback) {
                     var temps = tempData;
 
+                    console.log( tempData.constructor === Array ? '어레이' : '어레이가 아니다');
+
                     var ii = 0;
                     var jj = 0;
                     var arr = [];
@@ -269,7 +271,7 @@ router.post('/', function(req, res){
 
                         console.log('몇번쨰냐 인덱스 : ' + ii);
 
-                        var index = temps[ii].indexOf(item);
+                        var index = tempData[ii].indexOf(item);
 
 
                         if( index == -1 && ii == 0) {
