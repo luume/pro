@@ -65,7 +65,7 @@ router.get('/', function(req, res) {
                     //  console.log('0번쨰 워터폴 함수', gender);
                     //call(null, gender[0].memberGender);
 
-                    if(memberNo === false || memberNo === undefined || memberNo === null){
+                    if(memberNo == false || memberNo == undefined || memberNo == null){
                         console.log('여자의 if문 카운트는 ' , memberNo);
                         call(null,0);
                     }else{
