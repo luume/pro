@@ -74,7 +74,7 @@
     </myquery>
 
     <myquery id = "updateMemberProfil">
-        UPDATE MEMBER SET memberJob = ? AND memberHobby = ? AND memberAdd =? WHERE memberNo = ?
+        UPDATE MEMBER SET memberJob = ? , memberHobby = ? , memberAdd =? WHERE memberNo = ?
     </myquery>
 
 
