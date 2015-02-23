@@ -345,15 +345,18 @@ router.post('/', function(req, res){
                 }*/
 
                 function (row, callback) {
-
-                    var arr = [];
-                    arr.push(req.session.memberNo);
-                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[0].name);
-                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[0].name);
-                    arr.push( 'http://54.92.4.84:3000/images/' + profilOriginalFileName[0].name);
-                    afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
-                       callback(null);
-                    });
+                    if(profilOriginalFileName != undefined || profilOriginalFileName != null ) {
+                      var arr = [];
+                      arr.push(req.session.memberNo);
+                      arr.push('http://54.92.4.84:3000/images/' + profilOriginalFileName[0].name);
+                      arr.push('http://54.92.4.84:3000/images/' + profilOriginalFileName[0].name);
+                      arr.push('http://54.92.4.84:3000/images/' + profilOriginalFileName[0].name);
+                      afeelQuery.afeelQuery(arr, 'insertProfilMain', 'profil', function (err, datas) {
+                        callback(null);
+                      });
+                    }else{
+                      callback(null);
+                    }
 
                 },
 
