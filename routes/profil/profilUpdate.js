@@ -267,6 +267,10 @@ router.post('/', function(req, res){
                     console.log('프로필 파일 최종 : ' + profilOriginalFileName);
                     console.log('프로필 파일 0번째 : ' + profilOriginalFileName[0]);
                     console.log('프로필 어레이 랭스 : ' + profilOriginalFileName.length);
+                    if( profilOriginalFileName.constructor == Object){
+                        profilOriginalFileName = new Array(profilOriginalFileName);
+                        console.log('마지막 콜백에서 어레이로 변환중 오브젝트를');
+                    }
                     var a = [];
                     async.each(temps, function (item, call) {
                         a.push(item.profilOriginalFileName);
