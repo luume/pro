@@ -271,7 +271,7 @@ router.post('/', function(req, res){
 
                         console.log('몇번쨰냐 인덱스 : ' + ii);
 
-                        var index = tempData[ii].indexOf(item);
+                        var index = temps.indexOf(item);
 
 
                         if( index == -1 && ii == 0) {
