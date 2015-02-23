@@ -269,7 +269,7 @@ router.post('/', function(req, res){
                     var arr = [];
                     async.eachSeries(profilArray, function (item, call) {
 
-                        console.log('몇번쨰냐 인덱스 : ' + ii);
+                        console.log('이치 ii : ' + ii + ' ,  jj : ' + jj);
 
                         var index = temps.indexOf(item);
 
