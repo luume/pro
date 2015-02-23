@@ -26,7 +26,7 @@ router.get('/:privateRoomNo', function(req, res){
     datas.push(privateRoomNo);
 
     var queryidname = 'viewPrivateChat';
-
+console.log('모야');
     console.log(req.body);
 
     async.waterfall([
