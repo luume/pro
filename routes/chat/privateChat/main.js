@@ -19,11 +19,7 @@ router.get('/:privateRoomNo', function(req, res){
     //    return;
     //}
 
-    var datas = [];
-    datas.push(memberTo);
-    datas.push(memberNo);
-    datas.push(memberNo);
-    datas.push(privateRoomNo);
+
 
     var queryidname = 'viewPrivateChat';
 console.log('모야');
@@ -56,16 +52,21 @@ console.log('모야');
         },
 
         function (otherNo, callback) {
+            var datas = [];
+            datas.push(otherNo);
+            datas.push(memberNo);
+            datas.push(memberNo);
+            datas.push(privateRoomNo);
             afeelQuery.afeelQuery(datas, queryidname ,'chat', function (err, datas) {
                 console.log('여기333333333');
-                if(datas == false || datas == undefined){
+               /* if(datas == false || datas == undefined){
                     console.log('여기들어온다아..');
                     //var d = new Date();
-                    /*var tempDate = pad2(d.getFullYear().toString()) +'-'+ pad2((d.getMonth() + 1).toString()) +'-'+ pad2(d.getDate().toString()
+                    var tempDate = pad2(d.getFullYear().toString()) +'-'+ pad2((d.getMonth() + 1).toString()) +'-'+ pad2(d.getDate().toString()
                       +' '+ pad2(d.getHours().toString()) +':'+ pad2(d.getMinutes().toString()) +':'+ pad2(d.getSeconds().toString()));
-                    res.json({success : '1' , message : 'OK', result : [{ isMe : 1 , messageFrom :  memberNo , messageTo : otherNo ,  messageData : '' , messageDate : tempDate , memberName : ''}] });*/
+                    res.json({success : '1' , message : 'OK', result : [{ isMe : 1 , messageFrom :  memberNo , messageTo : otherNo ,  messageData : '' , messageDate : tempDate , memberName : ''}] });
                     return;
-                }
+                }*/
 
                 res.json(util.successCode(res, datas));
             });
