@@ -349,7 +349,7 @@ router.post('/', function(req, res){
                 function (row, callback) {
                   console.log('워터폴3333333333333333');
                   console.log('프로필 : ' + profilOriginalFileName);
-                    if(profilOriginalFileName != [] || profilOriginalFileName != '') {
+                    if(profilOriginalFileName != false) {
                       var arr = [];
                       arr.push(req.session.memberNo);
                       arr.push('http://54.92.4.84:3000/images/' + profilOriginalFileName[0].name);
