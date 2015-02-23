@@ -362,6 +362,9 @@ router.post('/', function(req, res){
                       memberHobby: '음악듣기',
                       memberAdd: '서울',*/
                     afeelQuery.afeelQuery([memberJob, memberHobby, memberAdd, req.session.memberNo], 'updateMemberProfil', 'member', function (err, datas) {
+                        if(err)console.error(err);
+
+                        console.log('맴버 업데이트 쿼리 : ' , memberJob + ' , ' + memberHobby + ' , ' + memberAdd  + ' , ' + req.session.memberNo);
                         callback(null,1);
                     });
                 }
