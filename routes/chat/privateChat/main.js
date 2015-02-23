@@ -33,7 +33,7 @@ console.log('모야');
 
         function (callback) {
             console.log('여기00000000');
-            afeelQuery.afeelQuery([req.session.memberNo], 'genderMember' ,'chat', function (err, datas) {
+            afeelQuery.afeelQuery([req.session.memberNo], 'genderMember' ,'member', function (err, datas) {
                 if(err) console.error(err);
                 console.log('여기111111');
                 callback(null, datas[0].memberGender );
