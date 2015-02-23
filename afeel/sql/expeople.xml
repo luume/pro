@@ -33,7 +33,7 @@
         select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM1No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0  UNION
         select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM2No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ?  AND isHide = 0  UNION
         select a.chatroomNo AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM3No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0   UNION
-        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM4No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND iisHide = 0   UNION
+        select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberM4No = ? AND rank BETWEEN 0 AND 2 AND memberNo = ? AND isHide = 0   UNION
         select a.chatroomNo  AS chatroomNo, rank myRank from CHAT_RANK a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo WHERE memberWNo = ? AND rank BETWEEN 0 AND 2 AND memberNo= ? AND isHide = 0
         ) zz ON qq.chatroomNo = zz.chatroomNo
         ) rdata JOIN MEMBER mem ON rdata.memberNo = mem.memberNo
