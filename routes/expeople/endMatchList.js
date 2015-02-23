@@ -223,7 +223,7 @@ router.get('/', function(req, res) {
                 res.json({success:1 , message:'ok', result : temp});
             }else{
               //  console.log('망햇어요 ㅡㅡ');
-                res.json({success:1 , message:'ok', result : temp});
+                res.json({success:0 , message:'ok', result : null});
                /* afeelQuery.afeelQuery([req.session.memberNo], 'myRate2' , function (err, data) {
                     if(err){
                         res.json(err);
