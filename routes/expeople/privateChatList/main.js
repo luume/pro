@@ -14,6 +14,8 @@ router.get('/', function(req, res){
     //    return;
     //}
     //var memberNo = 4;
+
+    console.log('??????????????????',memberNo);
     var datas = [];
     datas.push(memberNo);
 
@@ -22,7 +24,7 @@ router.get('/', function(req, res){
                 //console.log('첫번째 처리');
                 global.queryName = 'member';
                 var queryidname = 'genderMember';
-                afeelQuery.afeelQuery([req.session.memberNo], queryidname , 'member', function (err, datas) {
+                afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) {
                     if(err){
                         res.json(err);
                         return;
@@ -38,10 +40,10 @@ router.get('/', function(req, res){
             function(memberGender, callback) {
               //  console.log('넘어온 멤버 젠더', memberGender);
                 if (memberGender == 'M') { //datas[0].memberGender 로 현재 사용자의 성별을 파악함
-                    //console.log('남자다');
+                    console.log('남자다');
                     global.queryName = 'expeople';
                     var queryidname = 'myPrivateChatList_M';
-                    afeelQuery.afeelQuery([req.session.memberNo], queryidname , 'expeople', function (err, datas) {
+                    afeelQuery.afeelQuery(datas, queryidname , 'expeople', function (err, datas) {
                         if(err){
                             res.json(err);
                             return;
@@ -57,10 +59,10 @@ router.get('/', function(req, res){
                     });
 
                 } else {
-                 //   console.log('여자다');
+                    console.log('여자다');
                     global.queryName = 'expeople';
                     var queryidname = 'myPrivateChatList_W';
-                    afeelQuery.afeelQuery([req.session.memberNo], queryidname , 'expeople', function (err, datas) {
+                    afeelQuery.afeelQuery(datas, queryidname , 'expeople', function (err, datas) {
                         if(err){
                             res.json(err);
 
