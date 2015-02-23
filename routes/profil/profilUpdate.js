@@ -111,28 +111,33 @@ router.post('/', function(req, res){
 
                 function (callback) {
                   console.log('워터폴2222222222222222');
+                  if(profilOriginalFileName != false) {
                     async.eachSeries(deleteFileIndex, function (fileName, call) {
-                        afeelQuery.afeelQuery([req.session.memberNo,nodeUtil.format(fileName)], 'deleteProfil', 'profil', function (err, datas) {
-                            /*    if(err){
-                             //이번에 삭제할 파일네임 :  http://54.92.4.84:3000/images/temp_14237231861423723203883.jpg
-                             console.log('딜리트 프로필 ' , err);
-                             //  callback(0, null);
-                             return;
-                             }*/
-                            console.log('딜리트 파일네임 : ', deleteFileIndex);
-                            console.log(fileName);
-                            console.log(req.session.memberNo);
+                      afeelQuery.afeelQuery([req.session.memberNo, nodeUtil.format(fileName)], 'deleteProfil', 'profil', function (err, datas) {
+                        /*    if(err){
+                         //이번에 삭제할 파일네임 :  http://54.92.4.84:3000/images/temp_14237231861423723203883.jpg
+                         console.log('딜리트 프로필 ' , err);
+                         //  callback(0, null);
+                         return;
+                         }*/
+                        console.log('딜리트 파일네임 : ', deleteFileIndex);
+                        console.log(fileName);
+                        console.log(req.session.memberNo);
 
-                            /*del(['/home/ubuntu/aFeel/pro/public/images/' + fileName], function (err, paths) {
-                                if(err)console.error('파일 에러 = ', err );
-                                console.log('파일이 지워졋다', paths);
-                            });*/
+                        /*del(['/home/ubuntu/aFeel/pro/public/images/' + fileName], function (err, paths) {
+                         if(err)console.error('파일 에러 = ', err );
+                         console.log('파일이 지워졋다', paths);
+                         });*/
 
-                            call();
-                        });
+                        call();
+                      });
                     }, function (err) {
-                        callback(null, 1)
+                      callback(null, 1)
                     });
+                  }else{
+                    console.log('프로필 첨부 안할떄');
+                    callback(null, 1)
+                  }
                 }, // func end  정상
 
 
