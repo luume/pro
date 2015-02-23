@@ -26,7 +26,7 @@ router.post('/', function(req, res){
     console.log('1111111111reqbody',req.body);
     //console.log('messageTO',messageTO);
 
-
+    var other;
 
 
     async.waterfall([
@@ -56,6 +56,7 @@ router.post('/', function(req, res){
         },
 
         function (otherNo, callback) {
+            other = otherNo;
             //INSERT INTO PRIVATE_MESSAGE(messageNo, privateRoomNo, messageFrom, messageTO, messageData) VALUES(0, ?, ?, ?, ?)
             afeelQuery.afeelQuery([privateRoomNo, req.session.memberNo,  otherNo, messageData], 'insertPrivateMessage', 'chat', function (err, datas) {
 
@@ -94,7 +95,7 @@ router.post('/', function(req, res){
           +' '+ pad2(d.getHours().toString()) +':'+ pad2(d.getMinutes().toString()) +':'+ pad2(d.getSeconds().toString()));
         console.log('날짜형식', tempDate);
         console.log('사진파일', profilThumbnail);
-        gcmSetting.gcmSend([messageTO], {gcmType : 'PM' ,messageData : messageData, privateChatRegDate : tempDate,
+        gcmSetting.gcmSend([other], {gcmType : 'PM' ,messageData : messageData, privateChatRegDate : tempDate,
             privateRoomNo : privateRoomNo, memberName : memberName, profilThumbnail:profilThumbnail, messageTo:req.session.memberNo});
 
         //console.log('응?');
