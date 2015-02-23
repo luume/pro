@@ -17,7 +17,7 @@ router.use(multer({
 }));
 
 router.post('/', function(req, res){
-
+    console.log('ㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹ');
     var profilOriginalFileName = req.files.profilOriginalFileName;
     var memberAdd = req.body.memberAdd;
     var memberJob = req.body.memberJob;
