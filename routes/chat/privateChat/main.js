@@ -32,8 +32,9 @@ console.log('모야');
     async.waterfall([
 
         function (callback) {
-
+            console.log('여기00000000');
             afeelQuery.afeelQuery([req.session.memberNo], 'genderMember' ,'chat', function (err, datas) {
+                if(err) console.error(err);
                 console.log('여기111111');
                 callback(null, datas[0].memberGender );
             });
