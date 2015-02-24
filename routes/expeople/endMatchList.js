@@ -16,7 +16,7 @@ router.get('/', function(req, res) {
 
     var memberEmail = req.body.memberEmail;
  // console.log('엔드매치세션아이디ss = ' , req.session.memberNo);
-
+    var memberNo = req.session.memberNo;
 
 
   //  console.log('datas', datas);
@@ -45,7 +45,7 @@ router.get('/', function(req, res) {
             // res.json 으로 실질적으로 쏴주는곳
       });*/
     var queryidname = 'endMatchList';
-    var temp;
+    var temp;//
 
     //var count = 0;
     async.waterfall([
@@ -81,7 +81,7 @@ router.get('/', function(req, res) {
             function (count, call) {
                 console.log('워터폴 인자로 넘어온 count 값 = ' , count);
                 global.queryName = 'member';
-                afeelQuery.afeelQuery([req.session.memberNo], 'genderMember', 'member', function (err, gender) {
+                afeelQuery.afeelQuery([memberNo], 'genderMember', 'member', function (err, gender) {
                    /* if(err){
                      //   console.log('에러',err);
                         res.json(err);
