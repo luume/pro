@@ -75,11 +75,14 @@ router.get('/', function(req, res){
                         }
                        // console.log('여자인 데이터 잘가져옴');
                         //console.log('data',datas);
-                        callback(null, datas);
+                        callback(null, datas, memberGender);
                         //res.json(util.successCode(res, datas));
                     });
                 }
             }
+            //aa
+            //aa
+
         ],	function(err, results) {
            // console.log('최종 처리');
            // console.log('results' , results); // result <- done

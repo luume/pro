@@ -9,6 +9,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+
 var options = {
     key: fs.readFileSync('../key.pem'),
     cert: fs.readFileSync('../cert.pem')
@@ -40,7 +42,7 @@ var session = require('express-session');
 var afeelPool = require('./afeel/util/afeelConnectionPool');
 
 
-/*app.use(multer({
+/*app.use(multer({//
     dest: './public/images/',
     rename: function (fieldname, filename) {
         return filename + Date.now() + '.jpg'
@@ -52,7 +54,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
-app.use(session({secret:'test key', key:'test',cookie:{maxAge:60*60*24*30}}));
+app.use(session({secret:'test key', key:'test',cookie:{maxAge:60*60*24*30}}));//
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
