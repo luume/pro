@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require('express'), RedisStore = require('connect-redis')(express);
 //var multer  = require('multer');
 var path = require('path');
 var http = require('http');
@@ -42,7 +42,7 @@ var session = require('express-session');
 var afeelPool = require('./afeel/util/afeelConnectionPool');
 
 
-/*app.use(multer({
+/*app.use(multer({//
     dest: './public/images/',
     rename: function (fieldname, filename) {
         return filename + Date.now() + '.jpg'
@@ -54,7 +54,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
-app.use(session({secret:'test key', key:'test',cookie:{maxAge:60*60*24*30}}));//
+app.use(session({secret:'test key', key:'test',cookie:{maxAge:60*60*24*30}, store: new RedisStore({
+    host: '127.0.0.1',
+    port: 6379
+})
+}));//
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
