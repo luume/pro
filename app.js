@@ -55,7 +55,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(cookieParser());
-app.use(session({secret:'test key', key:'test',cookie:{maxAge:60*60*24*30},store: new redisStore({ host: 'localhost', port: 6379, client: client })}));//
+app.use(session({secret:'test key', key:'test',cookie:{maxAge:60*60*24*30},store: new redisStore({ host: '127.0.0.1', port: 6379 })}));//
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
