@@ -53,7 +53,7 @@ var afeelPool = require('./afeel/util/afeelConnectionPool');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-
+app.use(cookieParser());
 app.use(session({secret:'test key', key:'test',cookie:{maxAge:60*60*24*30},store: new redisStore({ host: 'localhost', port: 6379, client: client })}));//
 
 // uncomment after placing your favicon in /public
@@ -61,7 +61,7 @@ app.use(session({secret:'test key', key:'test',cookie:{maxAge:60*60*24*30},store
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
