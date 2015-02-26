@@ -1,3 +1,4 @@
+var session = require('express-session');
 var express = require('express'),redisStore = require('connect-redis')(session);
 //var multer  = require('multer');
 var path = require('path');
@@ -38,7 +39,7 @@ https.createServer(options, app).listen(port2, function(){
 
 
 
-var session = require('express-session');
+
 var afeelPool = require('./afeel/util/afeelConnectionPool');
 
 
@@ -61,7 +62,7 @@ app.use(session({secret:'test key', key:'test',cookie:{maxAge:60*60*24*30},store
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+//app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
