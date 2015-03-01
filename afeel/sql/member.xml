@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <query>
     <myquery id="signupMember">
-        INSERT INTO MEMBER(memberEmail, memberName, memberNick, memberPw, memberGender, memberBirth, memberHobby, memberHeight, memberAdd, memberJob, registrationId) VALUES(?, ?, ?, ?, ?, ?, ?, ? , ?,  ?, ?)
+        INSERT INTO MEMBER(memberEmail, memberName, memberNick, memberPw, memberGender, memberBirth, memberHobby, memberHeight, memberAdd, memberJob, registrationId, memberCash) VALUES(?, ?, ?, ?, ?, ?, ?, ? , ?,  ?, ?, 15)
     </myquery>
 
     <myquery id="loginMember">
