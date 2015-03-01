@@ -68,6 +68,7 @@ var expeoplePrivateChatListDelete = require('./expeople/privateChatList/delete')
 
 // 내가 한 질문
 var myquestionMain = require('./myquestion/main');
+var myquestionMan = require('./myquestion/myquestionman');
 var myquestionRegistBestQ = require('./myquestion/registBestQ');
 var myquestionUpdateQuestion = require('./myquestion/updateQuestion');
 var myquestionDeleteQuestion = require('./myquestion/deleteQuestion');
@@ -142,10 +143,12 @@ router.use('/expeople/privatechatlist/delete', expeoplePrivateChatListDelete);
 
 
 router.use('/myquestion', myquestionMain);
+router.use('/myquestion/myquestionman', myquestionMan);
 router.use('/myquestion/registbestq', myquestionRegistBestQ);
 router.use('/myquestion/updatequestion', myquestionUpdateQuestion);
 router.use('/myquestion/deletequestion', myquestionDeleteQuestion);
 router.use('/myquestion/regquestion', myquestionregQuestion);
+
 
 
 
