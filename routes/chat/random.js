@@ -62,6 +62,7 @@ router.post('/', function(req, res) {
 
     }, // 1번째 워터폴
 
+      // 1번째 워터폴 함수에서 진행중인 이성이 없는 경우. 1:1 채팅방이 생성됬는지 다시 한번 체크해준다.
     function(rows, callback){
       if(memberGender == 'W' && rows == false){
           afeelQuery.afeelQuery(bindData, 'endMatchListM', 'expeople', function (err, datas) {
