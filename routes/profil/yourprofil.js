@@ -17,19 +17,22 @@ router.get('/:memberTo', function(req, res){
     //}
     console.log('유어프로필 현재사용자', memberNo);
     console.log('유어프로필 볼 사용자', memberTo);
-    var datas = [];
+    //var datas = [];
 
-    datas.push(memberTo);
-    datas.push(memberNo);
+
 
     console.log('yourProifil body ' , req.body);
 
     async.waterfall([
             function(callback) {
                 global.queryName = 'member';
-                var queryidname = 'feelingMember';
+                var queryidname = 'feelingMember'; //내가 상대에게 준 정보
+                var givedata = [];
+                givedata.push(memberTo);
+                givedata.push(memberNo);
+
                 //feeling code 및 feeling rate 가져옴
-                afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) {
+                afeelQuery.afeelQuery(givedata, queryidname , 'member', function (err, datas) {
                     if(err){
                         res.json(err);
                         return;
@@ -45,7 +48,32 @@ router.get('/:memberTo', function(req, res){
                 })
 
             },
-            function(memberdata, callback) {
+            //ㅁㅁ
+            function(memberGivedata, callback) {
+                //console.log('memberdata.feelingCode1' , memberdata.feelingCode1);
+                var queryidname = 'feelingMember'; //내가 상대에게 준 정보
+                //feeling code 및 feeling rate 가져옴
+                var receivedata = [];
+                receivedata.push(memberNo);
+                receivedata.push(memberTo);
+                afeelQuery.afeelQuery(receivedata, queryidname , 'member', function (err, datas) {
+                    if(err){
+                        res.json(err);
+                        return;
+                    }
+
+                    console.log('1워터폴 유어프로필', datas);
+                    if(datas == false){ //select 결과 row 0일때 처리
+                        res.json({ success : 0 , message : '데이터 없음', result : null});
+                        return;
+                    }
+                    //console.log('첫번째 처리 성공' , datas[0]);
+                    callback(null, memberGivedata, datas[0]);
+                })
+
+            },
+            //ㅁㅁ내가 상대에게 받은 정보
+            function(memberGivedata, memberReceiveData, callback) {
                 //console.log('memberdata.feelingCode1' , memberdata.feelingCode1);
                 var datas = [];
                 //datas.push(memberdata.feelingCode1);
@@ -98,9 +126,11 @@ router.get('/:memberTo', function(req, res){
                         }, function(err){
                             profilThumbnail = arr;
                             temp = datas;
-                            datas[0].memberRate = memberdata.memberRate;
+                            datas[0].memberRate = memberGivedata.memberRate;
                             datas[0].profilThumbnail = arr;
-                            datas[0].fType = memberdata.feelingCode1;
+                            datas[0].fType = memberGivedata.feelingCode1;
+                            datas[0].memberReceiveRate = memberReceiveData.memberRate;
+                            datas[0].ReceivefType = memberReceiveData.feelingCode1;
                             temp.aaa = arr;
                             temp.fType = codeSum;
                             //res.json({success:1, message:'ok', result:});
