@@ -5,6 +5,7 @@
         ((YEAR(CURDATE())- YEAR(aaa.memberBirth)) - (RIGHT(CURDATE(),5) >RIGHT(aaa.memberBirth,5))) AS memberBirth, aaa.memberAdd AS memberAdd,
         aaa.memberHeight AS memberHeight , aaa.memberJob AS memberJob , aaa.memberSnsYn AS memberSnsYn, aaa.memberHPYn AS memberHPYn,
         aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail
+        , IF(datediff(now(), chatroomRegDate) = 1 , concat(hour(date_add(now(), interval -1 day)),'시간 전'), concat(datediff(now(), chatroomRegDate), '일 전') ) AS chatroomRegDate
         FROM
         (
         SELECT rdata2.memberNo AS memberNo, rdata2.memberName AS memberName, rdata2.memberBirth AS memberBirth, rdata2.memberAdd AS memberAdd,
@@ -47,6 +48,7 @@
         , aaa.memberAdd AS memberAdd,
         aaa.memberHeight AS memberHeight , aaa.memberJob AS memberJob , aaa.memberSnsYn AS memberSnsYn, aaa.memberHPYn AS memberHPYn,
         aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail
+        , IF(datediff(now(), chatroomRegDate) = 1 , concat(hour(date_add(now(), interval -1 day)),'시간 전'), concat(datediff(now(), chatroomRegDate), '일 전') ) AS chatroomRegDate
         FROM
         (
         SELECT rdata2.memberNo AS memberNo, rdata2.memberName AS memberName, rdata2.memberBirth AS memberBirth, rdata2.memberAdd AS memberAdd,
@@ -89,6 +91,7 @@
         , aaa.memberAdd AS memberAdd,
         aaa.memberHeight AS memberHeight , aaa.memberJob AS memberJob , aaa.memberSnsYn AS memberSnsYn, aaa.memberHPYn AS memberHPYn,
         aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail
+        , IF(datediff(now(), chatroomRegDate) = 1 , concat(hour(date_add(now(), interval -1 day)),'시간 전'), concat(datediff(now(), chatroomRegDate), '일 전') ) AS chatroomRegDate
         FROM
         (
         SELECT rdata2.memberNo AS memberNo, rdata2.memberName AS memberName, rdata2.memberBirth AS memberBirth, rdata2.memberAdd AS memberAdd,
@@ -131,6 +134,7 @@
         , aaa.memberAdd AS memberAdd,
         aaa.memberHeight AS memberHeight , aaa.memberJob AS memberJob , aaa.memberSnsYn AS memberSnsYn, aaa.memberHPYn AS memberHPYn,
         aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail
+        , IF(datediff(now(), chatroomRegDate) = 1 , concat(hour(date_add(now(), interval -1 day)),'시간 전'), concat(datediff(now(), chatroomRegDate), '일 전') ) AS chatroomRegDate
         FROM
         (
         SELECT rdata2.memberNo AS memberNo, rdata2.memberName AS memberName, rdata2.memberBirth AS memberBirth, rdata2.memberAdd AS memberAdd,
