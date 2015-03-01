@@ -17,7 +17,7 @@ router.get('/:memberTo', function(req, res){
     //}
     console.log('유어프로필 현재사용자', memberNo);
     console.log('유어프로필 볼 사용자', memberTo);
-    var datas = [];
+    //var datas = [];
 
 
 
@@ -27,8 +27,9 @@ router.get('/:memberTo', function(req, res){
             function(callback) {
                 global.queryName = 'member';
                 var queryidname = 'feelingMember'; //내가 상대에게 준 정보
-                datas.push(memberTo);
-                datas.push(memberNo);
+                var givedata = [];
+                givedata.push(memberTo);
+                givedata.push(memberNo);
 
                 //feeling code 및 feeling rate 가져옴
                 afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) {
@@ -52,9 +53,10 @@ router.get('/:memberTo', function(req, res){
                 //console.log('memberdata.feelingCode1' , memberdata.feelingCode1);
                 var queryidname = 'feelingMember'; //내가 상대에게 준 정보
                 //feeling code 및 feeling rate 가져옴
-                datas.push(memberNo);
-                datas.push(memberTo);
-                afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) {
+                var receivedata = [];
+                receivedata.push(memberNo);
+                receivedata.push(memberTo);
+                afeelQuery.afeelQuery(receivedata, queryidname , 'member', function (err, datas) {
                     if(err){
                         res.json(err);
                         return;
