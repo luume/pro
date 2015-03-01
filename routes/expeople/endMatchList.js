@@ -8,18 +8,18 @@ var async = require('async');
 router.get('/', function(req, res) {
 
     var isSuccess = util.sessionCheck(req);
-  //  console.log('endmatCh2', req.session.memberNo);
+  //  //console.log('endmatCh2', req.session.memberNo);
    /* if (!isSuccess) {
         res.send('<script>alert("session undefinded");</script>');
         return;
     }*/
 
     var memberEmail = req.body.memberEmail;
- // console.log('엔드매치세션아이디ss = ' , req.session.memberNo);
+ // //console.log('엔드매치세션아이디ss = ' , req.session.memberNo);
     var memberNo = req.session.memberNo;
 
 
-  //  console.log('datas', datas);
+  //  //console.log('datas', datas);
 
     /*async.waterfall([
 
@@ -53,23 +53,23 @@ router.get('/', function(req, res) {
             function (call) {
                 afeelQuery.afeelQuery([req.session.memberNo], 'filteringMember', 'expeople', function (err, memberNo) {
                     /*if(err){
-                        //   console.log('에러',err);
+                        //   //console.log('에러',err);
                         //res.json(err);
-                        console.log('여기서 걸리네 ㅡㅡ');
+                        //console.log('여기서 걸리네 ㅡㅡ');
                         count = 0;
                         call(null);
                         return;
                     }*/
-                  console.log('엔드매치 세션값 : ' , req.session.memberNo);
-                    console.log('첫번째 쿼리 memberNo결과값 = ',memberNo);
-                    //  console.log('0번쨰 워터폴 함수', gender);
+                  //console.log('엔드매치 세션값 : ' , req.session.memberNo);
+                    //console.log('첫번째 쿼리 memberNo결과값 = ',memberNo);
+                    //  //console.log('0번쨰 워터폴 함수', gender);
                     //call(null, gender[0].memberGender);
 
                     if(memberNo == false || memberNo == undefined || memberNo == null){
-                        console.log('여자의 if문 카운트는 ' , memberNo);
+                        //console.log('여자의 if문 카운트는 ' , memberNo);
                         call(null,0);
                     }else{
-                        console.log('여자의 else 카운트는 ' , memberNo);
+                        //console.log('여자의 else 카운트는 ' , memberNo);
                        call(null, 1);
                     }
 
@@ -79,15 +79,15 @@ router.get('/', function(req, res) {
             },
 
             function (count, call) {
-                console.log('워터폴 인자로 넘어온 count 값 = ' , count);
+                //console.log('워터폴 인자로 넘어온 count 값 = ' , count);
                 global.queryName = 'member';
                 afeelQuery.afeelQuery([memberNo], 'genderMember', 'member', function (err, gender) {
                    /* if(err){
-                     //   console.log('에러',err);
+                     //   //console.log('에러',err);
                         res.json(err);
                         return;
                     }*/
-                    console.log('2번쨰 워터폴 함수', gender);
+                    //console.log('2번쨰 워터폴 함수', gender);
                     call(null, gender[0].memberGender, count);
                 });
             },
@@ -111,33 +111,33 @@ router.get('/', function(req, res) {
                 datas.push(req.session.memberNo);
                 datas.push(req.session.memberNo);
                 datas.push(req.session.memberNo);
-              //  console.log('엔드매치 실행전');
+              //  //console.log('엔드매치 실행전');
                 global.queryName = 'expeople';
                 if(gender == 'M'){
-                    console.log('남자다');
+                    //console.log('남자다');
                     if(count == 0){
                         afeelQuery.afeelQuery(datas, 'endMatchListM', 'expeople', function (err, datarow) {
                             if(err){
-                           //     console.log('에러',err);
+                           //     //console.log('에러',err);
                                 res.json(err);
                                 return;
                             }
-                           console.log('남자인데 카운트 = 0', datarow);
+                           //console.log('남자인데 카운트 = 0', datarow);
                             call(null, datarow)
                         });
                     }else if(count == 1){
                         afeelQuery.afeelQuery(datas, 'endMatchListMFilter', 'expeople', function (err, datarow) {
                             if(err){
-                                //     console.log('에러',err);
+                                //     //console.log('에러',err);
                                 res.json(err);
                                 return;
                             }
-                            // console.log('첫번쨰 워터폴 함수', datarow);
-                          console.log('남자인데 카운트 != 0', datarow);
+                            // //console.log('첫번쨰 워터폴 함수', datarow);
+                          //console.log('남자인데 카운트 != 0', datarow);
                             call(null, datarow)
                         });
                     }else{
-                        console.log('남자엘즈문');
+                        //console.log('남자엘즈문');
                         call(new Error('남자엘즈문'), null);
                     }
                 }else if(gender == 'W') {
@@ -145,26 +145,26 @@ router.get('/', function(req, res) {
                     if(count == 0){
                         afeelQuery.afeelQuery(datas, 'endMatchListW', 'expeople', function (err, datarow) {
                             if (err) {
-                                console.log('에러', err);
+                                //console.log('에러', err);
                                 res.json(err);
                                 return;
                             }
-                          //  console.log('첫번쨰 워터폴 함수', datarow);
+                          //  //console.log('첫번쨰 워터폴 함수', datarow);
                             call(null, datarow)
                         });
                     }else if(count == 1){
-                        console.log('데이터스 = ', datas);
+                        //console.log('데이터스 = ', datas);
                         afeelQuery.afeelQuery(datas, 'endMatchListWFilter', 'expeople', function (err, datarow) {
                             if (err) {
-                                console.log('에러', err);
+                                //console.log('에러', err);
                                 res.json(err);
                                 return;
                             }
-                            console.log('첫번쨰 워터폴 함수', datarow);
+                            //console.log('첫번쨰 워터폴 함수', datarow);
                             call(null, datarow)
                         });
                     }else{
-                        console.log('여자엘즈문');
+                        //console.log('여자엘즈문');
                         call(new Error('여자엘즈문'), null);
                     }
                 }
@@ -185,7 +185,7 @@ router.get('/', function(req, res) {
 
                             return;
                         }
-                      //  console.log('2번쨰 워터폴 함수', data);
+                      //  //console.log('2번쨰 워터폴 함수', data);
                         if(data == false ){
                             call(null, 0);
                             return;
@@ -195,14 +195,14 @@ router.get('/', function(req, res) {
                         j++;
                         callback();
                 /*        async.each(datarow, function (row, callback) {
-                            //  console.log('이치 row ' , row);
-                            //    console.log('datas[j].rank = ' , datas[0].rank);
-                            console.log('이치문 돔');
+                            //  //console.log('이치 row ' , row);
+                            //    //console.log('datas[j].rank = ' , datas[0].rank);
+                            //console.log('이치문 돔');
                             temp[j].memberRate = row;
                             callback();
                             j++;
                         }, function(err){
-                            console.log('temp는 ', temp);
+                            //console.log('temp는 ', temp);
                             callback();
                         });*/
 
@@ -217,9 +217,9 @@ router.get('/', function(req, res) {
             
         ],
         function (err, result) {
-           // console.log('마지막 temp ', temp);
+           // //console.log('마지막 temp ', temp);
             if(result==1){
-                console.log('성공코드 : ' + temp);
+                //console.log('성공코드 : ' + temp);
               if(temp == false){
                 res.json({success:1 , message:'ok', result : null});
               }else{
@@ -227,7 +227,7 @@ router.get('/', function(req, res) {
               }
 
             }else{
-              //  console.log('망햇어요 ㅡㅡ');
+              //  //console.log('망햇어요 ㅡㅡ');
                 res.json({success:1 , message:'ok', result : temp});
                /* afeelQuery.afeelQuery([req.session.memberNo], 'myRate2' , function (err, data) {
                     if(err){
@@ -261,23 +261,23 @@ router.get('/', function(req, res) {
                 return;
             }
          *//*   if(datas.length == 0){
-                console.log('진행중인 이성 에러코드 발생');
-           //     console.log({ success : 0 , message : '에러 발생', result : [ null ] });
+                //console.log('진행중인 이성 에러코드 발생');
+           //     //console.log({ success : 0 , message : '에러 발생', result : [ null ] });
                 res.json({ success : 0 , message : '에러 발생', result : [ null ] });
                 return;
             }
 *//*
           *//*(function () {
             for(var j = 0 ; j < datas.length; j++){
-              console.log(datas[j].rank + ' = ' + data[j].rank);
+              //console.log(datas[j].rank + ' = ' + data[j].rank);
               datas[j].rank = data[j].rank;
             }
           })();*//*
           var j = 0;
-          //console.log('datas = ', datas);
+          ////console.log('datas = ', datas);
           async.each(data, function (row, callback) {
-          //  console.log('이치 row ' , row);
-        //    console.log('datas[j].rank = ' , datas[0].rank);
+          //  //console.log('이치 row ' , row);
+        //    //console.log('datas[j].rank = ' , datas[0].rank);
           if(datas[j] == undefined){
               res.json(err);
               return;
@@ -289,8 +289,8 @@ router.get('/', function(req, res) {
 
 
           }, function(err){
-          //  console.log('모두 성공');
-            //console.log('arr', arr);
+          //  //console.log('모두 성공');
+            ////console.log('arr', arr);
 
             //conn.release();
             //res.json({result:arr});
@@ -302,8 +302,8 @@ router.get('/', function(req, res) {
             //var fTypeArray = fType.split(',');
 
            // datas[0].fType = fTypeArray;
-          //console.log('길이',datas.length);
-            //console.log('진행중인 이성의 데이터 값ss  = ', {success:1 , message:'ok', result : datas});
+          ////console.log('길이',datas.length);
+            ////console.log('진행중인 이성의 데이터 값ss  = ', {success:1 , message:'ok', result : datas});
 
             res.json({success:1 , message:'ok', result : datas});
 
@@ -316,11 +316,11 @@ router.get('/', function(req, res) {
 router.post('/:chartroomNo', function(req, res) {
     var chartroomNo = req.params.chartroomNo;
     var deleteMemberNo = req.body.memberNo;
-    console.log('진행중인 이성 삭제 진입', chartroomNo );
-    console.log('진행중인 이성 삭제 진입', deleteMemberNo );
+    //console.log('진행중인 이성 삭제 진입', chartroomNo );
+    //console.log('진행중인 이성 삭제 진입', deleteMemberNo );
     afeelQuery.afeelQuery([req.session.memberNo, deleteMemberNo, chartroomNo], 'insertFiltering', 'expeople', function (err, gender) {
         if(err){
-            console.log('에러',err);
+            //console.log('에러',err);
             res.json(err);
             return;
         }
@@ -333,7 +333,7 @@ router.get('/reset', function(req, res) {
 
     afeelQuery.afeelQuery([], 'reset',  'expeople', function (err, gender) {
         if(err){
-            console.log('에러',err);
+            //console.log('에러',err);
             res.json(err);
             return;
         }

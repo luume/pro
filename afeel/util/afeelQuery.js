@@ -64,11 +64,11 @@ exports.afeelQuery = function(bindQuery , queryId, queryname, callback) {
 
           conn.query(result, bindQuery, function (err, row) {
 
-            if(queryId == 'createChatRoomWomen'){
+/*            if(queryId == 'createChatRoomWomen'){
               console.log(queryId + ' : ' + result);
               console.log('bindId : ' , bindQuery);
               console.log('소개받기 row : ' , row);
-            }
+            }*/
 
 
             if (err) {
