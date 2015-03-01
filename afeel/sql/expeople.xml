@@ -5,7 +5,7 @@
         ((YEAR(CURDATE())- YEAR(aaa.memberBirth)) - (RIGHT(CURDATE(),5) >RIGHT(aaa.memberBirth,5))) AS memberBirth, aaa.memberAdd AS memberAdd,
         aaa.memberHeight AS memberHeight , aaa.memberJob AS memberJob , aaa.memberSnsYn AS memberSnsYn, aaa.memberHPYn AS memberHPYn,
         aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail
-        , IF(datediff(now(), chatroomRegDate) = 1 , concat(hour(date_add(now(), interval -1 day)),'시간 전'), concat(datediff(now(), chatroomRegDate), '일 전') ) AS chatroomRegDate
+        , IF(datediff(now(), chatroomRegDate) = 1 , concat(hour(date_add(now(), interval -1 day)),'시간 남음'), concat(datediff(now(), chatroomRegDate), '일 남음') ) AS chatroomRegDate
         FROM
         (
         SELECT rdata2.memberNo AS memberNo, rdata2.memberName AS memberName, rdata2.memberBirth AS memberBirth, rdata2.memberAdd AS memberAdd,
@@ -39,7 +39,7 @@
         ) zz ON qq.chatroomNo = zz.chatroomNo
         ) rdata JOIN MEMBER mem ON rdata.memberNo = mem.memberNo
         ) rdata2 JOIN PROFIL pr ON rdata2.memberNo = pr.memberNo  WHERE profilMainYn = 1
-        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo GROUP BY chatroomNo HAVING aaa.memberNo IN  (SELECT deleteMemberNo FROM FILTERING WHERE memberNo = ?)
+        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo GROUP BY chatroomNo HAVING aaa.memberNo IN  (SELECT deleteMemberNo FROM FILTERING WHERE memberNo = ?)  ORDER BY aaa.chatroomRegDate DESC
     </myquery>
 
     <myquery id="endMatchListWFilter">
@@ -48,7 +48,7 @@
         , aaa.memberAdd AS memberAdd,
         aaa.memberHeight AS memberHeight , aaa.memberJob AS memberJob , aaa.memberSnsYn AS memberSnsYn, aaa.memberHPYn AS memberHPYn,
         aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail
-        , IF(datediff(now(), chatroomRegDate) = 1 , concat(hour(date_add(now(), interval -1 day)),'시간 전'), concat(datediff(now(), chatroomRegDate), '일 전') ) AS chatroomRegDate
+        , IF(datediff(now(), chatroomRegDate) = 1 , concat(hour(date_add(now(), interval -1 day)),'시간 남음'), concat(datediff(now(), chatroomRegDate), '일 남음') ) AS chatroomRegDate
         FROM
         (
         SELECT rdata2.memberNo AS memberNo, rdata2.memberName AS memberName, rdata2.memberBirth AS memberBirth, rdata2.memberAdd AS memberAdd,
@@ -82,7 +82,7 @@
         ) zz ON qq.chatroomNo = zz.chatroomNo
         ) rdata JOIN MEMBER mem ON rdata.memberNo = mem.memberNo
         ) rdata2 JOIN PROFIL pr ON rdata2.memberNo = pr.memberNo  WHERE profilMainYn = 1
-        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo GROUP BY chatroomNo HAVING aaa.memberNo IN  (SELECT deleteMemberNo FROM FILTERING WHERE memberNo = ?)
+        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo GROUP BY chatroomNo HAVING aaa.memberNo IN  (SELECT deleteMemberNo FROM FILTERING WHERE memberNo = ?)  ORDER BY aaa.chatroomRegDate DESC
     </myquery>
 
     <myquery id="endMatchListM">
@@ -91,7 +91,7 @@
         , aaa.memberAdd AS memberAdd,
         aaa.memberHeight AS memberHeight , aaa.memberJob AS memberJob , aaa.memberSnsYn AS memberSnsYn, aaa.memberHPYn AS memberHPYn,
         aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail
-        , IF(datediff(now(), chatroomRegDate) = 1 , concat(hour(date_add(now(), interval -1 day)),'시간 전'), concat(datediff(now(), chatroomRegDate), '일 전') ) AS chatroomRegDate
+        , IF(datediff(now(), chatroomRegDate) = 1 , concat(hour(date_add(now(), interval -1 day)),'시간 남음'), concat(datediff(now(), chatroomRegDate), '일 남음') ) AS chatroomRegDate
         FROM
         (
         SELECT rdata2.memberNo AS memberNo, rdata2.memberName AS memberName, rdata2.memberBirth AS memberBirth, rdata2.memberAdd AS memberAdd,
@@ -125,7 +125,7 @@
         ) zz ON qq.chatroomNo = zz.chatroomNo
         ) rdata JOIN MEMBER mem ON rdata.memberNo = mem.memberNo
         ) rdata2 JOIN PROFIL pr ON rdata2.memberNo = pr.memberNo  WHERE profilMainYn = 1
-        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo GROUP BY chatroomNo
+        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo GROUP BY chatroomNo  ORDER BY aaa.chatroomRegDate DESC
     </myquery>
 
     <myquery id="endMatchListW">
@@ -134,7 +134,7 @@
         , aaa.memberAdd AS memberAdd,
         aaa.memberHeight AS memberHeight , aaa.memberJob AS memberJob , aaa.memberSnsYn AS memberSnsYn, aaa.memberHPYn AS memberHPYn,
         aaa.memberEmailYn AS memberEmailYn , aaa.chatroomNo AS chatroomNo, aaa.rank AS rank , aaa.profilThumbnail AS profilThumbnail
-        , IF(datediff(now(), chatroomRegDate) = 1 , concat(hour(date_add(now(), interval -1 day)),'시간 전'), concat(datediff(now(), chatroomRegDate), '일 전') ) AS chatroomRegDate
+        , IF(datediff(now(), chatroomRegDate) = 1 , concat(hour(date_add(now(), interval -1 day)),'시간 남음'), concat(datediff(now(), chatroomRegDate), '일 남음') ) AS chatroomRegDate
         FROM
         (
         SELECT rdata2.memberNo AS memberNo, rdata2.memberName AS memberName, rdata2.memberBirth AS memberBirth, rdata2.memberAdd AS memberAdd,
@@ -168,7 +168,7 @@
         ) zz ON qq.chatroomNo = zz.chatroomNo
         ) rdata JOIN MEMBER mem ON rdata.memberNo = mem.memberNo
         ) rdata2 JOIN PROFIL pr ON rdata2.memberNo = pr.memberNo  WHERE profilMainYn = 1
-        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo GROUP BY chatroomNo
+        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo GROUP BY chatroomNo  ORDER BY aaa.chatroomRegDate DESC
     </myquery>
 
     <myquery id="myRate1">
