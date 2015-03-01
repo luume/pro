@@ -21,17 +21,41 @@ router.post('/', function(req, res) {
     function (callback) {
       var bindData = [];
       if(memberGender == 'W'){
-        for(var i = 0 ; i < 14; i++){
           bindData.push(req.session.memberNo);
-        }
-        afeelQuery.afeelQuery(bindData, 'endMatchListW', 'expeople', function (err, datas) {
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+
+          afeelQuery.afeelQuery(bindData, 'endMatchListW', 'expeople', function (err, datas) {
           callback(null, datas);
         });
       }else if(memberGender == 'M'){
-        for(var i = 0 ; i < 15; i++){
           bindData.push(req.session.memberNo);
-        }
-        afeelQuery.afeelQuery(bindData, 'endMatchListM', 'expeople', function (err, datas) {
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          bindData.push(req.session.memberNo);
+          afeelQuery.afeelQuery(bindData, 'endMatchListM', 'expeople', function (err, datas) {
           callback(null, datas);
         });
       }
