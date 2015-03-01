@@ -8,7 +8,7 @@ router.get('/', function(req, res){
     //console.log('eeeeeeee',req.session.memberNo);
     var memberNo = req.session.memberNo;
     var datas = [];
-    datas.push(memberNo);
+    //datas.push(memberNo);
     //console.log('*************************');
     //console.log('*************************');
     //console.log('*************************');
@@ -19,7 +19,7 @@ router.get('/', function(req, res){
     //console.log('*************************');
     //console.log('*************************');
     global.queryName = 'myquestion';
-    var queryidname = 'myquestionList';
+    var queryidname = 'myquestionMan';
 
     afeelQuery.afeelQuery(datas, queryidname , 'myquestion', function (err, datas) {
         if(err){

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <query>
+    <myquery id="myquestionMan">
+        SELECT questionData, questionGuideData FROM QUESTION WHERE memberNo = 1
+        ORDER BY RAND() LIMIT 0,5
+    </myquery>
+
     <myquery id="myquestionList">
         SELECT QUESTION.questionNo, QUESTION.questionData, QUESTION.questionGuideData, QUESTION.questionRegDate, MEMBER.memberBestQ, QUESTION.questionType from QUESTION
         inner join MEMBER where QUESTION.memberNo = MEMBER.memberNo and QUESTION.memberNo = ? ORDER BY questionRegDate DESC
