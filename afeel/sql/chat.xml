@@ -356,5 +356,17 @@
         SELECT * FROM PRIVATE_ROOM WHERE privateRoomNo = ? AND memberMNo = ?
     </myquery>
 
+    <myquery id="endMatchCheckMan">
+        select memberWNo FROM (
+        select memberNo, chatroomNo FROM CHAT_RANK WHERE memberNo = ? AND rank IN (1,2)
+        ) a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo
+    </myquery>
 
+    <myquery id="endMatchCheckWoman">
+        select distinct memberNo FROM (
+        select memberM1No, memberM2No, memberM3No, memberM4No, a.chatroomNo FROM (
+        select memberNo, chatroomNo FROM CHAT_RANK WHERE memberNo = ? AND rank = 0
+        ) a JOIN CHATROOM b ON a.chatroomNo = b.chatroomNo
+        ) c JOIN CHAT_RANK d ON c.chatroomNo = d.chatroomNo WHERE rank IN (1,2)
+    </myquery>
 </query>

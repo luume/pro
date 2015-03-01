@@ -56,11 +56,21 @@ router.post('/', function(req, res) {
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           afeelQuery.afeelQuery(bindData, 'endMatchListM', 'expeople', function (err, datas) {
-          callback(null, datas);
+            callback(null, datas);
         });
       }
 
     }, // 1번째 워터폴
+
+    function(rows, callback){
+      if(memberGender == 'W' && rows == false){
+          afeelQuery.afeelQuery(bindData, 'endMatchListM', 'expeople', function (err, datas) {
+
+          });
+      }else if(memberGender == 'M' && rows == false){
+
+      }
+    }, // 1.5번째 워터폴
 
     // 채팅방에 빈 공간이 있는지 검색
     function (rows, callback) {
