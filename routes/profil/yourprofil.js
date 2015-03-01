@@ -126,8 +126,8 @@ router.get('/:memberTo', function(req, res){
                             datas[0].memberRate = memberGivedata.memberRate;
                             datas[0].profilThumbnail = arr;
                             datas[0].fType = memberGivedata.feelingCode1;
-                            datas[0].memberGiveRate = memberReceiveData.memberRate;
-                            datas[0].GivefType = memberReceiveData.feelingCode1;
+                            datas[0].memberReceiveRate = memberReceiveData.memberRate;
+                            datas[0].ReceivefType = memberReceiveData.feelingCode1;
                             temp.aaa = arr;
                             temp.fType = codeSum;
                             //res.json({success:1, message:'ok', result:});
