@@ -5,19 +5,19 @@ var util = require('../../afeel/util/vo');
 var afeelQuery = require('../../afeel/util/afeelQuery');
 
 router.get('/', function(req, res){
-    //console.log('eeeeeeee',req.session.memberNo);
+    ////console.log('eeeeeeee',req.session.memberNo);
     var memberNo = req.session.memberNo;
     var datas = [];
     datas.push(memberNo);
-    console.log('*************************');
-    console.log('*************************');
-    console.log('*************************');
-    console.log('*************************');
-    console.log('마이퀘스천 진입!!!!!!!!');
-    console.log('*************************');
-    console.log('*************************');
-    console.log('*************************');
-    console.log('*************************');
+    //console.log('*************************');
+    //console.log('*************************');
+    //console.log('*************************');
+    //console.log('*************************');
+    //console.log('마이퀘스천 진입!!!!!!!!');
+    //console.log('*************************');
+    //console.log('*************************');
+    //console.log('*************************');
+    //console.log('*************************');
     global.queryName = 'myquestion';
     var queryidname = 'myquestionList';
 
