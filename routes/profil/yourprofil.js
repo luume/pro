@@ -32,7 +32,7 @@ router.get('/:memberTo', function(req, res){
                 givedata.push(memberNo);
 
                 //feeling code 및 feeling rate 가져옴
-                afeelQuery.afeelQuery(datas, queryidname , 'member', function (err, datas) {
+                afeelQuery.afeelQuery(givedata, queryidname , 'member', function (err, datas) {
                     if(err){
                         res.json(err);
                         return;
