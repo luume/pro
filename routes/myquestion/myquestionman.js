@@ -6,7 +6,7 @@ var afeelQuery = require('../../afeel/util/afeelQuery');
 
 router.get('/', function(req, res){
     //console.log('eeeeeeee',req.session.memberNo);
-    var memberNo = req.session.memberNo;
+    //var memberNo = req.session.memberNo;
     var datas = [];
     //datas.push(memberNo);
     //console.log('*************************');
