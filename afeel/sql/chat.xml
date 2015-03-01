@@ -26,7 +26,7 @@
     </myquery>
 
     <myquery id="chatMain">
-        SELECT p.profilThumbnail
+        SELECT distinct(p.profilThumbnail)
         FROM CHATROOM c, PROFIL p
         WHERE c.memberWNo = p.memberNo
         AND p.profilMainYn = 1
