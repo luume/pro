@@ -371,11 +371,12 @@ router.post('/', function(req, res) {
 
 
               if(newbie != 'newbie') {
-                bindData.push(test);
+                  bindData.push(row[0].chatroomNo);
+                /*bindData.push(test);
                 bindData.push(req.session.memberNo);
                 bindData.push(req.session.memberNo);
                 bindData.push(req.session.memberNo);
-                bindData.push(req.session.memberNo);
+                bindData.push(req.session.memberNo);*/
                   console.log('바인드 값 : ', bindData);
                 afeelQuery.afeelQuery(bindData, 'modifyChatRoomMan', 'chat', function (err, datas) {
 
@@ -432,10 +433,11 @@ router.post('/', function(req, res) {
                     callback(null, 1);
                 });
               }else if(newbie=='newbie'){
-                bindData.push(req.session.memberNo);
-                bindData.push(req.session.memberNo);
-                bindData.push(req.session.memberNo);
-                bindData.push(req.session.memberNo);
+                  bindData.push(row[0].chatroomNo);
+                //bindData.push(req.session.memberNo);
+                //bindData.push(req.session.memberNo);
+                //bindData.push(req.session.memberNo);
+                //bindData.push(req.session.memberNo);
 
                 afeelQuery.afeelQuery(bindData, 'modifyChatRoomMan2', 'chat', function (err, datas) {
 
