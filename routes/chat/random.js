@@ -346,11 +346,13 @@ router.post('/', function(req, res) {
               bindData = [];
 
               if(row[0].memberM1No == 0){
+                  console.log('왜 여기안올까..' , row);
                 bindData.push(req.session.memberNo);
                 bindData.push(null);
                 bindData.push(null);
                 bindData.push(null);
               }else if(row[0].memberM2No == 0){
+                  console.log('왜 여기왓냐..' , row);
                 bindData.push(row[0].memberM1No);
                 bindData.push(req.session.memberNo);
                 bindData.push(null);
