@@ -373,7 +373,7 @@ router.post('/', function(req, res) {
                 bindData.push(req.session.memberNo);
                 bindData.push(req.session.memberNo);
                 bindData.push(req.session.memberNo);
-
+                  console.log('바인드 값 : ', bindData);
                 afeelQuery.afeelQuery(bindData, 'modifyChatRoomMan', 'chat', function (err, datas) {
 
                   console.log('not 뉴비 3번쨰 워터폴 남자 업데이트 값 ', datas);
