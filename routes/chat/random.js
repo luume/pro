@@ -73,9 +73,11 @@ router.post('/', function(req, res) {
       }else if(memberGender == 'M' && rows == false){
           bindData.push(req.session.memberNo);
           afeelQuery.afeelQuery(bindData, 'endMatchCheckMan', 'chat', function (err, datas) {
+              console.log('이전에 매칭되었던 여성 번호 : ' , datas);
               callback(null, datas);
           });
       }else{
+          console.log('else 문으로 바짐 1.5번째 워터폴');
           callback(null, rows);
       }
     }, // 1.5번째 워터폴
