@@ -325,7 +325,8 @@ router.post('/', function(req, res) {
                 bindData.push(req.session.memberNo);
                 bindData.push(req.session.memberNo);
                 afeelQuery.afeelQuery(bindData, 'selectChatRoomIndexMan', 'chat', function (err, datas) {
-                  calls(null, datas);
+                    console.log('뉴비가 아니옵니당..');
+                  calls(null, datas, '');
                 });
               }else{
                 bindData = [];
