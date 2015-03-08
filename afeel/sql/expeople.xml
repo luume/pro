@@ -172,7 +172,7 @@
         ) zz ON qq.chatroomNo = zz.chatroomNo
         ) rdata JOIN MEMBER mem ON rdata.memberNo = mem.memberNo
         ) rdata2 JOIN PROFIL pr ON rdata2.memberNo = pr.memberNo  WHERE profilMainYn = 1
-        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo GROUP BY chatroomNo  ORDER BY aaa.chatroomRegDate DESC
+        ) aaa JOIN FEELING bbb ON aaa.memberNo = bbb.memberNo WHERE TO_DAYS(NOW()) - TO_DAYS(aaa.chatroomRegDate) &#60;&#61; 7 GROUP BY chatroomNo  ORDER BY aaa.chatroomRegDate DESC
     </myquery>
 
     <myquery id="myRate1">
