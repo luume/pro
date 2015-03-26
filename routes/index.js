@@ -27,6 +27,7 @@ var firstMan = require('./chat/first/man');
 var firstWoman = require('./chat/first/woman');
 var firstKillman = require('./chat/first/killman');
 var firstMain = require('./chat/first/main');
+var endchat = require('./chat/endchat');
 
 var secondMain = require('./chat/second/main');
 var secondSendAnswer = require('./chat/second/sendAnswer');
@@ -125,6 +126,7 @@ router.use('/chat/forth', forthMain);
 router.use('/chat/privatechat', privateChatMain);
 router.use('/chat/privatechat/createprivatechat', privateChatCreatePrivateChat);
 router.use('/chat/privatechat/sendchat', privateChatSendChat);
+router.use('/chat/endchat', endchat);
 
 router.use('/profil/yourprofil', profilYour);
 router.use('/profil', profilMain);
