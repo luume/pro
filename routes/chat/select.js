@@ -19,6 +19,7 @@ router.post('/', function(req, res) {
 
     // 이전에 매칭된 이성 검색
     function (callback) {
+      console.log('2');
       var bindData = [];
       if(memberGender == 'W'){
         bindData.push(req.session.memberNo);

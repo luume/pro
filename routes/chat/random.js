@@ -14,7 +14,6 @@ router.post('/', function(req, res) {
   var sum;
   var test;
   console.log('소개받기 body ', req.body);
-
   async.waterfall([
 
     // 이전에 매칭된 이성 검색
