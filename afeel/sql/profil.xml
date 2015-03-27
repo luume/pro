@@ -9,7 +9,7 @@
     <myquery id="profilYour">
         SELECT
         MEMBER.memberName, MEMBER.memberNick, ((YEAR(CURDATE())- YEAR(memberBirth)) - (RIGHT(CURDATE(),5) &lt; RIGHT(memberBirth,5))) as memberAge,
-        MEMBER.memberHobby, MEMBER.memberAdd, MEMBER.memberHeight,
+        MEMBER.memberHobby, MEMBER.memberAdd, MEMBER.memberHeight, MEMBER.memberCash,
         MEMBER.memberJob, MEMBER.memberSNSYn, MEMBER.memberEmailYn
         FROM MEMBER WHERE MEMBER.memberNo = ?
     </myquery>
