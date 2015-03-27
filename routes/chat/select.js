@@ -271,10 +271,10 @@ router.post('/', function(req, res) {
           bindData.push(req.session.memberNo);
           bindData.push(req.session.memberNo);
           if(req.body.questionType == 1){
-            stringQueryName = 'modifyChatRoomWomenQuestionSelectVoice';
+            var stringQueryName = 'modifyChatRoomWomenQuestionSelectVoice';
           }
           else{
-            stringQueryName = 'modifyChatRoomWomenQuestionSelectText';
+            var stringQueryName = 'modifyChatRoomWomenQuestionSelectText';
           }
           afeelQuery.afeelQuery(bindData, stringQueryName, 'chat', function (err, datas) {
             if(err){
