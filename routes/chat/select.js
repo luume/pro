@@ -14,7 +14,7 @@ router.post('/', function(req, res) {
   var sum;
   var test;
   console.log('소개받기 body ', req.body);
-
+  console.log('1');
   async.waterfall([
 
     // 이전에 매칭된 이성 검색
@@ -35,7 +35,7 @@ router.post('/', function(req, res) {
         bindData.push(req.session.memberNo);
         bindData.push(req.session.memberNo);
         bindData.push(req.session.memberNo);
-
+        console.log('2');
         afeelQuery.afeelQuery(bindData, 'endMatchListW', 'expeople', function (err, datas) {
           callback(null, datas);
         });
@@ -64,6 +64,7 @@ router.post('/', function(req, res) {
 
     // 1번째 워터폴 함수에서 진행중인 이성이 없는 경우. 1:1 채팅방이 생성됬는지 다시 한번 체크해준다.
     function(rows, callback){
+      console.log('3');
       var bindData = [];
       if(memberGender == 'W' && rows == false){
         bindData.push(req.session.memberNo);
@@ -84,6 +85,7 @@ router.post('/', function(req, res) {
 
     // 채팅방에 빈 공간이 있는지 검색
     function (rows, callback) {
+      console.log('4');
       console.log('rows :: ' , rows);
       var tempRows = rows;
       if(tempRows != undefined){
@@ -157,6 +159,7 @@ router.post('/', function(req, res) {
           }
         });
       }else if(memberGender == 'M'){
+        console.log('5');
         bindData.push( req.session.memberNo  );
         bindData.push(  req.session.memberNo  );
         bindData.push(  req.session.memberNo  );
