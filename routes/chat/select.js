@@ -209,6 +209,8 @@ router.post('/', function(req, res) {
       if(successCode == 0){
 // 지금은 관리자 질문이없어서 xml에 강제로 4번의 질문을 랜덤하게 뿌려준다.( 다시 ? 로 바인딩햇음)
         if(memberGender == 'W'){
+          console.log('questionNo:',req.body.questionNo);
+          console.log('questionType:',req.body.questionType);
           bindData.push(req.session.memberNo);
           bindData.push(req.body.questionNo);
           bindData.push(req.session.memberNo);
