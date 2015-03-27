@@ -2,7 +2,7 @@
 <query>
     <myquery id="profilList">
         select MEMBER.memberEmail, MEMBER.memberNick, MEMBER.memberName, MEMBER.memberBirth, MEMBER.memberHobby,
-        MEMBER.memberAdd, MEMBER.memberJob,  MEMBER.memberHeight, PROFIL.profilThumbnail from
+        MEMBER.memberAdd, MEMBER.memberJob,  MEMBER.memberHeight, MEMBER.memberCash, PROFIL.profilThumbnail from
         PROFIL inner join MEMBER where MEMBER.memberNo = PROFIL.memberNo and PROFIL.memberNo = ?
     </myquery>
 
